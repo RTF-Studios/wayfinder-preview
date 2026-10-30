@@ -61,4 +61,5 @@ function changeStory(){const s=stories[Number(document.getElementById('storySele
 async function copyText(t,status){const el=document.getElementById(status);try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(t)}else{const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();if(!document.execCommand('copy'))throw Error('Copy blocked');a.remove()}el.textContent=' Copied.'}catch(e){el.textContent=' Select the text and copy it manually.'}}
 
 changeStory();
+const checks=[...document.querySelectorAll('.checks input')];const panel=document.getElementById('lab-panel');function syncLabs(){panel.hidden=!(checks.length===4&&checks.every(c=>c.checked))}checks.forEach(c=>c.addEventListener('change',syncLabs));syncLabs();
 </script></body></html>
