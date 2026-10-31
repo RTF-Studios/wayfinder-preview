@@ -16,8 +16,7 @@
     var visible=rows.filter(function(item){
       return item.course===course&&item.show&&item.id&&item.href;
     });
-    visible.reverse(); // newest day first when Sheet is oldest-first; Tech source is already newest-first
-    if(course==="Tech")visible.reverse();
+    visible.sort(function(a,b){return b.id.localeCompare(a.id,undefined,{numeric:true});});
     var fragment=document.createDocumentFragment();
     var groups={}; var order=[];
     visible.forEach(function(item){
