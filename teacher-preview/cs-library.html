@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CS Wayfinder Library</title>
+<style>body{margin:0;font:18px/1.5 Roboto,Arial,sans-serif;background:#edf0f7;color:#27304b}header{background:#142063;color:white;padding:28px max(20px,8vw)}main{max-width:900px;margin:30px auto;padding:0 20px}article{background:white;border-left:6px solid #e8b647;border-radius:10px;padding:18px;margin:15px 0}a{color:#253e8b;font-weight:bold}h1{margin:0} .note{background:white;padding:14px;border-radius:8px}</style></head>
+<body><header><h1>Computer Science Wayfinder Library</h1><p>Current lessons and recovery work</p></header>
+<main><h2>Unit 9 · Web Development Studio</h2><div id="lesson-list"></div><p class="note">Answers are submitted through the school Form. Unsubmitted drafts are saved only on this browser.</p></main>
+<script>
+// TEACHER RELEASE CONTROL: set visible to true to SHOW; false to HIDE.
+// Future days are hidden by default. Never show without Captain authorization.
+const days = [
+{ id:"2090101", visible:false, name:"Part 1 · Day 1 — HTML Elements" },
+{ id:"2090102", visible:false, name:"Part 1 · Day 2 — HTML Structure" },
+{ id:"2090103", visible:false, name:"Part 1 · Day 3 — CSS Styling" },
+{ id:"2090104", visible:false, name:"Part 1 · Day 4 — Flexbox" },
+{ id:"2090105", visible:false, name:"Part 1 · Day 5 — Responsive Layout" },
+{ id:"2090106", visible:false, name:"Part 1 · Day 6 — Assessment" }
+];
+const list=document.getElementById("lesson-list");
+for(const lesson of days.slice().reverse()){
+if(!lesson.visible)continue;
+const article=document.createElement("article"),h=document.createElement("h3"),a=document.createElement("a");
+h.textContent=lesson.name;a.href="./"+lesson.id+".html";a.textContent="Open Learning Guide";
+article.append(h,a);list.append(article);
+}
+if(!list.children.length)list.textContent="Your teacher will show lessons here when they are assigned.";
+</script></body></html>
