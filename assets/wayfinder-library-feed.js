@@ -31,7 +31,7 @@
       groups[group].forEach(function(item){
         var card=document.createElement("article");
         var label=document.createElement("h3");label.textContent=item.title;
-        var link=document.createElement("a");link.className="open";link.href=/\/(?:Tech|CS|AAVTC)\/[^/]+\.html$/.test(location.pathname)?"../"+item.href.slice(2):item.href;link.textContent="Open Learning Guide";
+        var link=document.createElement("a");link.className="open";link.href="/wayfinder-preview/"+item.href.slice(2);link.textContent="Open Learning Guide";
         card.append(label,link);section.append(card);
       });
       fragment.appendChild(section);
