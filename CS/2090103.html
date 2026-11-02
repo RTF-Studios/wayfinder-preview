@@ -27,7 +27,9 @@
 <pre>&lt;div data-testid="green"&gt;
   Welcome
 &lt;/div&gt;</pre>
-<p><code>data-testid</code> is another HTML <strong>attribute</strong>. It puts a testing label on the element so the iCEV checker can find the correct box and test your work. The word <code>green</code> is only the label chosen for that test. <strong>It does not turn the box green.</strong> The iCEV challenge asks you to keep these labels exactly as given so the checker can recognize the boxes.</p>
+<p><strong>Why does iCEV need this?</strong> When you click <strong>Run Tests</strong> in the iCEV coding challenge, an automatic checker examines your webpage. It needs to know which box to inspect. Think of putting a <strong>name tag on a student's desk</strong>: the name tag tells the teacher which desk to check, but it does not change the desk.</p>
+<p><code>data-testid</code> is an HTML <strong>attribute</strong> that gives the box this testing name tag. In <code>data-testid="green"</code>, <code>data-testid</code> is the attribute name and <code>green</code> is its value. The checker looks for that exact label to find the box. <strong>The word green does not make the box green.</strong> CSS controls its appearance.</p>
+<p>Ordinary webpages do not need <code>data-testid</code> to display correctly. This iCEV challenge asks for specific testing labels so its automated tests can recognize each of your three boxes. <strong>Keep those labels exactly as the challenge gives them.</strong></p>
 <p><strong>Try it:</strong> Does changing a testing label by itself change the background color? No—styling happens in CSS.</p>
 </div>
 <div style="background:#fff;border:2px solid #7faad9;border-radius:10px;padding:14px;margin:12px 0">
