@@ -11,7 +11,7 @@
   var loaded=false;
   function cell(c,i){return c&&c[i]&&c[i].v!=null?c[i].v:"";}
   function string(v){return String(v==null?"":v).trim();}
-  function safeHref(v){return /^\.\/[0-9]{5,7}\.html$/.test(v)?v:null;}
+  function safeHref(v){return /^\.\/(?:Tech\/|CS\/|AAVTC\/)?[0-9]{5,7}\.html$/.test(v)?v:null;}
   function render(rows){
     var visible=rows.filter(function(item){
       return item.course===course&&item.show&&item.id&&item.href;
@@ -31,7 +31,7 @@
       groups[group].forEach(function(item){
         var card=document.createElement("article");
         var label=document.createElement("h3");label.textContent=item.title;
-        var link=document.createElement("a");link.className="open";link.href=item.href;link.textContent="Open Learning Guide";
+        var link=document.createElement("a");link.className="open";link.href=/\/(?:Tech|CS|AAVTC)\/[^/]+\.html$/.test(location.pathname)?"../"+item.href.slice(2):item.href;link.textContent="Open Learning Guide";
         card.append(label,link);section.append(card);
       });
       fragment.appendChild(section);
