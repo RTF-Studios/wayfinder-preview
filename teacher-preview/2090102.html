@@ -51,7 +51,7 @@
 const menuButton=document.getElementById('menuButton'),menu=document.getElementById('menuLinks');
 menuButton.addEventListener('click',()=>{menu.hidden=!menu.hidden;menuButton.setAttribute('aria-expanded',String(!menu.hidden));});
 const FORM='https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=';
-const QUESTION_IDS=["20064","20065","20066","20067","20068","20069"];
+const QUESTION_IDS=["20064","20065","20066","20067","29999","20000"];
 const KEY_PREFIX='2090102';const storagePrefix='cs-'+KEY_PREFIX+'-';
 function save(key,value){try{localStorage.setItem(storagePrefix+key,value);return true}catch(e){return false}}
 function restore(el,key){try{const v=localStorage.getItem(storagePrefix+key);if(v!==null)el.value=v}catch(e){}}
