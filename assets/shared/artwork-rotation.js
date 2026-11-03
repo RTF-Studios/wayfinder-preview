@@ -3,7 +3,7 @@
 const base='https://api.github.com/repos/RTF-Studios/wayfinder-preview/contents/assets/';
 const dirs={target:'learning-target',temperature:'teks-check',comics:'rtf-comics',characters:'rtf-characters'};
 const fallback={
- target:[{src:'../assets/learning-target/onion-pixel-eraser-target.png',alt:'Onion and Pixel target illustration'},{src:'../assets/learning-target/pixel-learning-target.png',alt:'Pixel learning target illustration'},{src:'../assets/learning-target/percival-searching-for-learning-target.png',alt:'Percival searching for a learning target'}],
+ target:[{src:'../assets/learning-target/pixel-learning-target.png',alt:'Pixel learning target illustration'},{src:'../assets/learning-target/percival-searching-for-learning-target.png',alt:'Percival searching for a learning target'}],
  temperature:[{src:'../assets/teks-check/percival-onion-temperature-check.png',alt:'RTF temperature check illustration'}],
  characters:[],
  comics:[]
@@ -13,7 +13,7 @@ function list(kind){
  if(!dirs[kind])return Promise.resolve([]);
  if(!cache[kind])cache[kind]=fetch(base+dirs[kind],{mode:'cors',cache:'no-cache'})
  .then(r=>{if(!r.ok)throw Error('Artwork listing unavailable');return r.json();})
- .then(a=>Array.isArray(a)?a.filter(f=>f.type==='file'&&/\.png$/i.test(f.name)).map(f=>({
+ .then(a=>Array.isArray(a)?a.filter(f=>f.type==='file'&&/\.png$/i.test(f.name)&&f.name!=='onion-pixel-eraser-target.png').map(f=>({
  src:'../assets/'+dirs[kind]+'/'+encodeURIComponent(f.name),
  alt:f.name.replace(/\.[^.]+$/,'').replace(/[-_]/g,' ')
  })):[])
