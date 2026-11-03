@@ -45,7 +45,7 @@
   Answer fragments use data-stem / data-phrase configured by the curriculum builder.
   No current TEKS, submission keys, lessons, routes, or student answers are stored in the shell.
 */
-const WAYFINDER_CONFIG={libraryUrl:'',enableMiniLearn:false,imagePools:{target:[],temperature:[],labs:[],comics:[],skits:[]},destinations:{warm:'',q1:'',q2:'',temp:'',labs:''}};
+const WAYFINDER_CONFIG={libraryUrl:'',enableMiniLearn:false,imagePools:{target:[{src:'/wayfinder-preview/assets/pixel-learning-target.png',alt:'Pixel plays with a learning target.'},{src:'/wayfinder-preview/assets/onion-pixel-eraser-target-WEB.webp',alt:'Onion.exe and Pixel play near a learning target.'},{src:'/wayfinder-preview/assets/learning-target/percival-missing-target.png',alt:'Percival.12 searches for a missing learning target.'}],temperature:[],labs:[],comics:[],skits:[]},destinations:{warm:'',q1:'',q2:'',temp:'',labs:''}};
 const $=(selector,root=document)=>root.querySelector(selector);
 const $$=(selector,root=document)=>Array.from(root.querySelectorAll(selector));
 const clean=s=>String(s||'').replace(/\s+/g,' ').trim();
