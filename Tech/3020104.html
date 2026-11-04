@@ -21,22 +21,24 @@ const submit=key=>$('[data-submit="'+key+'"]');
 const hide=key=>{let a=submit(key);if(a)a.hidden=true};
 const reveal=key=>{let a=submit(key);if(a){a.href=base+id+suffix[key];a.hidden=false}};
 const val=x=>{let e=document.getElementById(x);return (e?.value||'').trim()};
-function answers(prefix){let parts=[];let root=document.getElementById(prefix);if(!root)return '';
-let groups={};
-root.querySelectorAll('input[type=radio]').forEach(x=>{if(!groups[x.name])groups[x.name]=[];groups[x.name].push(x);});
-Object.entries(groups).forEach(([name,inputs])=>{let chosen=inputs.find(x=>x.checked);parts.push(chosen?name+': '+chosen.value:name+': [Not answered]')});
-root.querySelectorAll('textarea:not([id$="Answer"])').forEach(t=>parts.push(t.previousElementSibling?.textContent?.trim()+': '+(t.value.trim()||'[Not answered]')));
-return parts.join('\n\n');
+function answers(prefix){
+ const root=document.getElementById(prefix);if(!root)return '';
+ const phrases=[];
+ const lead={q1credit:'For cover credit, I would use ',q1text:'To move a text box, I would select ',q1image:'For approved art, I would choose ',q1tf:'I think the statement about a larger image is ',q2narrative:'For story order, I would ',q2tf:'I think the statement about a page break is ',q2scene:'For the scene turn, I would choose '};
+ const groups=new Map();
+ root.querySelectorAll('input[type=radio]').forEach(el=>{if(!groups.has(el.name))groups.set(el.name,[]);groups.get(el.name).push(el)});
+ for(const [name,buttons] of groups){const checked=buttons.find(el=>el.checked);if(checked)phrases.push((lead[name]||'I would choose ')+checked.value);}
+ root.querySelectorAll('textarea').forEach(el=>{if(el.value.trim())phrases.push(el.value.trim())});
+ return phrases.map(x=>/[.!?]$/.test(x)?x:x+'.').join(' ');
 }
 function fieldsComplete(prefix){let root=document.getElementById(prefix);if(!root)return false;for(let t of root.querySelectorAll('textarea:not([id$="Answer"])'))if(!t.value.trim())return false;let names=new Set([...root.querySelectorAll('input[type=radio]')].map(x=>x.name));for(let n of names)if(![...root.querySelectorAll('input[type=radio]')].some(x=>x.name===n&&x.checked))return false;return true;}
 async function copy(text){try{if(!navigator.clipboard?.writeText)throw Error('clipboard unavailable');await navigator.clipboard.writeText(text);return true}catch(e){return false}}
-$$('[data-build]').forEach(b=>b.addEventListener('click',()=>{let k=b.dataset.build;if(!fieldsComplete(k)){status(k,'Complete all choices and written explanations first.');hide(k);return;}$('#'+k+'Answer').value=answers(k);hide(k);status(k,'Your answer is assembled. Read and revise it, then choose Copy My Answer.');}));
 $$('[data-copy]').forEach(b=>b.addEventListener('click',async()=>{let k=b.dataset.copy,txt='';hide(k);
 if(k==='warm'){let chosen=$('input[name="warmChoice"]:checked');if(!chosen||!val('warmWhy')){status(k,'Choose a page and explain why.');return;}txt='Selected page: '+chosen.value+'\nReason: '+val('warmWhy')}
 else if(k==='temp'){let confidence=$('input[name="confidence"]:checked');if(!confidence||!val('reflection')){status(k,'Choose your confidence and write a reflection.');return;}txt='Confidence: '+confidence.value+'\nReflection: '+val('reflection')}
 else if(k==='labs'){if(!$('#labsContent')||$('#labsContent').hidden||![1,2,3].every(n=>val('lab'+n))){status(k,'Complete all three Creative Lab evidence fields before copying.');return;}txt=[1,2,3].map(n=>'Creative Lab '+n+': '+val('lab'+n)).join('\n\n')}
 else if(k==='showcase'){if(!val('starOne')||!val('starTwo')||!val('wish')){status(k,'Write both stars and a wish first.');return;}txt='Star 1: '+val('starOne')+'\nStar 2: '+val('starTwo')+'\nWish: '+val('wish')}
-else {if(!fieldsComplete(k)){status(k,'Finish every response piece before copying.');return;}txt=val(k+'Answer');if(!txt){status(k,'Build your answer first.');return;}}
+else {if(!fieldsComplete(k)){status(k,'Finish every response piece before copying.');return;}txt=answers(k);if(!txt){status(k,'Complete your answer first.');return;}}
 const ok=await copy(txt);if(ok){if(k!=='showcase')reveal(k);status(k,k==='showcase'?'Feedback copied. Share it respectfully with your teacher or the presenter as directed.':'Copied successfully. Open Submit, paste, review and send your response in the Form.')}else{status(k,'Copy blocked by the browser. You may select and manually copy your answer; Submit stays hidden until successful clipboard copy.');hide(k)}
 }));
 $$('textarea,input').forEach(el=>el.addEventListener('input',()=>{let k=el.closest('#q1')?'q1':el.closest('#q2')?'q2':el.closest('#warmup')?'warm':el.closest('#temperature')?'temp':el.closest('#creative')?'labs':el.closest('#showcase')?'showcase':null;if(k){hide(k);status(k,'Your response changed. Copy again before submitting.')}}));
