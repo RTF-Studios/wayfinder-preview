@@ -33,13 +33,17 @@ const reveal=key=>{let a=submit(key);if(a){a.href=base+id+suffix[key];a.hidden=f
 const val=x=>{let e=document.getElementById(x);return (e?.value||'').trim()};
 function answers(prefix){
  const root=document.getElementById(prefix);if(!root)return '';
- const phrases=[];
- const lead={q1credit:'For cover credit, I would use ',q1text:'To move a text box, I would select ',q1image:'For approved art, I would choose ',q1tf:'I think the statement about a larger image is ',q2narrative:'For story order, I would ',q2tf:'I think the statement about a page break is ',q2scene:'For the scene turn, I would choose '};
- const groups=new Map();
- root.querySelectorAll('input[type=radio]').forEach(el=>{if(!groups.has(el.name))groups.set(el.name,[]);groups.get(el.name).push(el)});
- for(const [name,buttons] of groups){const checked=buttons.find(el=>el.checked);if(checked)phrases.push((lead[name]||'I would choose ')+checked.value);}
- root.querySelectorAll('textarea').forEach(el=>{if(el.value.trim())phrases.push(el.value.trim())});
- return phrases.map(x=>/[.!?]$/.test(x)?x:x+'.').join(' ');
+ const lead={q1credit:'My cover would credit ',q1text:'To move a text box, I would select ',q1image:'For suitable artwork, I would choose ',q1tf:'I think the claim about large pictures is ',q2narrative:'For the original story I would ',q2tf:'I think the claim about arbitrary page breaks is ',q2scene:'For the scene turn I would choose '};
+ const fragments=[];
+ root.querySelectorAll('fieldset.response-piece,div.response-piece textarea').forEach(el=>{
+   if(el.tagName==='FIELDSET'){
+     const checked=el.querySelector('input[type=radio]:checked');if(!checked)return;
+     const value=checked.value;
+     const lower=value.charAt(0).toLowerCase()+value.slice(1);
+     fragments.push((lead[checked.name]||'I would choose ')+lower);
+   }else if(el.value.trim())fragments.push(el.value.trim());
+ });
+ return fragments.map(x=>/[.!?]$/.test(x)?x:x+'.').join(' ');
 }
 function fieldsComplete(prefix){let root=document.getElementById(prefix);if(!root)return false;for(let t of root.querySelectorAll('textarea:not([id$="Answer"])'))if(!t.value.trim())return false;let names=new Set([...root.querySelectorAll('input[type=radio]')].map(x=>x.name));for(let n of names)if(![...root.querySelectorAll('input[type=radio]')].some(x=>x.name===n&&x.checked))return false;return true;}
 async function copy(text){try{if(!navigator.clipboard?.writeText)throw Error('clipboard unavailable');await navigator.clipboard.writeText(text);return true}catch(e){return false}}
