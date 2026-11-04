@@ -46,7 +46,7 @@ function answers(prefix){
  return fragments.map(x=>/[.!?]$/.test(x)?x:x+'.').join(' ');
 }
 function fieldsComplete(prefix){let root=document.getElementById(prefix);if(!root)return false;for(let t of root.querySelectorAll('textarea:not([id$="Answer"])'))if(!t.value.trim())return false;let names=new Set([...root.querySelectorAll('input[type=radio]')].map(x=>x.name));for(let n of names)if(![...root.querySelectorAll('input[type=radio]')].some(x=>x.name===n&&x.checked))return false;return true;}
-async function copy(text){try{if(!navigator.clipboard?.writeText)throw Error('clipboard unavailable');await navigator.clipboard.writeText(text);return true}catch(e){return false}}
+async function copy(text){if(!text||!text.trim())return false;try{if(!navigator.clipboard?.writeText)throw Error('clipboard unavailable');await navigator.clipboard.writeText(text);return true}catch(e){const field=document.createElement('textarea');field.value=text;field.style.cssText='position:fixed;left:-10000px;top:0';document.body.append(field);field.focus();field.select();let ok=false;try{ok=document.execCommand('copy')}catch(_){}field.remove();return ok;}}
 $$('[data-copy]').forEach(b=>b.addEventListener('click',async()=>{let k=b.dataset.copy,txt='';hide(k);
 if(k==='warm'){let chosen=$('input[name="warmChoice"]:checked');if(!chosen||!val('warmWhy')){status(k,'Choose a page and explain why.');return;}txt='Selected page: '+chosen.value+'\nReason: '+val('warmWhy')}
 else if(k==='temp'){let confidence=$('input[name="confidence"]:checked');if(!confidence||!val('reflection')){status(k,'Choose your confidence and write a reflection.');return;}txt='Confidence: '+confidence.value+'\nReflection: '+val('reflection')}
