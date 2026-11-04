@@ -8,9 +8,16 @@ const problems = [];
 const check = (condition, message) => { if (!condition) problems.push(message); };
 const ids = new Set([...html.matchAll(/id="([^"]+)"/g)].map(match => match[1]));
 const required = ['sideNav','navToggle','targetArt','warmAnswer','warmStatus','q1assembled','q2assembled',
- 'temperatureFeedback','creativeLabs','labLock','labCopy','labOneResponse',
- 'labTwoResponse','labThreeResponse','comicSlot','skitSlot'];
+ 'temperatureFeedback','creativeLabs','labLock','labCopy','comicSlot','skitSlot'];
 for (const id of required) check(ids.has(id), 'Required element missing: ' + id);
+// New Studio builds use one shared entry; preserve validation of historical three-field lessons.
+if (ids.has('studioEvidence')) {
+ check(/Your own idea means a creative extension of today['’]s work[—-]not permission to switch to an unrelated activity or tool\./.test(html), 'Missing Creative Studio on-task boundary');
+ check(!['labOneResponse','labTwoResponse','labThreeResponse'].some(id => ids.has(id)), 'Studio must use one shared evidence field');
+ check((html.match(/class="lab"/g) || []).length === 3, 'Studio needs three suggested idea cards');
+} else {
+ for (const id of ['labOneResponse','labTwoResponse','labThreeResponse']) check(ids.has(id), 'Legacy Lab element missing: ' + id);
+}
 const javascript = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(match => match[1]).join('\n');
 check(Boolean(javascript), 'Missing inline JavaScript');
 try { new Script(javascript); } catch (error) { problems.push('Invalid JavaScript: ' + error.message); }
