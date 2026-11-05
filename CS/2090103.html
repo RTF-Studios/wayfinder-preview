@@ -125,6 +125,10 @@ textarea::placeholder,input::placeholder{color:#68604f;opacity:1}
 .perform-code-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
 .perform-code-reference pre{white-space:pre;overflow-x:auto;margin:10px 0 6px;padding:12px;background:#f5f7fb;border:1px solid #d9dfec;border-radius:8px;font:500 14px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;color:#172347;text-align:left}
 .perform-code-reference #panelCssStatus{min-height:1.2em;margin:5px 0 0}
+
+/* Day 3: readable editable CSS scaffold without altering mastery inputs. */
+#cssFillBlanks{display:block;width:100%;max-width:100%;box-sizing:border-box;min-height:350px;padding:12px;margin:8px 0;border:1px solid #a6b6d3;border-radius:8px;background:#f5f7fb;color:#172347;font:500 14px/1.45 ui-monospace,SFMono-Regular,Consolas,monospace;tab-size:2;resize:vertical;white-space:pre;overflow:auto}
+#cssFillBlanks:focus-visible{outline:3px solid #395fb3;outline-offset:2px}
 </style>
 <!-- HANDOFF 2026-11-04: Captain authorized universal Submit-primary/Copy-secondary hierarchy. All five submission slots share .submit; all Copy controls use .copy-action. CSS/roles changed only; JS, destinations, keys and visibility preserved. Owner SOP: WF-02 1d5FTTRjN3M2b3YAQ_LEZOdBT56pTdJsBluMKX9CeuMo. Verify rendered controls, targets, focus and hidden/reveal/edit-reset at lesson build; master has no live Form destinations. -->
 <!-- MASTER INSPECTION: At this canonical template path only, show every Submit control and Creative Studio for visual review. These visible controls have no href and do not send data. Course lesson paths retain initially hidden, successful-copy-only Submit and the four-check Lab gate. -->
@@ -158,7 +162,13 @@ textarea::placeholder,input::placeholder{color:#68604f;opacity:1}
  <div class="actions response-submit-actions"><button class="btn submit finalize-response" data-question="one" type="button" disabled>Copy and Submit My Answer</button></div>
  <p class="hint">When your response looks right, this button copies it and opens the Submission Form. There, paste and submit.</p>
  <div aria-live="polite" class="status" id="q1Status"></div></div></section>
-<section class="panel perform" id="perform"><span class="kicker">05 · Apply it</span><h2>Perform — Style the Assigned iCEV Panels</h2><p>Continue your existing <strong>iCEV CSS Three-Panel Layout</strong> coding challenge. Today's focus is recognizing selectors and applying readable CSS; the next lesson goes further with Flexbox.</p><ol class="steps"><li>Find the existing panels and their HTML <code>data-testid</code> labels.</li><li>Use <strong>Copy CSS</strong> below and paste into <code>styles.css</code> instead of typing from scratch.</li><li>Change a background color and watch the Auto Sync preview update immediately.</li><li>Change a selector value briefly so it no longer matches its HTML label, observe the result, then restore it.</li><li>Explain what the HTML label identifies and what CSS changes. Use Finish only as directed.</li></ol><div class="perform-code-reference" aria-label="Copyable CSS reference for three panels"><div class="perform-code-head"><strong>Copyable CSS Reference — styles.css</strong><button class="btn copy-action" id="copyPanelCss" type="button">Copy CSS</button></div><p class="hint">Copy this complete example into <code>styles.css</code>, replacing the starter text. It includes the original <code>body</code> rule.</p><pre id="panelCssCode"><code>body {
+<section class="panel perform" id="perform"><span class="kicker">05 · Apply it</span><h2>Perform — Style the Assigned iCEV Panels</h2><p>Continue your existing <strong>iCEV CSS Three-Panel Layout</strong> coding challenge. Today's focus is recognizing selectors and applying readable CSS; the next lesson goes further with Flexbox.</p><div class="perform-code-reference" aria-label="Verified HTML recovery for the three iCEV panels">
+<div class="perform-code-head"><strong>HTML check and recovery — index.html</strong><button class="btn copy-action" id="copyPanelHtml" type="button">Copy Panel HTML</button></div>
+<p class="hint">If your HTML panels were changed or deleted, compare with these <strong>exact three panel sections from Day 2</strong>. Copy them into the <code>&lt;body&gt;</code> of your existing <code>index.html</code> in this order. Keep your original <code>&lt;head&gt;</code>, the link to <code>src/styles.css</code>, and the rest of the document. This is <strong>the verified panel content, not a replacement for your entire HTML file</strong>.</p>
+<pre id="panelHtmlCode"><code>&lt;section data-testid="red"&gt;Red&lt;/section&gt;
+&lt;section data-testid="green"&gt;Green&lt;/section&gt;
+&lt;section data-testid="blue"&gt;Blue&lt;/section&gt;</code></pre>
+<p class="micro" id="panelHtmlStatus" aria-live="polite"></p></div><ol class="steps"><li>Find the existing panels and their HTML <code>data-testid</code> labels.</li><li>Use <strong>Copy CSS</strong> below and paste into <code>styles.css</code> instead of typing from scratch.</li><li>Change a background color and watch the Auto Sync preview update immediately.</li><li>Change a selector value briefly so it no longer matches its HTML label, observe the result, then restore it.</li><li>Explain what the HTML label identifies and what CSS changes. Use Finish only as directed.</li></ol><div class="perform-code-reference" aria-label="Copyable CSS reference for three panels"><div class="perform-code-head"><strong>Copyable CSS Reference — styles.css</strong><button class="btn copy-action" id="copyPanelCss" type="button">Copy CSS</button></div><p class="hint">Copy this complete example into <code>styles.css</code>, replacing the starter text. It includes the original <code>body</code> rule.</p><pre id="panelCssCode"><code>body {
   background-color: white;
 }
 
@@ -177,7 +187,31 @@ textarea::placeholder,input::placeholder{color:#68604f;opacity:1}
 [data-testid="blue"] {
   background-color: blue;
   color: white;
-}</code></pre><p class="micro" id="panelCssStatus" aria-live="polite"></p></div><div class="slot"><strong>What counts as success?</strong> You can point to an HTML attribute, its matching CSS selector, and explain the resulting change in appearance.</div></section>
+}</code></pre><p class="micro" id="panelCssStatus" aria-live="polite"></p></div><div class="perform-code-reference" aria-label="Fill in missing CSS selectors and colors">
+<div class="perform-code-head"><strong>Try It — Complete the CSS Blanks</strong><button class="btn copy-action" id="copyCompletedCss" type="button">Copy My Completed CSS</button></div>
+<p class="hint">Start with this working structure. Replace all six <strong>[[BLANK]]</strong> labels using the correct panel names and colors: <code>red</code>, <code>green</code>, <code>blue</code>. Keep the punctuation, brackets, quotes and semicolons. Then copy your finished CSS into <code>styles.css</code>. If you get stuck, the complete working CSS above is still available.</p>
+<label for="cssFillBlanks"><strong>Edit the code below</strong></label>
+<textarea id="cssFillBlanks" spellcheck="false" aria-describedby="cssBlanksStatus" rows="20">body {
+  background-color: white;
+}
+
+/* Add your CSS here */
+
+[data-testid="[[BLANK]]"] {
+  background-color: [[BLANK]];
+  color: white;
+}
+
+[data-testid="[[BLANK]]"] {
+  background-color: [[BLANK]];
+  color: white;
+}
+
+[data-testid="[[BLANK]]"] {
+  background-color: [[BLANK]];
+  color: white;
+}</textarea>
+<p class="micro" id="cssBlanksStatus" aria-live="polite">Fill all six blanks before copying. Keep the rest of the code in place.</p></div><div class="slot"><strong>What counts as success?</strong> You can point to an HTML attribute, its matching CSS selector, and explain the resulting change in appearance.</div></section>
 <section class="panel mastery" data-question="two" id="masteryTwo"><span class="kicker">06 · Explain your thinking</span><h2>Mastery Question 2</h2><p data-slot="mastery-q2">A charity website has three boxes that look inconsistent: one has pale unreadable text, another has cramped spacing, and a third uses an unrelated headline style. Diagnose the design problems and propose CSS selector, color or spacing changes that would make the interface clearer. Explain how you would check your work.</p><div class="scaffold"><h3>Build Your Answer</h3><p class="hint">Complete the custom answer pieces. Your combined response should show what you understand and how you applied it.</p><div class="answer-parts" data-assembler="two"><div data-answer-part data-type="open-response"><label>Identify two specific reading or visual problems in this scenario.</label><textarea data-open-response rows="2" placeholder="I notice that..."></textarea></div><div data-answer-part data-type="open-response"><label>Choose appropriate selectors and describe two CSS improvements.</label><textarea data-open-response rows="2" placeholder="I would use..."></textarea></div><div data-answer-part data-type="open-response"><label>Explain how a viewer or browser check would show whether the changes helped.</label><textarea data-open-response rows="2" placeholder="I would verify..."></textarea></div></div><details><summary>Extra Help</summary><p data-slot="q2-help">Think about what is difficult for a visitor to scan: contrast, consistent appearance, whitespace, and clear headings. Use the CSS selectors from Learn to explain which elements change.</p></details></div><div class="response response-builder" data-response-builder="two">
  <div class="actions response-create-actions"><button class="btn copy-action create-response" data-question="two" type="button">Create My Response</button></div>
  <div class="response-preview-shell" aria-label="Read-only constructed response">
@@ -325,5 +359,39 @@ $('#labCopy').addEventListener('click',async()=>{resetSubmission('labs');const v
 }
 function startWayfinder(){try{init();}catch(error){console.error('Wayfinder startup failed',error);document.querySelectorAll('.status').forEach(el=>{el.textContent='Something did not load correctly. Tell your teacher before submitting.';});}}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',startWayfinder);else startWayfinder();
+</script>
+
+<script>
+/* Day 3 code support: does not touch assessment, grade, or visibility paths. */
+(function(){
+  const byId=id=>document.getElementById(id);
+  async function copyCode(value){
+    if(!value)return false;
+    try{if(navigator.clipboard && window.isSecureContext){await navigator.clipboard.writeText(value);return true;}}catch(error){}
+    try{
+      const temp=document.createElement('textarea');temp.value=value;temp.setAttribute('readonly','');temp.style.position='fixed';temp.style.left='-9999px';document.body.appendChild(temp);temp.select();
+      const ok=document.execCommand('copy');temp.remove();return !!ok;
+    }catch(error){return false;}
+  }
+  function message(id,text){const el=byId(id);if(el)el.textContent=text;}
+  const htmlBtn=byId('copyPanelHtml');
+  if(htmlBtn)htmlBtn.addEventListener('click',async()=>{
+    const source=byId('panelHtmlCode')?.textContent||'';
+    const success=await copyCode(source);
+    message('panelHtmlStatus',success?'Panel HTML copied. Paste these three sections inside the existing body.':'Copy not available. Select the panel code above and copy it manually.');
+  });
+  const cssBtn=byId('copyCompletedCss'),editor=byId('cssFillBlanks');
+  if(editor)editor.addEventListener('input',()=>message('cssBlanksStatus','Replace all six [[BLANK]] markers with the appropriate panel names or colors before copying.'));
+  if(cssBtn&&editor)cssBtn.addEventListener('click',async()=>{
+    const value=editor.value;
+    if(value.includes('[[BLANK]]')){message('cssBlanksStatus','Some blanks are still empty. Fill every [[BLANK]] marker first.');editor.focus();return;}
+    const matches=[...value.matchAll(/\[data-testid="([^"]+)"\]\s*\{\s*background-color:\s*([^;]+);\s*color:\s*white;\s*\}/g)];
+    if(matches.length!==3 || matches.some((m,i)=>m[1]!==['red','green','blue'][i]||m[2].trim()!==['red','green','blue'][i])){
+      message('cssBlanksStatus','Check the three selectors and matching colors: red, green, blue, in that order.');editor.focus();return;
+    }
+    const success=await copyCode(value);
+    message('cssBlanksStatus',success?'Your completed CSS was copied. Paste into styles.css and observe Auto Sync.':'Copy not available. Select all code in the editor and copy it manually.');
+  });
+})();
 </script>
 </body></html>
