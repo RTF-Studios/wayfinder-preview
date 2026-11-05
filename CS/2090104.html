@@ -94,9 +94,6 @@ textarea::placeholder,input::placeholder{color:#68604f;opacity:1}
 @keyframes response-twinkle{to{opacity:.35;transform:scale(.65) rotate(30deg)}}@keyframes response-appear{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.loading-fill{animation:none;transform:scaleX(1)}.loading-sparkle,.response-preview-shell .assembled-preview{animation:none}.response-submit-actions .finalize-response{transition:none}}
 .temperature-summary .art{width:125px;min-width:125px;max-width:125px;min-height:0;padding:0;border:none}.temperature-summary .art img{display:block;width:100%;height:auto;object-fit:contain}.answer-parts textarea{height:64px;min-height:55px}
-
-/* Keep the default-expanded fixed navigation out of students' reading columns. */
-@media(min-width:761px){.sidelink.open~.wrap{margin-left:max(250px,calc((100vw - 1080px)/2));margin-right:15px;max-width:min(1080px,calc(100% - 275px))}}
 </style>
 <!-- HANDOFF 2026-11-04: Captain authorized universal Submit-primary/Copy-secondary hierarchy. All five submission slots share .submit; all Copy controls use .copy-action. CSS/roles changed only; JS, destinations, keys and visibility preserved. Owner SOP: WF-02 1d5FTTRjN3M2b3YAQ_LEZOdBT56pTdJsBluMKX9CeuMo. Verify rendered controls, targets, focus and hidden/reveal/edit-reset at lesson build; master has no live Form destinations. -->
 <!-- MASTER INSPECTION: At this canonical template path only, show every Submit control and Creative Studio for visual review. These visible controls have no href and do not send data. Course lesson paths retain initially hidden, successful-copy-only Submit and the four-check Lab gate. -->
