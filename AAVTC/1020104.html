@@ -42,6 +42,9 @@
 @media(prefers-reduced-motion:reduce){.loading-fill{animation:none;transform:scaleX(1)}.loading-sparkle,.response-preview-shell .assembled-preview{animation:none}.response-submit-actions .finalize-response{transition:none}}
 
 .temp .slot.art {max-width:135px;min-height:0;padding:0}.temp .slot.art img{display:block;width:100%;height:auto;object-fit:contain}.answer-parts textarea{min-height:52px;height:64px}
+
+/* Keep the default-expanded fixed navigation out of students' reading columns. */
+@media(min-width:761px){.sidelink.open~.wrap{margin-left:max(250px,calc((100vw - 1080px)/2));margin-right:15px;max-width:min(1080px,calc(100% - 275px))}}
 </style>
 </head>
 <body id="top">
