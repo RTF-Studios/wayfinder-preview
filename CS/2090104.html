@@ -120,6 +120,15 @@ textarea::placeholder,input::placeholder{color:#68604f;opacity:1}
 .perform-code-head{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
 .perform-code-reference pre{white-space:pre;overflow-x:auto;margin:10px 0 6px;padding:12px;background:#f5f7fb;border:1px solid #d9dfec;border-radius:8px;font:500 14px/1.5 ui-monospace,SFMono-Regular,Consolas,monospace;color:#172347;text-align:left}
 .perform-code-reference #flexCssStatus{min-height:1.2em;margin:5px 0 0}
+.flex-fill-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:14px 0}
+.flex-fill-grid label{display:flex;flex-direction:column;gap:6px;font-size:15px;font-weight:650;color:#25223c}
+.flex-fill-grid label code{font-size:14px;font-weight:500;white-space:normal}
+.flex-fill-grid input{box-sizing:border-box;width:100%;min-height:44px;padding:9px 11px;border:2px solid #7388b0;border-radius:8px;font:500 16px ui-monospace,Consolas,monospace;color:#172347;background:#fff}
+.flex-fill-grid input:focus-visible{outline:3px solid #c19a21;outline-offset:2px}
+.flex-fill-grid input[aria-invalid="true"]{border-color:#ad2929}
+.perform-code-reference #copyFlexCss:disabled{opacity:.56;cursor:not-allowed}
+@media(max-width:630px){.flex-fill-grid{grid-template-columns:1fr}.perform-code-head{align-items:stretch}.perform-code-head button{width:100%}}
+
 </style>
 <!-- HANDOFF 2026-11-04: Captain authorized universal Submit-primary/Copy-secondary hierarchy. All five submission slots share .submit; all Copy controls use .copy-action. CSS/roles changed only; JS, destinations, keys and visibility preserved. Owner SOP: WF-02 1d5FTTRjN3M2b3YAQ_LEZOdBT56pTdJsBluMKX9CeuMo. Verify rendered controls, targets, focus and hidden/reveal/edit-reset at lesson build; master has no live Form destinations. -->
 <!-- MASTER INSPECTION: At this canonical template path only, show every Submit control and Creative Studio for visual review. These visible controls have no href and do not send data. Course lesson paths retain initially hidden, successful-copy-only Submit and the four-check Lab gate. -->
@@ -154,37 +163,28 @@ textarea::placeholder,input::placeholder{color:#68604f;opacity:1}
  <div class="actions response-submit-actions"><button class="btn submit finalize-response" data-question="one" type="button" disabled>Copy and Submit My Answer</button></div>
  <p class="hint">When your response looks right, this button copies it and opens the Submission Form. There, paste and submit.</p>
  <div aria-live="polite" class="status" id="q1Status"></div></div></section>
-<section class="panel perform" id="perform"><span class="kicker">05 · Apply</span><h2>Perform</h2><p>Apply this to the assigned <strong>iCEV CSS Three-Panel Layout</strong> challenge.</p><ol class="steps"><li>Find the <strong>parent</strong> container and three child panels in your existing <code>index.html</code>. Do not erase your HTML structure or the <code>data-testid</code> labels.</li><li>Select <strong>Copy Starter CSS</strong> below; paste the whole sample into <code>styles.css</code>. The code structure is supplied—no typing from scratch.</li><li>Look for <strong>CHANGE ME</strong> comments. Choose new colors, <code>gap</code> and <code>padding</code> values. Match the <code>.panels</code> and <code>.panel</code> selectors to the actual class names in your HTML, if needed.</li><li>Watch the preview update with <strong>Auto Sync</strong>. Change one value at a time; explain how a parent rule controls the group while child rules control each panel.</li><li>Keep your completed CSS and use the iCEV Finish control as directed by your assignment.</li></ol><div class="perform-code-reference" aria-label="Copyable partially completed Flexbox CSS"><div class="perform-code-head"><strong>Flexbox Starter — styles.css</strong><button class="btn copy-action" id="copyFlexCss" type="button">Copy Starter CSS</button></div><p class="hint">Copy the example, then change the values marked <strong>CHANGE ME</strong>. The code is valid as supplied, so you can experiment immediately. The class selectors must match your actual HTML.</p><pre id="flexCssCode"><code>body {
-  background-color: white;
-}
-
-/* PARENT: arranges the three child panels */
-.panels {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px; /* CHANGE ME: choose spacing */
-}
-
-/* CHILDREN: share space and interior padding */
-.panel {
-  flex: 1;
-  min-width: 120px;
-  padding: 16px; /* CHANGE ME: choose padding */
-}
-
-/* Keep HTML data-testid labels unchanged. */
-[data-testid="red"] {
-  background-color: lightcoral; /* CHANGE ME */
-  color: black;
-}
-[data-testid="green"] {
-  background-color: lightgreen; /* CHANGE ME */
-  color: black;
-}
-[data-testid="blue"] {
-  background-color: lightblue; /* CHANGE ME */
-  color: black;
-}</code></pre><p id="flexCssStatus" class="micro" aria-live="polite"></p></div></section>
+<section class="panel perform" id="perform"><span class="kicker">05 · Apply</span><h2>Perform</h2>
+<p>Apply this to your assigned <strong>iCEV CSS Three-Panel Layout</strong> challenge. Fill the CSS blanks below before copying your completed code.</p>
+<ol class="steps"><li>Find the parent container and its three children in <code>index.html</code>. Keep the existing <code>data-testid</code> labels unchanged.</li>
+<li>Complete the six CSS values below: the parent's display, gap, child padding, and three panel background colors. Type only the values; the structure, punctuation and <code>px</code> are provided.</li>
+<li>Read your <strong>Completed CSS</strong> preview. Only valid, fully completed code can be copied. Select <strong>Copy My Completed CSS</strong> and paste it into <code>styles.css</code>.</li>
+<li>Make sure the <code>.panels</code> and <code>.panel</code> selectors match your HTML class names. If needed, adjust those selectors after pasting in <code>styles.css</code>. Watch the live <strong>Auto Sync</strong> preview.</li>
+<li>Change one spacing or color value to observe its effect. Explain how the parent layout rule differs from child styling. Use the iCEV <strong>Finish</strong> control to submit the challenge.</li></ol>
+<div class="perform-code-reference" aria-label="Guided fill-in Flexbox CSS starter">
+<div class="perform-code-head"><strong>Flexbox Starter — styles.css</strong><button class="btn copy-action" id="copyFlexCss" type="button" disabled>Copy My Completed CSS</button></div>
+<p class="hint">Complete all six blanks. Your copied CSS will contain no blanks. Keep the HTML test labels exactly as they are.</p>
+<div class="flex-fill-grid">
+<label>Parent layout · <code>display: ____;</code><input data-flex-fill="display" type="text" placeholder="Layout keyword" spellcheck="false" autocomplete="off" maxlength="12"></label>
+<label>Space between panels · <code>gap: ____px;</code><input data-flex-fill="gap" type="text" placeholder="Number of pixels" inputmode="numeric" autocomplete="off" maxlength="3"></label>
+<label>Space inside panels · <code>padding: ____px;</code><input data-flex-fill="padding" type="text" placeholder="Number of pixels" inputmode="numeric" autocomplete="off" maxlength="3"></label>
+<label>Red panel color · <code>background-color: ____;</code><input data-flex-fill="red" type="text" placeholder="CSS color or #hex" spellcheck="false" autocomplete="off" maxlength="35"></label>
+<label>Green panel color · <code>background-color: ____;</code><input data-flex-fill="green" type="text" placeholder="CSS color or #hex" spellcheck="false" autocomplete="off" maxlength="35"></label>
+<label>Blue panel color · <code>background-color: ____;</code><input data-flex-fill="blue" type="text" placeholder="CSS color or #hex" spellcheck="false" autocomplete="off" maxlength="35"></label>
+</div>
+<details><summary>Extra Help — Completing the blanks</summary><p>Use <code>flex</code> for the parent display to arrange child panels as a group. For gap and padding, enter a whole number from 0 to 80, without <code>px</code>. For color, use a CSS color word such as <code>lightblue</code> or a hexadecimal value such as <code>#336699</code>. Make sure black text stays readable. The selectors <code>.panels</code> and <code>.panel</code> must match your HTML. Never change <code>data-testid="red"</code>, <code>"green"</code>, or <code>"blue"</code>.</p></details>
+<p class="hint"><strong>Completed CSS — live preview:</strong> Unfilled or invalid values appear as <code>______</code> until corrected.</p>
+<pre id="flexCssCode" aria-label="CSS preview"><code></code></pre><p id="flexCssStatus" class="micro" role="status" aria-live="polite">Fill all six blanks to copy valid CSS.</p>
+</div></section>
 <section class="panel mastery" data-question="two" id="masteryTwo"><span class="kicker">06 · Explain your thinking</span><h2>Mastery Question 2</h2><p data-slot="mastery-q2">A science museum's web page puts three exhibit cards in a cramped horizontal row. Recommend specific Flexbox and spacing changes that would improve readability, then explain how a first-time visitor could test whether the revised exhibit list works.</p><div class="scaffold"><h3>Build Your Answer</h3><p class="hint">Complete the custom answer pieces. Your combined response should show what you understand and how you applied it.</p><div class="answer-parts" data-assembler="two"><div data-answer-part data-type="open-response"><label>What makes the sample interface hard to read?</label><textarea data-open-response rows="2" placeholder="One short explanation..."></textarea></div><div data-answer-part data-type="open-response"><label>What would you change about layout, gap, contrast or spacing?</label><textarea data-open-response rows="2" placeholder="One short explanation..."></textarea></div><div data-answer-part data-type="open-response"><label>How would you verify the new version is more usable?</label><textarea data-open-response rows="2" placeholder="One short explanation..."></textarea></div></div><details><summary>Extra Help</summary><p data-slot="q2-help">Name one observation, one deliberate decision and a reason. Your answer should demonstrate your own thinking.</p></details></div><div class="response response-builder" data-response-builder="two">
  <div class="actions response-create-actions"><button class="btn copy-action create-response" data-question="two" type="button">Create My Response</button></div>
  <div class="response-preview-shell" aria-label="Read-only constructed response">
@@ -323,7 +323,49 @@ function onEditReset(){
  $('#studioEvidence').addEventListener('input',()=>resetSubmission('labs'));
 }
 function init(){if(IS_MASTER_TEMPLATE){for(const key of ['warm','q1','q2','temp','labs'])resetSubmission(key);$$('a.submit').forEach(a=>a.addEventListener('click',event=>event.preventDefault()));}const nav=$('#sideNav');$('#navToggle').addEventListener('click',()=>{nav.classList.toggle('open');const expanded=nav.classList.contains('open');$('#navToggle').setAttribute('aria-expanded',String(expanded));$('#navToggle').setAttribute('aria-label',expanded?'Collapse quick menu':'Expand quick menu');});if(WAYFINDER_CONFIG.libraryUrl){const a=$('#libraryLink');a.href=WAYFINDER_CONFIG.libraryUrl;a.hidden=false;$('#libraryFallback').hidden=true;}rotateArt($('#targetArt'),'target',WAYFINDER_CONFIG.imagePools.target);rotateArt($('#labArt'),'characters',WAYFINDER_CONFIG.imagePools.labs);rotateArt($('#comicSlot'),'comics',WAYFINDER_CONFIG.imagePools.comics);placeSkit($('#skitSlot'),WAYFINDER_CONFIG.imagePools.skits);updateMirror();onEditReset();$$('.gate-check').forEach(x=>x.addEventListener('change',updateGate));updateGate();
-const flexCssButton=$('#copyFlexCss');if(flexCssButton)flexCssButton.addEventListener('click',async()=>{const code=$('#flexCssCode')?.textContent||'';const copied=await copyText(code);setStatus('flexCssStatus',copied?'Starter CSS copied. Paste into styles.css and change the marked values.':'Copy blocked. Select the code and copy it manually.');});
+const flexCssButton=$('#copyFlexCss');
+if(flexCssButton){
+ const fieldNames=['display','gap','padding','red','green','blue'];
+ const inputs=Object.fromEntries(fieldNames.map(name=>[name,$('[data-flex-fill="'+name+'"]')]));
+ const preview=$('#flexCssCode code');
+ const isNumber=v=>/^(?:0|[1-9][0-9]?)$/.test(v)&&Number(v)<=80;
+ const isColor=v=>/^(?:#[a-fA-F0-9]{3}|#[a-fA-F0-9]{6}|[a-zA-Z]+)$/.test(v)&&CSS.supports('color',v)&&!['inherit','initial','unset','revert','transparent','currentcolor'].includes(v.toLowerCase());
+ const valid=(name,v)=>name==='display'?v==='flex':(name==='gap'||name==='padding')?isNumber(v):isColor(v);
+ function makeCSS(v){return [
+  'body {','  background-color: white;','}','',
+  '/* PARENT: arranges the three child panels */',
+  '.panels {','  display: '+v.display+';','  flex-wrap: wrap;','  gap: '+v.gap+'px;','}','',
+  '/* CHILDREN: share space and interior padding */',
+  '.panel {','  flex: 1;','  min-width: 120px;','  padding: '+v.padding+'px;','}','',
+  '/* Keep HTML data-testid labels unchanged. */',
+  '[data-testid="red"] {','  background-color: '+v.red+';','  color: black;','}',
+  '[data-testid="green"] {','  background-color: '+v.green+';','  color: black;','}',
+  '[data-testid="blue"] {','  background-color: '+v.blue+';','  color: black;','}'
+ ].join('\n');}
+ let copyable='';
+ function refresh(){
+  const values={},missing=[],invalid=[];
+  fieldNames.forEach(name=>{
+   const raw=inputs[name].value.trim();
+   const okay=raw&&valid(name,raw);
+   inputs[name].setAttribute('aria-invalid',raw&&!okay?'true':'false');
+   if(!raw)missing.push(name);else if(!okay)invalid.push(name);
+   values[name]=okay?raw:'______';
+  });
+  preview.textContent=makeCSS(values);
+  const ready=!missing.length&&!invalid.length;
+  copyable=ready?makeCSS(values):'';
+  flexCssButton.disabled=!ready;
+  setStatus('flexCssStatus',ready?'CSS complete. Review your code, then copy.':invalid.length?'Correct invalid values: '+invalid.join(', ')+'. See Extra Help.':'Complete '+missing.length+' remaining blank'+(missing.length===1?'':'s')+' to unlock Copy.');
+ }
+ fieldNames.forEach(name=>inputs[name].addEventListener('input',refresh));
+ refresh();
+ flexCssButton.addEventListener('click',async()=>{
+  if(!copyable)return;
+  const copied=await copyText(copyable);
+  setStatus('flexCssStatus',copied?'Completed CSS copied. Paste into styles.css, then check Auto Sync.':'Copy blocked. Select the complete code preview and copy manually.');
+ });
+}
 $$('button.create-response').forEach(button=>button.addEventListener('click',()=>prepareResponse(button.dataset.question)));
 $$('button.finalize-response').forEach(button=>button.addEventListener('click',()=>submitResponse(button.dataset.question)));
 $$('button.copy').forEach(button=>button.addEventListener('click',async()=>{const key=button.dataset.submission;let value='';if(key==='temp'){const confidence=$('input[name="tempConfidence"]:checked')?.value||'';const feedback=clean($('#temperatureFeedback').value);if(!confidence){setStatus('tempStatus','Choose a confidence level first.');return;}value=`My confidence: ${confidence}. ${feedback?`Lesson feedback: ${feedback}`:'I have no additional feedback.'}`;}else if(key==='warm'){const choices=$('[data-warm-choices]');const selected=choices&&!choices.hidden?$('input[name="warmPage"]:checked')?.value:'';const why=clean($('#warmAnswer').value);if(choices&&!choices.hidden&&!selected){setStatus('warmStatus','Choose one labeled example first.');return;}value=(selected?`I chose ${selected}. `:'')+why;}else value=clean(document.getElementById(button.dataset.copy).value);if(!value){setStatus(key==='warm'?'warmStatus':'tempStatus','Write your response first.');return;}const copied=await copyText(value);setStatus(key==='warm'?'warmStatus':'tempStatus',copied?'Copied. Paste, read, revise, and submit.':'Copy blocked. Select the response and copy it manually.');if(copied)revealSubmission(key);else resetSubmission(key);}));
