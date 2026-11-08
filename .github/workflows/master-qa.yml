@@ -3,6 +3,9 @@ on:
   push:
     paths:
       - '.github/workflows/master-qa.yml'
+      - '.github/master-qa-smoke.cjs'
+      - 'templates/7th-grade/wayfinder-master.html'
+      - 'scripts/check-wayfinder.mjs'
 permissions:
   contents: write
 jobs:
