@@ -58,6 +58,22 @@
       "pass": true
     },
     {
+      "label": "Temperature normal copy reveals Submit without permission",
+      "pass": true
+    },
+    {
+      "label": "Editing feedback hides stale Submit",
+      "pass": true
+    },
+    {
+      "label": "Warm-Up normal copy reveals Submit",
+      "pass": true
+    },
+    {
+      "label": "Editing Warm-Up resets Submit",
+      "pass": true
+    },
+    {
       "label": "mastery response assembles",
       "pass": true
     },
@@ -79,6 +95,14 @@
     },
     {
       "label": "Studio direct Form fallback",
+      "pass": true
+    },
+    {
+      "label": "Studio normal copy reveals Submit",
+      "pass": true
+    },
+    {
+      "label": "Studio editing resets Submit",
       "pass": true
     },
     {
