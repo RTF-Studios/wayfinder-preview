@@ -56,6 +56,6 @@
     "CS/2090105.html FAILED: TimeoutError: locator.fill: Timeout 4500ms exceeded.\nCall log:\n  - waiting for locator('#warmAnswer')\n",
     "CS/2090106.html mobile overflow 30",
     "CS/2090106.html expected 12 quiz items, found 1",
-    "CS/2090106.html expected 12 quiz form links, found 0"
+    "CS/2090106.html expected 12 quiz form links, found 3"
   ]
 }
