@@ -38,6 +38,17 @@ async function run(){
  await page.locator('button.copy[data-submission="temp"]').click();
  assert((await page.locator('#tempStatus .manual-copy-fallback').count())===1,'Temperature manual copy shows exact response');
  assert((await page.locator('#tempStatus a[href*="docs.google.com/forms"]').count())===1,'Temperature direct Form fallback');
+ await page.evaluate(()=>{document.execCommand=()=>true;});
+ await page.locator('button.copy[data-submission="temp"]').click();
+ assert(await page.locator('a.submit[data-submission="temp"]').isVisible(),'Temperature normal copy reveals Submit without permission');
+ await page.locator('#temperatureFeedback').fill('I improved my feedback after copying.');
+ assert(!(await page.locator('a.submit[data-submission="temp"]').isVisible()),'Editing feedback hides stale Submit');
+ await page.locator('button.copy[data-submission="warm"]').click();
+ assert(await page.locator('a.submit[data-submission="warm"]').isVisible(),'Warm-Up normal copy reveals Submit');
+ await page.locator('#warmAnswer').fill('A newer response from the same student.');
+ assert(!(await page.locator('a.submit[data-submission="warm"]').isVisible()),'Editing Warm-Up resets Submit');
+ await page.evaluate(()=>{document.execCommand=()=>false;});
+
  await page.locator('[data-assembler="one"]').evaluate(el=>{
    el.innerHTML='<div data-answer-part data-type="true-false-why"><label><input type="radio" name="qa" value="false" data-phrase="The statement is false" checked>False</label><textarea data-open-response>Because the evidence shows an alternative.</textarea></div>';
  });
@@ -52,6 +63,12 @@ async function run(){
  await page.locator('#labCopy').click();
  assert((await page.locator('#labStatus .manual-copy-fallback').count())===1,'Studio manual copy fallback');
  assert((await page.locator('#labStatus a[href*="docs.google.com/forms"]').count())===1,'Studio direct Form fallback');
+ await page.evaluate(()=>{document.execCommand=()=>true;});
+ await page.locator('#labCopy').click();
+ assert(await page.locator('a.submit[data-submission="labs"]').isVisible(),'Studio normal copy reveals Submit');
+ await page.locator('#studioEvidence').fill('I have revised the description of my test.');
+ assert(!(await page.locator('a.submit[data-submission="labs"]').isVisible()),'Studio editing resets Submit');
+
  await page.locator('.gate-check').first().uncheck();
  assert(!(await page.locator('#creativeLabs').isVisible()),'Studio relocks if a check is cleared');
  await page.setViewportSize({width:390,height:844});
