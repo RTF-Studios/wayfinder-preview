@@ -19,7 +19,7 @@ const browserMain=(async()=>{
     Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async t=>{window.__copied.push(t);}}});
     window.open=(url)=>({opener:null,closed:false,close(){this.closed=true;},location:{replace(u){window.__lastFormURL=u;}}});
   });
-  const page=await context.newPage();const errors=[];
+  const page=await context.newPage();page.setDefaultTimeout(4500);const errors=[];
   page.on('pageerror',e=>errors.push(e.message));
   const url=pathToFileURL(path.resolve(file)).href;
   try{
