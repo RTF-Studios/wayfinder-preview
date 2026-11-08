@@ -1,0 +1,30 @@
+name: Wayfinder temporary classroom QA
+on:
+  push:
+    paths:
+      - '.github/workflows/wayfinder-qa.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser harness
+        run: |
+          mkdir -p .github/qa-run
+          npm install --prefix .github/qa-run --no-save playwright@1.56.1
+          .github/qa-run/node_modules/.bin/playwright install --with-deps chromium
+      - name: Test canonical guides in desktop and mobile browsers
+        run: node .github/wayfinder-qa.cjs
+      - name: Preserve QA output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wayfinder-qa-results
+          path: .github/qa-screenshots/
+          retention-days: 7
