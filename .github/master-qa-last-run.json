@@ -1,0 +1,98 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "label": "priority TEKS permanently visible",
+      "pass": true
+    },
+    {
+      "label": "Temperature has no collapsing TEKS/details",
+      "pass": true
+    },
+    {
+      "label": "Temperature artwork absent",
+      "pass": true
+    },
+    {
+      "label": "feedback required attribute",
+      "pass": true
+    },
+    {
+      "label": "no optional label in Temperature",
+      "pass": true
+    },
+    {
+      "label": "three confidence controls",
+      "pass": true
+    },
+    {
+      "label": "sidebar visible",
+      "pass": true
+    },
+    {
+      "label": "sidebar collapses",
+      "pass": true
+    },
+    {
+      "label": "Warm-Up no-permission manual fallback",
+      "pass": true
+    },
+    {
+      "label": "Warm-Up direct Form fallback",
+      "pass": true
+    },
+    {
+      "label": "blank confidence rejected",
+      "pass": true
+    },
+    {
+      "label": "blank feedback rejected",
+      "pass": true
+    },
+    {
+      "label": "Temperature manual copy shows exact response",
+      "pass": true
+    },
+    {
+      "label": "Temperature direct Form fallback",
+      "pass": true
+    },
+    {
+      "label": "mastery response assembles",
+      "pass": true
+    },
+    {
+      "label": "mastery manual copy fallback",
+      "pass": true
+    },
+    {
+      "label": "mastery direct Form fallback",
+      "pass": true
+    },
+    {
+      "label": "Creative Studio unlocks with four checks",
+      "pass": true
+    },
+    {
+      "label": "Studio manual copy fallback",
+      "pass": true
+    },
+    {
+      "label": "Studio direct Form fallback",
+      "pass": true
+    },
+    {
+      "label": "Studio relocks if a check is cleared",
+      "pass": true
+    },
+    {
+      "label": "TEKS visible at phone width",
+      "pass": true
+    },
+    {
+      "label": "phone horizontal overflow 0",
+      "pass": true
+    }
+  ],
+  "issues": []
+}
