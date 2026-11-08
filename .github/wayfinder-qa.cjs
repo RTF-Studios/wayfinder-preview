@@ -5,7 +5,8 @@ const {chromium}=require('./qa-run/node_modules/playwright');
 const files=[
  ...Array.from({length:10},(_,i)=>'Tech/30401'+String(i+1).padStart(2,'0')+'.html'),
  ...Array.from({length:10},(_,i)=>'AAVTC/10401'+String(i+1).padStart(2,'0')+'.html'),
- ...Array.from({length:7},(_,i)=>'CS/20902'+String(i+1).padStart(2,'0')+'.html')
+ ...Array.from({length:7},(_,i)=>'CS/20902'+String(i+1).padStart(2,'0')+'.html'),
+ 'CS/2090105.html', 'CS/2090106.html'
 ];
 const out=path.join(process.cwd(),'.github','qa-screenshots');fs.mkdirSync(out,{recursive:true});
 const problems=[],stats={pages:0,desktop:0,mobile:0,mastery:0,studio:0,closeout:0,warm:0,temperature:0};
@@ -28,7 +29,7 @@ const browserMain=(async()=>{
    if(errors.length)problems.push(file+' JS: '+errors.join(' | ').slice(0,300));
    const desktop=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth-innerWidth,nav:document.getElementById('sideNav')?.classList.contains('open'),art:[...document.querySelectorAll('img')].filter(img=>img.offsetParent!==null&&!img.complete).length}));
    if(desktop.overflow>3)problems.push(file+' desktop overflow '+desktop.overflow);
-   if(!desktop.nav)problems.push(file+' desktop quick menu not open');
+   if(!desktop.nav&&!file.endsWith('2090106.html'))problems.push(file+' desktop quick menu not open');
    stats.desktop++;
    await page.setViewportSize({width:390,height:844});await page.waitForTimeout(80);
    const mobile=await page.evaluate(()=>({overflow:document.documentElement.scrollWidth-innerWidth,nav:document.getElementById('sideNav')?.classList.contains('open')}));
@@ -37,6 +38,12 @@ const browserMain=(async()=>{
    if(/(3040101|1040107|2090205|2090207)\.html$/.test(file)){
      await page.screenshot({path:path.join(out,file.replace('/','_')+'.png'),fullPage:true,timeout:30000});
    }
+   if(file.endsWith('2090106.html')){
+    const quizCount=await page.locator('section[id^="q"]').count();
+    if(quizCount<12)problems.push(file+' expected 12 quiz items, found '+quizCount);
+    const formCount=await page.locator('a[href*="docs.google.com/forms"]').count();
+    if(formCount<12)problems.push(file+' expected 12 quiz form links, found '+formCount);
+   }else{
    const warm=page.locator('#warmAnswer');await warm.fill('I noticed one clear detail in the paragraph.');
    await page.locator('button.copy[data-submission="warm"]').click();await page.waitForTimeout(80);
    if(!(await page.locator('a.submit[data-submission="warm"]').isVisible()))problems.push(file+' warm copy did not reveal Form link');
@@ -72,6 +79,7 @@ const browserMain=(async()=>{
       if(!(await page.locator('a.submit[data-submission="labs"]').isVisible()))problems.push(file+' Studio copy did not reveal submit');
       else stats.studio++;
     }
+   }
    }
    if(errors.length)problems.push(file+' JS late: '+errors.join(' | ').slice(-250));
   }catch(e){problems.push(file+' FAILED: '+String(e).slice(0,350));}
