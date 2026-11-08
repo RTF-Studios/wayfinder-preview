@@ -7,7 +7,7 @@ const html = readFileSync(file, 'utf8');
 const problems = [];
 const check = (condition, message) => { if (!condition) problems.push(message); };
 const ids = new Set([...html.matchAll(/id="([^"]+)"/g)].map(match => match[1]));
-const required = ['sideNav','navToggle','targetArt','warmAnswer','warmStatus','q1assembled','q2assembled',
+const required = ['sideNav','navToggle','targetArt','warmAnswer','warmStatus','q1assembled',
  'temperatureFeedback','creativeLabs','labLock','labCopy','comicSlot','skitSlot'];
 for (const id of required) check(ids.has(id), 'Required element missing: ' + id);
 // New Studio builds use one shared entry; preserve validation of historical three-field lessons.
@@ -26,9 +26,25 @@ for (const match of javascript.matchAll(/(?<!\$)\$\('#([A-Za-z][\w-]*)'\)/g)) {
  check(ids.has(match[1]), 'JavaScript references missing element: ' + match[1]);
 }
 check(javascript.includes('querySelectorAll'), 'No collection selection for checklist');
-for (const type of ['warm','q1','q2','temp','labs']) {
- check(html.includes('data-submission="' + type + '"'), 'Missing submission: ' + type);
- check(javascript.includes(type + ":'https://"), 'Missing school Form URL for ' + type);
+const hasQ2 = ids.has('masteryTwo') || ids.has('q2assembled');
+if(hasQ2)check(ids.has('q2assembled'), 'Second mastery question missing preview');
+const configured = (key) =>
+ javascript.includes('"'+key+'":"https://') ||
+ javascript.includes(key+":'https://") ||
+ javascript.includes(key+':"https://');
+for(const key of ['warm','temp','labs']){
+ check(html.includes('data-submission="'+key+'"'), 'Missing submission: '+key);
+ check(configured(key), 'Missing verified Form URL for '+key);
+}
+for(const [key,which] of [['q1','one'], ...(hasQ2?[['q2','two']]:[])]){
+ check(html.includes('data-question="'+which+'"'), 'Missing registered mastery controls: '+key);
+ check(configured(key), 'Missing verified mastery Form URL: '+key);
+}
+const sevenDigitDay=file.match(/(\\d{7})\\.html$/)?.[1];
+if(sevenDigitDay){
+ const keys=[...html.matchAll(/entry\\.1954781253=(\\d{12})/g)].map(m=>m[1]);
+ check(keys.length >= (hasQ2?5:4), 'Not enough twelve-digit school Form keys');
+ check(keys.every(k=>k.startsWith(sevenDigitDay)), 'Incorrect DayID in one or more Form keys');
 }
 check((html.match(/class="sticky"/g) || []).length === 4, 'Need exactly four text-only notes');
 check(!/comics:\s*\[\s*\]/.test(javascript), 'Comic pool missing approved art');
