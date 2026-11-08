@@ -232,7 +232,15 @@ async function submitResponse(which){
  // Reserve the tab in the direct click so asynchronous clipboard permission does not trigger a popup blocker.
  let tab=null;try{tab=window.open('about:blank','_blank');if(tab)tab.opener=null;}catch(_){}
  const copied=await copyText(st.text);
- if(!copied){if(tab)tab.close();setStatus(questionStatus(which),'Copy was blocked. Try again; the Form was not opened.');return;}
+ if(!copied){
+   if(tab)tab.close();
+   const status=document.getElementById(questionStatus(which));
+   status.replaceChildren();
+   const guide=document.createElement('p');guide.textContent='Automatic copy was blocked. Select and copy the answer below manually, then open the Form, paste and submit.';
+   const answer=document.createElement('textarea');answer.readOnly=true;answer.value=st.text;answer.setAttribute('aria-label','Your response for manual copying');answer.rows=5;answer.style.cssText='width:100%;display:block;margin:8px 0;padding:10px;background:#fff9ed;color:#242943;';
+   const link=document.createElement('a');link.href=url;link.target='_blank';link.rel='noopener noreferrer';link.textContent='Open Submission Form after manually copying';link.style.cssText='display:inline-block;padding:10px;border:2px solid #855700;border-radius:8px;background:#ffce35;color:#142063;font-weight:800;';
+   status.append(guide,answer,link);return;
+ }
  setStatus(questionStatus(which),'Copied! Paste your response into the Submission Form and submit.');
  try{if(tab&&!tab.closed)tab.location.replace(url);else window.location.assign(url);}
  catch(_){window.location.assign(url);}
