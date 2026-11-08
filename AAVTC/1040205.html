@@ -179,7 +179,7 @@ const $$=(selector,root=document)=>Array.from(root.querySelectorAll(selector));
 const clean=s=>String(s||'').replace(/\s+/g,' ').trim();
 function choose(list){if(!Array.isArray(list)||!list.length)return null;return list[Math.floor(Math.random()*list.length)];}
 function placeArt(slot,pool){if(!slot)return;const candidates=Array.isArray(pool)?pool.filter(x=>x&&x.src):[];if(!candidates.length){slot.hidden=true;return;}const start=Math.floor(Math.random()*candidates.length);let attempt=0;const next=()=>{if(attempt>=candidates.length){slot.hidden=true;return;}const item=candidates[(start+attempt++)%candidates.length];const img=document.createElement('img');img.alt=item.alt||'Approved character artwork';img.loading='eager';img.onerror=next;img.onload=()=>{slot.hidden=false;slot.replaceChildren(img);};img.src=item.src;};next();}
-function rotateArt(slot,folder,pool){if(window.WF_ART)window.WF_ART.rotate(slot,folder,pool);else placeArt(slot,pool);}
+function rotateArt(slot,folder,pool){if(!slot)return;if(window.WF_ART)window.WF_ART.rotate(slot,folder,pool);else placeArt(slot,pool);}
 function placeSkit(slot,pool){
  if(!slot || !$('#rtfShowcase'))return;
  const showcase=$('#rtfShowcase'),comic=$('#comicBlock'),skit=$('#skitBlock');
