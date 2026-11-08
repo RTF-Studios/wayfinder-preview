@@ -16,6 +16,7 @@ const browserMain=(async()=>{
   const context=await browser.newContext({viewport:{width:1280,height:800},acceptDownloads:false});
   await context.addInitScript(()=>{
     window.__copied=[];
+    document.execCommand=(command)=>{if(command==='copy'){window.__copied.push(document.activeElement?.value||window.getSelection()?.toString()||'direct-copy');return true;}return false;};
     Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async t=>{window.__copied.push(t);}}});
     window.open=(url)=>({opener:null,closed:false,close(){this.closed=true;},location:{replace(u){window.__lastFormURL=u;}}});
   });
@@ -48,24 +49,33 @@ const browserMain=(async()=>{
    await page.locator('button.copy[data-submission="warm"]').click();await page.waitForTimeout(80);
    if(!(await page.locator('a.submit[data-submission="warm"]').isVisible()))problems.push(file+' warm copy did not reveal Form link');
    else stats.warm++;
-   const parts=page.locator('[data-assembler="one"] textarea[data-open-response]');
-   const count=await parts.count();
-   if(count<3)problems.push(file+' mastery has fewer than three answer fields');
-   for(let i=0;i<count;i++)await parts.nth(i).fill('My answer '+(i+1)+' explains a concrete design decision and a test.');
+   const root=page.locator('[data-assembler="one"]');
+   const count=await root.locator('[data-answer-part]').count();
+   if(count<2)problems.push(file+' mastery has too few configured answer components');
+   const groups=await root.locator('input[type="radio"]').evaluateAll(els=>[...new Set(els.map(el=>el.name))]);
+   for(const name of groups)await root.locator('input[type="radio"]').filter({visible:true}).first().count()&&await root.locator('input[type="radio"][name="'+name+'"]').first().check();
+   const checks=await root.locator('input[type="checkbox"]').count();
+   for(let i=0;i<checks;i++){const cb=root.locator('input[type="checkbox"]').nth(i);if(i===0||i===checks-1)await cb.check();}
+   const selects=root.locator('select[data-answer-select]');
+   for(let i=0;i<await selects.count();i++){const opts=await selects.nth(i).locator('option').count();if(opts>1)await selects.nth(i).selectOption({index:1});}
+   const blanks=root.locator('input[data-blank]');
+   for(let i=0;i<await blanks.count();i++)await blanks.nth(i).fill('a carefully observed change');
+   const answerFields=root.locator('textarea[data-open-response],input[data-open-response],textarea[data-fragment]');
+   for(let i=0;i<await answerFields.count();i++)await answerFields.nth(i).fill('I selected this because it directly supports the intended outcome; I would test it using the stated scenario.');
    await page.locator('button.create-response[data-question="one"]').click();
-   await page.waitForTimeout(850);
+   await page.waitForTimeout(300);
    const preview=page.locator('#q1assembled');
    if(!(await preview.isVisible())||(await preview.innerText()).length<40)problems.push(file+' mastery preview did not assemble');
    else stats.mastery++;
-   await parts.nth(0).fill('I revised the first explanation after preview.');
-   if(await preview.isVisible())problems.push(file+' editing did not invalidate preview');
-   await page.locator('button.create-response[data-question="one"]').click();await page.waitForTimeout(850);
+   const editable=answerFields.first();
+   if(await answerFields.count()){await editable.fill('I revised my reasoning after the first preview and would retest.');if(await preview.isVisible())problems.push(file+' editing did not invalidate preview');}
+   await page.locator('button.create-response[data-question="one"]').click();await page.waitForTimeout(250);
    await page.locator('button.finalize-response[data-question="one"]').click();await page.waitForTimeout(100);
    const copied=await page.evaluate(()=>window.__copied.length);
    if(copied<2)problems.push(file+' mastery clipboard was not invoked');
-   const confidence=page.locator('input[name="tempConfidence"]');if(await confidence.count())await confidence.first().check();
+   const confidence=page.locator('input[name="tempConfidence"]');if(await confidence.count())await confidence.first().check();const feedback=page.locator('#temperatureFeedback');if(await feedback.count())await feedback.fill('The labeled example helped me identify and test the relevant rule.');
    const tempBtn=page.locator('button.copy[data-submission="temp"]');if(await tempBtn.count()){await tempBtn.click();await page.waitForTimeout(60);if(!(await page.locator('a.submit[data-submission="temp"]').isVisible()))problems.push(file+' temperature form not revealed');else stats.temperature++;}
-   const checks=page.locator('.gate-check');for(let i=0;i<await checks.count();i++)await checks.nth(i).check();
+   const gateChecks=page.locator('.gate-check');for(let i=0;i<await gateChecks.count();i++)await gateChecks.nth(i).check();
    const isCloseout=await page.locator('body').getAttribute('data-closeout');
    const lab=page.locator('#creativeLabs');
    if(isCloseout==='true'){
