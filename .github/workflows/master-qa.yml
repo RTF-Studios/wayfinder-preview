@@ -1,0 +1,50 @@
+name: Master template isolated QA
+on:
+  push:
+    paths:
+      - '.github/workflows/master-qa.yml'
+permissions:
+  contents: write
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Chromium Playwright
+        id: install
+        continue-on-error: true
+        run: |
+          mkdir -p .github/qa-run
+          npm install --prefix .github/qa-run --no-save playwright@1.56.1
+          .github/qa-run/node_modules/.bin/playwright install --with-deps chromium
+      - name: Browser-smoke test master only
+        id: smoke
+        continue-on-error: true
+        if: steps.install.outcome == 'success'
+        run: node .github/master-qa-smoke.cjs
+      - name: Record sanitized QA status
+        if: always()
+        env:
+          INSTALL_OUTCOME: ${{ steps.install.outcome }}
+          SMOKE_OUTCOME: ${{ steps.smoke.outcome }}
+        run: |
+          if [ ! -f .github/master-qa-last-run.json ]; then
+            printf '{"status":"UNTESTED","reason":"Browser dependency install or test could not start","install":"%s","smoke":"%s"}\n' "$INSTALL_OUTCOME" "$SMOKE_OUTCOME" > .github/master-qa-last-run.json
+          fi
+          git config user.name 'Wayfinder QA Bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add .github/master-qa-last-run.json
+          git commit -m "Record master template browser QA result" || true
+          git push
+      - name: Save phone screenshot for inspection
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: master-template-qa
+          path: .github/master-qa-mobile.png
+          if-no-files-found: ignore
+          retention-days: 3
