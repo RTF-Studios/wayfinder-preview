@@ -7,6 +7,13 @@ const html = readFileSync(file, 'utf8');
 const problems = [];
 const check = (condition, message) => { if (!condition) problems.push(message); };
 const ids = new Set([...html.matchAll(/id="([^"]+)"/g)].map(match => match[1]));
+// Prevent malformed copied targets (e.g. "I can repeated actions can ...").
+const targetStart=html.indexOf('<p data-slot="learning-target">');
+const targetEnd=html.indexOf('</p>',targetStart);
+const targetText=targetStart>=0&&targetEnd>targetStart?html.slice(targetStart,targetEnd).replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim():'';
+check(/^I can\s+\S+/i.test(targetText), 'Learning Target must begin with I can and an action');
+check(/\bbecause\b/i.test(targetText), 'Learning Target must include a grammatical because reason');
+check(!/^I can\s+(?:can|repeated|the|a|an|my|this|that)\b/i.test(targetText), 'Malformed I-can target; replace a sentence fragment with an action verb');
 const required = ['sideNav','navToggle','targetArt','warmAnswer','warmStatus','q1assembled',
  'temperatureFeedback','creativeLabs','labLock','labCopy','comicSlot','skitSlot'];
 for (const id of required) check(ids.has(id), 'Required element missing: ' + id);
