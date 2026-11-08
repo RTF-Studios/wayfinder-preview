@@ -4,7 +4,7 @@ on:
     paths:
       - '.github/workflows/master-qa.yml'
       - '.github/master-qa-smoke.cjs'
-      - 'templates/7th-grade/wayfinder-master.html'
+      - 'templates/wayfinder-master.html'
       - 'scripts/check-wayfinder.mjs'
 permissions:
   contents: write
