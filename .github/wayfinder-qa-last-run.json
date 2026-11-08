@@ -1,1 +1,42 @@
-{"status":"NO_TEST_RESULT","reason":"Test setup or browser execution failed","run_id":"42467690290","test_outcome":"skipped"}
+{
+  "stats": {
+    "pages": 29,
+    "desktop": 29,
+    "mobile": 29,
+    "mastery": 0,
+    "studio": 25,
+    "closeout": 3,
+    "warm": 28,
+    "temperature": 28
+  },
+  "problems": [
+    "Tech/3040101.html mastery preview did not assemble",
+    "Tech/3040102.html mastery preview did not assemble",
+    "Tech/3040103.html mastery preview did not assemble",
+    "Tech/3040104.html mastery preview did not assemble",
+    "Tech/3040105.html mastery preview did not assemble",
+    "Tech/3040106.html mastery preview did not assemble",
+    "Tech/3040107.html mastery preview did not assemble",
+    "Tech/3040108.html mastery preview did not assemble",
+    "Tech/3040109.html mastery preview did not assemble",
+    "Tech/3040110.html mastery preview did not assemble",
+    "AAVTC/1040101.html mastery preview did not assemble",
+    "AAVTC/1040102.html mastery preview did not assemble",
+    "AAVTC/1040103.html mastery preview did not assemble",
+    "AAVTC/1040104.html mastery preview did not assemble",
+    "AAVTC/1040105.html mastery preview did not assemble",
+    "AAVTC/1040106.html mastery preview did not assemble",
+    "AAVTC/1040107.html mastery preview did not assemble",
+    "AAVTC/1040108.html mastery preview did not assemble",
+    "AAVTC/1040109.html mastery preview did not assemble",
+    "AAVTC/1040110.html mastery preview did not assemble",
+    "CS/2090201.html mastery preview did not assemble",
+    "CS/2090202.html mastery preview did not assemble",
+    "CS/2090203.html mastery preview did not assemble",
+    "CS/2090204.html mastery preview did not assemble",
+    "CS/2090205.html mastery preview did not assemble",
+    "CS/2090206.html mastery preview did not assemble",
+    "CS/2090207.html mastery preview did not assemble",
+    "CS/2090105.html mastery preview did not assemble"
+  ]
+}
