@@ -3,6 +3,10 @@ on:
   push:
     paths:
       - '.github/workflows/wayfinder-qa.yml'
+      - '.github/wayfinder-qa.cjs'
+      - 'Tech/30401*.html'
+      - 'AAVTC/10401*.html'
+      - 'CS/20902*.html'
 permissions:
   contents: write
 jobs:
