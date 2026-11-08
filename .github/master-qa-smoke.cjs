@@ -1,7 +1,7 @@
 const fs=require('node:fs'),path=require('node:path');
 const {pathToFileURL}=require('node:url');
 const {chromium}=require('./qa-run/node_modules/playwright');
-const original=path.join(process.cwd(),'templates/7th-grade/wayfinder-master.html');
+const original=path.join(process.cwd(),'templates/wayfinder-master.html');
 const testFile=path.join(process.cwd(),'Tech/__qa-master-runtime.html');
 const out=path.join(process.cwd(),'.github/master-qa-last-run.json');
 fs.copyFileSync(original,testFile);
