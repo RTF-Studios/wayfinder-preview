@@ -62,15 +62,15 @@ if(keys.length>2){let extra="",js="";keys.slice(2).forEach((k,i)=>{const n=i+3;e
 if(m.mode==="LEARN"){
  const source=f.learnlab||"";
  if(!source)throw new Error("LEARN day is missing substantive approved Learn Lab content");
- h=h.replace(/<section\\b[^>]*\\bid="perform"[^>]*>[\\s\\S]*?<\\/section>/i,"");
- const paras=source.split("\\n").map(x=>x.trim()).filter(Boolean).map(x=>"<p>"+E(x)+"</p>").join("");
- h=h.replace(/<section\\b[^>]*\\bid="groupPractice"[^>]*>[\\s\\S]*?<\\/section>/i,'<section class="panel learn" id="groupPractice"><span class="kicker">Explore and respond</span><h2>Read, Discuss and Check Understanding</h2>'+paras+'</section>');
+ h=h.replace(/<section\b[^>]*\bid="perform"[^>]*>[\s\S]*?<\/section>/i,"");
+ const paras=source.split("\n").map(x=>x.trim()).filter(Boolean).map(x=>"<p>"+E(x)+"</p>").join("");
+ h=h.replace(/<section\b[^>]*\bid="groupPractice"[^>]*>[\s\S]*?<\/section>/i,'<section class="panel learn" id="groupPractice"><span class="kicker">Explore and respond</span><h2>Read, Discuss and Check Understanding</h2>'+paras+'</section>');
  h=h.replace("I completed today's Perform work.","I completed today's reading and comprehension checks.");
 }
 if(m.mode==="PERFORM"){
  if(!f.recall)throw new Error("PERFORM day is missing a short, approved recall section");
- h=h.replace(/<section\\b[^>]*\\bid="groupLearn"[^>]*>[\\s\\S]*?<\\/section>/i,"");
- h=h.replace(/<section\\b[^>]*\\bid="groupPractice"[^>]*>[\\s\\S]*?<\\/section>/i,'<section class="panel practice" id="groupPractice"><span class="kicker">Recall</span><h2>What You Already Know</h2><p>'+E(f.recall)+'</p></section>');
+ h=h.replace(/<section\b[^>]*\bid="groupLearn"[^>]*>[\s\S]*?<\/section>/i,"");
+ h=h.replace(/<section\b[^>]*\bid="groupPractice"[^>]*>[\s\S]*?<\/section>/i,'<section class="panel practice" id="groupPractice"><span class="kicker">Recall</span><h2>What You Already Know</h2><p>'+E(f.recall)+'</p></section>');
  if(!/id="perform"/.test(h))throw new Error("PERFORM day missing actual task instructions");
 }
 return h;}
