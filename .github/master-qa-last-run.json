@@ -1,5 +1,5 @@
 {
-  "status": "PASS",
+  "status": "FAIL",
   "checks": [
     {
       "label": "priority TEKS permanently visible",
@@ -114,9 +114,11 @@
       "pass": true
     },
     {
-      "label": "phone horizontal overflow 0",
-      "pass": true
+      "label": "phone horizontal overflow 15",
+      "pass": false
     }
   ],
-  "issues": []
+  "issues": [
+    "phone horizontal overflow 15"
+  ]
 }
