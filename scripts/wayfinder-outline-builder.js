@@ -74,6 +74,55 @@ if(m.mode==="PERFORM"){
  if(!/id="perform"/.test(h))throw new Error("PERFORM day missing actual task instructions");
 }
 return h;}
-function offline(html,m,Q){const get=name=>{const a=html.match(new RegExp('<(?:p|span) data-slot="'+name+'">([\\s\\S]*?)<\\/(?:p|span)>'));return String(a?.[1]||"").replace(/<[^>]+>/g,"").replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&amp;/g,"&")};const steps=[...html.matchAll(/<summary>([\s\S]*?)<\/summary>/g)].map(a=>a[1].replace(/<[^>]*>/g,"").replace(/&lt;/g,"<").replace(/&gt;/g,">"));let q=(m.keys||[]).map(k=>`REGISTERED MASTERY QUESTION ${k}\n${Q[k]?.question}\nResponse:\n____________________________________________________\n____________________________________________________\n____________________________________________________\n`).join("\n");return `OFFLINE LEARNING GUIDE — GENERATED LAST FROM VERIFIED MASTER-BASED HTML\n${m.course} UNIT ${m.course==="Tech"?5:9} PART ${m.part} DAY ${m.day} · ${m.title}\nStudent _____________________ Period _____\nLEARNING TARGET\n${get("learning-target")}\nPRIORITY TEKS\n${get("priority-teks")}\nWARM-UP\nWhat is one thing you would notice or try first in today's work?\n____________________________________________________\nGROUP LEARN\n${get("group-learn")}\nEXAMPLE\n${html.match(/<figcaption>([\s\S]*?)<\/figcaption>/)?.[1]?.replace(/<[^>]+>/g,"")||""}\nGROUP PRACTICE\n${get("group-practice")}\nPERFORM — FOLLOW IN ORDER\n${steps.map((s,i)=>`${i+1}. ${s}`).join("\n")}\nSUCCESS CRITERIA\n${get("perform-criteria")}\n${q||"No new registered mastery question today; project planning and practice only."}\n${m.mode==="ASSESS"?"ASSESS: independent academic work; no Creative Studio.":m.mode==="RECOVERY"?"RECOVERY: inspect current Skyward feedback; improve old mastery, not Xtra.":`CREATIVE STUDIO — EXTEND TODAY'S WORK\nTry one of these ideas with the same approved tool: ${["one","two","three"].map(x=>get("lab-"+x+"-instructions")).join(" / ")}\nMy discoveries: ____________________________________\nTEKS TEMPERATURE: [ ] Need help [ ] Getting there [ ] Independent\nFeedback: ________________________________________`}\nOFFLINE NOTE: Paper diagrams or code drafts are valid planning; they do not prove the program ran. Submit by approved school process.\n`;}
+function offline(html,m,Q){
+const decode=x=>String(x||"").replace(/&nbsp;/g," ").replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&lt;/g,"<").replace(/&gt;/g,">").replace(/&amp;/g,"&");
+const plain=x=>decode(String(x||"").replace(/<[^>]+>/g," ")).replace(/\s+/g," ").trim();
+const slot=name=>{
+ const re=new RegExp('data-slot="'+name+'"[^>]*>([\\s\\S]*?)<\\/(?:p|span|h1|h2|h3)>');
+ return plain(html.match(re)?.[1]);
+};
+const section=id=>html.match(new RegExp('<section\\b[^>]*\\bid="'+id+'"[^>]*>[\\s\\S]*?<\\/section>','i'))?.[0]||"";
+const mode=String(m.mode||"").toUpperCase(),warm=slot("warm-hook"),target=slot("learning-target"),teks=slot("priority-teks");
+if(!warm||!target||!teks)throw new Error("Offline guide missing HTML Warm-Up, learning target or TEKS");
+if(!["LEARN","PERFORM","RECOVERY","ASSESS"].includes(mode))throw new Error("Unapproved lesson mode");
+const lines=[
+"OFFLINE LEARNING GUIDE — "+mode,
+m.course+" UNIT "+(m.course==="Tech"?5:9)+" PART "+m.part+" DAY "+m.day+" · "+m.title,
+"Student _____________________ Period ______",
+"LEARNING TARGET",target,"PRIORITY TEKS",teks,
+"WARM-UP — ANSWER BEFORE THE LESSON",warm,
+"Response: _______________________________________________________"
+];
+if(mode==="LEARN"){
+ if(section("perform"))throw new Error("LEARN must not contain Perform");
+ const learn=slot("group-learn"),discussion=plain(section("groupPractice"));
+ if(!learn||!discussion)throw new Error("LEARN requires substantive reading and comprehension");
+ lines.push("LEARN — READ AND DISCUSS",learn,"EXAMINE THIS CASE",plain(section("groupLearn").match(/<figcaption>([\s\S]*?)<\/figcaption>/)?.[1]),"COMPREHENSION ACTIVITIES",discussion);
+}else if(mode==="PERFORM"){
+ if(section("groupLearn"))throw new Error("PERFORM must not introduce a Group Learn");
+ const recall=plain(section("groupPractice")),block=section("perform");
+ const steps=[...block.matchAll(/<summary>([\s\S]*?)<\/summary>/g)].map(x=>plain(x[1]));
+ if(!block||steps.length<3)throw new Error("PERFORM requires detailed step-by-step instructions");
+ lines.push("RECALL — PRIOR LEARNING ONLY",recall,"PERFORM — COMPLETE THESE STEPS IN ORDER",...steps.map((x,i)=>(i+1)+". "+x),"TEST AND TROUBLESHOOT","Compare actual behavior with each expected result. Correct one step at a time; record only tests actually performed.");
+}else{
+ lines.push(mode+" — FOLLOW THE APPROVED DAY DIRECTIONS",plain(section("groupPractice")),plain(section("perform")));
+}
+const renderedQuestions=[...html.matchAll(/<p data-slot="mastery-q[12]">([\s\S]*?)<\/p>/g)].map(x=>plain(x[1])).filter(Boolean);
+const expected=m.keys||[];
+if(renderedQuestions.length!==expected.length)throw new Error("Registered HTML mastery question count differs from approved keys");
+for(let i=0;i<renderedQuestions.length;i++){
+ const k=String(expected[i]),approved=Q[k]?.question;
+ if(!approved||plain(approved)!==renderedQuestions[i])throw new Error("Registered mastery question mismatch: "+k);
+ lines.push("REGISTERED MASTERY QUESTION "+k,renderedQuestions[i],"My answer:","________________________________________________________________","________________________________________________________________","________________________________________________________________");
+}
+if(mode==="LEARN"||mode==="PERFORM"){
+ const ideas=["one","two","three"].map(x=>slot("lab-"+x+"-instructions"));
+ if(ideas.some(x=>!x))throw new Error("Missing Creative Studio choices");
+ lines.push("CREATIVE STUDIO — TODAY'S LEARNING",...ideas.map((x,i)=>(i+1)+". "+x),"My reflection: ___________________________________________________",
+ "TEKS TEMPERATURE CHECK","Circle: Need help / Developing / Confident. Give meaningful feedback: ______________________________");
+}
+lines.push("OFFLINE NOTE: Paper answers show thinking, not proof that software ran. Submit through your approved classroom method.");
+return lines.filter(x=>x).join("\n")+"\n";
+}
 globalThis.WFBuilder={parse,outline,build,offline,E,steps};
 })();
