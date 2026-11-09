@@ -12,6 +12,7 @@ x.target=x.target.replace(/(\. because careful decisions create a clearer, more 
 if(/^I can a client brief explains/i.test(x.target))x.target="I can explain how a client brief defines a website’s audience and requirements because clear requirements help people use the result.";
 if(/^I can (?:a|an) (?:web|designer|student)/i.test(x.target))x.target="I can explain how design choices guide implementation because effective technology serves real users.";
 if(!/because/i.test(x.target))x.target=x.target.replace(/\.$/,"")+" because understanding the design helps me improve the product.";
+x.target=x.target.replace(/^I can explain (define|use|create|build|improve|analyze|test|plan|compare|evaluate)\b/i,(_,v)=>"I can "+v);
 x.warm=x.warm.replace(/^(?:INDEPENDENT FIRST RESPONSE|INDEPENDENT|STUDENT FIRST)\n/i,"").trim();
 x.warm=x.warm||`Imagine trying ${m.title} for the first time. What might help you begin?`;
 x.learn=x.learn||`Use the supplied design example to learn today's key ideas. Compare what was planned with what a player or visitor experiences.`;
