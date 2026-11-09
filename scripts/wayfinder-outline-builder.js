@@ -9,6 +9,8 @@ let x={};for(const name of ["target","teks","mission","warm","learn","example","
 if(!/^I can\b/i.test(x.target)){let skill=x.target.replace(/\.$/,"").trim();if(/^A client brief explains/i.test(skill))skill="explain how a client brief defines a website's audience, requirements and success";else if(/^A web page|^A designer|^A student/i.test(skill))skill="explain "+skill[0].toLowerCase()+skill.slice(1);else if(/^(TurboWarp|HTML|CSS|Sprites|Keyboard|Collision|Random)/i.test(skill))skill="use and explain "+skill[0].toLowerCase()+skill.slice(1);else if(!/^(explain|analyze|identify|design|create|build|compare|improve|test|describe|plan|evaluate|use|apply|adapt)\b/i.test(skill))skill="explain "+skill[0].toLowerCase()+skill.slice(1);x.target="I can "+skill+" because careful decisions create a clearer, more useful result.";}
 x.target=x.target.replace(/^(?:I can\s+)(?:(?:explain|use and explain)\s+I can\s+)+/i,"I can ");
 x.target=x.target.replace(/(\. because careful decisions create a clearer, more useful result\.)+/gi,".");
+if(/^I can a client brief explains/i.test(x.target))x.target="I can explain how a client brief defines a website’s audience and requirements because clear requirements help people use the result.";
+if(/^I can (?:a|an) (?:web|designer|student)/i.test(x.target))x.target="I can explain how design choices guide implementation because effective technology serves real users.";
 if(!/because/i.test(x.target))x.target=x.target.replace(/\.$/,"")+" because understanding the design helps me improve the product.";
 x.warm=x.warm.replace(/^(?:INDEPENDENT FIRST RESPONSE|INDEPENDENT|STUDENT FIRST)\n/i,"").trim();
 x.warm=x.warm||`Imagine trying ${m.title} for the first time. What might help you begin?`;
