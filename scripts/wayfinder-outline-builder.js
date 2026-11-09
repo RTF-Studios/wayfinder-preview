@@ -108,6 +108,7 @@ if(mode==="LEARN"){
  lines.push(mode+" — FOLLOW THE APPROVED DAY DIRECTIONS",plain(section("groupPractice")),plain(section("perform")));
 }
 const renderedQuestions=[...html.matchAll(/<p data-slot="mastery-q[12]">([\s\S]*?)<\/p>/g)].map(x=>plain(x[1])).filter(Boolean);
+const extraQuestions=[...html.matchAll(/<section class="panel mastery" id="extraQ\d+"><h2>Mastery Question \d+<\/h2><p>([\s\S]*?)<\/p>/g)].map(x=>plain(x[1]));renderedQuestions.push(...extraQuestions);
 const expected=m.keys||[];
 if(renderedQuestions.length!==expected.length)throw new Error("Registered HTML mastery question count differs from approved keys");
 for(let i=0;i<renderedQuestions.length;i++){
