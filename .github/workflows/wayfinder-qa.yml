@@ -7,6 +7,11 @@ on:
       - 'AAVTC/**/*.html'
       - 'templates/wayfinder-master.html'
       - '.github/submission-contract-qa.cjs'
+      - '.github/wayfinder-qa.cjs'
+      - '.github/master-qa-smoke.cjs'
+      - 'scripts/check-wayfinder.mjs'
+      - 'scripts/wayfinder-preflight.mjs'
+      - 'scripts/wayfinder-preflight.md'
       - '.github/workflows/wayfinder-qa.yml'
   pull_request:
     paths:
@@ -15,6 +20,11 @@ on:
       - 'AAVTC/**/*.html'
       - 'templates/wayfinder-master.html'
       - '.github/submission-contract-qa.cjs'
+      - '.github/wayfinder-qa.cjs'
+      - '.github/master-qa-smoke.cjs'
+      - 'scripts/check-wayfinder.mjs'
+      - 'scripts/wayfinder-preflight.mjs'
+      - 'scripts/wayfinder-preflight.md'
       - '.github/workflows/wayfinder-qa.yml'
   workflow_dispatch:
 permissions:
