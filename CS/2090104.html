@@ -151,76 +151,56 @@ textarea::placeholder,input::placeholder{color:#68604f;opacity:1}
 
 .panels { display: flex; gap: 12px; }
 .panel { flex: 1; padding: 16px; }</pre><p><strong>Who controls what?</strong> <code>.panels</code> controls the group and its layout. <code>.panel</code> controls shared styling and the children's ability to use available space. <code>gap</code> creates consistent distance between boxes. <code>flex:1</code> lets three panels share available room rather than giving each a rigid pixel width.</p><div class="slot"><h3>Compare these layouts</h3><div style="display:flex;gap:12px;padding:10px;background:#dbe6f2;border-radius:8px"><div style="flex:1;background:#f8faff;padding:14px;border-radius:7px">Food</div><div style="flex:1;background:#f8faff;padding:14px;border-radius:7px">Volunteer</div><div style="flex:1;background:#f8faff;padding:14px;border-radius:7px">Recipes</div></div><p class="micro">The boxes are siblings; their common parent distributes the horizontal space.</p></div><p><strong>What happens if you use the wrong selector?</strong> If you apply <code>display:flex</code> to <code>.panel</code> instead of <code>.panels</code>, it affects the arrangement <em>inside each panel</em>, not the arrangement of the three panels as a group. The labels <code>data-testid="red"</code>, <code>green</code>, and <code>blue</code> still matter to iCEV’s testing program even though they don't style or arrange the boxes.</p><p>Tomorrow we will make the same layout adapt at a 600-pixel screen width. Today, focus on why a parent can control several child panels and how spacing helps readers.</p></section>
-<section class="slot" id="day4RecoveryProjectCode" aria-labelledby="day4RecoveryCodeTitle" style="margin:18px 0;padding:16px;border:2px solid #53709a;border-radius:12px;background:#f4f8ff;color:#17244c">
-  <h3 id="day4RecoveryCodeTitle">Recovery resource — Complete HTML and CSS for the three-panel project</h3>
-  <p>If you need to finish or repair your Day 4 iCEV three-panel website, use this complete working example. Copy it into <code>index.html</code> (or the HTML editor in your project). This gives you the Food Donations, Volunteer, and Recipes panels with the required <code>data-testid</code> labels and Flexbox layout.</p>
-  <p><strong>Remember:</strong> <code>.panels</code> is the parent with <code>display: flex</code> and <code>gap: 12px</code>; each <code>.panel</code> is a child with <code>flex: 1</code>. The 600px responsive change belongs to Day 5, not this Day 4 example.</p>
-  <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:8px 0">
-    <button type="button" class="btn copy-action" onclick="copyCsDay4RecoveryCode(this)">Copy Complete Project Code</button>
-    <span id="day4RecoveryCopyStatus" role="status" aria-live="polite" style="font-size:14px">You can also select and copy the code below.</span>
-  </div>
-  <pre id="day4RecoveryCode" tabindex="0" style="white-space:pre;overflow:auto;max-height:470px;padding:14px;background:#fff;border:1px solid #9fb2cb;border-radius:8px;color:#17244c;font:14px/1.45 Consolas,monospace"><code>&lt;!DOCTYPE html&gt;
+<section class="panel learn" id="day4RecoveryProjectCode" aria-labelledby="day4RecoveryCodeTitle" style="margin:18px 0;padding:16px;border:2px solid #53709a;border-radius:12px;background:#f4f8ff;color:#17244c">
+<h3 id="day4RecoveryCodeTitle">Recovery reference — Our class's three-panel project code</h3>
+<p>This is the <strong>actual Day 4 classroom demonstration</strong>, not the final challenge solution. If you need to recover or repair your work, compare your two files with these examples. Keep the two files separate: HTML in <code>index.html</code> and CSS in <code>src/styles.css</code>.</p>
+<p><strong>Next steps are taught in later learning guides:</strong> the challenge checks the three <code>data-testid</code> labels, screen positions, a <strong>600px breakpoint</strong> and <strong>100px element height</strong>. Those final challenge requirements are not added to this historical Day 4 example. When ready, use the next guides to complete and submit; include a short explanation in <strong>Your Notes</strong>.</p>
+<p id="day4RecoveryCopyStatus" role="status" aria-live="polite">Copy each file separately; if automatic copy is blocked, select its code and press Ctrl+C.</p>
+<div style="margin:14px 0;text-align:left"><h4 style="color:#17244c;margin:0 0 8px">index.html</h4><button type="button" class="btn copy-action" onclick="copyCsDay4RecoveryCode('day4RecoveryHTML',this)">Copy index.html</button><pre id="day4RecoveryHTML" tabindex="0" style="white-space:pre;overflow:auto;max-height:470px;padding:14px;background:#fff;border:1px solid #9fb2cb;border-radius:8px;color:#17244c;font:14px/1.45 Consolas,monospace;text-align:left"><code>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-  &lt;meta charset=&quot;UTF-8&quot;&gt;
-  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-  &lt;title&gt;Community Help Website&lt;/title&gt;
-  &lt;style&gt;
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f2f5f9;
-      color: #222;
-      margin: 0;
-      padding: 24px;
-    }
-    h1 {
-      text-align: center;
-      color: #22345e;
-    }
-    /* The parent arranges all three panels. */
-    .panels {
-      display: flex;
-      gap: 12px;
-    }
-    /* Children share the available room. */
-    .panel {
-      flex: 1;
-      padding: 16px;
-      border-radius: 10px;
-      box-sizing: border-box;
-    }
-    [data-testid=&quot;red&quot;] {
-      background-color: #ffc9c9;
-    }
-    [data-testid=&quot;green&quot;] {
-      background-color: #c9efcf;
-    }
-    [data-testid=&quot;blue&quot;] {
-      background-color: #cadfff;
-    }
-    .panel h2 {
-      margin-top: 0;
-    }
-  &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;h1&gt;Community Help Website&lt;/h1&gt;
-  &lt;main class=&quot;panels&quot;&gt;
-    &lt;section class=&quot;panel&quot; data-testid=&quot;red&quot;&gt;
-      &lt;h2&gt;Food Donations&lt;/h2&gt;
-      &lt;p&gt;Help families by donating food.&lt;/p&gt;
-    &lt;/section&gt;
-    &lt;section class=&quot;panel&quot; data-testid=&quot;green&quot;&gt;
-      &lt;h2&gt;Volunteer&lt;/h2&gt;
-      &lt;p&gt;Give your time to help others.&lt;/p&gt;
-    &lt;/section&gt;
-    &lt;section class=&quot;panel&quot; data-testid=&quot;blue&quot;&gt;
-      &lt;h2&gt;Recipes&lt;/h2&gt;
-      &lt;p&gt;Explore simple, affordable meals.&lt;/p&gt;
-    &lt;/section&gt;
-  &lt;/main&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;src/styles.css&quot;&gt;
+    &lt;/head&gt;
+  
+    &lt;body&gt;
+      &lt;div class=&quot;parent&quot;&gt;
+        &lt;section class=&quot;child&quot; data-testid=&quot;red&quot;&gt;Red&lt;/section&gt;
+        &lt;section class=&quot;child&quot; data-testid=&quot;green&quot;&gt;Green&lt;/section&gt;
+        &lt;section class=&quot;child&quot; data-testid=&quot;blue&quot;&gt;Blue&lt;/section&gt;
+      &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre></div>
+<div style="margin:14px 0;text-align:left"><h4 style="color:#17244c;margin:0 0 8px">src/styles.css</h4><button type="button" class="btn copy-action" onclick="copyCsDay4RecoveryCode('day4RecoveryCSS',this)">Copy src/styles.css</button><pre id="day4RecoveryCSS" tabindex="0" style="white-space:pre;overflow:auto;max-height:470px;padding:14px;background:#fff;border:1px solid #9fb2cb;border-radius:8px;color:#17244c;font:14px/1.45 Consolas,monospace;text-align:left"><code>body {
+  background-color: white;
+}
+
+/* PARENT: arranges the three child panels */
+.parent {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0px;
+}
+
+/* CHILDREN: share space and interior padding */
+.child {
+  flex: 1;
+  padding: 40px;
+}
+
+/* Keep HTML data-testid labels unchanged. */
+[data-testid=&quot;red&quot;] {
+  background-color: red;
+  color: white;
+}
+[data-testid=&quot;green&quot;] {
+  background-color: green;
+  color: white;
+}
+[data-testid=&quot;blue&quot;] {
+  background-color: blue;
+  color: white;
+}</code></pre></div>
 </section>
 <section class="panel learn" id="groupPractice"><span class="kicker">03 · Understand the ideas</span><h2>Read, Discuss and Check</h2><p><strong>Read:</strong> Flexbox arranges items inside a container. display:flex creates a flexible row by default, gap separates items, and flex-wrap lets items move to a new row when space runs out. Readable layouts change with screen width rather than forcing a visitor to scroll sideways.</p><p><strong>Think and talk:</strong> Three serving trays fit on a long table but not a small desk. Which layout change would help?</p><p><strong>Vocabulary check:</strong> Match container, item, gap and wrap to a description of where a tray sits and how it moves.</p><p><strong>Choose:</strong> When a narrow screen makes three columns unreadable, should the design A) shrink text to 3px B) allow panels to wrap or stack C) hide all content? Explain why.</p><p><strong>Comprehension:</strong> Describe the difference between horizontal alignment and responsive layout in words. No coding product today.</p></section>
 <section class="panel mastery" data-question="one" id="masteryOne"><span class="kicker">04 · Show what you understand</span><h2>Mastery Question 1</h2><p data-slot="mastery-q1">An online library has three book-category cards inside one shelf container. A beginner has accidentally placed <code>display:flex</code> on each card instead of the shelf. Identify the layout problem, explain how the parent and child elements should be styled differently, and predict what will change after a correct repair.</p><div class="scaffold"><h3>Build Your Answer</h3><p class="hint">Answer the parts below. Different response types work together to demonstrate today’s mastery goal.</p><div class="answer-parts" data-assembler="one"><div data-answer-part data-type="open-response"><label>Name the parent container, explain where display:flex belongs, and predict what will happen to the three child cards.</label><textarea data-open-response rows="2" placeholder="The parent..."></textarea></div><div data-answer-part data-type="open-response"><label>How could you check that the repaired layout works without moving the cards one by one?</label><textarea data-open-response rows="2" placeholder="The tester..."></textarea></div></div><details><summary>Extra Help</summary><p data-slot="q1-help">Name one observation, one deliberate decision and a reason. Your answer should demonstrate your own thinking.</p></details></div><div class="response response-builder" data-response-builder="one">
@@ -427,13 +407,12 @@ function startWayfinder(){try{init();}catch(error){console.error('Wayfinder star
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',startWayfinder);else startWayfinder();
 </script>
 <script>
-function copyCsDay4RecoveryCode(button) {
-  const source = document.getElementById('day4RecoveryCode');
+function copyCsDay4RecoveryCode(sourceId, button) {
+  const source = document.getElementById(sourceId);
   const status = document.getElementById('day4RecoveryCopyStatus');
-  const text = source ? source.textContent : '';
-  if (!text) { if (status) status.textContent = 'Code not found. Please select the example manually.'; return; }
+  if (!source) return;
   const helper = document.createElement('textarea');
-  helper.value = text;
+  helper.value = source.textContent;
   helper.setAttribute('readonly', '');
   helper.style.position = 'fixed';
   helper.style.opacity = '0';
@@ -441,10 +420,10 @@ function copyCsDay4RecoveryCode(button) {
   helper.focus();
   helper.select();
   let ok = false;
-  try { ok = document.execCommand('copy'); } catch (e) {}
+  try { ok = document.execCommand('copy'); } catch (error) {}
   helper.remove();
   if (ok) {
-    if (status) status.textContent = 'Complete code copied. Paste it into your project HTML editor.';
+    if (status) status.textContent = (sourceId === 'day4RecoveryHTML' ? 'index.html' : 'src/styles.css') + ' copied. Paste into the matching project file.';
     if (button) button.focus();
   } else {
     const selection = window.getSelection();
@@ -454,7 +433,7 @@ function copyCsDay4RecoveryCode(button) {
       selection.removeAllRanges();
       selection.addRange(range);
     }
-    if (status) status.textContent = 'Your browser blocked automatic copying. The code is selected; press Ctrl+C to copy it.';
+    if (status) status.textContent = 'Automatic copy blocked. The code is selected; press Ctrl+C.';
   }
 }
 </script>
