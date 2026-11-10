@@ -198,7 +198,7 @@ textarea::placeholder,input::placeholder{color:#68604f;opacity:1}
   No current TEKS, submission keys, lessons, routes, or student answers are stored in the shell.
 */
 // Inspection is tied to the canonical master pathname; copied Tech/CS/AAVTC lessons always use copy-gated submission.
-const IS_MASTER_TEMPLATE=/\/templates\/7th-grade\/wayfinder-master\.html$/.test(window.location.pathname);
+const IS_MASTER_TEMPLATE=/\/templates\/(?:7th-grade\/)?wayfinder-master\.html$/.test(window.location.pathname);
 const WAYFINDER_CONFIG={imagePools:{target:[],temperature:[],labs:[],comics:[],skits:[]},destinations:{warm:'',q1:'',q2:'',temp:'',labs:''}};
 const $=(selector,root=document)=>root.querySelector(selector);
 const $$=(selector,root=document)=>Array.from(root.querySelectorAll(selector));
