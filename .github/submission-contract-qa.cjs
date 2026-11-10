@@ -84,6 +84,64 @@ async function run(){
   await page.locator('#studioEvidence').fill('QA edited evidence');
   check(await page.locator('#studioSubmit').isDisabled(),f,'edit disables final');
  }
+
+ // All newly changed course guides must actually copy their own assembled answers.
+ // The CS reference above tests every assessment slot; these probes prevent a future
+ // Learn/Perform/Recovery variant from silently reverting to popup-first behavior.
+ if(f!==master&&f!==gold){
+   await page.evaluate(()=>{
+     window.qaOrder=[];window.qaForm='';
+     const original=document.execCommand.bind(document);
+     document.execCommand=(name)=>{if(name==='copy')window.qaOrder.push('copy');return original(name)};
+     window.open=(url)=>{window.qaOrder.push('open');window.qaForm=url;return null};
+   });
+   async function validate(create,final,preview,label){
+     if(!await page.locator(create).isVisible())return;
+     check(await page.locator(final).isDisabled(),f,label+' starts disabled');
+     await page.locator(create).click();
+     await page.waitForTimeout(720);
+     check(await page.locator(preview).isVisible(),f,label+' read-only preview appears');
+     const expected=await page.locator(preview).innerText();
+     check(expected.length>0,f,label+' response assembled');
+     check(await page.locator(final).isEnabled(),f,label+' enables after Create');
+     await page.evaluate(()=>{window.qaOrder=[];window.qaForm=''});
+     await page.locator(final).click();
+     const actual=await page.evaluate(()=>({order:window.qaOrder.join(','),url:window.qaForm}));
+     check(actual.order==='copy,open',f,label+' copies BEFORE opening Form');
+     check(/docs\.google\.com\/forms\//.test(actual.url),f,label+' verified Form destination');
+     await page.evaluate(()=>{const ta=document.createElement('textarea');ta.id='qaPaste';document.body.append(ta);ta.focus()});
+     await page.keyboard.press('ControlOrMeta+V');
+     check((await page.locator('#qaPaste').inputValue())===expected,f,label+' real clipboard differs from preview');
+     await page.locator('#qaPaste').evaluate(x=>x.remove());
+   }
+   async function fillRoot(root){
+     const radios=await root.locator('input[type=radio]').evaluateAll(a=>[...new Set(a.map(x=>x.name))]);
+     for(const name of radios){const a=root.locator('input[type=radio][name="'+name.replace(/"/g,'\\"')+'"]');if(await a.count())await a.first().check()}
+     const boxes=root.locator('input[type=checkbox]');if(await boxes.count())await boxes.first().check();
+     const selects=root.locator('select');for(let i=0;i<await selects.count();i++){const a=selects.nth(i);const choices=await a.locator('option').count();if(choices>1)await a.selectOption({index:1})}
+     const fields=root.locator('textarea,input[type=text]');for(let i=0;i<await fields.count();i++)await fields.nth(i).fill('QA tested this concept carefully');
+   }
+   for(const n of pairs.section){
+     await fillRoot(page.locator('#section'+n));
+     await validate('#section'+n+' button.section-build','#section'+n+' button.section-submit','#preview'+n,'section '+n);
+   }
+   for(const key of pairs.evidence){
+     if(key==='warm'){await page.locator('#warmAnswer').fill('QA response for this scenario');const choices=page.locator('[data-warm-choices]');if(await choices.isVisible())await choices.locator('input[type=radio]').first().check();}
+     if(key==='temp'){await page.locator('input[name=tempConfidence]').first().check();await page.locator('#temperatureFeedback').fill('QA reflection on what I know');}
+     if(key==='labs'){const checks=page.locator('.gate-check');for(let i=0;i<await checks.count();i++)await checks.nth(i).check();await page.locator('#studioEvidence').fill('QA creative design extension');}
+     await validate('button.evidence-create[data-submission="'+key+'"]','button.evidence-final[data-submission="'+key+'"]','#'+key+'Preview',key);
+   }
+   for(const key of pairs.question){
+     const root=page.locator('[data-assembler="'+key+'"]');
+     await fillRoot(root);
+     await validate('button.create-response[data-question="'+key+'"]','button.finalize-response[data-question="'+key+'"]',key==='one'?'#q1assembled':'#q2assembled','mastery '+key);
+   }
+   for(const k of pairs.xtra){
+     if(k==='tempCopy'){await page.locator('input[name=tempConfidence]').first().check();await page.locator('#temperatureFeedback').fill('QA confidence test');}
+     else await page.locator('#studioEvidence').fill('QA creative studio');
+     await validate('#'+k,'#'+(k==='tempCopy'?'tempSubmit':'studioSubmit'),'#'+(k==='tempCopy'?'tempPreview':'studioPreview'),k);
+   }
+ }
  check(errors.length===0,f,'browser JS errors '+errors.join(';'));
  await page.close();
  }}finally{await browser.close()}
