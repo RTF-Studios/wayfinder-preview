@@ -1,52 +1,42 @@
-name: Wayfinder temporary classroom QA
+name: Mandatory Wayfinder submission contract QA
 on:
   push:
     paths:
+      - 'Tech/**/*.html'
+      - 'CS/**/*.html'
+      - 'AAVTC/**/*.html'
+      - 'templates/wayfinder-master.html'
+      - '.github/submission-contract-qa.cjs'
       - '.github/workflows/wayfinder-qa.yml'
-      - '.github/wayfinder-qa.cjs'
-      - 'Tech/30401*.html'
-      - 'AAVTC/10401*.html'
-      - 'CS/20902*.html'
+  pull_request:
+    paths:
+      - 'Tech/**/*.html'
+      - 'CS/**/*.html'
+      - 'AAVTC/**/*.html'
+      - 'templates/wayfinder-master.html'
+      - '.github/submission-contract-qa.cjs'
+      - '.github/workflows/wayfinder-qa.yml'
+  workflow_dispatch:
 permissions:
-  contents: write
+  contents: read
 jobs:
-  verify:
+  submission-contract:
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Install browser harness
+      - name: Install Chromium QA dependency
         run: |
           mkdir -p .github/qa-run
           npm install --prefix .github/qa-run --no-save playwright@1.56.1
           .github/qa-run/node_modules/.bin/playwright install --with-deps chromium
-      - name: Test canonical guides in desktop and mobile browsers
-        id: test
-        continue-on-error: true
-        run: node .github/wayfinder-qa.cjs
-      - name: Commit sanitized QA results
-        if: always()
+      - name: Verify master, working CS reference and changed lessons
         env:
-          GH_RUN_ID: ${{ github.run_id }}
-          TEST_OUTCOME: ${{ steps.test.outcome }}
-        run: |
-          mkdir -p .github/qa-screenshots
-          if [ ! -f .github/qa-screenshots/qa-results.json ]; then
-            printf '{"status":"NO_TEST_RESULT","reason":"Test setup or browser execution failed","run_id":"%s","test_outcome":"%s"}\n' "$GH_RUN_ID" "$TEST_OUTCOME" > .github/qa-screenshots/qa-results.json
-          fi
-          cp .github/qa-screenshots/qa-results.json .github/wayfinder-qa-last-run.json
-          git config user.name 'Wayfinder QA Bot'
-          git config user.email 'actions@users.noreply.github.com'
-          git add .github/wayfinder-qa-last-run.json
-          git commit -m "Record sanitized Wayfinder browser QA outcome" || true
-          git push
-      - name: Preserve QA screenshots
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: wayfinder-qa-results
-          path: .github/qa-screenshots/
-          retention-days: 7
+          GITHUB_EVENT_BEFORE: ${{ github.event.before }}
+          GITHUB_SHA: ${{ github.sha }}
+        run: node .github/submission-contract-qa.cjs --changed
