@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -26,8 +26,12 @@
 @media(max-width:760px){.target{grid-template-columns:1fr}.notes{grid-template-columns:repeat(2,1fr)}.lab-grid{grid-template-columns:1fr}.two-col{grid-template-columns:1fr}.rtf-showcase{grid-template-columns:1fr}.sidelink{top:auto;bottom:12px}.wrap{margin-top:12px}.notebook{padding:18px 13px}.temperature-choice{grid-template-columns:1fr}.checks{grid-template-columns:1fr}.mast{padding:20px 16px}}@media print{body{background:#fff}.sidelink,.actions,.notes{display:none!important}.notebook{box-shadow:none;border:0}.panel{break-inside:avoid}}
 
 
+
+
 /* Locked seventh-grade semantic palette; do not rotate. */
 :root{--outer:#e5e7eb;--paper:#f9fbff;--warmup-and-labs:#ede3fa;--learn-blue:#e5f1ff;--practice-green:#e8f2d2;--perform-gold:#ffefc3;--mastery-purple:#392468} .mast,.mast h1{color:#fff}.warm,.labs{background:var(--warmup-and-labs)}.learn{background:var(--learn-blue)}.practice{background:var(--practice-green)}.perform{background:var(--perform-gold)}.mastery,.lab-evidence{background:var(--mastery-purple)}.temp{background:var(--warmup-and-labs);border-color:#b69edb;color:var(--ink)}.sidelink{background:var(--perform-gold)}.stem-set{background:#f2f4fa;border-radius:9px;padding:10px 14px;margin:10px 0}.stem-set p{margin:3px 0}.blank{display:inline-block;min-width:120px;border-bottom:2px solid #58358b}.scaffold .type-sample{border:1px dashed #9c91be;border-radius:9px;padding:12px;margin:10px 0}.scaffold-library{display:none!important}.lab-evidence{background:#392468}.lab-evidence .hint{color:#eee4ff}
+
+
 
 
 /* Universal progression: warm paper → muted gold Copy → bright jeweled gold Submit.
@@ -69,6 +73,8 @@ textarea::placeholder,input::placeholder{color:#68604f;opacity:1}
 @media(max-width:760px){.rtf-showcase.skits-only .skit-list{grid-template-columns:1fr}}
 
 
+
+
 /* Two-step mastery response interface: notebook inputs > read-only preview > final copy/open. */
 .mastery .scaffold textarea[data-open-response]{height:62px;min-height:54px;line-height:26px;padding:8px 11px;resize:vertical}
 .mastery .answer-parts [data-answer-part]{margin:8px 0}
@@ -99,6 +105,8 @@ textarea::placeholder,input::placeholder{color:#68604f;opacity:1}
 @media(prefers-reduced-motion:reduce){.loading-fill{animation:none;transform:scaleX(1)}.loading-sparkle,.response-preview-shell .assembled-preview{animation:none}.response-submit-actions .finalize-response{transition:none}}
 
 
+
+
 /* Perform: required resources always above steps; guidance stays optional. */
 .perform-resources{background:#f2e8d8;border:1px solid #bb9c78;border-left:4px solid #704b27;border-radius:11px;padding:13px 16px;margin:14px 0 18px;color:#422d1b}
 .perform-resources h3{color:#704b27;margin:0 0 8px}
@@ -114,6 +122,8 @@ textarea::placeholder,input::placeholder{color:#68604f;opacity:1}
 @media(max-width:600px){.perform-resources{padding:11px}.perform-step-list{padding-left:23px}.perform-step>summary{padding:11px}}
 
 
+
+
 /* Student Learning Leader: light, readable aloud prompts; not a separate teacher script. */
 .leader-intro{background:#f4f9ff;border-left:3px solid #497caf;padding:9px 12px;border-radius:7px}
 .leader-discussion{background:#f5faff;border:1px solid #b5d0ed;border-radius:9px;padding:10px 14px;margin:12px 0}
@@ -122,9 +132,12 @@ textarea::placeholder,input::placeholder{color:#68604f;opacity:1}
 .lesson-mode{display:inline-block;margin:11px 0 6px;padding:7px 13px;border:2px solid #e6bd59;border-radius:10px;background:#fff1bf;color:#15245a;font-size:clamp(.95rem,1.3vw,1.1rem);font-weight:800;letter-spacing:.035em;text-transform:uppercase}
 
 
+
+
 /* ASSESSMENT MODE — uses shared Master colors, notebook inputs, and approved action palette */
 .assessment-card{margin:22px 0;background:#392468;color:white;border-color:#70529e}.assessment-card h2,.assessment-card legend,.assessment-card .kicker,.assessment-card p{color:inherit}.assessment-card .section-context{background:#4e367a;border-radius:9px;padding:12px}.assessment-item{margin:14px 0;padding:12px;border:1px solid #baa5e0;border-radius:10px;background:#4c3477;min-width:0}.assessment-item legend{font-size:1rem;max-width:100%;line-height:1.4;padding:3px}.assessment-item .option{display:block;margin:8px 0;padding:8px;background:#faf8ff;color:#231747;border-radius:8px;cursor:pointer}.assessment-item .option input{margin-right:9px}.assessment-item textarea{width:100%;display:block;margin:7px 0 3px;border:2px solid #c4b4e5;border-radius:8px;padding:10px;background:#fff;color:#251a3b}.assessment-item .answer-label{display:block;font-weight:700;margin-top:8px}.assessment-card .manual-response{width:100%;background:#fff9e8;color:#1e1830;padding:9px}.assessment-card .section-build,.assessment-card .section-copy{margin:8px 8px 8px 0}.assessment-card .section-submit[hidden]{display:none}.assessment-card button:disabled{opacity:.45;cursor:not-allowed}.assessment-card .status{min-height:1.5em}.assessment-progress{font-weight:700;padding:10px;background:#ede4f9;border-radius:8px;margin:15px 0}.assessment-progress span{margin-right:12px;white-space:nowrap}.assessment-item textarea:focus,.assessment-item input:focus-visible{outline:3px solid #ebbd55;outline-offset:2px}@media(max-width:600px){.assessment-item{padding:9px}.assessment-card{padding:14px}} 
 .assessment-card{background:var(--mastery-purple);border:2px solid #8468b5}.assessment-card .response .assembled-preview{background:#e9ddf9;color:#291849;border:2px solid #c9b3e7;white-space:pre-wrap;line-height:1.65}.assessment-card .section-context{background:#4e367a}.assessment-card .section-build,.assessment-card .section-copy{background:linear-gradient(#e8d4a9,var(--action-copy-bg));color:#142063;border:2px solid #92713b;box-shadow:0 3px 0 #92713b}.assessment-card .section-submit{position:relative;isolation:isolate;background:linear-gradient(115deg,#ffe68b,#fff4bf 16%,#ffce35 40%,#f6b91d 68%,#ffe585);color:#142063;border:2px solid #855700;min-height:54px;padding:13px 22px;font-weight:900;box-shadow:0 4px 0 #855700,inset 0 2px 0 #fff9dc}.assessment-card .section-submit::after{content:"◆";color:#9b0e35;padding-left:6px}.assessment-card .assessment-item textarea{background:var(--writing-paper);line-height:32px;background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 30px,rgba(118,158,205,.24) 31px,transparent 32px);background-attachment:local}.assessment-card .response .manual-response{background:var(--writing-paper);color:#242943}.assessment-card .response .micro{color:#f3e8ff}.assessment-card .response .status{color:#ffe9b0}.assessment-card .assessment-item .option{color:#241a42;background:#fff9ef}.assessment-card .section-build:focus-visible,.assessment-card .section-copy:focus-visible,.assessment-card .section-submit:focus-visible{outline:3px solid #fff;outline-offset:3px}.assessment-card input{accent-color:var(--purple)}.assessment-card .preview-caption{color:#fff;font-weight:800}.assessment-topics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:10px 0;padding:0;list-style:none}.assessment-topics li{background:#fff;border:1px solid #d8c4ef;border-radius:7px;padding:8px 11px;font-weight:700}.assessment-skit{background:#f9f2ff;border:2px solid #bca4da;border-radius:12px;padding:15px 20px;margin:12px 0;color:#392468}.assessment-skit h3{margin:0 0 7px;font-size:18px}.assessment-skit p{margin:4px 0}.assessment-studio .lab-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.assessment-studio .lab{border:2px solid #c7afe5}.assessment-studio .lab .slot{display:none}.assessment-studio .response{background:#fff;color:#242943;border:1px solid #d1b7e5}.assessment-studio .response label{color:#242943}.assessment-studio .response textarea{background:var(--writing-paper);line-height:32px}.assessment-studio .actions .btn.copy-action{background:linear-gradient(#e8d4a9,var(--action-copy-bg));color:#142063;border:2px solid #92713b}.assessment-studio .actions .btn.submit{background:linear-gradient(115deg,#ffe68b,#fff4bf 16%,#ffce35 40%,#f6b91d 68%,#ffe585);color:#142063}.assessment-studio .assembled-preview{min-height:75px}.assessment-studio .hint{color:#52607d}.assessment-studio .studio-art{display:flex;align-items:center;gap:15px}.assessment-studio .studio-art img{width:150px;max-width:35%;height:auto;object-fit:contain}.assess-temp .temperature-summary{font-size:15px}.assess-temp .response{margin-top:10px}.assess-temp .response textarea{background:var(--writing-paper)}.assess-temp .response .actions .btn{flex:0 1 auto}.assess-temp .response .status{color:#3d2456}.assessment-ending{background:#fff7df;border-color:#f1d18a}@media(max-width:700px){.assessment-topics{grid-template-columns:1fr}.assessment-studio .lab-grid{grid-template-columns:1fr}.assessment-studio .studio-art{flex-direction:column;align-items:flex-start}}
+
 
 /* ASSESSMENT OPEN-NOTES STUDY REFERENCE — short definitions, not test solutions */
 .study-notes{background:#fff;border:1px solid #a3c8ef;border-radius:12px;padding:14px 16px;margin:14px 0}.study-notes h3,.study-connections h3{color:#24558f}.study-vocab{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:8px 0}.study-vocab>div{background:#f2f8ff;border-left:3px solid #668fba;border-radius:6px;padding:8px 10px}.study-vocab dt{color:#1d447b;font-weight:800}.study-vocab dd{margin:3px 0 0;line-height:1.4}.study-connections{background:#f7fbff;border-left:4px solid #4d80b0;border-radius:8px;padding:12px 15px}.study-connections p{margin:5px 0}.learn .hint{color:#475775}@media(max-width:650px){.study-vocab{grid-template-columns:1fr}}
@@ -245,6 +258,8 @@ sec.querySelector(".section-build").addEventListener("click",()=>{const value=ga
 sec.querySelector(".section-copy").addEventListener("click",async()=>{const value=cache[n];if(!value)return;const status=document.getElementById("status"+n);let copied=false;try{if(navigator.clipboard&&navigator.clipboard.writeText){await navigator.clipboard.writeText(value);copied=true}}catch(e){}const manual=document.getElementById("manual"+n);manual.value=value;manual.hidden=false;const link=document.getElementById("submit"+n);link.hidden=false;if(copied)status.textContent="Copied. Open the school Form, paste, review, and SUBMIT Section "+String(n).padStart(2,"0")+". Keep your answers here.";else{manual.focus();manual.select();status.textContent="Automatic copy is blocked. Your complete answer is selected below. Use Ctrl+C, then open Submit Section, paste and submit in the school Form."; }progress();});
 });
 progress();
+
+
 
 
 function xtraWire(type,feedbackId,copyId,submitId,manualId,statusId,radio=false){
