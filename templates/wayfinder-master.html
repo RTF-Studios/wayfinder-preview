@@ -229,10 +229,10 @@ function evidenceAnswer(key){
  return clean($('#studioEvidence').value);
 }
 function createEvidence(key){if(key==='labs'&&$('#creativeLabs').hidden)return;const answer=evidenceAnswer(key),status=key==='warm'?'warmStatus':key==='temp'?'tempStatus':'labStatus';if(!answer){setStatus(status,'Complete the required answer before creating your response.');return;}evidenceDrafts[key]=answer;const preview=document.getElementById(key+'Preview');preview.textContent=answer;preview.hidden=false;document.querySelector('button.evidence-final[data-submission="'+key+'"]').disabled=false;setStatus(status,'Review your answer, then choose Copy & Submit My Answer.');}
-function submitEvidence(key){const status=key==='warm'?'warmStatus':key==='temp'?'tempStatus':'labStatus',answer=evidenceDrafts[key];if(!answer||answer!==evidenceAnswer(key)){resetSubmission(key);setStatus(status,'Create My Response again after editing.');return;}if(IS_MASTER_TEMPLATE){setStatus(status,'Master template demonstration only.');return;}const url=WAYFINDER_CONFIG.destinations[key];if(!url||!/^https:\/\//.test(url)){setStatus(status,'School Form link is unavailable. Tell your teacher.');return;}let tab=null;try{tab=window.open('about:blank','_blank');if(tab)tab.opener=null;}catch(_){}
- const copied=copyText(answer);
- setStatus(status,copied?'Copied. Paste your answer into the school Form and submit.':'Select and copy from the purple preview before pasting into the school Form.');
- try{if(tab&&!tab.closed)tab.location.replace(url);else window.location.assign(url);}catch(_){window.location.assign(url);}
+function submitEvidence(key){const status=key==='warm'?'warmStatus':key==='temp'?'tempStatus':'labStatus',answer=evidenceDrafts[key];if(!answer||answer!==evidenceAnswer(key)){resetSubmission(key);setStatus(status,'Create My Response again after editing.');return;}if(IS_MASTER_TEMPLATE){setStatus(status,'Master template demonstration only.');return;}const url=WAYFINDER_CONFIG.destinations[key];if(!url||!/^https:\/\//.test(url)){setStatus(status,'School Form link is unavailable. Tell your teacher.');return;}const copied=copyText(answer);
+ if(!copied){setStatus(status,'Copy did not succeed. Try Copy & Submit again.');return;}
+ setStatus(status,'Copied. Paste your answer into the school Form and submit.');
+ window.open(url,'_blank','noopener');
 }
 function assemble(which){
  const root=$(`[data-assembler="${which}"]`),parts=$$('[data-answer-part]',root),fragments=[];
@@ -299,13 +299,12 @@ function submitResponse(which){
  if(IS_MASTER_TEMPLATE){setStatus(questionStatus(which),'Master template demonstration only. No live Form is connected.');return;}
  const url=WAYFINDER_CONFIG.destinations[key];
  if(!url||!/^https:\/\//.test(url)){setStatus(questionStatus(which),'The Submission Form is not configured. Tell your teacher.');return;}
- // Reserve the Form tab during the click; synchronous legacy clipboard copy does not request permission.
- let tab=null;try{tab=window.open('about:blank','_blank');if(tab)tab.opener=null;}catch(_){}
+ // Copy while this lesson still has focus, before opening the Form.
  const copied=copyText(st.text);
  
- setStatus(questionStatus(which),copied?'Copied. Paste your response into the school Form and submit.':'Select and copy the purple preview before pasting into the school Form.');
- try{if(tab&&!tab.closed)tab.location.replace(url);else window.location.assign(url);}
- catch(_){window.location.assign(url);}
+ if(!copied){setStatus(questionStatus(which),'Copy did not succeed. Try Copy & Submit again.');return;}
+ setStatus(questionStatus(which),'Copied. Paste your response into the school Form and submit.');
+ window.open(url,'_blank','noopener');
 }
 
 function questionStatus(which){return which==='one'?'q1Status':'q2Status';}
