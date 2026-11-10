@@ -25,8 +25,10 @@
 }
 @media(max-width:760px){.target{grid-template-columns:1fr}.notes{grid-template-columns:repeat(2,1fr)}.lab-grid{grid-template-columns:1fr}.two-col{grid-template-columns:1fr}.rtf-showcase{grid-template-columns:1fr}.sidelink{top:auto;bottom:12px}.wrap{margin-top:12px}.notebook{padding:18px 13px}.temperature-choice{grid-template-columns:1fr}.checks{grid-template-columns:1fr}.mast{padding:20px 16px}}@media print{body{background:#fff}.sidelink,.actions,.notes{display:none!important}.notebook{box-shadow:none;border:0}.panel{break-inside:avoid}}
 
+
 /* Locked seventh-grade semantic palette; do not rotate. */
 :root{--outer:#e5e7eb;--paper:#f9fbff;--warmup-and-labs:#ede3fa;--learn-blue:#e5f1ff;--practice-green:#e8f2d2;--perform-gold:#ffefc3;--mastery-purple:#392468} .mast,.mast h1{color:#fff}.warm,.labs{background:var(--warmup-and-labs)}.learn{background:var(--learn-blue)}.practice{background:var(--practice-green)}.perform{background:var(--perform-gold)}.mastery,.lab-evidence{background:var(--mastery-purple)}.temp{background:var(--warmup-and-labs);border-color:#b69edb;color:var(--ink)}.sidelink{background:var(--perform-gold)}.stem-set{background:#f2f4fa;border-radius:9px;padding:10px 14px;margin:10px 0}.stem-set p{margin:3px 0}.blank{display:inline-block;min-width:120px;border-bottom:2px solid #58358b}.scaffold .type-sample{border:1px dashed #9c91be;border-radius:9px;padding:12px;margin:10px 0}.scaffold-library{display:none!important}.lab-evidence{background:#392468}.lab-evidence .hint{color:#eee4ff}
+
 
 /* Universal progression: warm paper → muted gold Copy → bright jeweled gold Submit.
    Visual priority is fixed; colors can be refined. Hidden/reveal safeguards remain. */
@@ -66,6 +68,7 @@ textarea::placeholder,input::placeholder{color:#68604f;opacity:1}
 .skit-entry p{margin:5px 0;line-height:1.55}
 @media(max-width:760px){.rtf-showcase.skits-only .skit-list{grid-template-columns:1fr}}
 
+
 /* Two-step mastery response interface: notebook inputs > read-only preview > final copy/open. */
 .mastery .scaffold textarea[data-open-response]{height:62px;min-height:54px;line-height:26px;padding:8px 11px;resize:vertical}
 .mastery .answer-parts [data-answer-part]{margin:8px 0}
@@ -95,6 +98,7 @@ textarea::placeholder,input::placeholder{color:#68604f;opacity:1}
 @keyframes response-twinkle{to{opacity:.35;transform:scale(.65) rotate(30deg)}}@keyframes response-appear{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.loading-fill{animation:none;transform:scaleX(1)}.loading-sparkle,.response-preview-shell .assembled-preview{animation:none}.response-submit-actions .finalize-response{transition:none}}
 
+
 /* Perform: required resources always above steps; guidance stays optional. */
 .perform-resources{background:#f2e8d8;border:1px solid #bb9c78;border-left:4px solid #704b27;border-radius:11px;padding:13px 16px;margin:14px 0 18px;color:#422d1b}
 .perform-resources h3{color:#704b27;margin:0 0 8px}
@@ -109,12 +113,14 @@ textarea::placeholder,input::placeholder{color:#68604f;opacity:1}
 .perform-step-help{padding:10px 15px 12px;background:#fffdf7;color:#4b4033;line-height:1.55}
 @media(max-width:600px){.perform-resources{padding:11px}.perform-step-list{padding-left:23px}.perform-step>summary{padding:11px}}
 
+
 /* Student Learning Leader: light, readable aloud prompts; not a separate teacher script. */
 .leader-intro{background:#f4f9ff;border-left:3px solid #497caf;padding:9px 12px;border-radius:7px}
 .leader-discussion{background:#f5faff;border:1px solid #b5d0ed;border-radius:9px;padding:10px 14px;margin:12px 0}
 .leader-discussion p{margin:7px 0;line-height:1.5}
 .leader-discussion strong{color:#24558f}
 .lesson-mode{display:inline-block;margin:11px 0 6px;padding:7px 13px;border:2px solid #e6bd59;border-radius:10px;background:#fff1bf;color:#15245a;font-size:clamp(.95rem,1.3vw,1.1rem);font-weight:800;letter-spacing:.035em;text-transform:uppercase}
+
 
 /* ASSESSMENT MODE — uses shared Master colors, notebook inputs, and approved action palette */
 .assessment-card{margin:22px 0;background:#392468;color:white;border-color:#70529e}.assessment-card h2,.assessment-card legend,.assessment-card .kicker,.assessment-card p{color:inherit}.assessment-card .section-context{background:#4e367a;border-radius:9px;padding:12px}.assessment-item{margin:14px 0;padding:12px;border:1px solid #baa5e0;border-radius:10px;background:#4c3477;min-width:0}.assessment-item legend{font-size:1rem;max-width:100%;line-height:1.4;padding:3px}.assessment-item .option{display:block;margin:8px 0;padding:8px;background:#faf8ff;color:#231747;border-radius:8px;cursor:pointer}.assessment-item .option input{margin-right:9px}.assessment-item textarea{width:100%;display:block;margin:7px 0 3px;border:2px solid #c4b4e5;border-radius:8px;padding:10px;background:#fff;color:#251a3b}.assessment-item .answer-label{display:block;font-weight:700;margin-top:8px}.assessment-card .manual-response{width:100%;background:#fff9e8;color:#1e1830;padding:9px}.assessment-card .section-build,.assessment-card .section-copy{margin:8px 8px 8px 0}.assessment-card .section-submit[hidden]{display:none}.assessment-card button:disabled{opacity:.45;cursor:not-allowed}.assessment-card .status{min-height:1.5em}.assessment-progress{font-weight:700;padding:10px;background:#ede4f9;border-radius:8px;margin:15px 0}.assessment-progress span{margin-right:12px;white-space:nowrap}.assessment-item textarea:focus,.assessment-item input:focus-visible{outline:3px solid #ebbd55;outline-offset:2px}@media(max-width:600px){.assessment-item{padding:9px}.assessment-card{padding:14px}} 
@@ -221,6 +227,7 @@ sec.querySelector(".section-build").addEventListener("click",()=>{const value=ga
 sec.querySelector(".section-copy").addEventListener("click",async()=>{const value=cache[n];if(!value)return;const status=document.getElementById("status"+n);let copied=false;try{if(navigator.clipboard&&navigator.clipboard.writeText){await navigator.clipboard.writeText(value);copied=true}}catch(e){}const manual=document.getElementById("manual"+n);manual.value=value;manual.hidden=false;const link=document.getElementById("submit"+n);link.hidden=false;if(copied)status.textContent="Copied. Open the school Form, paste, review, and SUBMIT Section "+String(n).padStart(2,"0")+". Keep your answers here.";else{manual.focus();manual.select();status.textContent="Automatic copy is blocked. Your complete answer is selected below. Use Ctrl+C, then open Submit Section, paste and submit in the school Form."; }progress();});
 });
 progress();
+
 
 function xtraWire(type,feedbackId,copyId,submitId,manualId,statusId,radio=false){
  const feedback=document.getElementById(feedbackId),copy=document.getElementById(copyId),submit=document.getElementById(submitId),manual=document.getElementById(manualId),status=document.getElementById(statusId);
