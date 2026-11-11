@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Wayfinder image optimizer and offline packager. Requires Pillow.
-Usage: python scripts/wayfinder-media.py CS/2090104.html --root . --out /tmp/2090104-offline.html
-Never overwrites a lesson unless --out explicitly points there; preserves original assets.
+Usage: python scripts/wayfinder-media.py CS/2090104.html --root . --in-place\nThe canonical lesson, not a separate Drive derivative, is the standalone output.
+Overwrites a lesson only with --in-place; never modifies separate approved artwork originals.
 """
 import argparse
 import base64
@@ -34,7 +34,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('lesson', type=Path)
     ap.add_argument('--root', type=Path, default=Path('.'))
-    ap.add_argument('--out', type=Path, required=True)
+    group = ap.add_mutually_exclusive_group(required=True)\n    group.add_argument('--out', type=Path, help='QA/staging copy; NOT a separate delivery artifact')\n    group.add_argument('--in-place', action='store_true', help='Replace canonical GitHub lesson after successful checks')
     ap.add_argument('--width', type=int, default=960)
     ap.add_argument('--wide-width', type=int, default=1400)
     ap.add_argument('--quality', type=int, default=78)
