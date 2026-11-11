@@ -157,7 +157,7 @@ async function run(){
    for(const key of pairs.evidence){
      if(key==='warm'){await page.locator('#warmAnswer').fill('QA response for this scenario');const choices=page.locator('[data-warm-choices]');if(await choices.isVisible())await choices.locator('input[type=radio]').first().check();}
      if(key==='temp'){await page.locator('input[name=tempConfidence]').first().check();await page.locator('#temperatureFeedback').fill('QA reflection on what I know');}
-     if(key==='labs'){const checks=page.locator('.gate-check');for(let i=0;i<await checks.count();i++)await checks.nth(i).check();await page.locator('#studioEvidence').fill('QA creative design extension');}
+     if(key==='labs'){const checks=page.locator('.gate-check:visible');for(let i=0;i<await checks.count();i++)await checks.nth(i).check();if(await page.locator('#studioEvidence').isVisible())await page.locator('#studioEvidence').fill('QA creative design extension');}
      await validate('button.evidence-create[data-submission="'+key+'"]','button.evidence-final[data-submission="'+key+'"]','#'+key+'Preview',key);
    }
    for(const key of pairs.question){
