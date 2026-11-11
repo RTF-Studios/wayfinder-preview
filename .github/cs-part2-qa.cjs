@@ -5,7 +5,7 @@ const {chromium}=require('./qa-run/node_modules/playwright');
 const root=path.resolve(__dirname,'..'),out=path.join(root,'qa-artifacts/cs-part2');
 fs.mkdirSync(out,{recursive:true});
 const modes=['STARTER','LEARN','LEARN','PERFORM','PERFORM','PERFORM','PERFORM','PERFORM','ASSESSMENT','RECOVERY'];
-const suffixes=[['20125'],['20126','20127'],['20128','20129'],['20130'],['20131'],['20132'],['20133'],['20134'],['29991','29992','29993','29994'],[]];
+const suffixes=[['20135'],['20136','20137'],['20138','20139'],['20140'],['20141'],['20142'],['20143'],['20144'],['29991','29992','29993','29994'],[]];
 const issues=[],results=[];const check=(ok,where,msg)=>{if(!ok)issues.push(where+': '+msg)};
 (async()=>{
  const browser=await chromium.launch({headless:true,args:['--no-sandbox','--allow-file-access-from-files']});
@@ -41,7 +41,7 @@ const issues=[],results=[];const check=(ok,where,msg)=>{if(!ok)issues.push(where
    for(let j=0;j<await roots.count();j++){
     const ar=roots.nth(j),section=ar.locator('xpath=ancestor::section[1]');
     const create=section.locator('button.create-response,button.section-build'),final=section.locator('button.finalize-response,button.section-submit');
-    await create.click();check(await final.isDisabled(),tag,'incomplete answer does not enable final');
+    await create.click();await page.waitForTimeout(720);check(await final.isEnabled(),tag,'incomplete answer enables final');const blankPreview=await section.locator('.assembled-preview').first().innerText();check(blankPreview.includes('[Not answered:'),tag,'incomplete work represented in preview');
     const radios=await ar.locator('input[type=radio]').evaluateAll(a=>[...new Set(a.map(x=>x.name))]);
     for(const name of radios)await ar.locator('input[type=radio][name="'+name+'"]').first().check();
     for(const select of await ar.locator('select').all())await select.selectOption({index:1});
