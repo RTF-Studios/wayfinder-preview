@@ -130,10 +130,9 @@ def main():
     encoded = re.findall(r'data:image/webp;base64,([A-Za-z0-9+/=]+)', html)
     if len(encoded) != len(set(encoded)):
         errors.append('Duplicate embedded WebP image data remains')
-    output = args.out
-    output.parent.mkdir(parents=True, exist_ok=True)
-    output.write_text(html, encoding='utf-8')
-    if output.stat().st_size > args.html_budget_kib * 1024:
+    output = args.lesson if args.in_place else args.out
+    output_bytes = html.encode('utf-8')
+    if len(output_bytes) > args.html_budget_kib * 1024:
         errors.append('HTML exceeds total size budget')
     # Form submission may use the network; other external art/resources must work offline.
     external = re.findall(r'(?:src|href)=["\'](https?://[^"\']+)["\']', html)
@@ -141,13 +140,15 @@ def main():
         if any(ext in url.lower().split('?')[0] for ext in ('.png','.jpg','.jpeg','.webp')):
             errors.append('External image remains (offline risk): ' + url)
     report = {'lesson': str(args.lesson), 'output': str(output), 'source_bytes': args.lesson.stat().st_size,
-              'offline_bytes': output.stat().st_size, 'images': audit, 'exceptions': args.exception_note,
-              'warnings': errors}
+              'offline_bytes': len(output_bytes), 'sha256': hashlib.sha256(output_bytes).hexdigest(),
+              'images': audit, 'exceptions': args.exception_note, 'warnings': errors}
     report_path = output.with_suffix('.media-audit.json')
     report_path.write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
     print(json.dumps(report, indent=2))
     if errors and not args.exception_note:
         raise SystemExit(2)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_bytes(output_bytes)
     if errors: print('EXCEPTION RECORDED; manual visual and offline QA still mandatory')
 
 if __name__ == '__main__':
