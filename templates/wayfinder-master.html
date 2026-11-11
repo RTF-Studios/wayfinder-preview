@@ -215,6 +215,7 @@ function placeArt(slot,pool){if(!slot)return;const candidates=Array.isArray(pool
 function rotateArt(slot,folder,pool){if(window.WF_ART)window.WF_ART.rotate(slot,folder,pool);else placeArt(slot,pool);}
 function placeSkit(slot,pool){
  const showcase=$('#rtfShowcase'),comic=$('#comicBlock'),skit=$('#skitBlock');
+ if(!showcase||!comic||!skit||!slot)return;
  const skits=Array.isArray(pool)?pool.filter(item=>item&&Array.isArray(item.lines)&&item.lines.length):[];
  const hasComic=Array.isArray(WAYFINDER_CONFIG.imagePools.comics)&&WAYFINDER_CONFIG.imagePools.comics.some(item=>item&&item.src);
  const count=hasComic?1:Math.min(3,skits.length);
@@ -241,7 +242,7 @@ function submitEvidence(key){const status=key==='warm'?'warmStatus':key==='temp'
  window.open(url,'_blank','noopener');
 }
 function assemble(which){
- const root=$(`[data-assembler="${which}"]`),parts=$$('[data-answer-part]',root),fragments=[];
+ const root=$(`[data-assembler="${which}"]`);if(!root)return {ok:false,text:'',reason:'Answer section unavailable.'};const parts=$$('[data-answer-part]',root),fragments=[];
  if(!parts.length)return {ok:false,text:'',reason:'Scaffolds have not been configured for this question.'};
  for(const part of parts){
   const type=part.dataset.type||'open-response',radios=$$('input[type="radio"]',part),chosen=$('input[type="radio"]:checked',part);
@@ -316,24 +317,37 @@ function submitResponse(which){
 function questionStatus(which){return which==='one'?'q1Status':'q2Status';}
 function questionSubmit(which){return which==='one'?'q1':'q2';}
 function updateMirror(){for(const key of ['learning-target','priority-teks']){const source=$(`[data-slot="${key}"]`);const mirror=$(`[data-mirror="${key}"]`);if(source&&mirror)mirror.textContent=source.textContent;}}
-function updateGate(){const checks=Array.from(document.querySelectorAll('.gate-check'));const ready=IS_MASTER_TEMPLATE || (checks.length===4 && checks.every(c=>c.checked));$('#creativeLabs').hidden=!ready;const lab=$('#labLock');lab.classList.toggle('labs-locked',!ready);lab.hidden=!ready;lab.toggleAttribute('inert',!ready);lab.setAttribute('aria-disabled',String(!ready));setStatus('gateStatus',ready?'Creative Studio unlocked. Explore, then record what you tried or learned.':'Creative Studio unlocks after all four checks.');if(!ready)resetSubmission('labs');}
+function updateGate(){const checks=Array.from(document.querySelectorAll('.gate-check'));const ready=IS_MASTER_TEMPLATE || ['ASSESSMENT','RECOVERY'].includes(WAYFINDER_CONFIG.mode) || (checks.length===4 && checks.every(c=>c.checked));if(!$('#creativeLabs')||!$('#labLock'))return;$('#creativeLabs').hidden=!ready;const lab=$('#labLock');lab.classList.toggle('labs-locked',!ready);lab.hidden=!ready;lab.toggleAttribute('inert',!ready);lab.setAttribute('aria-disabled',String(!ready));setStatus('gateStatus',ready?'Creative Studio unlocked. Explore, then record what you tried or learned.':'Creative Studio unlocks after all four checks.');if(!ready)resetSubmission('labs');}
 function onEditReset(){
  for(const which of ['one','two']){
   const container=$('[data-assembler="'+which+'"]');
   if(container){container.addEventListener('input',()=>invalidateResponse(which));container.addEventListener('change',()=>invalidateResponse(which));}
  }
- $('#warmAnswer').addEventListener('input',()=>resetSubmission('warm'));
+ $('#warmAnswer')?.addEventListener('input',()=>resetSubmission('warm'));
  Array.from(document.querySelectorAll('input[name="warmPage"]')).forEach(x=>x.addEventListener('change',()=>resetSubmission('warm')));
- $('#temperatureFeedback').addEventListener('input',()=>resetSubmission('temp'));
+ $('#temperatureFeedback')?.addEventListener('input',()=>resetSubmission('temp'));
  $$('input[name="tempConfidence"]').forEach(x=>x.addEventListener('change',()=>resetSubmission('temp')));
- $('#studioEvidence').addEventListener('input',()=>resetSubmission('labs'));
+ $('#studioEvidence')?.addEventListener('input',()=>resetSubmission('labs'));
 }
-function init(){if(IS_MASTER_TEMPLATE){for(const key of ['warm','temp','labs'])resetSubmission(key);}rotateArt($('#targetArt'),'target',WAYFINDER_CONFIG.imagePools.target);rotateArt($('#labArt'),'characters',WAYFINDER_CONFIG.imagePools.labs);rotateArt($('#comicSlot'),'comics',WAYFINDER_CONFIG.imagePools.comics);placeSkit($('#skitSlot'),WAYFINDER_CONFIG.imagePools.skits);updateMirror();onEditReset();$$('.gate-check').forEach(x=>x.addEventListener('change',updateGate));updateGate();
-$$('button.create-response').forEach(button=>button.addEventListener('click',()=>prepareResponse(button.dataset.question)));
-$$('button.finalize-response').forEach(button=>button.addEventListener('click',()=>submitResponse(button.dataset.question)));
+function init(){if(IS_MASTER_TEMPLATE){for(const key of ['warm','temp','labs'])resetSubmission(key);}rotateArt($('#targetArt'),'target',WAYFINDER_CONFIG.imagePools.target);rotateArt($('#labArt'),'characters',WAYFINDER_CONFIG.imagePools.labs);rotateArt($('#comicSlot'),'comics',WAYFINDER_CONFIG.imagePools.comics);placeSkit($('#skitSlot'),WAYFINDER_CONFIG.imagePools.skits);updateMirror();onEditReset();initAssessment();$$('.gate-check').forEach(x=>x.addEventListener('change',updateGate));updateGate();
+$$('button.create-response[data-question]').forEach(button=>button.addEventListener('click',()=>prepareResponse(button.dataset.question)));
+$$('button.finalize-response[data-question]').forEach(button=>button.addEventListener('click',()=>submitResponse(button.dataset.question)));
 $$('button.evidence-create').forEach(button=>button.addEventListener('click',()=>createEvidence(button.dataset.submission)));
 $$('button.evidence-final').forEach(button=>button.addEventListener('click',()=>submitEvidence(button.dataset.submission)));
 }
+
+/* Four independently keyed assessment cards use the canonical assembler/copy action. */
+const sectionDrafts={};
+function initAssessment(){
+ $$('.assessment-section[data-n]').forEach(section=>{
+  const n=section.dataset.n,which='assessment'+n,preview=$('#preview'+n),build=$('.section-build',section),submit=$('.section-submit',section),root=$('[data-assembler]',section);
+  const reset=()=>{sectionDrafts[n]='';preview.textContent='';preview.hidden=true;submit.disabled=true;setStatus('sectionStatus'+n,'Create your response after any changes.');};
+  root.addEventListener('input',reset);root.addEventListener('change',reset);
+  build.addEventListener('click',()=>{const result=assemble(which);if(!result.ok){setStatus('sectionStatus'+n,result.reason);return;}sectionDrafts[n]=result.text;preview.textContent=result.text;preview.hidden=false;submit.disabled=false;setStatus('sectionStatus'+n,'Review your response before submitting.');});
+  submit.addEventListener('click',()=>{const current=assemble(which),answer=sectionDrafts[n];if(!answer||!current.ok||current.text!==answer){reset();return;}const url=WAYFINDER_CONFIG.destinations['section'+n];if(!url||!/^https:\/\//.test(url)){setStatus('sectionStatus'+n,'School Form link is unavailable. Tell your teacher.');return;}if(!copyText(answer)){setStatus('sectionStatus'+n,'Copy did not succeed. Try Copy & Submit again.');return;}setStatus('sectionStatus'+n,'Copied. Paste your answer into the school Form and submit.');window.open(url,'_blank','noopener');});
+ });
+}
+
 function startWayfinder(){try{init();}catch(error){console.error('Wayfinder startup failed',error);document.querySelectorAll('.status').forEach(el=>{el.textContent='Something did not load correctly. Tell your teacher before submitting.';});}}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',startWayfinder);else startWayfinder();
 </script>
