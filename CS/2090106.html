@@ -3776,7 +3776,19 @@ function safeStore(){if(!storageOK)return;try{localStorage.setItem(KEY,JSON.stri
 function restore(){sectionEls.forEach(sec=>{const n=sec.dataset.section,fields=Array.from(sec.querySelectorAll("input,textarea"));fields.forEach((el,i)=>{const st=(saved[n]||[])[i];if(st===undefined)return;if(el.type==="radio")el.checked=st===el.value;else el.value=st});});}
 function persist(n){const sec=document.getElementById("section"+n);saved[n]=Array.from(sec.querySelectorAll("input,textarea")).map(el=>el.type==="radio"?(el.checked?el.value:null):el.value);safeStore();}
 function invalidate(n){const sec=document.getElementById("section"+n);document.getElementById("submit"+n).disabled=true;document.getElementById("preview"+n).hidden=true;document.getElementById("preview-caption"+n).hidden=true;document.getElementById("status"+n).replaceChildren("Response edited. Create My Response to review your updated answers.");persist(n);progress();}
-function gather(n){const sec=document.getElementById("section"+n);const items=Array.from(sec.querySelectorAll(".assessment-item"));const lines=[];for(const [i,fieldset] of items.entries()){const chosen=fieldset.querySelector("input:checked");const answers=Array.from(fieldset.querySelectorAll("textarea")).map(t=>t.value.trim());if((fieldset.querySelector("input")&&!chosen)||(fieldset.querySelector("textarea")&&answers.some(x=>!x)))return null;const legend=fieldset.querySelector("legend").innerText.replace(/^\s*\d+\.\s*/,"").trim();lines.push((i+1)+". "+legend+"\nAnswer: "+[chosen?.value,...answers].filter(Boolean).join(" | "));}return "CS Unit 9 Part 1 — Final Assessment — Section "+String(n).padStart(2,"0")+"\n"+lines.join("\n\n");}
+function gather(n){
+ const sec=document.getElementById("section"+n),items=Array.from(sec.querySelectorAll(".assessment-item")),lines=[];
+ for(const [i,fieldset] of items.entries()){
+  const legend=(fieldset.querySelector("legend")?.textContent||"Prompt "+(i+1)).replace(/^\s*\d+\.\s*/,"").trim();
+  const radios=Array.from(fieldset.querySelectorAll('input[type="radio"]'));
+  const selected=fieldset.querySelector('input[type="radio"]:checked');
+  const texts=Array.from(fieldset.querySelectorAll("textarea")).map((t,j)=>t.value.trim()||"[Not answered: written response "+(j+1)+"]");
+  const choices=radios.length?[selected?selected.value:"[Not answered: choose an option]"]:[];
+  const parts=[...choices,...texts];
+  lines.push((i+1)+". "+legend+"\nAnswer: "+(parts.length?parts.join(" | "):"[Not answered: this question]"));
+ }
+ return "CS Unit 9 Part 1 — Final Assessment — Section "+String(n).padStart(2,"0")+"\n"+lines.join("\n\n");
+}
 function progress(){const ready=sectionEls.filter(x=>!document.getElementById("submit"+x.dataset.section).disabled).map(x=>x.dataset.section);document.getElementById("progress").textContent="Sections ready to copy and submit: "+(ready.length?ready.map(n=>String(n).padStart(2,"0")).join(", "):"none")+". A section is not submitted until the school Form confirms it.";}
 function legacyCopy(value){if(!value)return false;const t=document.createElement("textarea");t.value=value;t.readOnly=true;t.style.cssText="position:fixed;left:-9999px;top:0;opacity:0";document.body.appendChild(t);let copied=false;try{t.focus();t.select();copied=Boolean(document.execCommand("copy"));}catch(e){}finally{t.remove();}return copied;}
 restore();
@@ -3808,7 +3820,11 @@ function xtraWire(type,feedbackId,createId,submitId,previewId,statusId,radio=fal
  function invalidate(){submit.disabled=true;preview.hidden=true;draft="";status.replaceChildren("Edited. Create My Response to review your updated answer.");if(storageOK){try{localStorage.setItem(savedKey,JSON.stringify({text:feedback.value,confidence:document.querySelector('input[name="tempConfidence"]:checked')?.value||""}))}catch(e){}}}
  feedback.addEventListener("input",invalidate);
  if(radio)document.querySelectorAll('input[name="tempConfidence"]').forEach(el=>el.addEventListener("change",invalidate));
- function assemble(){const value=feedback.value.trim(),confidence=document.querySelector('input[name="tempConfidence"]:checked')?.value;if(!value||radio&&!confidence)return null;return type==="temp"?"CS Part 1 Assessment TEKS Temperature Check\nConfidence: "+confidence+"\nWhat I understand or need help with: "+value:"CS Part 1 Assessment Creative Studio\nMy creative work: "+value;}
+function assemble(){
+ const value=feedback.value.trim()||"[Not answered: "+(radio?"learning reflection":"Creative Studio evidence")+"]";
+ const confidence=document.querySelector('input[name="tempConfidence"]:checked')?.value||"[Not answered: confidence selection]";
+ return type==="temp"?"CS Part 1 Assessment TEKS Temperature Check\nConfidence: "+confidence+"\nWhat I understand or need help with: "+value:"CS Part 1 Assessment Creative Studio\nMy creative work: "+value;
+}
  create.addEventListener("click",()=>{const value=assemble();if(!value){status.textContent=radio?"Choose confidence and write feedback before creating your response.":"Write about your actual creative work before creating a response.";return;}draft=value;preview.textContent=value;preview.hidden=false;submit.disabled=false;status.textContent="Review your response, then choose Copy & Submit My Answer.";preview.focus();});
  submit.addEventListener("click",()=>{const value=assemble();if(submit.disabled||!value||value!==draft){invalidate();return;}const url=submit.dataset.formUrl;if(!url){status.textContent="Missing school Form link; tell your teacher.";return;}const copied=legacyCopy(value);if(!copied){status.textContent="Copy did not succeed. Try Copy & Submit again.";return;}status.textContent="Copied. Paste your answer into the school Form and submit it.";window.open(url,"_blank","noopener");});
 }
