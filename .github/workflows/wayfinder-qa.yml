@@ -47,11 +47,11 @@ jobs:
           mkdir -p .github/qa-run
           npm install --prefix .github/qa-run --no-save playwright@1.56.1
           .github/qa-run/node_modules/.bin/playwright install --with-deps chromium
-      - name: Verify master, working CS reference and changed lessons
+      - name: Verify master, CS reference, and all 40 upcoming guides
         env:
           GITHUB_EVENT_BEFORE: ${{ github.event.before }}
           GITHUB_SHA: ${{ github.sha }}
-        run: node .github/submission-contract-qa.cjs --changed
+        run: node .github/submission-contract-qa.cjs --changed --all-upcoming
       - name: Verify complete CS Part 2 offline modes and desktop/mobile controls
         run: node .github/cs-part2-qa.cjs
       - name: Preserve CS Part 2 browser evidence
