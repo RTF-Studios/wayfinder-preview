@@ -22,6 +22,18 @@ const allUpcoming=Object.entries(UPCOMING).flatMap(([course,ids])=>ids.map(id=>c
 const canonical=fs.readFileSync(path.join(root,master),'utf8');
 const capture=(source)=>{const a=source.indexOf('function assemble(which){'),b=source.indexOf('/* Mastery workflow:',a);return a>=0&&b>a?source.slice(a,b).trim():'';};
 const canonicalAssembler=capture(canonical);
+const sharedSegments=[
+ ['function copyText(text){','function evidenceAnswer(key){'],
+ ['function evidenceAnswer(key){','function createEvidence(key){'],
+ ['function createEvidence(key){','function submitEvidence(key){'],
+ ['function submitEvidence(key){','function assemble(which){'],
+ ['function submitResponse(which){','function questionStatus(which){']
+];
+function sharedPiece(source,start,end){
+ const a=source.indexOf(start),b=source.indexOf(end,a);
+ return a>=0&&b>a?source.slice(a,b).trim():'';
+}
+
 const files=[...new Set(args.includes('--master-only')?[master]:[master,gold,...(args.includes('--changed')?changed():[]),...(args.includes('--all-upcoming')?allUpcoming:[]),...args.filter(x=>/^(Tech|CS|AAVTC)\/\d{7}\.html$/.test(x))])];
 async function run(){
  const browser=await chromium.launch({headless:true,args:['--no-sandbox','--allow-file-access-from-files']});
@@ -32,6 +44,7 @@ async function run(){
  check(/execCommand\(\s*['"]copy['"]\s*\)/.test(js),f,'must use synchronous copy');
  check(!/navigator\.(?:clipboard|permissions)\b/.test(js),f,'permission API forbidden');
  if(f!==master&&f!==gold)check(canonicalAssembler&&capture(html)===canonicalAssembler,f,'submission assembler has drifted from the universal master; rebuild from master, never customize question code');
+ if(f!==master&&f!==gold)for(const [start,end] of sharedSegments)check(sharedPiece(html,start,end)===sharedPiece(canonical,start,end),f,'shared engine function drift '+start);
  check(!/window\.open\(\s*['"]about:blank|tab\.location\.replace/.test(js),f,'copy must precede Form opening');
  check(!/manual-copy-fallback|showManualCopy|showManualSection|manual-form-link/.test(html),f,'extra fallback UI forbidden');
  try{new(require('vm').Script)(js)}catch(e){fail(f,'JS syntax '+e.message)}
