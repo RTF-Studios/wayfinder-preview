@@ -12,6 +12,9 @@ function changed(){
  }catch{return []}
 }
 const master='templates/wayfinder-master.html',gold='CS/2090106.html';
+const canonical=fs.readFileSync(path.join(root,master),'utf8');
+const capture=(source)=>{const a=source.indexOf('function assemble(which){'),b=source.indexOf('/* Mastery workflow:',a);return a>=0&&b>a?source.slice(a,b).trim():'';};
+const canonicalAssembler=capture(canonical);
 const files=[...new Set(args.includes('--master-only')?[master]:[master,gold,...(args.includes('--changed')?changed():[]),...args.filter(x=>/^(Tech|CS|AAVTC)\/\d{7}\.html$/.test(x))])];
 async function run(){
  const browser=await chromium.launch({headless:true,args:['--no-sandbox','--allow-file-access-from-files']});
@@ -21,6 +24,7 @@ async function run(){
  const html=fs.readFileSync(p,'utf8'),js=[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map(x=>x[1]).join('\n');
  check(/execCommand\(\s*['"]copy['"]\s*\)/.test(js),f,'must use synchronous copy');
  check(!/navigator\.(?:clipboard|permissions)\b/.test(js),f,'permission API forbidden');
+ if(f!==master&&f!==gold)check(canonicalAssembler&&capture(html)===canonicalAssembler,f,'submission assembler has drifted from the universal master; rebuild from master, never customize question code');
  check(!/window\.open\(\s*['"]about:blank|tab\.location\.replace/.test(js),f,'copy must precede Form opening');
  check(!/manual-copy-fallback|showManualCopy|showManualSection|manual-form-link/.test(html),f,'extra fallback UI forbidden');
  try{new(require('vm').Script)(js)}catch(e){fail(f,'JS syntax '+e.message)}
