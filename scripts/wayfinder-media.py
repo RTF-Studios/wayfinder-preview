@@ -74,6 +74,8 @@ def main():
     def replace_path(match):
         url = match.group('url')
         path = urlparse(url).path if url.startswith('http') else url
+        while path.startswith('../'):
+            path = path[3:]
         path = path.lstrip('/')
         if path.startswith('wayfinder-preview/'):
             path = path[len('wayfinder-preview/'):]
@@ -84,6 +86,15 @@ def main():
         value = embed(local.read_bytes(), path)
         return match.group('q') + (value or url) + match.group('q')
     html = URL_PATTERN.sub(replace_path, html)
+    # Embed local shared JavaScript files, preserving execution order for offline use.
+    script_tag = re.compile(r'<script\\s+src=["\\'](?:\\.\\./)*assets/([^"\\']+\\.js)["\\']\\s*><\\/script>', re.I)
+    def inline_script(match):
+        local = (root / 'assets' / match.group(1)).resolve()
+        if not local.is_relative_to(root) or not local.is_file():
+            errors.append('Missing required JavaScript offline dependency: ' + match.group(1))
+            return match.group(0)
+        return '<script>\\n' + local.read_text(encoding='utf-8').replace('</script>', '<\\/script>') + '\\n</script>'
+    html = script_tag.sub(inline_script, html)
     # For JS object image pools, move the payload to one declaration, referenced by multiple slots.
     js_pattern = re.compile(r'(["\']src["\']\s*:\s*)(["\'])(data:image/webp;base64,[A-Za-z0-9+/=]+)\2')
     unique = list(dict.fromkeys(m.group(3) for m in js_pattern.finditer(html)))
