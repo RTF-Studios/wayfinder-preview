@@ -92,6 +92,33 @@ def main():
         html = js_pattern.sub(lambda m: m.group(1) + variables[m.group(3)], html)
         declarations = '\n'.join('const ' + name + ' = ' + json.dumps(data) + ';' for data, name in variables.items())
         html = html.replace('<script>', '<script>\n' + declarations + '\n', 1)
+    # Deduplicate literal HTML image src attributes without a second payload copy.
+    attr = re.compile(r'src="(data:image/webp;base64,[A-Za-z0-9+/=]+)"')
+    seen_html = {}
+    def share_html(m):
+        value = m.group(1)
+        if value in seen_html:
+            return 'src="" data-wf-copy-from="' + seen_html[value] + '"'
+        key = 'wf-media-' + str(len(seen_html) + 1)
+        seen_html[value] = key
+        return m.group(0) + ' data-wf-asset="' + key + '"'
+    html = attr.sub(share_html, html)
+    if 'data-wf-copy-from=' in html:
+        loader = """<script>document.addEventListener('DOMContentLoaded',function(){
+          document.querySelectorAll('[data-wf-copy-from]').forEach(function(img){
+            var key=img.getAttribute('data-wf-copy-from');
+            var original=document.querySelector('[data-wf-asset="'+key+'"]');
+            if(original){img.src=original.src;}
+            else{console.error('Missing local artwork source',key);}
+          });
+        });</script>"""
+        html = html.replace('</body>', loader + '</body>', 1)
+    leftovers = IMAGE_PATTERN.findall(html)
+    if leftovers:
+        errors.append('Original unoptimized PNG/JPEG still embedded after packaging')
+    encoded = re.findall(r'data:image/webp;base64,([A-Za-z0-9+/=]+)', html)
+    if len(encoded) != len(set(encoded)):
+        errors.append('Duplicate embedded WebP image data remains')
     output = args.out
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(html, encoding='utf-8')
