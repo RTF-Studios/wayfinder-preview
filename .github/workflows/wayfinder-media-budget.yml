@@ -1,0 +1,33 @@
+name: Wayfinder media size and format gate
+on:
+  push:
+    paths:
+      - 'assets/**'
+      - 'Tech/**'
+      - 'CS/**'
+      - 'AAVTC/**'
+      - 'scripts/wayfinder-media.py'
+      - 'scripts/check-media-budget.py'
+      - '.github/workflows/wayfinder-media-budget.yml'
+  pull_request:
+    paths:
+      - 'assets/**'
+      - 'Tech/**'
+      - 'CS/**'
+      - 'AAVTC/**'
+      - 'scripts/**'
+      - '.github/workflows/wayfinder-media-budget.yml'
+jobs:
+  image-budget:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install media inspection dependency
+        run: python -m pip install Pillow==11.1.0
+      - name: Check packager Python syntax
+        run: python -m py_compile scripts/wayfinder-media.py
+      - name: Check canonical WebP media and lesson HTML budgets
+        run: python scripts/check-media-budget.py
