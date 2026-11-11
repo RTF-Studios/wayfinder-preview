@@ -64,6 +64,18 @@ async function run(){
   check(captured.partial.ok&&captured.partial.text.includes('Selected true')&&captured.partial.text.includes('I gave a reason')&&captured.partial.text.includes('[Not answered: blank 2]'),f,'partial evidence preserves answers and identifies missing blank');
   check(captured.full.ok&&!captured.full.text.includes('[Not answered:'),f,'fully filled evidence has no incomplete markers');
  }
+ if(f!==master&&f!==gold){
+  const keys=await page.evaluate(()=>Object.entries(WAYFINDER_CONFIG.destinations||{}).map(([slot,url])=>{
+   let full='';try{full=new URL(url).searchParams.get('entry.1954781253')||''}catch(e){}
+   return {slot,full,url};
+  }));
+  const day=path.basename(f,'.html');
+  check(keys.length>0&&keys.every(x=>/^\\d{12}$/.test(x.full)&&x.full.startsWith(day)),f,'all Form destination keys must be full unique DayID-prefixed 12-digit identities');
+  check(new Set(keys.map(x=>x.full)).size===keys.length,f,'duplicate full Form destination key');
+  for(const [slot,suffix] of [['warm','09998'],['temp','29999'],['labs','20000']]){
+   const key=keys.find(x=>x.slot===slot);if(key)check(key.full===day+suffix,f,slot+' must use its reserved Xtra suffix');
+  }
+ }
  check(pairs.legacy===0,f,'legacy or third copy control');
  check(pairs.previews>0,f,'one preview required');
  check(pairs.section.length+pairs.evidence.length+pairs.question.length+pairs.xtra.length>0,f,'no response controls');
