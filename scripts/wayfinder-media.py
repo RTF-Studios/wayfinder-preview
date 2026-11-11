@@ -14,7 +14,7 @@ from urllib.parse import urlparse
 from PIL import Image, ImageOps
 
 IMAGE_PATTERN = re.compile(r'data:image/(png|jpeg|jpg|webp);base64,([A-Za-z0-9+/=]+)', re.I)
-URL_PATTERN = re.compile(r'(?P<q>["\'])(?P<url>(?:https://rtf-studios\.github\.io/wayfinder-preview/|/?assets/)[^"\']+\.(?:png|jpe?g|webp))(?P=q)', re.I)
+URL_PATTERN = re.compile(r"""(?P<q>["'])(?P<url>(?:https://rtf-studios\.github\.io/wayfinder-preview/|(?:\.\./)*assets/|/assets/)[^"']+\.(?:png|jpe?g|webp))(?P=q)""", re.I)
 DEFAULT_PER_IMAGE = 250 * 1024
 DEFAULT_HTML = 2 * 1024 * 1024
 
@@ -87,13 +87,13 @@ def main():
         return match.group('q') + (value or url) + match.group('q')
     html = URL_PATTERN.sub(replace_path, html)
     # Embed local shared JavaScript files, preserving execution order for offline use.
-    script_tag = re.compile(r'<script\\s+src=["\\'](?:\\.\\./)*assets/([^"\\']+\\.js)["\\']\\s*><\\/script>', re.I)
+    script_tag = re.compile(r"""<script\s+src=["'](?:\.\./)*assets/([^"']+\.js)["']\s*></script>""", re.I)
     def inline_script(match):
         local = (root / 'assets' / match.group(1)).resolve()
         if not local.is_relative_to(root) or not local.is_file():
             errors.append('Missing required JavaScript offline dependency: ' + match.group(1))
             return match.group(0)
-        return '<script>\\n' + local.read_text(encoding='utf-8').replace('</script>', '<\\/script>') + '\\n</script>'
+        return '<script>\n' + local.read_text(encoding='utf-8').replace('</script>', '<\/script>') + '\n</script>'
     html = script_tag.sub(inline_script, html)
     # For JS object image pools, move the payload to one declaration, referenced by multiple slots.
     js_pattern = re.compile(r'(["\']src["\']\s*:\s*)(["\'])(data:image/webp;base64,[A-Za-z0-9+/=]+)\2')
