@@ -1,21 +1,35 @@
 # RTF Studios — Wayfinder Library Repository
 
-## Canonical course directories
-- `Tech/`: `Tech_Library.html` plus numbered `3040301.html` etc.
-- `CS/`: `CS_Library.html` plus future numbered CS lessons. Existing six CS source files could not be located at the expected root paths.
-- `AAVTC/`: `AAVTC_Library.html` plus numbered `1020101.html` etc.
+## Canonical files
+- Lessons: `Tech/<DayID>.html`, `CS/<DayID>.html`, `AAVTC/<DayID>.html`.
+- Universal engine: `templates/wayfinder-master.html`.
+- Student downloads are self-contained HTML in established JISD Drive course folders, indexed by each course's `File Links`. GitHub source and embedded Drive derivative may differ in media representation, but must have matching lesson content, behavior, keys and visual resources.
+- The Captain alone controls Control Station Show/Hide; never toggle it during media repair.
 
-## Assets
-- `assets/RTF/`: designated approved character-art directory; binary migration not yet completed.
-- `assets/shared/`: designated shared scripts/styles directory; course libraries now use `assets/shared/wayfinder-library-feed.js`; legacy root script retained for old references.
+## Approved artwork storage — Captain GO 2026-11-11
+Full-resolution approved originals live in **Personal Drive**, including PNG originals and character canon/reference sheets. They must not be overwritten during optimization.
 
-## Visibility and URLs
-JISD Wayfinder Control Station owns Show/Hide. Its Public Feed tab is formula-owned and must never be manually populated.
-The shared feed supports URLs like `./Tech/3040305.html` and `./AAVTC/1020101.html`.
-Legacy root lesson duplicates were deleted after course folder copies were verified; old root library URLs redirect to named course libraries. Existing direct root lesson URLs may be broken and require an audit.
+Optimized GitHub media uses genuine `.webp` assets, with the six existing artwork categories retained:
+- `assets/learning-target/` — approved rotating target art
+- `assets/teks-check/` — TEKS temperature art
+- `assets/rtf-comics/` — approved comics
+- `assets/rtf-characters/` — character/canon derivatives
+- `assets/learning-guide-assets/` — reusable decorations
+- `assets/lesson-content-assets/<Course>/<DayID>/` — lesson-specific artwork
 
-## Cleanup status
-Course folders created, Tech/AAVTC lesson copies and libraries installed. CS lesson source retrieval, RTF binary image relocation, removal of legacy root duplicates, and rendered end-to-end link QA remain outstanding. Do not assume these tasks passed.
+Technical scripts, styles and favicon remain in `assets/shared/`. Do not invent a new character, alter canon, or mix lesson-specific assets into random rotation pools.
 
-## Latest organizational pass
-Named course libraries use the shared feed at `assets/shared/`. Tech and AAVTC root library filenames redirect to canonical libraries. CS lesson files 2090101–2090106 remain unrecovered; do not fabricate student pages or change Show checkboxes without Captain approval. Shared RTF image binaries remain unmigrated pending binary-safe Git tree work.
+## Mandatory image build pipeline
+1. Inspect every source image, including visually checking source identity, dimensions, alpha, and externally sourced images' permissions/attribution.
+2. Select display-appropriate dimensions; make moderate-quality WebP derivative (starting at quality 78, maximum width 960px for standard art and 1400px for unusually wide comics).
+3. Store the derivative once in the matching GitHub artwork folder. Keep the original in Personal Drive.
+4. Run `python scripts/wayfinder-media.py <course/DayID.html> --root . --out <offline-output.html>` using Pillow. It replaces local/embedded images with compressed, embedded WebP and deduplicates repeated image pool payloads. Resolve any missing assets.
+5. Default budgets: **250 KiB per optimized image** and **2 MiB total downloadable HTML**. Exceeding these budgets blocks readiness unless a specific documented exception is approved and visually validated. Audit JSON is emitted beside the offline file.
+6. Compare full lesson content/keys and image fidelity with the GitHub source; render the actual downloaded file with internet disabled, at desktop and mobile widths. Test copy-before-Form and Form/Collector path separately. Keep original JISD Drive file IDs, library links and visibility unchanged.
+7. No browser QA, student download, image check or Form receipt may be marked PASS based solely on script output.
+
+## Media-specific release condition
+An optimized source asset being published to GitHub does not itself release a lesson. Updating an already-shown JISD offline file is an authorized repair only when original lesson behavior and evidence identity remain unchanged. Never replace a working file with smaller content if visual, submission or offline validation fails.
+
+## Historical notes
+Older README text about missing CS files and retired previews was superseded by subsequent builds. Verify the live repository and JISD library before drawing conclusions from older history.
