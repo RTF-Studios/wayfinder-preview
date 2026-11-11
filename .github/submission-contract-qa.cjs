@@ -12,10 +12,17 @@ function changed(){
  }catch{return []}
 }
 const master='templates/wayfinder-master.html',gold='CS/2090106.html';
+const UPCOMING={
+ Tech:['3050101','3050102','3050103','3050104','3050105','3050201','3050202','3050203','3050204','3050205','3050301','3050302','3050303','3050304','3050305','3050401','3050402','3050403'],
+ CS:['2090105','2090106','2090201','2090202','2090203','2090204','2090205','2090206','2090207','2090208','2090209','2090210'],
+ AAVTC:['1040101','1040102','1040103','1040104','1040105','1040201','1040202','1040203','1040204','1040205']
+};
+const allUpcoming=Object.entries(UPCOMING).flatMap(([course,ids])=>ids.map(id=>course+'/'+id+'.html'));
+
 const canonical=fs.readFileSync(path.join(root,master),'utf8');
 const capture=(source)=>{const a=source.indexOf('function assemble(which){'),b=source.indexOf('/* Mastery workflow:',a);return a>=0&&b>a?source.slice(a,b).trim():'';};
 const canonicalAssembler=capture(canonical);
-const files=[...new Set(args.includes('--master-only')?[master]:[master,gold,...(args.includes('--changed')?changed():[]),...args.filter(x=>/^(Tech|CS|AAVTC)\/\d{7}\.html$/.test(x))])];
+const files=[...new Set(args.includes('--master-only')?[master]:[master,gold,...(args.includes('--changed')?changed():[]),...(args.includes('--all-upcoming')?allUpcoming:[]),...args.filter(x=>/^(Tech|CS|AAVTC)\/\d{7}\.html$/.test(x))])];
 async function run(){
  const browser=await chromium.launch({headless:true,args:['--no-sandbox','--allow-file-access-from-files']});
  try{for(const f of files){
