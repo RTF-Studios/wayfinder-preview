@@ -70,7 +70,7 @@ async function run(){
    return {slot,full,url};
   }));
   const day=path.basename(f,'.html');
-  check(keys.length>0&&keys.every(x=>/^\\d{12}$/.test(x.full)&&x.full.startsWith(day)),f,'all Form destination keys must be full unique DayID-prefixed 12-digit identities');
+  check(keys.length>0&&keys.every(x=>/^\d{12}$/.test(x.full)&&x.full.startsWith(day)),f,'all Form destination keys must be full unique DayID-prefixed 12-digit identities');
   check(new Set(keys.map(x=>x.full)).size===keys.length,f,'duplicate full Form destination key');
   for(const [slot,suffix] of [['warm','09998'],['temp','29999'],['labs','20000']]){
    const key=keys.find(x=>x.slot===slot);if(key)check(key.full===day+suffix,f,slot+' must use its reserved Xtra suffix');
