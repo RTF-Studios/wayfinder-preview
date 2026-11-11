@@ -188,31 +188,39 @@ function revealSubmission(key){if(IS_MASTER_TEMPLATE){resetSubmission(key);retur
 function resetSubmission(key){const a=$(`a.submit[data-submission="${key}"]`);if(a){a.hidden=!IS_MASTER_TEMPLATE;a.removeAttribute('href');if(IS_MASTER_TEMPLATE){a.setAttribute('aria-disabled','true');a.setAttribute('role','link');a.setAttribute('tabindex','0');a.title='Master template inspection only — no Form is connected.';}}}
 async function copyText(text,source){if(!clean(text))return false;const el=source||document.createElement('textarea');let appended=false;try{if(!source){el.value=text;el.setAttribute('readonly','');el.style.cssText='position:fixed;left:-9999px;top:0;opacity:0';document.body.append(el);appended=true;}el.focus();el.select();return Boolean(document.execCommand('copy'));}catch(_){return false;}finally{if(appended)el.remove();}}
 function assemble(which){
- const root=$(`[data-assembler="${which}"]`),parts=$$('[data-answer-part]',root),fragments=[];
- if(!parts.length)return {ok:false,text:'',reason:'Scaffolds have not been configured for this question.'};
- for(const part of parts){
-  const type=part.dataset.type||'open-response',radios=$$('input[type="radio"]',part),chosen=$('input[type="radio"]:checked',part);
-  if(radios.length&&!chosen)return {ok:false,text:'',reason:'Choose an answer in each selection field.'};
+ const root=$('[data-assembler="'+which+'"]');
+ if(!root)return {ok:false,text:'',reason:'The answer section is unavailable. Tell your teacher.'};
+ const parts=$$('[data-answer-part]',root);
+ if(!parts.length)return {ok:false,text:'',reason:'This question has no answer components. Tell your teacher.'};
+ const fragments=[];
+ for(let i=0;i<parts.length;i++){
+  const part=parts[i],type=part.dataset.type||'open-response';
+  const label=clean(part.querySelector('legend,label')?.textContent||'Part '+(i+1)).replace(/\s+/g,' ').slice(0,110);
+  const missing=detail=>'[Not answered: '+label+(detail?' — '+detail:'')+']';
+  const selected=$('input[type="radio"]:checked',part);
+  const radio=$$('input[type="radio"]',part);
   const boxes=$$('input[type="checkbox"]',part),marked=boxes.filter(x=>x.checked);
-  if(boxes.length&&!marked.length)return {ok:false,text:'',reason:'Select at least one relevant option.'};
-  const dropdown=$('select[data-answer-select]',part);
-  if(dropdown&&!clean(dropdown.value))return {ok:false,text:'',reason:'Select an answer from the menu.'};
+  const menu=$('select[data-answer-select]',part);
+  const fields=$$('textarea[data-open-response],input[data-open-response],textarea[data-fragment]',part);
+  const blanks=$$('input[data-blank]',part);
+  const answers=[];
+  if(radio.length)answers.push(selected?clean(selected.dataset.phrase||selected.value):missing('choose an option'));
+  if(boxes.length)answers.push(marked.length?marked.map(x=>clean(x.dataset.phrase||x.value)).join('; '):missing('select an option'));
+  if(menu)answers.push(clean(menu.value)?clean(menu.selectedOptions?.[0]?.dataset.phrase||menu.value):missing('choose from the menu'));
   if(type==='fill-blank'){
-   const blanks=$$('input[data-blank]',part),sentence=part.dataset.sentence||'';
-   if(!blanks.length||blanks.some(x=>!clean(x.value)))return {ok:false,text:'',reason:'Complete each blank.'};
-   if(!sentence||(sentence.split('{blank}').length-1)!==blanks.length)return {ok:false,text:'',reason:'Configure one sentence placeholder per blank before publication.'};
-   let i=0;fragments.push(sentence.replace(/\{blank\}/g,()=>clean(blanks[i++]?.value)));continue;
+   const sentence=part.dataset.sentence||'';
+   if(sentence&&(sentence.split('{blank}').length-1)===blanks.length){
+    let b=0;answers.push(sentence.replace(/\{blank\}/g,()=>{const number=++b;return clean(blanks[number-1]?.value)||'[Not answered: blank '+number+']';}));
+   }else {
+    blanks.forEach((x,b)=>answers.push(clean(x.value)||missing('blank '+(b+1))));
+    if(!blanks.length)answers.push(missing('complete the missing words'));
+   }
   }
-  const fields=$$('textarea[data-open-response],input[data-open-response],textarea[data-fragment]',part),answers=fields.map(x=>clean(x.value)).filter(Boolean);
-  const requireWhy=['multiple-choice','true-false-why','dropdown','checkboxes','open-response'].includes(type)||part.dataset.requireWhy==='true';
-  if(requireWhy&&(!fields.length||fields.some(x=>!clean(x.value))))return {ok:false,text:'',reason:'Explain WHY in your own words.'};
-  if(chosen)fragments.push(clean(chosen.dataset.phrase||chosen.value));
-  if(marked.length)fragments.push(marked.map(x=>clean(x.dataset.phrase||x.value)).filter(Boolean).join('; '));
-  if(dropdown)fragments.push(clean(dropdown.selectedOptions?.[0]?.dataset.phrase||dropdown.value));
+  fields.forEach((x,j)=>answers.push(clean(x.value)||missing(fields.length>1?'written response '+(j+1):'write your explanation')));
+  if(!answers.length)answers.push(missing('complete this part'));
   fragments.push(...answers);
  }
- if(!fragments.length)return {ok:false,text:'',reason:'Complete your answer pieces.'};
- return {ok:true,text:fragments.map(v=>/[.!?]$/.test(v)?v:v+'.').join(' ')};
+ return {ok:true,text:fragments.map(v=>/^\[Not answered/.test(v)||/\[not answered:/.test(v)?v:/[.!?]$/.test(v)?v:v+'.').join(' ')};
 }
 /* Mastery workflow: preview is built locally; final button alone copies and opens Forms. */
 const responseDrafts={one:{text:'',valid:false,revision:0},two:{text:'',valid:false,revision:0}};
@@ -252,8 +260,9 @@ function submitResponse(which){
  if(IS_MASTER_TEMPLATE){setStatus(questionStatus(which),'Master template demonstration only. No live Form is connected.');return;}
  const url=WAYFINDER_CONFIG.destinations[key];
  if(!url||!/^https:\/\//.test(url)){setStatus(questionStatus(which),'The Submission Form is not configured. Tell your teacher.');return;}
- // Copy synchronously while the lesson has focus, then open the verified Form.
+ // Copy while this lesson still has focus, before opening the Form.
  const copied=copyText(st.text);
+ 
  if(!copied){setStatus(questionStatus(which),'Copy did not succeed. Try Copy & Submit again.');return;}
  setStatus(questionStatus(which),'Copied. Paste your response into the school Form and submit.');
  window.open(url,'_blank','noopener');
