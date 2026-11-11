@@ -267,7 +267,7 @@ function assemble(which){
   if(type==='fill-blank'){
    const sentence=part.dataset.sentence||'';
    if(sentence&&(sentence.split('{blank}').length-1)===blanks.length){
-    let b=0;answers.push(sentence.replace(/\{blank\}/g,()=>clean(blanks[b]?.value)||'[not answered: blank '+(++b)+']'));
+    let b=0;answers.push(sentence.replace(/\{blank\}/g,()=>{const number=++b;return clean(blanks[number-1]?.value)||'[Not answered: blank '+number+']';}));
    }else {
     blanks.forEach((x,b)=>answers.push(clean(x.value)||missing('blank '+(b+1))));
     if(!blanks.length)answers.push(missing('complete the missing words'));
