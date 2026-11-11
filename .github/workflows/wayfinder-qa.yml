@@ -7,6 +7,7 @@ on:
       - 'AAVTC/**/*.html'
       - 'templates/wayfinder-master.html'
       - '.github/submission-contract-qa.cjs'
+      - '.github/cs-part2-qa.cjs'
       - '.github/wayfinder-qa.cjs'
       - '.github/master-qa-smoke.cjs'
       - 'scripts/check-wayfinder.mjs'
@@ -20,6 +21,7 @@ on:
       - 'AAVTC/**/*.html'
       - 'templates/wayfinder-master.html'
       - '.github/submission-contract-qa.cjs'
+      - '.github/cs-part2-qa.cjs'
       - '.github/wayfinder-qa.cjs'
       - '.github/master-qa-smoke.cjs'
       - 'scripts/check-wayfinder.mjs'
@@ -50,3 +52,11 @@ jobs:
           GITHUB_EVENT_BEFORE: ${{ github.event.before }}
           GITHUB_SHA: ${{ github.sha }}
         run: node .github/submission-contract-qa.cjs --changed
+      - name: Verify complete CS Part 2 offline modes and desktop/mobile controls
+        run: node .github/cs-part2-qa.cjs
+      - name: Preserve CS Part 2 browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cs-part2-browser-evidence
+          path: qa-artifacts/cs-part2
