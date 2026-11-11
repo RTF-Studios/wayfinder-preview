@@ -35,6 +35,24 @@ async function run(){
   legacy:document.querySelectorAll('button.section-copy,button.copy,a.submit[data-submission],textarea.manual-response,.manual-copy-fallback').length,
   previews:document.querySelectorAll('.assembled-preview').length
  }));
+ if(f===master){
+  const captured=await page.evaluate(()=>{
+   const root=document.querySelector('[data-assembler="two"]'),original=root.innerHTML;
+   root.innerHTML='<div data-answer-part data-type="multiple-choice"><fieldset><legend>Part A — Choose</legend><label><input type="radio" name="qaChoice" data-phrase="Selected true" value="true">True</label></fieldset></div><div data-answer-part data-type="open-response"><label>Part B — Explain</label><textarea data-open-response></textarea></div><div data-answer-part data-type="fill-blank" data-sentence="The answer is {blank} and {blank}."><label>Part C — Complete</label><input data-blank><input data-blank></div>';
+   const empty=assemble('two');
+   root.querySelector('[name="qaChoice"]').checked=true;
+   root.querySelector('textarea').value='I gave a reason';
+   root.querySelectorAll('[data-blank]')[0].value='first';
+   const partial=assemble('two');
+   root.querySelectorAll('[data-blank]')[1].value='second';
+   const full=assemble('two');
+   root.innerHTML=original;
+   return {empty,partial,full};
+  });
+  check(captured.empty.ok&&captured.empty.text.includes('[Not answered:'),f,'blank evidence must be previewable');
+  check(captured.partial.ok&&captured.partial.text.includes('Selected true')&&captured.partial.text.includes('I gave a reason')&&captured.partial.text.includes('[Not answered: blank 2]'),f,'partial evidence preserves answers and identifies missing blank');
+  check(captured.full.ok&&!captured.full.text.includes('[Not answered:'),f,'fully filled evidence has no incomplete markers');
+ }
  check(pairs.legacy===0,f,'legacy or third copy control');
  check(pairs.previews>0,f,'one preview required');
  check(pairs.section.length+pairs.evidence.length+pairs.question.length+pairs.xtra.length>0,f,'no response controls');
