@@ -16,7 +16,7 @@ async function run(){
    await runner.loadProject(JSON.stringify(fixture.project));window.vm=runner.vm;
    window.player=vm.runtime.targets.find(t=>t.getName()==='Player');window.falling=vm.runtime.targets.find(t=>t.getName()==='FallingObject');
    window.state=()=>({x:player.x,y:player.y,fallX:falling.x,fallY:falling.y,lives:vm.runtime.getTargetForStage().variables.lives.value,score:vm.runtime.getTargetForStage().variables.score.value,hit:falling.variables.hitThisFall.value,threads:vm.runtime.threads.length});
-   Math.random=()=>0.95;vm.greenFlag();
+   Math.random=()=>0.95;player.setXY(90,20);vm.start();vm.greenFlag();
   },{fixture,assets:data.assets});
   const observed=[];await page.waitForTimeout(150);let s=await page.evaluate(()=>state());assert.equal(s.x,0);assert.equal(s.y,-125);observed.push({test:'green flag reset',state:s});
   await page.evaluate(()=>vm.postIOData('keyboard',{key:'ArrowRight',isDown:true}));await page.waitForTimeout(1100);
