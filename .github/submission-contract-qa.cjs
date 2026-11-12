@@ -3,6 +3,9 @@ const fs=require('fs'),path=require('path'),cp=require('child_process');
 const {pathToFileURL}=require('url');
 const {chromium}=require('./qa-run/node_modules/playwright');
 const root=path.resolve(__dirname,'..'),issues=[],args=process.argv.slice(2);
+const evidenceDir=process.env.WF_QA_EVIDENCE_DIR;
+const evidenceRows=[];
+if(evidenceDir)fs.mkdirSync(path.resolve(root,evidenceDir),{recursive:true});
 const fail=(p,msg)=>issues.push(p+': '+msg);
 const check=(ok,p,msg)=>{if(!ok)fail(p,msg)};
 function changed(){
@@ -49,7 +52,8 @@ async function run(){
  check(!/manual-copy-fallback|showManualCopy|showManualSection|manual-form-link/.test(html),f,'extra fallback UI forbidden');
  try{new(require('vm').Script)(js)}catch(e){fail(f,'JS syntax '+e.message)}
  const page=await browser.newPage({viewport:{width:1280,height:800}});
- const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ const errors=[],network=[];page.on('pageerror',e=>errors.push(e.message));
+ if(evidenceDir&&f.startsWith('Tech/30502'))await page.route(/^https?:\/\//,route=>{network.push(route.request().url());return route.abort()});
  await page.goto(pathToFileURL(p).href,{waitUntil:'domcontentloaded'});
  const pairs=await page.evaluate(()=>({
   section:[...document.querySelectorAll('button.section-build[data-n]')].map(x=>x.dataset.n),
@@ -157,6 +161,7 @@ async function run(){
      check(await page.locator(preview).isVisible(),f,label+' read-only preview appears');
      const expected=await page.locator(preview).innerText();
      check(expected.length>0,f,label+' response assembled');
+     if(evidenceDir&&/empty|partial/.test(label))check(expected.includes('[Not answered:'),f,label+' missing pieces explicitly captured');
      check(await page.locator(final).isEnabled(),f,label+' enables after Create');
      await page.evaluate(()=>{window.qaOrder=[];window.qaForm=''});
      await page.locator(final).click();
@@ -165,8 +170,21 @@ async function run(){
      check(/docs\.google\.com\/forms\//.test(actual.url),f,label+' verified Form destination');
      await page.evaluate(()=>{const ta=document.createElement('textarea');ta.id='qaPaste';document.body.append(ta);ta.focus()});
      await page.keyboard.press('ControlOrMeta+V');
-     check((await page.locator('#qaPaste').inputValue())===expected,f,label+' real clipboard differs from preview');
+     const pasteMatched=(await page.locator('#qaPaste').inputValue())===expected;
+     check(pasteMatched,f,label+' real clipboard differs from preview');
      await page.locator('#qaPaste').evaluate(x=>x.remove());
+     if(evidenceDir){
+       await page.evaluate(()=>{window.qaSavedExec=document.execCommand;document.execCommand=()=>false;window.qaOrder=[];window.qaForm=''});
+       await page.locator(final).click();
+       check(await page.evaluate(()=>!window.qaForm&&!window.qaOrder.includes('open')),f,label+' copy failure must not open Form');
+       await page.evaluate(()=>{document.execCommand=window.qaSavedExec});
+       const field=page.locator(create).locator('xpath=ancestor::section[1]').locator('textarea,input[type=text]').first();
+       if(await field.count()){
+         await field.fill('QA edited after preview');
+         check(await page.locator(final).isDisabled(),f,label+' edits invalidate reviewed response');
+       }
+       evidenceRows.push({file:f,checkpoint:label,clipboardPasteMatched:pasteMatched,copyBeforeOpen:actual.order==='copy,open'});
+     }
    }
    async function fillRoot(root){
      const radios=await root.locator('input[type=radio]').evaluateAll(a=>[...new Set(a.map(x=>x.name))]);
@@ -176,10 +194,15 @@ async function run(){
      const fields=root.locator('textarea,input[type=text]');for(let i=0;i<await fields.count();i++)await fields.nth(i).fill('QA tested this concept carefully');
    }
    for(const n of pairs.section){
+     if(evidenceDir)await validate('#section'+n+' button.section-build','#section'+n+' button.section-submit','#preview'+n,'empty section '+n);
      await fillRoot(page.locator('#section'+n));
      await validate('#section'+n+' button.section-build','#section'+n+' button.section-submit','#preview'+n,'section '+n);
    }
    for(const key of pairs.evidence){
+     if(evidenceDir){
+       if(key==='labs'){const checks=page.locator('.gate-check:visible');for(let i=0;i<await checks.count();i++)await checks.nth(i).check();}
+       await validate('button.evidence-create[data-submission="'+key+'"]','button.evidence-final[data-submission="'+key+'"]','#'+key+'Preview','empty '+key);
+     }
      if(key==='warm'&&await page.locator('#warmAnswer').isVisible()){await page.locator('#warmAnswer').fill('QA response for this scenario');const choices=page.locator('[data-warm-choices]');if(await choices.isVisible())await choices.locator('input[type=radio]').first().check();}
      if(key==='temp'&&await page.locator('#temperatureFeedback').isVisible()){await page.locator('input[name=tempConfidence]').first().check();await page.locator('#temperatureFeedback').fill('QA reflection on what I know');}
      if(key==='labs'){const checks=page.locator('.gate-check:visible');for(let i=0;i<await checks.count();i++)await checks.nth(i).check();if(await page.locator('#studioEvidence').isVisible())await page.locator('#studioEvidence').fill('QA creative design extension');}
@@ -187,6 +210,8 @@ async function run(){
    }
    for(const key of pairs.question){
      const root=page.locator('[data-assembler="'+key+'"]');
+     if(evidenceDir)await validate('button.create-response[data-question="'+key+'"]','button.finalize-response[data-question="'+key+'"]',key==='one'?'#q1assembled':'#q2assembled','empty mastery '+key);
+     if(evidenceDir&&await root.locator('select,input[type=radio],input[type=checkbox]').count())await validate('button.create-response[data-question="'+key+'"]','button.finalize-response[data-question="'+key+'"]',key==='one'?'#q1assembled':'#q2assembled','partial mastery '+key);
      await fillRoot(root);
      await validate('button.create-response[data-question="'+key+'"]','button.finalize-response[data-question="'+key+'"]',key==='one'?'#q1assembled':'#q2assembled','mastery '+key);
    }
@@ -197,7 +222,19 @@ async function run(){
    }
  }
  check(errors.length===0,f,'browser JS errors '+errors.join(';'));
+ if(evidenceDir&&f.startsWith('Tech/30502')){
+   check(network.length===0,f,'offline file attempted network resources '+network.join(','));
+   for(const [label,width,height] of [['chromebook',1366,768],['mobile',390,844]]){
+     await page.setViewportSize({width,height});
+     check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),f,label+' horizontal overflow');
+     await page.evaluate(async()=>{await Promise.all([...document.images].map(im=>im.decode().catch(()=>{})))});
+     const images=await page.evaluate(()=>[...document.images].map(im=>({alt:im.alt,loaded:im.complete&&im.naturalWidth>0})));
+     check(images.every(im=>im.loaded),f,label+' embedded artwork load');
+     await page.screenshot({path:path.resolve(root,evidenceDir,path.basename(f,'.html')+'-'+label+'.png'),fullPage:true});
+     evidenceRows.push({file:f,viewport:label,width,height,images,networkRequests:network});
+   }
+ }
  await page.close();
  }}finally{await browser.close()}
 }
-run().then(()=>{console.log(JSON.stringify({status:issues.length?'FAIL':'PASS',files,issues},null,2));if(issues.length)process.exitCode=1}).catch(e=>{console.error(e);process.exitCode=1});
+run().then(()=>{const report={status:issues.length?'FAIL':'PASS',files,issues,evidence:evidenceRows};if(evidenceDir)fs.writeFileSync(path.resolve(root,evidenceDir,'report.json'),JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));if(issues.length)process.exitCode=1}).catch(e=>{console.error(e);if(evidenceDir)fs.writeFileSync(path.resolve(root,evidenceDir,'error.txt'),String(e.stack||e));process.exitCode=1});
