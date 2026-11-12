@@ -32,6 +32,17 @@ for phase in sys.argv[1:] or ['story','innovation']:
         actualkeys=[url.split('entry.1954781253=')[1] for url in destinations.values()];assert set(actualkeys)==expected and len(actualkeys)==len(expected),(did,'Form identity count')
         assert all(url==B.P.FORM+key for url,key in zip(destinations.values(),actualkeys)),(did,'Form destination')
         visible=doc.get_text(' ',strip=True)
+        for pre in doc.select('pre[aria-label="Block recipe"]'):
+            stack=[];started=False
+            for raw in pre.get_text().splitlines():
+                line=raw.strip()
+                if not line:continue
+                if line.startswith('when '):assert not stack,(did,'event inside control');started=True;continue
+                if not started:continue
+                if line=='end':assert stack,(did,'unmatched end');stack.pop()
+                elif line=='forever' or line.startswith(('if ','repeat until ')):stack.append(line)
+                else:assert line.startswith(('set ','change ','go ','say ','wait ','stop ')),(did,'unknown displayed block',line)
+            assert not stack,(did,'unclosed displayed block')
         assert not re.search(r'\b\d{12}\b',visible),(did,'visible hidden identity')
         target=B.field(tab['text'],'LEARNING TARGET:');assert doc.select_one('[data-slot="learning-target"]').get_text(' ',strip=True)==target
         for rec in records:

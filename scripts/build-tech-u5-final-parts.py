@@ -176,7 +176,8 @@ forever
   wait (1) seconds
 end'''
     add_code(shelf,'Branch 3: extra enemy — add one slower, distinct hazard',enemy)
-    add_code(shelf,'Branch 3: keep the original FallingObject loop',P.full_fall(True))
+    enemy_base=P.full_fall(True).replace('if <<touching [Player]?> and <(hitThisFall) = (0)>> then','if <<<touching [Player]?> and <(hitThisFall) = (0)>> and <(lives) > (0)>> then').replace('if <(hitThisFall) = (0)> then','if <<(hitThisFall) = (0)> and <(lives) > (0)>> then')
+    add_code(shelf,'Branch 3: FallingObject loop — guard both hazards after game-over',enemy_base)
     shelf.append(P.frag(paragraph('Enemy rule: one life per Enemy drop, slower movement plus a pause between drops; Enemy misses award no normal dodge points. Only FallingObject initializes global lives/score. Keep one loop per hazard. Make both hazards readable and test their separate hits, simultaneous hazards and reset before choosing the final difficulty.')))
 
 if __name__=='__main__':
