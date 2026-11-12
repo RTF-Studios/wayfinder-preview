@@ -43,18 +43,21 @@ jobs:
       - name: Install canonical browser-test dependency
         run: |
           mkdir -p .github/qa-run
-          npm install --prefix .github/qa-run --no-save playwright@1.56.1
+          npm install --prefix .github/qa-run --no-save playwright@1.56.1 @turbowarp/packager@3.14.0
           .github/qa-run/node_modules/.bin/playwright install --with-deps chromium
       - name: Verify Prototype with the canonical submission runner
         env:
           WF_QA_EVIDENCE_DIR: qa-artifacts/tech-prototype
         run: node .github/submission-contract-qa.cjs Tech/3050201.html Tech/3050202.html Tech/3050203.html Tech/3050204.html Tech/3050205.html Tech/3050206.html Tech/3050207.html
+      - name: Execute the displayed block recipes in TurboWarp
+        if: always()
+        run: node .github/tech-prototype-code-qa.cjs
       - name: Preserve offline browser, clipboard and viewport evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: tech-prototype-browser-evidence
-          path: qa-artifacts/tech-prototype
+          path: qa-artifacts/tech-prototype*
   submission-contract:
     runs-on: ubuntu-24.04
     timeout-minutes: 20

@@ -1,0 +1,2982 @@
+{
+  "assets": {
+    "6c3a40aaae6027a74e18f31ca3d5906b": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0ODAiIGhlaWdodD0iMzYwIj48cGF0aCBmaWxsPSJ3aGl0ZSIgZD0iTTAgMGg0ODB2MzYwSDB6Ii8+PC9zdmc+",
+    "e1d197dcfdc14aca599787165b041bfd": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PHBhdGggZmlsbD0iIzI1NjNhZSIgZD0iTTAgMGg0MHY0MEgweiIvPjwvc3ZnPg==",
+    "cf340ef0a3f4ecc79bb1a5c8d01e504c": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCI+PGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiNkODQ1NDUiLz48L3N2Zz4="
+  },
+  "fixtures": [
+    {
+      "day": 2,
+      "path": "Tech/3050202.html",
+      "recipes": [
+        "PLAYER \u2014 Events, Motion, Control, Sensing, Operators\nwhen green flag clicked\ngo to x: (0) y: (-125)\nforever\n  if <key [right arrow] pressed?> then\n    change x by (8)\n  end\n  if <key [left arrow] pressed?> then\n    change x by (-8)\n  end\n  if <(x position) > (215)> then\n    set x to (215)\n  end\n  if <(x position) < (-215)> then\n    set x to (-215)\n  end\nend"
+      ],
+      "project": {
+        "targets": [
+          {
+            "isStage": true,
+            "name": "Stage",
+            "variables": {
+              "lives": [
+                "lives",
+                3
+              ],
+              "score": [
+                "score",
+                0
+              ]
+            },
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {},
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+              {
+                "assetId": "6c3a40aaae6027a74e18f31ca3d5906b",
+                "name": "Plain",
+                "bitmapResolution": 1,
+                "md5ext": "6c3a40aaae6027a74e18f31ca3d5906b.svg",
+                "dataFormat": "svg",
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+              }
+            ],
+            "sounds": [],
+            "volume": 100,
+            "layerOrder": 0,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null,
+            "x": 0,
+            "y": 170,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around",
+            "visible": true
+          },
+          {
+            "isStage": false,
+            "name": "Player",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+              "b1": {
+                "opcode": "event_whenflagclicked",
+                "next": "b2",
+                "parent": null,
+                "inputs": {},
+                "fields": {},
+                "shadow": false,
+                "topLevel": true,
+                "x": 20,
+                "y": 20
+              },
+              "b2": {
+                "opcode": "motion_gotoxy",
+                "next": "b3",
+                "parent": "b1",
+                "inputs": {
+                  "X": [
+                    1,
+                    [
+                      4,
+                      "0"
+                    ]
+                  ],
+                  "Y": [
+                    1,
+                    [
+                      4,
+                      "-125"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b3": {
+                "opcode": "control_forever",
+                "next": null,
+                "parent": "b2",
+                "inputs": {
+                  "SUBSTACK": [
+                    2,
+                    "b4"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b4": {
+                "opcode": "control_if",
+                "next": "b8",
+                "parent": "b3",
+                "inputs": {
+                  "CONDITION": [
+                    2,
+                    "b5"
+                  ],
+                  "SUBSTACK": [
+                    2,
+                    "b7"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b5": {
+                "opcode": "sensing_keypressed",
+                "next": null,
+                "parent": "b4",
+                "inputs": {
+                  "KEY_OPTION": [
+                    1,
+                    "b6"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b6": {
+                "opcode": "sensing_keyoptions",
+                "next": null,
+                "parent": "b5",
+                "inputs": {},
+                "fields": {
+                  "KEY_OPTION": [
+                    "right arrow",
+                    null
+                  ]
+                },
+                "shadow": true,
+                "topLevel": false
+              },
+              "b7": {
+                "opcode": "motion_changexby",
+                "next": null,
+                "parent": "b4",
+                "inputs": {
+                  "DX": [
+                    1,
+                    [
+                      4,
+                      "8"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b8": {
+                "opcode": "control_if",
+                "next": "b12",
+                "parent": "b4",
+                "inputs": {
+                  "CONDITION": [
+                    2,
+                    "b9"
+                  ],
+                  "SUBSTACK": [
+                    2,
+                    "b11"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b9": {
+                "opcode": "sensing_keypressed",
+                "next": null,
+                "parent": "b8",
+                "inputs": {
+                  "KEY_OPTION": [
+                    1,
+                    "b10"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b10": {
+                "opcode": "sensing_keyoptions",
+                "next": null,
+                "parent": "b9",
+                "inputs": {},
+                "fields": {
+                  "KEY_OPTION": [
+                    "left arrow",
+                    null
+                  ]
+                },
+                "shadow": true,
+                "topLevel": false
+              },
+              "b11": {
+                "opcode": "motion_changexby",
+                "next": null,
+                "parent": "b8",
+                "inputs": {
+                  "DX": [
+                    1,
+                    [
+                      4,
+                      "-8"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b12": {
+                "opcode": "control_if",
+                "next": "b16",
+                "parent": "b8",
+                "inputs": {
+                  "CONDITION": [
+                    2,
+                    "b13"
+                  ],
+                  "SUBSTACK": [
+                    2,
+                    "b15"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b13": {
+                "opcode": "operator_gt",
+                "next": null,
+                "parent": "b12",
+                "inputs": {
+                  "OPERAND1": [
+                    3,
+                    "b14",
+                    [
+                      4,
+                      "0"
+                    ]
+                  ],
+                  "OPERAND2": [
+                    1,
+                    [
+                      4,
+                      "215"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b14": {
+                "opcode": "motion_xposition",
+                "next": null,
+                "parent": "b13",
+                "inputs": {},
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b15": {
+                "opcode": "motion_setx",
+                "next": null,
+                "parent": "b12",
+                "inputs": {
+                  "X": [
+                    1,
+                    [
+                      4,
+                      "215"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b16": {
+                "opcode": "control_if",
+                "next": null,
+                "parent": "b12",
+                "inputs": {
+                  "CONDITION": [
+                    2,
+                    "b17"
+                  ],
+                  "SUBSTACK": [
+                    2,
+                    "b19"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b17": {
+                "opcode": "operator_lt",
+                "next": null,
+                "parent": "b16",
+                "inputs": {
+                  "OPERAND1": [
+                    3,
+                    "b18",
+                    [
+                      4,
+                      "0"
+                    ]
+                  ],
+                  "OPERAND2": [
+                    1,
+                    [
+                      4,
+                      "-215"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b18": {
+                "opcode": "motion_xposition",
+                "next": null,
+                "parent": "b17",
+                "inputs": {},
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b19": {
+                "opcode": "motion_setx",
+                "next": null,
+                "parent": "b16",
+                "inputs": {
+                  "X": [
+                    1,
+                    [
+                      4,
+                      "-215"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+              {
+                "assetId": "e1d197dcfdc14aca599787165b041bfd",
+                "name": "Square",
+                "bitmapResolution": 1,
+                "md5ext": "e1d197dcfdc14aca599787165b041bfd.svg",
+                "dataFormat": "svg",
+                "rotationCenterX": 20,
+                "rotationCenterY": 20
+              }
+            ],
+            "sounds": [],
+            "volume": 100,
+            "layerOrder": 1,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null,
+            "x": 0,
+            "y": -125,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around",
+            "visible": true
+          },
+          {
+            "isStage": false,
+            "name": "FallingObject",
+            "variables": {
+              "hitThisFall": [
+                "hitThisFall",
+                0
+              ]
+            },
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {},
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+              {
+                "assetId": "cf340ef0a3f4ecc79bb1a5c8d01e504c",
+                "name": "Circle",
+                "bitmapResolution": 1,
+                "md5ext": "cf340ef0a3f4ecc79bb1a5c8d01e504c.svg",
+                "dataFormat": "svg",
+                "rotationCenterX": 20,
+                "rotationCenterY": 20
+              }
+            ],
+            "sounds": [],
+            "volume": 100,
+            "layerOrder": 2,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null,
+            "x": 0,
+            "y": 170,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around",
+            "visible": true
+          }
+        ],
+        "monitors": [],
+        "extensions": [],
+        "meta": {
+          "semver": "3.0.0",
+          "vm": "test displayed recipes",
+          "agent": "RTF source QA"
+        }
+      }
+    },
+    {
+      "day": 3,
+      "path": "Tech/3050203.html",
+      "recipes": [
+        "PLAYER \u2014 Events, Motion, Control, Sensing, Operators\nwhen green flag clicked\ngo to x: (0) y: (-125)\nforever\n  if <key [right arrow] pressed?> then\n    change x by (8)\n  end\n  if <key [left arrow] pressed?> then\n    change x by (-8)\n  end\n  if <(x position) > (215)> then\n    set x to (215)\n  end\n  if <(x position) < (-215)> then\n    set x to (-215)\n  end\nend",
+        "FALLINGOBJECT \u2014 Events, Motion, Control, Operators\nwhen green flag clicked\nforever\n  go to x: (pick random (-210) to (210)) y: (170)\n  repeat until <(y position) < (-175)>\n    change y by (-5)\n    wait (0.03) seconds\n  end\nend"
+      ],
+      "project": {
+        "targets": [
+          {
+            "isStage": true,
+            "name": "Stage",
+            "variables": {
+              "lives": [
+                "lives",
+                3
+              ],
+              "score": [
+                "score",
+                0
+              ]
+            },
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {},
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+              {
+                "assetId": "6c3a40aaae6027a74e18f31ca3d5906b",
+                "name": "Plain",
+                "bitmapResolution": 1,
+                "md5ext": "6c3a40aaae6027a74e18f31ca3d5906b.svg",
+                "dataFormat": "svg",
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+              }
+            ],
+            "sounds": [],
+            "volume": 100,
+            "layerOrder": 0,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null,
+            "x": 0,
+            "y": 170,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around",
+            "visible": true
+          },
+          {
+            "isStage": false,
+            "name": "Player",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+              "b1": {
+                "opcode": "event_whenflagclicked",
+                "next": "b2",
+                "parent": null,
+                "inputs": {},
+                "fields": {},
+                "shadow": false,
+                "topLevel": true,
+                "x": 20,
+                "y": 20
+              },
+              "b2": {
+                "opcode": "motion_gotoxy",
+                "next": "b3",
+                "parent": "b1",
+                "inputs": {
+                  "X": [
+                    1,
+                    [
+                      4,
+                      "0"
+                    ]
+                  ],
+                  "Y": [
+                    1,
+                    [
+                      4,
+                      "-125"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b3": {
+                "opcode": "control_forever",
+                "next": null,
+                "parent": "b2",
+                "inputs": {
+                  "SUBSTACK": [
+                    2,
+                    "b4"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b4": {
+                "opcode": "control_if",
+                "next": "b8",
+                "parent": "b3",
+                "inputs": {
+                  "CONDITION": [
+                    2,
+                    "b5"
+                  ],
+                  "SUBSTACK": [
+                    2,
+                    "b7"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b5": {
+                "opcode": "sensing_keypressed",
+                "next": null,
+                "parent": "b4",
+                "inputs": {
+                  "KEY_OPTION": [
+                    1,
+                    "b6"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b6": {
+                "opcode": "sensing_keyoptions",
+                "next": null,
+                "parent": "b5",
+                "inputs": {},
+                "fields": {
+                  "KEY_OPTION": [
+                    "right arrow",
+                    null
+                  ]
+                },
+                "shadow": true,
+                "topLevel": false
+              },
+              "b7": {
+                "opcode": "motion_changexby",
+                "next": null,
+                "parent": "b4",
+                "inputs": {
+                  "DX": [
+                    1,
+                    [
+                      4,
+                      "8"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b8": {
+                "opcode": "control_if",
+                "next": "b12",
+                "parent": "b4",
+                "inputs": {
+                  "CONDITION": [
+                    2,
+                    "b9"
+                  ],
+                  "SUBSTACK": [
+                    2,
+                    "b11"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b9": {
+                "opcode": "sensing_keypressed",
+                "next": null,
+                "parent": "b8",
+                "inputs": {
+                  "KEY_OPTION": [
+                    1,
+                    "b10"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b10": {
+                "opcode": "sensing_keyoptions",
+                "next": null,
+                "parent": "b9",
+                "inputs": {},
+                "fields": {
+                  "KEY_OPTION": [
+                    "left arrow",
+                    null
+                  ]
+                },
+                "shadow": true,
+                "topLevel": false
+              },
+              "b11": {
+                "opcode": "motion_changexby",
+                "next": null,
+                "parent": "b8",
+                "inputs": {
+                  "DX": [
+                    1,
+                    [
+                      4,
+                      "-8"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b12": {
+                "opcode": "control_if",
+                "next": "b16",
+                "parent": "b8",
+                "inputs": {
+                  "CONDITION": [
+                    2,
+                    "b13"
+                  ],
+                  "SUBSTACK": [
+                    2,
+                    "b15"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b13": {
+                "opcode": "operator_gt",
+                "next": null,
+                "parent": "b12",
+                "inputs": {
+                  "OPERAND1": [
+                    3,
+                    "b14",
+                    [
+                      4,
+                      "0"
+                    ]
+                  ],
+                  "OPERAND2": [
+                    1,
+                    [
+                      4,
+                      "215"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b14": {
+                "opcode": "motion_xposition",
+                "next": null,
+                "parent": "b13",
+                "inputs": {},
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b15": {
+                "opcode": "motion_setx",
+                "next": null,
+                "parent": "b12",
+                "inputs": {
+                  "X": [
+                    1,
+                    [
+                      4,
+                      "215"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b16": {
+                "opcode": "control_if",
+                "next": null,
+                "parent": "b12",
+                "inputs": {
+                  "CONDITION": [
+                    2,
+                    "b17"
+                  ],
+                  "SUBSTACK": [
+                    2,
+                    "b19"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b17": {
+                "opcode": "operator_lt",
+                "next": null,
+                "parent": "b16",
+                "inputs": {
+                  "OPERAND1": [
+                    3,
+                    "b18",
+                    [
+                      4,
+                      "0"
+                    ]
+                  ],
+                  "OPERAND2": [
+                    1,
+                    [
+                      4,
+                      "-215"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b18": {
+                "opcode": "motion_xposition",
+                "next": null,
+                "parent": "b17",
+                "inputs": {},
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b19": {
+                "opcode": "motion_setx",
+                "next": null,
+                "parent": "b16",
+                "inputs": {
+                  "X": [
+                    1,
+                    [
+                      4,
+                      "-215"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+              {
+                "assetId": "e1d197dcfdc14aca599787165b041bfd",
+                "name": "Square",
+                "bitmapResolution": 1,
+                "md5ext": "e1d197dcfdc14aca599787165b041bfd.svg",
+                "dataFormat": "svg",
+                "rotationCenterX": 20,
+                "rotationCenterY": 20
+              }
+            ],
+            "sounds": [],
+            "volume": 100,
+            "layerOrder": 1,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null,
+            "x": 0,
+            "y": -125,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around",
+            "visible": true
+          },
+          {
+            "isStage": false,
+            "name": "FallingObject",
+            "variables": {
+              "hitThisFall": [
+                "hitThisFall",
+                0
+              ]
+            },
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+              "b1": {
+                "opcode": "event_whenflagclicked",
+                "next": "b2",
+                "parent": null,
+                "inputs": {},
+                "fields": {},
+                "shadow": false,
+                "topLevel": true,
+                "x": 20,
+                "y": 20
+              },
+              "b2": {
+                "opcode": "control_forever",
+                "next": null,
+                "parent": "b1",
+                "inputs": {
+                  "SUBSTACK": [
+                    2,
+                    "b3"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b3": {
+                "opcode": "motion_gotoxy",
+                "next": "b5",
+                "parent": "b2",
+                "inputs": {
+                  "X": [
+                    3,
+                    "b4",
+                    [
+                      4,
+                      "0"
+                    ]
+                  ],
+                  "Y": [
+                    1,
+                    [
+                      4,
+                      "170"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b4": {
+                "opcode": "operator_random",
+                "next": null,
+                "parent": "b3",
+                "inputs": {
+                  "FROM": [
+                    1,
+                    [
+                      4,
+                      "-210"
+                    ]
+                  ],
+                  "TO": [
+                    1,
+                    [
+                      4,
+                      "210"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b5": {
+                "opcode": "control_repeat_until",
+                "next": null,
+                "parent": "b3",
+                "inputs": {
+                  "CONDITION": [
+                    2,
+                    "b6"
+                  ],
+                  "SUBSTACK": [
+                    2,
+                    "b8"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b6": {
+                "opcode": "operator_lt",
+                "next": null,
+                "parent": "b5",
+                "inputs": {
+                  "OPERAND1": [
+                    3,
+                    "b7",
+                    [
+                      4,
+                      "0"
+                    ]
+                  ],
+                  "OPERAND2": [
+                    1,
+                    [
+                      4,
+                      "-175"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b7": {
+                "opcode": "motion_yposition",
+                "next": null,
+                "parent": "b6",
+                "inputs": {},
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b8": {
+                "opcode": "motion_changeyby",
+                "next": "b9",
+                "parent": "b5",
+                "inputs": {
+                  "DY": [
+                    1,
+                    [
+                      4,
+                      "-5"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b9": {
+                "opcode": "control_wait",
+                "next": null,
+                "parent": "b8",
+                "inputs": {
+                  "DURATION": [
+                    1,
+                    [
+                      4,
+                      "0.03"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+              {
+                "assetId": "cf340ef0a3f4ecc79bb1a5c8d01e504c",
+                "name": "Circle",
+                "bitmapResolution": 1,
+                "md5ext": "cf340ef0a3f4ecc79bb1a5c8d01e504c.svg",
+                "dataFormat": "svg",
+                "rotationCenterX": 20,
+                "rotationCenterY": 20
+              }
+            ],
+            "sounds": [],
+            "volume": 100,
+            "layerOrder": 2,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null,
+            "x": 0,
+            "y": 170,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around",
+            "visible": true
+          }
+        ],
+        "monitors": [],
+        "extensions": [],
+        "meta": {
+          "semver": "3.0.0",
+          "vm": "test displayed recipes",
+          "agent": "RTF source QA"
+        }
+      }
+    },
+    {
+      "day": 4,
+      "path": "Tech/3050204.html",
+      "recipes": [
+        "PLAYER \u2014 Events, Motion, Control, Sensing, Operators\nwhen green flag clicked\ngo to x: (0) y: (-125)\nforever\n  if <key [right arrow] pressed?> then\n    change x by (8)\n  end\n  if <key [left arrow] pressed?> then\n    change x by (-8)\n  end\n  if <(x position) > (215)> then\n    set x to (215)\n  end\n  if <(x position) < (-215)> then\n    set x to (-215)\n  end\nend",
+        "FALLINGOBJECT \u2014 create lives for ALL sprites;\ncreate hitThisFall for THIS SPRITE ONLY.\nwhen green flag clicked\nset [lives] to (3)\nforever\n  set [hitThisFall] to (0)\n  go to x: (pick random (-210) to (210)) y: (170)\n  repeat until <(y position) < (-175)>\n    change y by (-5)\n    if <<touching [Player]?> and <(hitThisFall) = (0)>> then\n      change [lives] by (-1)\n      set [hitThisFall] to (1)\n      if <(lives) < (1)> then\n        say [Game Over \u2014 press the green flag to restart] for (2) seconds\n        stop [all]\n      end\n    end\n    wait (0.03) seconds\n  end\nend"
+      ],
+      "project": {
+        "targets": [
+          {
+            "isStage": true,
+            "name": "Stage",
+            "variables": {
+              "lives": [
+                "lives",
+                3
+              ],
+              "score": [
+                "score",
+                0
+              ]
+            },
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {},
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+              {
+                "assetId": "6c3a40aaae6027a74e18f31ca3d5906b",
+                "name": "Plain",
+                "bitmapResolution": 1,
+                "md5ext": "6c3a40aaae6027a74e18f31ca3d5906b.svg",
+                "dataFormat": "svg",
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+              }
+            ],
+            "sounds": [],
+            "volume": 100,
+            "layerOrder": 0,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null,
+            "x": 0,
+            "y": 170,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around",
+            "visible": true
+          },
+          {
+            "isStage": false,
+            "name": "Player",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+              "b1": {
+                "opcode": "event_whenflagclicked",
+                "next": "b2",
+                "parent": null,
+                "inputs": {},
+                "fields": {},
+                "shadow": false,
+                "topLevel": true,
+                "x": 20,
+                "y": 20
+              },
+              "b2": {
+                "opcode": "motion_gotoxy",
+                "next": "b3",
+                "parent": "b1",
+                "inputs": {
+                  "X": [
+                    1,
+                    [
+                      4,
+                      "0"
+                    ]
+                  ],
+                  "Y": [
+                    1,
+                    [
+                      4,
+                      "-125"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b3": {
+                "opcode": "control_forever",
+                "next": null,
+                "parent": "b2",
+                "inputs": {
+                  "SUBSTACK": [
+                    2,
+                    "b4"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b4": {
+                "opcode": "control_if",
+                "next": "b8",
+                "parent": "b3",
+                "inputs": {
+                  "CONDITION": [
+                    2,
+                    "b5"
+                  ],
+                  "SUBSTACK": [
+                    2,
+                    "b7"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b5": {
+                "opcode": "sensing_keypressed",
+                "next": null,
+                "parent": "b4",
+                "inputs": {
+                  "KEY_OPTION": [
+                    1,
+                    "b6"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b6": {
+                "opcode": "sensing_keyoptions",
+                "next": null,
+                "parent": "b5",
+                "inputs": {},
+                "fields": {
+                  "KEY_OPTION": [
+                    "right arrow",
+                    null
+                  ]
+                },
+                "shadow": true,
+                "topLevel": false
+              },
+              "b7": {
+                "opcode": "motion_changexby",
+                "next": null,
+                "parent": "b4",
+                "inputs": {
+                  "DX": [
+                    1,
+                    [
+                      4,
+                      "8"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b8": {
+                "opcode": "control_if",
+                "next": "b12",
+                "parent": "b4",
+                "inputs": {
+                  "CONDITION": [
+                    2,
+                    "b9"
+                  ],
+                  "SUBSTACK": [
+                    2,
+                    "b11"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b9": {
+                "opcode": "sensing_keypressed",
+                "next": null,
+                "parent": "b8",
+                "inputs": {
+                  "KEY_OPTION": [
+                    1,
+                    "b10"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b10": {
+                "opcode": "sensing_keyoptions",
+                "next": null,
+                "parent": "b9",
+                "inputs": {},
+                "fields": {
+                  "KEY_OPTION": [
+                    "left arrow",
+                    null
+                  ]
+                },
+                "shadow": true,
+                "topLevel": false
+              },
+              "b11": {
+                "opcode": "motion_changexby",
+                "next": null,
+                "parent": "b8",
+                "inputs": {
+                  "DX": [
+                    1,
+                    [
+                      4,
+                      "-8"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b12": {
+                "opcode": "control_if",
+                "next": "b16",
+                "parent": "b8",
+                "inputs": {
+                  "CONDITION": [
+                    2,
+                    "b13"
+                  ],
+                  "SUBSTACK": [
+                    2,
+                    "b15"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b13": {
+                "opcode": "operator_gt",
+                "next": null,
+                "parent": "b12",
+                "inputs": {
+                  "OPERAND1": [
+                    3,
+                    "b14",
+                    [
+                      4,
+                      "0"
+                    ]
+                  ],
+                  "OPERAND2": [
+                    1,
+                    [
+                      4,
+                      "215"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b14": {
+                "opcode": "motion_xposition",
+                "next": null,
+                "parent": "b13",
+                "inputs": {},
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b15": {
+                "opcode": "motion_setx",
+                "next": null,
+                "parent": "b12",
+                "inputs": {
+                  "X": [
+                    1,
+                    [
+                      4,
+                      "215"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b16": {
+                "opcode": "control_if",
+                "next": null,
+                "parent": "b12",
+                "inputs": {
+                  "CONDITION": [
+                    2,
+                    "b17"
+                  ],
+                  "SUBSTACK": [
+                    2,
+                    "b19"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b17": {
+                "opcode": "operator_lt",
+                "next": null,
+                "parent": "b16",
+                "inputs": {
+                  "OPERAND1": [
+                    3,
+                    "b18",
+                    [
+                      4,
+                      "0"
+                    ]
+                  ],
+                  "OPERAND2": [
+                    1,
+                    [
+                      4,
+                      "-215"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b18": {
+                "opcode": "motion_xposition",
+                "next": null,
+                "parent": "b17",
+                "inputs": {},
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b19": {
+                "opcode": "motion_setx",
+                "next": null,
+                "parent": "b16",
+                "inputs": {
+                  "X": [
+                    1,
+                    [
+                      4,
+                      "-215"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+              {
+                "assetId": "e1d197dcfdc14aca599787165b041bfd",
+                "name": "Square",
+                "bitmapResolution": 1,
+                "md5ext": "e1d197dcfdc14aca599787165b041bfd.svg",
+                "dataFormat": "svg",
+                "rotationCenterX": 20,
+                "rotationCenterY": 20
+              }
+            ],
+            "sounds": [],
+            "volume": 100,
+            "layerOrder": 1,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null,
+            "x": 0,
+            "y": -125,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around",
+            "visible": true
+          },
+          {
+            "isStage": false,
+            "name": "FallingObject",
+            "variables": {
+              "hitThisFall": [
+                "hitThisFall",
+                0
+              ]
+            },
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+              "b1": {
+                "opcode": "event_whenflagclicked",
+                "next": "b2",
+                "parent": null,
+                "inputs": {},
+                "fields": {},
+                "shadow": false,
+                "topLevel": true,
+                "x": 20,
+                "y": 20
+              },
+              "b2": {
+                "opcode": "data_setvariableto",
+                "next": "b3",
+                "parent": "b1",
+                "inputs": {
+                  "VALUE": [
+                    1,
+                    [
+                      4,
+                      "3"
+                    ]
+                  ]
+                },
+                "fields": {
+                  "VARIABLE": [
+                    "lives",
+                    "lives"
+                  ]
+                },
+                "shadow": false,
+                "topLevel": false
+              },
+              "b3": {
+                "opcode": "control_forever",
+                "next": null,
+                "parent": "b2",
+                "inputs": {
+                  "SUBSTACK": [
+                    2,
+                    "b4"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b4": {
+                "opcode": "data_setvariableto",
+                "next": "b5",
+                "parent": "b3",
+                "inputs": {
+                  "VALUE": [
+                    1,
+                    [
+                      4,
+                      "0"
+                    ]
+                  ]
+                },
+                "fields": {
+                  "VARIABLE": [
+                    "hitThisFall",
+                    "hitThisFall"
+                  ]
+                },
+                "shadow": false,
+                "topLevel": false
+              },
+              "b5": {
+                "opcode": "motion_gotoxy",
+                "next": "b7",
+                "parent": "b4",
+                "inputs": {
+                  "X": [
+                    3,
+                    "b6",
+                    [
+                      4,
+                      "0"
+                    ]
+                  ],
+                  "Y": [
+                    1,
+                    [
+                      4,
+                      "170"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b6": {
+                "opcode": "operator_random",
+                "next": null,
+                "parent": "b5",
+                "inputs": {
+                  "FROM": [
+                    1,
+                    [
+                      4,
+                      "-210"
+                    ]
+                  ],
+                  "TO": [
+                    1,
+                    [
+                      4,
+                      "210"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b7": {
+                "opcode": "control_repeat_until",
+                "next": null,
+                "parent": "b5",
+                "inputs": {
+                  "CONDITION": [
+                    2,
+                    "b8"
+                  ],
+                  "SUBSTACK": [
+                    2,
+                    "b10"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b8": {
+                "opcode": "operator_lt",
+                "next": null,
+                "parent": "b7",
+                "inputs": {
+                  "OPERAND1": [
+                    3,
+                    "b9",
+                    [
+                      4,
+                      "0"
+                    ]
+                  ],
+                  "OPERAND2": [
+                    1,
+                    [
+                      4,
+                      "-175"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b9": {
+                "opcode": "motion_yposition",
+                "next": null,
+                "parent": "b8",
+                "inputs": {},
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b10": {
+                "opcode": "motion_changeyby",
+                "next": "b11",
+                "parent": "b7",
+                "inputs": {
+                  "DY": [
+                    1,
+                    [
+                      4,
+                      "-5"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b11": {
+                "opcode": "control_if",
+                "next": "b24",
+                "parent": "b10",
+                "inputs": {
+                  "CONDITION": [
+                    2,
+                    "b12"
+                  ],
+                  "SUBSTACK": [
+                    2,
+                    "b17"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b12": {
+                "opcode": "operator_and",
+                "next": null,
+                "parent": "b11",
+                "inputs": {
+                  "OPERAND1": [
+                    2,
+                    "b14"
+                  ],
+                  "OPERAND2": [
+                    2,
+                    "b15"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b13": {
+                "opcode": "sensing_touchingobjectmenu",
+                "next": null,
+                "parent": "b14",
+                "inputs": {},
+                "fields": {
+                  "TOUCHINGOBJECTMENU": [
+                    "Player",
+                    null
+                  ]
+                },
+                "shadow": true,
+                "topLevel": false
+              },
+              "b14": {
+                "opcode": "sensing_touchingobject",
+                "next": null,
+                "parent": "b12",
+                "inputs": {
+                  "TOUCHINGOBJECTMENU": [
+                    1,
+                    "b13"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b15": {
+                "opcode": "operator_equals",
+                "next": null,
+                "parent": "b12",
+                "inputs": {
+                  "OPERAND1": [
+                    3,
+                    "b16",
+                    [
+                      4,
+                      "0"
+                    ]
+                  ],
+                  "OPERAND2": [
+                    1,
+                    [
+                      4,
+                      "0"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b16": {
+                "opcode": "data_variable",
+                "next": null,
+                "parent": "b15",
+                "inputs": {},
+                "fields": {
+                  "VARIABLE": [
+                    "hitThisFall",
+                    "hitThisFall"
+                  ]
+                },
+                "shadow": false,
+                "topLevel": false
+              },
+              "b17": {
+                "opcode": "data_changevariableby",
+                "next": "b18",
+                "parent": "b11",
+                "inputs": {
+                  "VALUE": [
+                    1,
+                    [
+                      4,
+                      "-1"
+                    ]
+                  ]
+                },
+                "fields": {
+                  "VARIABLE": [
+                    "lives",
+                    "lives"
+                  ]
+                },
+                "shadow": false,
+                "topLevel": false
+              },
+              "b18": {
+                "opcode": "data_setvariableto",
+                "next": "b19",
+                "parent": "b17",
+                "inputs": {
+                  "VALUE": [
+                    1,
+                    [
+                      4,
+                      "1"
+                    ]
+                  ]
+                },
+                "fields": {
+                  "VARIABLE": [
+                    "hitThisFall",
+                    "hitThisFall"
+                  ]
+                },
+                "shadow": false,
+                "topLevel": false
+              },
+              "b19": {
+                "opcode": "control_if",
+                "next": null,
+                "parent": "b18",
+                "inputs": {
+                  "CONDITION": [
+                    2,
+                    "b20"
+                  ],
+                  "SUBSTACK": [
+                    2,
+                    "b22"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b20": {
+                "opcode": "operator_lt",
+                "next": null,
+                "parent": "b19",
+                "inputs": {
+                  "OPERAND1": [
+                    3,
+                    "b21",
+                    [
+                      4,
+                      "0"
+                    ]
+                  ],
+                  "OPERAND2": [
+                    1,
+                    [
+                      4,
+                      "1"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b21": {
+                "opcode": "data_variable",
+                "next": null,
+                "parent": "b20",
+                "inputs": {},
+                "fields": {
+                  "VARIABLE": [
+                    "lives",
+                    "lives"
+                  ]
+                },
+                "shadow": false,
+                "topLevel": false
+              },
+              "b22": {
+                "opcode": "looks_sayforsecs",
+                "next": "b23",
+                "parent": "b19",
+                "inputs": {
+                  "MESSAGE": [
+                    1,
+                    [
+                      10,
+                      "Game Over \u2014 press the green flag to restart"
+                    ]
+                  ],
+                  "SECS": [
+                    1,
+                    [
+                      4,
+                      "2"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b23": {
+                "opcode": "control_stop",
+                "next": null,
+                "parent": "b22",
+                "inputs": {},
+                "fields": {
+                  "STOP_OPTION": [
+                    "all",
+                    null
+                  ]
+                },
+                "shadow": false,
+                "topLevel": false,
+                "mutation": {
+                  "tagName": "mutation",
+                  "children": [],
+                  "hasnext": "false"
+                }
+              },
+              "b24": {
+                "opcode": "control_wait",
+                "next": null,
+                "parent": "b11",
+                "inputs": {
+                  "DURATION": [
+                    1,
+                    [
+                      4,
+                      "0.03"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+              {
+                "assetId": "cf340ef0a3f4ecc79bb1a5c8d01e504c",
+                "name": "Circle",
+                "bitmapResolution": 1,
+                "md5ext": "cf340ef0a3f4ecc79bb1a5c8d01e504c.svg",
+                "dataFormat": "svg",
+                "rotationCenterX": 20,
+                "rotationCenterY": 20
+              }
+            ],
+            "sounds": [],
+            "volume": 100,
+            "layerOrder": 2,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null,
+            "x": 0,
+            "y": 170,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around",
+            "visible": true
+          }
+        ],
+        "monitors": [],
+        "extensions": [],
+        "meta": {
+          "semver": "3.0.0",
+          "vm": "test displayed recipes",
+          "agent": "RTF source QA"
+        }
+      }
+    },
+    {
+      "day": 5,
+      "path": "Tech/3050205.html",
+      "recipes": [
+        "PLAYER \u2014 Events, Motion, Control, Sensing, Operators\nwhen green flag clicked\ngo to x: (0) y: (-125)\nforever\n  if <key [right arrow] pressed?> then\n    change x by (8)\n  end\n  if <key [left arrow] pressed?> then\n    change x by (-8)\n  end\n  if <(x position) > (215)> then\n    set x to (215)\n  end\n  if <(x position) < (-215)> then\n    set x to (-215)\n  end\nend",
+        "FALLINGOBJECT \u2014 create lives for ALL sprites;\ncreate hitThisFall for THIS SPRITE ONLY. Create score for ALL sprites.\nwhen green flag clicked\nset [lives] to (3)\nset [score] to (0)\nforever\n  set [hitThisFall] to (0)\n  go to x: (pick random (-210) to (210)) y: (170)\n  repeat until <(y position) < (-175)>\n    change y by (-5)\n    if <<touching [Player]?> and <(hitThisFall) = (0)>> then\n      change [lives] by (-1)\n      set [hitThisFall] to (1)\n      if <(lives) < (1)> then\n        say [Game Over \u2014 press the green flag to restart] for (2) seconds\n        stop [all]\n      end\n    end\n    wait (0.03) seconds\n  end\n  if <(hitThisFall) = (0)> then\n    change [score] by (1)\n  end\nend"
+      ],
+      "project": {
+        "targets": [
+          {
+            "isStage": true,
+            "name": "Stage",
+            "variables": {
+              "lives": [
+                "lives",
+                3
+              ],
+              "score": [
+                "score",
+                0
+              ]
+            },
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {},
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+              {
+                "assetId": "6c3a40aaae6027a74e18f31ca3d5906b",
+                "name": "Plain",
+                "bitmapResolution": 1,
+                "md5ext": "6c3a40aaae6027a74e18f31ca3d5906b.svg",
+                "dataFormat": "svg",
+                "rotationCenterX": 240,
+                "rotationCenterY": 180
+              }
+            ],
+            "sounds": [],
+            "volume": 100,
+            "layerOrder": 0,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null,
+            "x": 0,
+            "y": 170,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around",
+            "visible": true
+          },
+          {
+            "isStage": false,
+            "name": "Player",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+              "b1": {
+                "opcode": "event_whenflagclicked",
+                "next": "b2",
+                "parent": null,
+                "inputs": {},
+                "fields": {},
+                "shadow": false,
+                "topLevel": true,
+                "x": 20,
+                "y": 20
+              },
+              "b2": {
+                "opcode": "motion_gotoxy",
+                "next": "b3",
+                "parent": "b1",
+                "inputs": {
+                  "X": [
+                    1,
+                    [
+                      4,
+                      "0"
+                    ]
+                  ],
+                  "Y": [
+                    1,
+                    [
+                      4,
+                      "-125"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b3": {
+                "opcode": "control_forever",
+                "next": null,
+                "parent": "b2",
+                "inputs": {
+                  "SUBSTACK": [
+                    2,
+                    "b4"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b4": {
+                "opcode": "control_if",
+                "next": "b8",
+                "parent": "b3",
+                "inputs": {
+                  "CONDITION": [
+                    2,
+                    "b5"
+                  ],
+                  "SUBSTACK": [
+                    2,
+                    "b7"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b5": {
+                "opcode": "sensing_keypressed",
+                "next": null,
+                "parent": "b4",
+                "inputs": {
+                  "KEY_OPTION": [
+                    1,
+                    "b6"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b6": {
+                "opcode": "sensing_keyoptions",
+                "next": null,
+                "parent": "b5",
+                "inputs": {},
+                "fields": {
+                  "KEY_OPTION": [
+                    "right arrow",
+                    null
+                  ]
+                },
+                "shadow": true,
+                "topLevel": false
+              },
+              "b7": {
+                "opcode": "motion_changexby",
+                "next": null,
+                "parent": "b4",
+                "inputs": {
+                  "DX": [
+                    1,
+                    [
+                      4,
+                      "8"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b8": {
+                "opcode": "control_if",
+                "next": "b12",
+                "parent": "b4",
+                "inputs": {
+                  "CONDITION": [
+                    2,
+                    "b9"
+                  ],
+                  "SUBSTACK": [
+                    2,
+                    "b11"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b9": {
+                "opcode": "sensing_keypressed",
+                "next": null,
+                "parent": "b8",
+                "inputs": {
+                  "KEY_OPTION": [
+                    1,
+                    "b10"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b10": {
+                "opcode": "sensing_keyoptions",
+                "next": null,
+                "parent": "b9",
+                "inputs": {},
+                "fields": {
+                  "KEY_OPTION": [
+                    "left arrow",
+                    null
+                  ]
+                },
+                "shadow": true,
+                "topLevel": false
+              },
+              "b11": {
+                "opcode": "motion_changexby",
+                "next": null,
+                "parent": "b8",
+                "inputs": {
+                  "DX": [
+                    1,
+                    [
+                      4,
+                      "-8"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b12": {
+                "opcode": "control_if",
+                "next": "b16",
+                "parent": "b8",
+                "inputs": {
+                  "CONDITION": [
+                    2,
+                    "b13"
+                  ],
+                  "SUBSTACK": [
+                    2,
+                    "b15"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b13": {
+                "opcode": "operator_gt",
+                "next": null,
+                "parent": "b12",
+                "inputs": {
+                  "OPERAND1": [
+                    3,
+                    "b14",
+                    [
+                      4,
+                      "0"
+                    ]
+                  ],
+                  "OPERAND2": [
+                    1,
+                    [
+                      4,
+                      "215"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b14": {
+                "opcode": "motion_xposition",
+                "next": null,
+                "parent": "b13",
+                "inputs": {},
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b15": {
+                "opcode": "motion_setx",
+                "next": null,
+                "parent": "b12",
+                "inputs": {
+                  "X": [
+                    1,
+                    [
+                      4,
+                      "215"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b16": {
+                "opcode": "control_if",
+                "next": null,
+                "parent": "b12",
+                "inputs": {
+                  "CONDITION": [
+                    2,
+                    "b17"
+                  ],
+                  "SUBSTACK": [
+                    2,
+                    "b19"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b17": {
+                "opcode": "operator_lt",
+                "next": null,
+                "parent": "b16",
+                "inputs": {
+                  "OPERAND1": [
+                    3,
+                    "b18",
+                    [
+                      4,
+                      "0"
+                    ]
+                  ],
+                  "OPERAND2": [
+                    1,
+                    [
+                      4,
+                      "-215"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b18": {
+                "opcode": "motion_xposition",
+                "next": null,
+                "parent": "b17",
+                "inputs": {},
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b19": {
+                "opcode": "motion_setx",
+                "next": null,
+                "parent": "b16",
+                "inputs": {
+                  "X": [
+                    1,
+                    [
+                      4,
+                      "-215"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+              {
+                "assetId": "e1d197dcfdc14aca599787165b041bfd",
+                "name": "Square",
+                "bitmapResolution": 1,
+                "md5ext": "e1d197dcfdc14aca599787165b041bfd.svg",
+                "dataFormat": "svg",
+                "rotationCenterX": 20,
+                "rotationCenterY": 20
+              }
+            ],
+            "sounds": [],
+            "volume": 100,
+            "layerOrder": 1,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null,
+            "x": 0,
+            "y": -125,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around",
+            "visible": true
+          },
+          {
+            "isStage": false,
+            "name": "FallingObject",
+            "variables": {
+              "hitThisFall": [
+                "hitThisFall",
+                0
+              ]
+            },
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+              "b1": {
+                "opcode": "event_whenflagclicked",
+                "next": "b2",
+                "parent": null,
+                "inputs": {},
+                "fields": {},
+                "shadow": false,
+                "topLevel": true,
+                "x": 20,
+                "y": 20
+              },
+              "b2": {
+                "opcode": "data_setvariableto",
+                "next": "b3",
+                "parent": "b1",
+                "inputs": {
+                  "VALUE": [
+                    1,
+                    [
+                      4,
+                      "3"
+                    ]
+                  ]
+                },
+                "fields": {
+                  "VARIABLE": [
+                    "lives",
+                    "lives"
+                  ]
+                },
+                "shadow": false,
+                "topLevel": false
+              },
+              "b3": {
+                "opcode": "data_setvariableto",
+                "next": "b4",
+                "parent": "b2",
+                "inputs": {
+                  "VALUE": [
+                    1,
+                    [
+                      4,
+                      "0"
+                    ]
+                  ]
+                },
+                "fields": {
+                  "VARIABLE": [
+                    "score",
+                    "score"
+                  ]
+                },
+                "shadow": false,
+                "topLevel": false
+              },
+              "b4": {
+                "opcode": "control_forever",
+                "next": null,
+                "parent": "b3",
+                "inputs": {
+                  "SUBSTACK": [
+                    2,
+                    "b5"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b5": {
+                "opcode": "data_setvariableto",
+                "next": "b6",
+                "parent": "b4",
+                "inputs": {
+                  "VALUE": [
+                    1,
+                    [
+                      4,
+                      "0"
+                    ]
+                  ]
+                },
+                "fields": {
+                  "VARIABLE": [
+                    "hitThisFall",
+                    "hitThisFall"
+                  ]
+                },
+                "shadow": false,
+                "topLevel": false
+              },
+              "b6": {
+                "opcode": "motion_gotoxy",
+                "next": "b8",
+                "parent": "b5",
+                "inputs": {
+                  "X": [
+                    3,
+                    "b7",
+                    [
+                      4,
+                      "0"
+                    ]
+                  ],
+                  "Y": [
+                    1,
+                    [
+                      4,
+                      "170"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b7": {
+                "opcode": "operator_random",
+                "next": null,
+                "parent": "b6",
+                "inputs": {
+                  "FROM": [
+                    1,
+                    [
+                      4,
+                      "-210"
+                    ]
+                  ],
+                  "TO": [
+                    1,
+                    [
+                      4,
+                      "210"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b8": {
+                "opcode": "control_repeat_until",
+                "next": "b26",
+                "parent": "b6",
+                "inputs": {
+                  "CONDITION": [
+                    2,
+                    "b9"
+                  ],
+                  "SUBSTACK": [
+                    2,
+                    "b11"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b9": {
+                "opcode": "operator_lt",
+                "next": null,
+                "parent": "b8",
+                "inputs": {
+                  "OPERAND1": [
+                    3,
+                    "b10",
+                    [
+                      4,
+                      "0"
+                    ]
+                  ],
+                  "OPERAND2": [
+                    1,
+                    [
+                      4,
+                      "-175"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b10": {
+                "opcode": "motion_yposition",
+                "next": null,
+                "parent": "b9",
+                "inputs": {},
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b11": {
+                "opcode": "motion_changeyby",
+                "next": "b12",
+                "parent": "b8",
+                "inputs": {
+                  "DY": [
+                    1,
+                    [
+                      4,
+                      "-5"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b12": {
+                "opcode": "control_if",
+                "next": "b25",
+                "parent": "b11",
+                "inputs": {
+                  "CONDITION": [
+                    2,
+                    "b13"
+                  ],
+                  "SUBSTACK": [
+                    2,
+                    "b18"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b13": {
+                "opcode": "operator_and",
+                "next": null,
+                "parent": "b12",
+                "inputs": {
+                  "OPERAND1": [
+                    2,
+                    "b15"
+                  ],
+                  "OPERAND2": [
+                    2,
+                    "b16"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b14": {
+                "opcode": "sensing_touchingobjectmenu",
+                "next": null,
+                "parent": "b15",
+                "inputs": {},
+                "fields": {
+                  "TOUCHINGOBJECTMENU": [
+                    "Player",
+                    null
+                  ]
+                },
+                "shadow": true,
+                "topLevel": false
+              },
+              "b15": {
+                "opcode": "sensing_touchingobject",
+                "next": null,
+                "parent": "b13",
+                "inputs": {
+                  "TOUCHINGOBJECTMENU": [
+                    1,
+                    "b14"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b16": {
+                "opcode": "operator_equals",
+                "next": null,
+                "parent": "b13",
+                "inputs": {
+                  "OPERAND1": [
+                    3,
+                    "b17",
+                    [
+                      4,
+                      "0"
+                    ]
+                  ],
+                  "OPERAND2": [
+                    1,
+                    [
+                      4,
+                      "0"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b17": {
+                "opcode": "data_variable",
+                "next": null,
+                "parent": "b16",
+                "inputs": {},
+                "fields": {
+                  "VARIABLE": [
+                    "hitThisFall",
+                    "hitThisFall"
+                  ]
+                },
+                "shadow": false,
+                "topLevel": false
+              },
+              "b18": {
+                "opcode": "data_changevariableby",
+                "next": "b19",
+                "parent": "b12",
+                "inputs": {
+                  "VALUE": [
+                    1,
+                    [
+                      4,
+                      "-1"
+                    ]
+                  ]
+                },
+                "fields": {
+                  "VARIABLE": [
+                    "lives",
+                    "lives"
+                  ]
+                },
+                "shadow": false,
+                "topLevel": false
+              },
+              "b19": {
+                "opcode": "data_setvariableto",
+                "next": "b20",
+                "parent": "b18",
+                "inputs": {
+                  "VALUE": [
+                    1,
+                    [
+                      4,
+                      "1"
+                    ]
+                  ]
+                },
+                "fields": {
+                  "VARIABLE": [
+                    "hitThisFall",
+                    "hitThisFall"
+                  ]
+                },
+                "shadow": false,
+                "topLevel": false
+              },
+              "b20": {
+                "opcode": "control_if",
+                "next": null,
+                "parent": "b19",
+                "inputs": {
+                  "CONDITION": [
+                    2,
+                    "b21"
+                  ],
+                  "SUBSTACK": [
+                    2,
+                    "b23"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b21": {
+                "opcode": "operator_lt",
+                "next": null,
+                "parent": "b20",
+                "inputs": {
+                  "OPERAND1": [
+                    3,
+                    "b22",
+                    [
+                      4,
+                      "0"
+                    ]
+                  ],
+                  "OPERAND2": [
+                    1,
+                    [
+                      4,
+                      "1"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b22": {
+                "opcode": "data_variable",
+                "next": null,
+                "parent": "b21",
+                "inputs": {},
+                "fields": {
+                  "VARIABLE": [
+                    "lives",
+                    "lives"
+                  ]
+                },
+                "shadow": false,
+                "topLevel": false
+              },
+              "b23": {
+                "opcode": "looks_sayforsecs",
+                "next": "b24",
+                "parent": "b20",
+                "inputs": {
+                  "MESSAGE": [
+                    1,
+                    [
+                      10,
+                      "Game Over \u2014 press the green flag to restart"
+                    ]
+                  ],
+                  "SECS": [
+                    1,
+                    [
+                      4,
+                      "2"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b24": {
+                "opcode": "control_stop",
+                "next": null,
+                "parent": "b23",
+                "inputs": {},
+                "fields": {
+                  "STOP_OPTION": [
+                    "all",
+                    null
+                  ]
+                },
+                "shadow": false,
+                "topLevel": false,
+                "mutation": {
+                  "tagName": "mutation",
+                  "children": [],
+                  "hasnext": "false"
+                }
+              },
+              "b25": {
+                "opcode": "control_wait",
+                "next": null,
+                "parent": "b12",
+                "inputs": {
+                  "DURATION": [
+                    1,
+                    [
+                      4,
+                      "0.03"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b26": {
+                "opcode": "control_if",
+                "next": null,
+                "parent": "b8",
+                "inputs": {
+                  "CONDITION": [
+                    2,
+                    "b27"
+                  ],
+                  "SUBSTACK": [
+                    2,
+                    "b29"
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b27": {
+                "opcode": "operator_equals",
+                "next": null,
+                "parent": "b26",
+                "inputs": {
+                  "OPERAND1": [
+                    3,
+                    "b28",
+                    [
+                      4,
+                      "0"
+                    ]
+                  ],
+                  "OPERAND2": [
+                    1,
+                    [
+                      4,
+                      "0"
+                    ]
+                  ]
+                },
+                "fields": {},
+                "shadow": false,
+                "topLevel": false
+              },
+              "b28": {
+                "opcode": "data_variable",
+                "next": null,
+                "parent": "b27",
+                "inputs": {},
+                "fields": {
+                  "VARIABLE": [
+                    "hitThisFall",
+                    "hitThisFall"
+                  ]
+                },
+                "shadow": false,
+                "topLevel": false
+              },
+              "b29": {
+                "opcode": "data_changevariableby",
+                "next": null,
+                "parent": "b26",
+                "inputs": {
+                  "VALUE": [
+                    1,
+                    [
+                      4,
+                      "1"
+                    ]
+                  ]
+                },
+                "fields": {
+                  "VARIABLE": [
+                    "score",
+                    "score"
+                  ]
+                },
+                "shadow": false,
+                "topLevel": false
+              }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+              {
+                "assetId": "cf340ef0a3f4ecc79bb1a5c8d01e504c",
+                "name": "Circle",
+                "bitmapResolution": 1,
+                "md5ext": "cf340ef0a3f4ecc79bb1a5c8d01e504c.svg",
+                "dataFormat": "svg",
+                "rotationCenterX": 20,
+                "rotationCenterY": 20
+              }
+            ],
+            "sounds": [],
+            "volume": 100,
+            "layerOrder": 2,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null,
+            "x": 0,
+            "y": 170,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around",
+            "visible": true
+          }
+        ],
+        "monitors": [],
+        "extensions": [],
+        "meta": {
+          "semver": "3.0.0",
+          "vm": "test displayed recipes",
+          "agent": "RTF source QA"
+        }
+      }
+    }
+  ]
+}
