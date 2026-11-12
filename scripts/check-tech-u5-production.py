@@ -45,6 +45,8 @@ for phase in sys.argv[1:] or ['story','innovation']:
             assert not stack,(did,'unclosed displayed block')
         assert not re.search(r'\b\d{12}\b',visible),(did,'visible hidden identity')
         target=B.field(tab['text'],'LEARNING TARGET:');assert doc.select_one('[data-slot="learning-target"]').get_text(' ',strip=True)==target
+        teks=re.search(r'Priority TEKS — In Our Words\n((?:§[^\n]+\n)+)',tab['text']).group(1)
+        assert doc.select_one('[data-slot="priority-teks"]').get_text(' ',strip=True)==' '.join(teks.splitlines()),(did,'TEKS source mismatch')
         for rec in records:
             assert rec['key'] in pins and pins[rec['key']]=={'prompt':rec['prompt'],'rubric':rec['rubric']},(did,'source/Collector mismatch',rec['key'])
             assert rec['prompt'] in visible,(did,'visible question mismatch')
