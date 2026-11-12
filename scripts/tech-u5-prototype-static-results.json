@@ -46,8 +46,8 @@
       "status": "STATIC PASS",
       "issues": [],
       "prior_bytes": null,
-      "bytes": 316678,
-      "sha256": "57a01c28276ad3c859b228d4e0fe691d6ff61daff3fa59aec406eee8c04349e1"
+      "bytes": 316638,
+      "sha256": "86ecbd8e2920b660938adda7aaaa409d7b29beca6bdf4a45a111e090ede826de"
     },
     {
       "path": "Tech/3050207.html",

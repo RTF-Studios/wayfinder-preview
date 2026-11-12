@@ -177,7 +177,7 @@ def build(day):
         anchor=section(d,'studyRecall')
         stems=['Separate sprites help because … . Before decorating I would … .','A change of +8 … . The event and repeated check … .','The next fall needs … . Random x … .','To count a hit once … . To reward a dodge … . I would test … .']
         for m in assessments:
-            n=int(m[1]);card=frag(assessment_card(n,m[3],m[4],stems[n-1]));anchor.insert_after(card);anchor=d.find(id='assessmentSection'+str(n));destinations['section'+str(n)]=FORM+m[2]
+            n=int(m[1]);card=frag(assessment_card(n,m[3],m[4],stems[n-1]).replace('id="assessmentSection','id="section'));anchor.insert_after(card);anchor=d.find(id='section'+str(n));destinations['section'+str(n)]=FORM+m[2]
         anchor.insert_after(frag('<section class="panel practice" id="priorDailyRecovery"><h2>After the Assessment: Earlier Daily Recovery</h2>'+para('Use the remaining 13–18 minutes to read already-posted Skyward Daily feedback. Return to the original question in the teacher’s library, improve its weaker part and resubmit through its original Form route. Do not recover this new Major until its section feedback has been posted. The next milestone day includes that recovery; it moves if feedback is delayed.')+'</section>'))
         section(d,'gateway').decompose()
     if day==7:section(d,'gateway').decompose()
