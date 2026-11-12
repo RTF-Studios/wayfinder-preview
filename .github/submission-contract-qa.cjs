@@ -230,6 +230,12 @@ async function run(){
      await page.evaluate(async()=>{await Promise.all([...document.images].map(im=>im.decode().catch(()=>{})))});
      const images=await page.evaluate(()=>[...document.images].map(im=>({alt:im.alt,loaded:im.complete&&im.naturalWidth>0})));
      check(images.every(im=>im.loaded),f,label+' embedded artwork load');
+     const comic=page.locator('#comicSlot');
+     if(width<500&&await comic.isVisible()){
+       await comic.focus();await page.keyboard.press('ArrowRight');await page.waitForTimeout(150);
+       const canReadAll=await comic.evaluate(el=>el.scrollWidth>el.clientWidth&&el.scrollLeft>0);
+       check(canReadAll,f,'mobile comic must have accessible local scrolling rather than hidden clipping');
+     }
      await page.screenshot({path:path.resolve(root,evidenceDir,path.basename(f,'.html')+'-'+label+'.png'),fullPage:true});
      evidenceRows.push({file:f,viewport:label,width,height,images,networkRequests:network});
    }

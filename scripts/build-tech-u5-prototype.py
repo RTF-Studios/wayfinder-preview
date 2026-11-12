@@ -193,6 +193,11 @@ def build(day):
     # Remove content-empty component templates; keep the live master script unchanged.
     for template in d.find_all('template'):template.decompose()
     d.select_one('.footer').string='RTF Wayfinder · Tech · Game Design Studio'
+    comic=d.find(id='comicSlot');comic['style']='display:block;aspect-ratio:auto;min-height:0;max-width:100%;overflow-x:auto'
+    comic['tabindex']='0';comic['aria-label']='Four-panel comic; scroll horizontally to read every panel'
+    comic.insert_after(frag('<p class="micro">Swipe or use arrow keys to read all four comic panels.</p>'))
+    art_style=d.new_tag('style');art_style.string='#comicSlot img{width:100%;height:auto;min-width:560px;max-width:none}'
+    d.head.append(art_style)
     config={'mode':mode,'imagePools':{'target':[{'src':'../assets/learning-target/pixel-archery-target.webp','alt':'Pixel holding a learning target'}],'temperature':[],'labs':[],'comics':[{'src':'../assets/rtf-comics/comic-pet-supervision.webp','alt':'Pixel, Onion.exe and Percival in the approved pet-supervision office comic'}],'skits':SKITS},'destinations':destinations}
     for mirror in d.select('[data-mirror]'):
         original=d.select_one('[data-slot="'+mirror['data-mirror']+'"]')
