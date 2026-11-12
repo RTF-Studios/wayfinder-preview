@@ -230,6 +230,8 @@ async function run(){
      await page.evaluate(async()=>{await Promise.all([...document.images].map(im=>im.decode().catch(()=>{})))});
      const images=await page.evaluate(()=>[...document.images].map(im=>({alt:im.alt,loaded:im.complete&&im.naturalWidth>0})));
      check(images.every(im=>im.loaded),f,label+' embedded artwork load');
+     const selectsFit=await page.locator('[data-answer-select]').evaluateAll(es=>es.every(el=>{const r=el.getBoundingClientRect(),p=el.parentElement.getBoundingClientRect();return r.left>=p.left-1&&r.right<=p.right+1}));
+     check(selectsFit,f,label+' answer dropdown exceeds its answer area');
      const comic=page.locator('#comicSlot');
      if(width<500&&await comic.isVisible()){
        await comic.focus();await page.keyboard.press('ArrowRight');await page.waitForTimeout(150);
