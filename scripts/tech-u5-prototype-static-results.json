@@ -1,0 +1,61 @@
+{
+  "scope": "Static source checks only; browser, recipe execution, clipboard, Form and Drive parity UNTESTED",
+  "files": [
+    {
+      "path": "Tech/3050201.html",
+      "status": "STATIC PASS",
+      "issues": [],
+      "prior_bytes": 107673,
+      "bytes": 323925,
+      "sha256": "018904415c8433d1ce0595664cd292ce26eb7c14934822d10f1a390a44ff8d45"
+    },
+    {
+      "path": "Tech/3050202.html",
+      "status": "STATIC PASS",
+      "issues": [],
+      "prior_bytes": 99422,
+      "bytes": 322776,
+      "sha256": "e8c0a7b59ed111ad82d1a0d48fce1fe150bc213a8fd2e35eec02717fb062d974"
+    },
+    {
+      "path": "Tech/3050203.html",
+      "status": "STATIC PASS",
+      "issues": [],
+      "prior_bytes": 99005,
+      "bytes": 319220,
+      "sha256": "fd650b730da1dc3c4d764e08e0987cc3f10008989e27b3ca35aa2cc6a8df1962"
+    },
+    {
+      "path": "Tech/3050204.html",
+      "status": "STATIC PASS",
+      "issues": [],
+      "prior_bytes": 98720,
+      "bytes": 319575,
+      "sha256": "2812024a96abecf5e369734bc61f800e708ce8cefdc21e9e4e0bb1efde7b8d7a"
+    },
+    {
+      "path": "Tech/3050205.html",
+      "status": "STATIC PASS",
+      "issues": [],
+      "prior_bytes": 99718,
+      "bytes": 320156,
+      "sha256": "d8ca19a54f4141f49112ee1cc27b3cc5c3e7c3cfd2000f0300905c621d6384e9"
+    },
+    {
+      "path": "Tech/3050206.html",
+      "status": "STATIC PASS",
+      "issues": [],
+      "prior_bytes": null,
+      "bytes": 316678,
+      "sha256": "57a01c28276ad3c859b228d4e0fe691d6ff61daff3fa59aec406eee8c04349e1"
+    },
+    {
+      "path": "Tech/3050207.html",
+      "status": "STATIC PASS",
+      "issues": [],
+      "prior_bytes": null,
+      "bytes": 314378,
+      "sha256": "92b691d7bae2e968a5793e48b707b80267ce61dc9c24ee98154a1a68bc2ca438"
+    }
+  ]
+}
