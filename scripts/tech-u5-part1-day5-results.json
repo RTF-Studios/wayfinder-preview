@@ -1,6 +1,6 @@
 {
   "scope": "3050105 only; Captain GO T1\u2013T6/F1\u2013F3",
-  "status": "BUILT; sync pending; no release",
+  "status": "BUILT/SYNCHRONIZED; school intake/classroom/Captain acceptance UNTESTED; no release",
   "checks": {
     "curriculum_outline_Q30070": "PASS",
     "collector_row145_prompt_and_holistic_rubric": "PASS; source wording and Collector grade-band criteria agree; exact pinned Collector text in handoff",
@@ -13,8 +13,10 @@
     "actual_school_Form_receipt": "UNTESTED",
     "classroom_desktop_app_execution_and_saved_sb3": "UNTESTED",
     "Captain_visual_acceptance": "UNTESTED",
-    "GitHub_JISD_parity": "PENDING",
-    "Show_preserved": "PENDING final readback"
+    "GitHub_JISD_parity": "PASS actual authenticated re-download exact SHA256 and bytes",
+    "Show_preserved": "PASS FALSE row14; Released formula, Order13, preview URL and File Links ID preserved",
+    "GitHub_Pages_bytes": "PASS exact current downloaded HTML",
+    "global_GitHub_Actions": "UNTESTED; bounded local canonical runner PASS; no green global CI claimed"
   },
   "files": {
     "Tech/3050105.html": {
@@ -35,5 +37,7 @@
     }
   },
   "archive_note": "Original GitHub and original JISD bytes differ; both independently preserved. Collector and historical responses untouched.",
-  "next": "3050106 ASSESSMENT separate batch; then3050107 FINAL PERFORM; Part label reconciliation remains before release."
+  "next": "3050106 ASSESSMENT separate batch; then3050107 FINAL PERFORM; Part label reconciliation remains before release.",
+  "content_commit": "da628aa56882aff413b8db9bf1db488035227235",
+  "jisd_file_id": "1osO6KnnU9hctfCs6F0IMavwJ0C6co7U1"
 }
