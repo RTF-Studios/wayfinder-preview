@@ -1,6 +1,6 @@
 {
   "scope": "3050106 only; Captain GO T1\u2013T6/F1\u2013F3",
-  "status": "BUILT; synchronization pending; no release",
+  "status": "BUILT/SYNCHRONIZED; school receipt/student acceptance UNTESTED; no release",
   "sha256": "c6282606a09b68d2debf48fc026a0f2f60d55ead32c5c26d66966b04b5a1cb08",
   "bytes": 321387,
   "checks": {
@@ -14,9 +14,16 @@
     "visual_inspection": "PASS scoped top and section2 desktop/mobile; criteria contrast repaired, no shell change",
     "actual_school_receipt_student_access_Captain_acceptance": "UNTESTED",
     "global_GitHub_Actions": "UNTESTED; no global green claim",
-    "GitHub_JISD_byte_parity": "PENDING",
-    "Show_FALSE": "PENDING registration readback"
+    "GitHub_JISD_byte_parity": "PASS authenticated download exact321387 bytes/SHA256c6282606a09b68d2debf48fc026a0f2f60d55ead32c5c26d66966b04b5a1cb08",
+    "Show_FALSE": "PASS boolean FALSE readback with checkbox validation; new row only; existing Show untouched",
+    "Pages_current_bytes": "PASS exact downloaded canonical HTML",
+    "school_group_permission_metadata": "PASS inherited school Tech reader group exists; actual student-account access UNTESTED",
+    "registration_formulas": "PASS Released row32 formula, Preview hyperlink and File Links row32 readback; formula-owned Public Feed/library untouched"
   },
   "next": "3050107 FINAL PERFORM in separate batch; label discrepancy still requires reconciliation before release",
-  "preservation": "No existing evidence, keys, Form, master, other lesson or Show modified."
+  "preservation": "No existing evidence, keys, Form, master, other lesson or Show modified.",
+  "content_commit": "78780b3fc1c2c72c9338343998f0ce09939cf53e",
+  "jisd_file_id": "1oCpnrv5SU6V0MYmSbs3-CAoWxVgqE4Ii",
+  "control_station": "Tech row32; Order13.1; title Assessment Focused; Preview Guide exact",
+  "file_links": "File Links A32:B32"
 }
