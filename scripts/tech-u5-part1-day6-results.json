@@ -1,0 +1,22 @@
+{
+  "scope": "3050106 only; Captain GO T1\u2013T6/F1\u2013F3",
+  "status": "BUILT; synchronization pending; no release",
+  "sha256": "c6282606a09b68d2debf48fc026a0f2f60d55ead32c5c26d66966b04b5a1cb08",
+  "bytes": 321387,
+  "checks": {
+    "four_Collector_pins_and_approved_source": "PASS",
+    "one_Major_four_equal_sections": "PASS",
+    "25min_assessment_plus_prior_graded_recovery": "PASS",
+    "master_JS_except_config_and_CSS": "PASS exact unchanged",
+    "syntax_keys_controls_ids_offline_budget": "PASS",
+    "canonical_submission_master_CS_Day6": "PASS zero issues",
+    "offline_network_images_widths": "PASS; see offline-browser JSON",
+    "visual_inspection": "PASS scoped top and section2 desktop/mobile; criteria contrast repaired, no shell change",
+    "actual_school_receipt_student_access_Captain_acceptance": "UNTESTED",
+    "global_GitHub_Actions": "UNTESTED; no global green claim",
+    "GitHub_JISD_byte_parity": "PENDING",
+    "Show_FALSE": "PENDING registration readback"
+  },
+  "next": "3050107 FINAL PERFORM in separate batch; label discrepancy still requires reconciliation before release",
+  "preservation": "No existing evidence, keys, Form, master, other lesson or Show modified."
+}

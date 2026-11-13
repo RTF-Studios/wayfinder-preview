@@ -1,0 +1,37 @@
+{
+  "requests": [],
+  "viewports": [
+    {
+      "width": 1280,
+      "overflow": false,
+      "images": [
+        {
+          "loaded": true,
+          "alt": "Pixel holding a paper bullseye target"
+        },
+        {
+          "loaded": true,
+          "alt": "Approved office comic: Pixel disrupts Onion.exe while Percival records pet supervision"
+        }
+      ],
+      "studioUnlocked": true,
+      "sectionCount": 4
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "images": [
+        {
+          "loaded": true,
+          "alt": "Pixel holding a paper bullseye target"
+        },
+        {
+          "loaded": true,
+          "alt": "Approved office comic: Pixel disrupts Onion.exe while Percival records pet supervision"
+        }
+      ],
+      "studioUnlocked": true,
+      "sectionCount": 4
+    }
+  ]
+}
