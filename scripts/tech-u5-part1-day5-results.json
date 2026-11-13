@@ -1,0 +1,39 @@
+{
+  "scope": "3050105 only; Captain GO T1\u2013T6/F1\u2013F3",
+  "status": "BUILT; sync pending; no release",
+  "checks": {
+    "curriculum_outline_Q30070": "PASS",
+    "collector_row145_prompt_and_holistic_rubric": "PASS; source wording and Collector grade-band criteria agree; exact pinned Collector text in handoff",
+    "master_primary_JS_except_config_and_CSS": "PASS exact",
+    "ids_hidden_keys_one_daily_four_check_gate": "PASS",
+    "offline_embeds_size_idempotence": "PASS",
+    "canonical_submission_runner_master_CS_reference_day5": "PASS; no issues",
+    "offline_network": "PASS zero HTTP requests",
+    "desktop1280_phone390": "PASS artwork loaded; no page overflow",
+    "actual_school_Form_receipt": "UNTESTED",
+    "classroom_desktop_app_execution_and_saved_sb3": "UNTESTED",
+    "Captain_visual_acceptance": "UNTESTED",
+    "GitHub_JISD_parity": "PENDING",
+    "Show_preserved": "PENDING final readback"
+  },
+  "files": {
+    "Tech/3050105.html": {
+      "bytes": 322592,
+      "sha256": "3897e37e42f1ad1765714060fa8634fe69773ec33bf427b93b870fa59034a954"
+    },
+    "templates/wayfinder-master.html": {
+      "bytes": 70550,
+      "sha256": "9b0ce775bca5d73b71e9b3968db6b697665389e86c28fb412c3f1756a857ae93"
+    },
+    "archive/tech-u5-part1-original/3050105-github.html": {
+      "bytes": 160932,
+      "sha256": "6691573f7c2613944ea155d8099e0d105d478ee9fa53bef2428e8423235383d7"
+    },
+    "archive/tech-u5-part1-original/3050105-jisd.html": {
+      "bytes": 161727,
+      "sha256": "5312a5887f99458fa6bb2295437bcc6233860d61a59c29df5f47e2640f5144c3"
+    }
+  },
+  "archive_note": "Original GitHub and original JISD bytes differ; both independently preserved. Collector and historical responses untouched.",
+  "next": "3050106 ASSESSMENT separate batch; then3050107 FINAL PERFORM; Part label reconciliation remains before release."
+}
