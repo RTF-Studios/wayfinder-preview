@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<!-- CS Part 2 Captain-approved scenario revision, 2026-11-11 | Not student-released | Mastery 20140 --><head>
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1" name="viewport">
+<meta content="light" name="color-scheme">
+<title>RTF Learning Guide</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2264%22%20height%3D%2264%22%20viewBox%3D%220%200%2064%2064%22%20role%3D%22img%22%20aria-label%3D%22RTF%20Wayfinder%20compass%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%23360d50%22%2F%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%2224.5%22%20fill%3D%22none%22%20stroke%3D%22%23ffcc29%22%20stroke-width%3D%225.5%22%2F%3E%3Cpath%20d%3D%22M32%2012%20L46.8%2048.2%20L32%2040.4%20L17.2%2048.2%20Z%22%20fill%3D%22%23ffcc29%22%2F%3E%3C%2Fsvg%3E">
+<style>
+:root{--navy:#142063;--purple:#58358b;--purple-dark:#392468;--gold:#e8b647;--ink:#242943;--blue-light:#e5f1ff;--blue-line:#88b5e5;--purple-light:#ede4f9;--paper:#f9fbff;--sage:#e3f1ed;--radius:17px;--shadow:0 10px 32px rgba(20,32,99,.12)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:#e5e7eb;font:17px/1.58 Roboto,Arial,sans-serif}button,textarea,input,select{font:inherit}button,a,input,textarea,select{accent-color:var(--purple)}:focus-visible{outline:3px solid var(--gold);outline-offset:3px}header{background:var(--navy);color:#fff;border-bottom:6px solid var(--gold)}.mast{max-width:1120px;margin:auto;padding:26px 32px 24px}.eyebrow{font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:12px;color:#d5dcff}.mast h1{font-size:clamp(29px,4vw,44px);line-height:1.14;margin:8px 0}.subtitle{color:#e1e8ff;margin:0}.wrap{max-width:1080px;margin:25px auto 70px;padding:0 18px}.notebook{position:relative;border:1px solid #c4d8e8;border-radius:20px;padding:30px clamp(15px,4vw,47px);background:repeating-linear-gradient(to bottom,var(--paper) 0,var(--paper) 36px,#dce7f2 37px,var(--paper) 38px);box-shadow:var(--shadow);overflow:hidden}.notebook:before{content:"";position:absolute;top:0;bottom:0;left:19px;width:2px;background:rgba(200,101,96,.22);pointer-events:none}.panel{position:relative;background:rgba(255,255,255,.95);border:2px solid #cfd7e5;border-radius:var(--radius);padding:clamp(17px,3vw,26px);margin:20px 0;box-shadow:0 4px 14px rgba(29,42,84,.055)}.panel h2{color:var(--navy);font-size:clamp(22px,2.8vw,29px);line-height:1.2;margin:0 0 12px}.panel h3{margin:0 0 9px;font-size:20px}.panel p{margin:8px 0 13px}.kicker{display:inline-block;margin-bottom:9px;color:#5b5b77;font-size:12px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}.learn{background:#e5f1ff;border-color:#a3c8ef}.practice{background:#e8f2d2;border-color:#9bb86b}.practice .kicker,.practice h2{color:#426126}.learn .kicker,.learn h2{color:#24558f}.perform{background:#ffefc3;border-color:#ddb44d}.perform .kicker,.perform h2{color:#674f08}.warm{background:#ede3fa;border-color:#b69edb}.warm .kicker{color:#65479c}.mastery,.lab-evidence{background:var(--purple-dark);color:#fff;border-color:#8468b5}.mastery h2,.lab-evidence h3{color:#fff}.mastery .kicker{color:#e8d5ff}.temp{background:#ede3fa;color:var(--ink);border-color:#b69edb}.temp h2{color:#392468}.temp .kicker{color:#65479c}.labs{background:#ede3fa;border-color:#b69edb}.labs h2{color:#59348a}.target{display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,240px);gap:22px;align-items:center}.target .why{font-weight:700}.slot{display:grid;place-items:center;position:relative;min-height:90px;padding:13px;border:2px dashed rgba(72,84,125,.36);border-radius:12px;background:rgba(255,255,255,.52);color:#626d87;text-align:center;font-size:14px;font-weight:650;line-height:1.35}.slot strong{display:block;font-size:16px;color:#4c5874}.slot.inverted{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.42);color:#f3eaff}.slot.inverted strong{color:#fff}.slot.art{aspect-ratio:16/10;min-height:120px}.slot.art img,.comic img{display:block;width:100%;height:100%;object-fit:contain}.notes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:18px 0}.sticky{min-height:112px;border-radius:4px 11px 9px 9px;box-shadow:2px 5px 9px #17234b1b;padding:16px 12px;border-top:10px solid rgba(255,255,255,.5);font-size:14px;font-weight:600;transform:rotate(-.7deg)}.sticky img{display:block;max-width:100%;height:66px;object-fit:contain;margin:0 auto 6px}.sticky:nth-child(1){background:#e1effb}.sticky:nth-child(2){background:#e7e0fa;transform:rotate(1deg)}.sticky:nth-child(3){background:#e5f0e1;transform:rotate(-1deg)}.sticky:nth-child(4){background:#fff1d0;transform:rotate(.8deg)}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:15px}.scaffold{background:#fff;color:var(--ink);padding:18px;border-radius:12px;margin:14px 0;border:1px solid #d6cde6}.scaffold label{font-weight:750;display:block;margin-bottom:6px}.scaffold fieldset{border:1px solid #c8b7e3;border-radius:9px;padding:12px;margin:12px 0}.scaffold legend{font-weight:800;padding:0 6px}.option{display:flex;gap:8px;align-items:flex-start;margin:9px 0;cursor:pointer}.option input{margin-top:6px;flex:none}.scaffold textarea,.scaffold input[type=text],.temp textarea,.lab-evidence textarea{display:block;width:100%;background:#fff;color:#192244;border:2px solid #bbb2d3;border-radius:9px;padding:11px;resize:vertical;min-height:80px}.scaffold input[type=text]{min-height:0}.scaffold [data-answer-part]{margin:13px 0}.response{display:block;background:rgba(255,255,255,.13);padding:16px;margin:13px 0;border:1px solid rgba(255,255,255,.2);border-radius:11px}.response label{display:block;margin:0 0 7px;font-weight:750}.response textarea{display:block;width:100%;min-height:100px;background:#fff;color:#1c2140;border:2px solid #c4b2e0;border-radius:9px;padding:12px}.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:11px}.btn{border:0;border-radius:10px;padding:11px 17px;cursor:pointer;font-weight:800;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:45px}.btn.gold{background:var(--gold);color:#25305e}.btn.outline{background:#fff;color:var(--purple-dark);border:2px solid #a48ec6}.btn:disabled{opacity:.55;cursor:not-allowed}.btn.link{background:#fff;color:#422c76}.hint{font-size:14px;color:#52607d}.mastery .hint,.lab-evidence .hint{color:#eee4ff}.temp .hint{color:#52607d}.status{font-size:14px;margin-top:8px;min-height:22px}.steps{counter-reset:step;list-style:none;padding:0;margin:14px 0}.steps li{position:relative;margin:11px 0;padding:8px 12px 9px 44px;background:rgba(255,255,255,.63);border-radius:10px;min-height:44px}.steps li:before{counter-increment:step;content:counter(step);position:absolute;left:9px;top:10px;width:27px;height:27px;display:grid;place-items:center;border-radius:50%;background:#765d1d;color:#fff;font-size:14px;font-weight:900}.mini-learn[hidden]{display:none!important}
+[hidden]{display:none!important}.temperature-choice{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin:15px 0}.temperature-choice label{display:block;padding:13px 7px;background:#faf7ff;color:#3b245b;text-align:center;border-radius:9px;cursor:pointer;font-weight:750;font-size:15px}.temperature-choice input{display:block;margin:0 auto 5px}.checks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.checks label{display:flex;gap:10px;align-items:flex-start;border-radius:9px;border:1px solid #d0c7e0;padding:12px;background:#fff;cursor:pointer}.checks input{margin-top:6px}.labs-locked{opacity:.62;pointer-events:none}.labs-locked .lab{filter:grayscale(.2)}.lab-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:15px}.lab{background:#fff;border-radius:13px;padding:17px;border:2px solid #c7afe5}.lab .kicker{color:#6a4a9f}.lab .slot{min-height:88px}.lab textarea{width:100%;min-height:90px;padding:10px;border:2px solid #c6b1dd;border-radius:9px;background:white}.lab[aria-disabled=true] textarea{pointer-events:none}.rtf-showcase{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(0,.9fr);gap:15px;margin:22px 0}.comic,.skit{min-width:0;padding:16px;border:2px solid #bca4da;border-radius:14px;background:#fff}.comic .slot{aspect-ratio:4/1;min-height:130px}.skit .slot{min-height:235px;align-items:center}.rtf-showcase h3{font-size:18px}.mini-note{font-size:13px;color:#636180}.sidelink{position:fixed;left:9px;top:31vh;z-index:20;background:#ffefc3;border:2px solid #ddb44d;border-radius:13px;box-shadow:0 5px 18px #15224d4a;width:56px;overflow:hidden}.sidelink button{width:100%;height:48px;border:0;background:#ffefc3;color:var(--navy);cursor:pointer;font-weight:900;font-size:20px}.side-items{display:none;padding:8px;min-width:170px}.sidelink.open{width:225px}.sidelink.open .side-items{display:grid;gap:5px}.side-items a,.side-items>span{padding:9px;display:flex;align-items:center;gap:8px;color:#142063;border-radius:6px;text-decoration:none;font-weight:700;font-size:14px}.side-items .nav-icon{flex:0 0 18px}.side-items a span,.side-items>span span{padding:0;display:inline}.side-items a:hover{background:#e8d6a2}.side-items .unconfigured{opacity:.5}.micro{font-size:13px;color:#53627a}.temp .micro{color:#53627a}.note-gate{display:block;margin-top:8px;color:#644895;font-weight:800}.footer{text-align:center;color:#5b6380;font-size:14px;padding:18px}.form-slot{font-size:12px;color:#dfd4f1;margin-top:8px}.target-id{display:none}/* Mobile menu works without JavaScript (including static HTML previews). Desktop retains its existing button. */
+.mobile-nav-checkbox,.mobile-nav-trigger{display:none}
+@media(max-width:760px){
+.sidelink,.sidelink.open{width:54px;left:9px;top:auto;bottom:12px;z-index:20}
+.sidelink button#navToggle{display:none}
+.mobile-nav-checkbox{display:block;position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.mobile-nav-trigger{display:flex;width:100%;height:48px;align-items:center;justify-content:center;cursor:pointer;font-size:25px;font-weight:900;color:var(--navy);background:var(--perform-gold)}
+.sidelink.open .side-items,.sidelink .side-items{display:none}
+.sidelink:has(.mobile-nav-checkbox:checked){width:min(260px,calc(100vw - 18px))}
+.sidelink .mobile-nav-checkbox:checked ~ .side-items{display:grid}
+.mobile-nav-checkbox:focus-visible + .mobile-nav-trigger{outline:3px solid var(--gold);outline-offset:-4px}
+}
+@media(max-width:760px){.target{grid-template-columns:1fr}.notes{grid-template-columns:repeat(2,1fr)}.lab-grid{grid-template-columns:1fr}.two-col{grid-template-columns:1fr}.rtf-showcase{grid-template-columns:1fr}.sidelink{top:auto;bottom:12px}.wrap{margin-top:12px}.notebook{padding:18px 13px}.temperature-choice{grid-template-columns:1fr}.checks{grid-template-columns:1fr}.mast{padding:20px 16px}}@media print{body{background:#fff}.sidelink,.actions,.notes{display:none!important}.notebook{box-shadow:none;border:0}.panel{break-inside:avoid}}
+
+/* Locked seventh-grade semantic palette; do not rotate. */
+:root{--outer:#e5e7eb;--paper:#f9fbff;--warmup-and-labs:#ede3fa;--learn-blue:#e5f1ff;--practice-green:#e8f2d2;--perform-gold:#ffefc3;--mastery-purple:#392468} .mast,.mast h1{color:#fff}.warm,.labs{background:var(--warmup-and-labs)}.learn{background:var(--learn-blue)}.practice{background:var(--practice-green)}.perform{background:var(--perform-gold)}.mastery,.lab-evidence{background:var(--mastery-purple)}.temp{background:var(--warmup-and-labs);border-color:#b69edb;color:var(--ink)}.sidelink{background:var(--perform-gold)}.stem-set{background:#f2f4fa;border-radius:9px;padding:10px 14px;margin:10px 0}.stem-set p{margin:3px 0}.blank{display:inline-block;min-width:120px;border-bottom:2px solid #58358b}.scaffold .type-sample{border:1px dashed #9c91be;border-radius:9px;padding:12px;margin:10px 0}.scaffold-library{display:none!important}.lab-evidence{background:#392468}.lab-evidence .hint{color:#eee4ff}
+
+/* Universal progression: warm paper → muted gold Copy → bright jeweled gold Submit.
+   Visual priority is fixed; colors can be refined. Hidden/reveal safeguards remain. */
+:root{--action-copy-bg:#dcc18a;--action-copy-ink:#142063;--action-submit-bg:#ffce35;--action-submit-ink:#142063;--writing-paper:#fff9ed}
+.scaffold textarea,.scaffold input[type=text],.response textarea,.temp textarea,.lab textarea,.lab-evidence textarea{background:var(--writing-paper);color:#242943;border-color:#b8a98a}
+.mastery .scaffold .hint,.mastery .scaffold .micro{color:#43506b}
+.mastery .scaffold h3{color:#142063}
+textarea::placeholder,input::placeholder{color:#68604f;opacity:1}
+.actions .btn{max-width:100%;min-width:44px;min-height:48px;white-space:normal;text-align:center;line-height:1.35;transition:background-color .15s,box-shadow .15s,transform .1s}
+.actions .btn.copy-action{background:linear-gradient(#e8d4a9,var(--action-copy-bg));color:var(--action-copy-ink);border:2px solid #92713b;box-shadow:0 3px 0 #92713b,inset 0 1px 0 #fff3d8;font-weight:800}
+.actions .btn.submit{position:relative;isolation:isolate;background:linear-gradient(115deg,#ffe68b 0%,#fff4bf 16%,#ffce35 40%,#f6b91d 68%,#ffe585 100%);color:var(--action-submit-ink);border:2px solid #855700;min-height:54px;padding:13px 22px;font-weight:900;box-shadow:0 4px 0 #855700,inset 0 2px 0 #fff9dc,0 3px 12px #efb92f45;text-shadow:0 1px #fff0a8}
+.actions .btn.submit::before,.actions .btn.submit::after{content:"";width:8px;height:8px;flex:none;transform:rotate(45deg);background:linear-gradient(135deg,#ffb0ba,#b7183c 52%,#690f30);border:1px solid #780d28;box-shadow:0 0 0 2px #ffe69b}
+.actions .btn.copy-action:hover{background:linear-gradient(#f1dfb9,#e3c68e)}
+.actions .btn.submit:hover{background:linear-gradient(115deg,#fff3bf,#ffe58a 28%,#ffd23f 60%,#fff0ad);box-shadow:0 5px 0 #855700,inset 0 2px 0 #fffdf0,0 4px 16px #efb92f70;transform:translateY(-1px)}
+.actions .btn:focus-visible{outline:3px solid #142063;outline-offset:3px;box-shadow:0 0 0 6px #fff}
+.actions .btn.copy-action:active{transform:translateY(2px);box-shadow:0 1px 0 #92713b}
+.actions .btn.submit:active{box-shadow:0 1px 0 #855700,inset 0 1px 3px #85570030;transform:translateY(3px)}
+.temp{padding:16px 20px!important}.temp h2{font-size:clamp(21px,3vw,29px);margin:3px 0 8px}.temp .temperature-summary{display:block}.temp .temperature-summary p{margin:3px 0 5px;font-size:15px;line-height:1.4}.temp .temp-priority{background:#fff8;border-left:3px solid var(--purple);padding:3px 8px}.temp .temperature-choice{display:flex;flex-wrap:wrap;gap:7px;border:0;padding:0;margin:9px 0}.temp .temperature-choice legend{font-weight:750;margin-bottom:4px}.temp .temperature-choice label{display:flex;align-items:center;gap:7px;min-height:38px;padding:5px 9px;font-size:14px}.temp .temperature-choice input{display:inline-block;margin:0}.temp .response{padding:0;border:0;background:transparent;margin:8px 0 0}.temp .response>label{font-weight:750}.temp .response .hint{margin:3px 0 5px;font-size:13px}.temp #temperatureFeedback{min-height:46px;padding:8px 10px}.temp .actions{margin-top:8px}.temp .status:empty{display:none}
+@media(max-width:480px){.actions .btn{width:100%}.temp .temperature-choice label{flex:1 1 100%}}
+@media(prefers-reduced-motion:reduce){.actions .btn{transition:none}}
+/* Captain-approved ruled writing fields. Line spacing tracks the writing line-height. */
+.scaffold textarea,.response textarea:not(.assembled-preview),.temp textarea,.lab textarea,.lab-evidence textarea,#warmAnswer{line-height:32px;background-color:var(--writing-paper);background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 30px,rgba(118,158,205,.24) 31px,transparent 32px);background-attachment:local}
+/* Display only: assembled material is not an editable answer box. */
+.response .assembled-preview{display:block;width:100%;min-height:105px;white-space:pre-wrap;overflow-wrap:anywhere;background:#e9ddf9;color:#291849;border:1px solid #c9b3e7;border-radius:10px;padding:14px;line-height:1.65;user-select:text;cursor:text}
+.response .preview-caption{font-weight:800;color:#f5e8ff;margin:0 0 7px}
+@media(prefers-reduced-motion:reduce){.actions .btn.submit,.actions .btn.copy-action{transition:none}}
+/* Classroom thumbs check: down, sideways, up. The sideways hand is a rotated thumbs-up glyph. */
+.temp .thumb-icon{display:inline-block;font-size:23px;line-height:1;vertical-align:middle}
+.temp .thumb-side{transform:rotate(-90deg)}
+.temp .temperature-choice label:has(input:checked){outline:2px solid #6843aa;background:#e6d6fa}
+/* Flexible RTF blooper showcase: one comic plus one skit, or 2–3 skits without a comic. */
+.rtf-showcase.skits-only{grid-template-columns:1fr}
+.rtf-showcase.skits-only .skit-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:14px}
+.skit-list{display:grid;gap:12px;align-items:start}
+.skit-entry{background:#f8f3ff;border:1px solid #d4bee9;border-radius:11px;padding:14px;color:#2b2151}
+.skit-entry h4{margin:0 0 8px;font-size:17px}
+.skit-entry p{margin:5px 0;line-height:1.55}
+@media(max-width:760px){.rtf-showcase.skits-only .skit-list{grid-template-columns:1fr}}
+
+/* Two-step mastery response interface: notebook inputs > read-only preview > final copy/open. */
+.mastery .scaffold textarea[data-open-response]{height:62px;min-height:54px;line-height:26px;padding:8px 11px;resize:vertical}
+.mastery .answer-parts [data-answer-part]{margin:8px 0}
+.mastery .scaffold fieldset{padding:9px 12px;margin:8px 0}
+.mastery .scaffold .option{margin:5px 0}
+.response-builder{padding:12px 14px}
+.response-preview-shell{background:#eae0f7;color:#2e1d49;border:1px solid #c0a7df;border-radius:12px;padding:13px;margin:11px 0;box-shadow:inset 0 1px 0 #fff7}
+.preview-header{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.preview-header strong{font-size:16px}
+.preview-readonly{font-size:12px;font-weight:700;color:#604783;background:#f7f1ff;border:1px solid #d4c3e8;border-radius:999px;padding:4px 9px}
+.response-preview-shell .hint{font-size:13px;color:#5d4978;margin:7px 0}
+.response-preview-shell .assembled-preview{display:block;min-height:0;background:#faf7ff;border:1px solid #c8b4e2;border-radius:9px;padding:12px 14px;white-space:normal;line-height:1.6;font-size:16px;font-style:normal;font-weight:400;cursor:default;user-select:text;animation:response-appear .24s ease-out}
+.response-preview-shell .preview-empty{color:#6b548a;font-size:14px;padding:5px 0}
+.response-preview-shell .assembled-preview[hidden],.response-preview-shell .response-loading[hidden]{display:none!important}
+.response-loading{padding:10px 0 4px}
+.loading-head{display:flex;align-items:center;gap:9px;color:#53317e;font-size:14px;font-weight:800;margin-bottom:9px}
+.loading-sparkle{color:#9b65d2;animation:response-twinkle .45s ease-in-out infinite alternate}
+.loading-track{height:11px;overflow:hidden;border-radius:999px;background:#d1b9ed;box-shadow:inset 0 1px 3px #75529c55}
+.loading-fill{height:100%;width:100%;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,#7646bc,#c474ef,#ffcb48,#b84ae4);background-size:200% 100%;border-radius:999px;animation:response-progress .62s cubic-bezier(.23,.85,.25,1) forwards,response-shimmer .38s linear infinite}
+.response-create-actions .create-response{background:#efd5a3;color:#2d3049;border:2px solid #d1a96a;box-shadow:0 3px 0 #a9824a;font-weight:800}
+.response-submit-actions .finalize-response{background:linear-gradient(135deg,#fff0a0,#ffd13e 50%,#e9a52c);color:#29304e;border:2px solid #c48c1b;box-shadow:0 5px 0 #9d6a15,0 5px 16px #ecae3670;font-weight:950;letter-spacing:.01em;transition:transform .16s,box-shadow .16s,filter .16s}
+.response-submit-actions .finalize-response:before,.response-submit-actions .finalize-response:after{content:'◆';color:#c0335e;font-size:15px}
+.response-submit-actions .finalize-response:not(:disabled):hover{transform:translateY(-2px);filter:brightness(1.06);box-shadow:0 7px 0 #9d6a15,0 8px 21px #ecae3680}
+.response-submit-actions .finalize-response:not(:disabled):active{transform:translateY(3px);box-shadow:0 2px 0 #9d6a15}
+.response-submit-actions .finalize-response:disabled{opacity:.58;filter:saturate(.55);box-shadow:0 2px 0 #9d6a15;cursor:not-allowed}
+@keyframes response-progress{to{transform:scaleX(1)}}@keyframes response-shimmer{to{background-position:-200% 0}}
+@keyframes response-twinkle{to{opacity:.35;transform:scale(.65) rotate(30deg)}}@keyframes response-appear{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.loading-fill{animation:none;transform:scaleX(1)}.loading-sparkle,.response-preview-shell .assembled-preview{animation:none}.response-submit-actions .finalize-response{transition:none}}
+
+/* Perform: required resources always above steps; guidance stays optional. */
+.perform-resources{background:#f2e8d8;border:1px solid #bb9c78;border-left:4px solid #704b27;border-radius:11px;padding:13px 16px;margin:14px 0 18px;color:#422d1b}
+.perform-resources h3{color:#704b27;margin:0 0 8px}
+.perform-resources a{display:inline-block;margin:4px 8px 4px 0;padding:7px 10px;background:#fff9f0;border:1px solid #ae8c67;border-radius:7px;color:#704b27;font-weight:700;text-decoration:underline}
+.perform-resources details{background:#faf5ec;border:1px solid #cfb99e;border-radius:8px;padding:10px 12px;margin:8px 0}
+.perform-resources summary{cursor:pointer;color:#704b27;font-weight:700}
+.perform-step-list{padding-left:29px}
+.perform-step-list>li{margin:8px 0}
+.perform-step{background:#fffaf0;border:1px solid #d9bf85;border-radius:9px;overflow:hidden}
+.perform-step>summary{cursor:pointer;padding:12px 13px;line-height:1.5;color:#332917}
+.perform-step[open]>summary{border-bottom:1px solid #e1cfac}
+.perform-step-help{padding:10px 15px 12px;background:#fffdf7;color:#4b4033;line-height:1.55}
+@media(max-width:600px){.perform-resources{padding:11px}.perform-step-list{padding-left:23px}.perform-step>summary{padding:11px}}
+
+/* Student Learning Leader: light, readable aloud prompts; not a separate teacher script. */
+.leader-intro{background:#f4f9ff;border-left:3px solid #497caf;padding:9px 12px;border-radius:7px}
+.leader-discussion{background:#f5faff;border:1px solid #b5d0ed;border-radius:9px;padding:10px 14px;margin:12px 0}
+.leader-discussion p{margin:7px 0;line-height:1.5}
+.leader-discussion strong{color:#24558f}
+.lesson-mode{display:inline-block;margin:11px 0 6px;padding:7px 13px;border:2px solid #e6bd59;border-radius:10px;background:#fff1bf;color:#15245a;font-size:clamp(.95rem,1.3vw,1.1rem);font-weight:800;letter-spacing:.035em;text-transform:uppercase}
+.evidence-preview{white-space:pre-wrap;background:#e9ddf9;color:#291849;border:2px solid #c9b3e7;border-radius:9px;padding:12px;margin-top:10px}.evidence-preview[hidden]{display:none!important}
+/* STARTER mode only: populated Part roadmap within the canonical shared shell. */
+.starter-roadmap{background:#f0ecfa;border-color:#a89bd9}.starter-roadmap h2,.starter-roadmap h3{color:#392468}.starter-roadmap .starter-destination{background:#fff;border:1px solid #c9b8e7;border-radius:12px;padding:16px;margin:12px 0}.starter-roadmap .starter-example{background:#eef3ff;padding:12px;border-radius:10px}.starter-roadmap .starter-steps{display:grid;gap:8px;padding-left:26px}.starter-roadmap .starter-success{padding-left:26px}.starter-roadmap .starter-today{background:#fff1c7;padding:12px;border-left:4px solid #b78925;border-radius:7px}
+
+/* Shared lesson resource and diagram components, all modes. */
+.code-reference{white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;background:#fff;color:#17253f;border:1px solid #9cabbd;padding:14px;border-radius:9px;font-size:14px;line-height:1.6;max-width:100%}.resource{margin:12px 0;border:1px solid #a99161;background:#fffdf6;border-radius:9px;padding:12px}.resource summary{cursor:pointer;font-weight:800}.example-box{background:#fff;border:1px solid #9fb3c9;border-radius:9px;padding:15px;margin:10px 0;color:#202e43}.site-map{margin:16px 0}.site-map figcaption{margin-bottom:12px}.map-home,.map-branches>div{padding:12px;border:2px solid #6477aa;border-radius:9px;background:#fff;color:#15234b;text-align:center;overflow-wrap:anywhere}.map-home{max-width:300px;margin:0 auto 16px}.map-branches{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.wide-cards{display:flex;gap:5px}.wide-cards span,.narrow-cards span{display:block;padding:10px;border:1px solid #8a75a9;background:#f3eafb;border-radius:5px}.narrow-cards{display:grid;gap:5px}.scaffold select{display:block;max-width:100%;width:100%;padding:10px;background:#fff9ed;color:#242943;border:2px solid #b8a98a;border-radius:7px}.assessment-section .scaffold p{color:#242943}.assessment-section .scaffold legend{font-weight:750}figure{max-width:100%}dt{font-weight:750;margin-top:10px}dd{margin-left:18px}.panel code{overflow-wrap:anywhere}@media(max-width:760px){.map-branches{grid-template-columns:1fr 1fr}}@media(max-width:440px){.map-branches{grid-template-columns:1fr}.wide-cards{flex-wrap:wrap}}
+</style>
+
+
+
+
+</head>
+<body id="top"><header><div class="mast"><div class="eyebrow">RTF Wayfinder · Computer Science · Supplemental Game Studio · Day 1</div><p class="lesson-mode" aria-label="Today’s lesson focus">Day 1 · STARTER Focused</p><h1>Turkey Escape — Plan the Game</h1><p class="subtitle">Design the player experience before building a single block.</p></div></header><main class="wrap"><article class="notebook"><section class="panel target" id="learningTarget"><div><span class="kicker">CS · Supplemental Game Studio · Day 1</span><h2>Learning Target</h2><p data-slot="learning-target">I can describe and order the actions of a one-button game because planning helps controls, rules, challenge and feedback work together.</p><p class="today-mission"><strong>Today’s outcome:</strong> A complete written game plan.</p><p><strong>TEKS connection:</strong> <span data-slot="priority-teks">Previously taught §127.672(d)(2)(B): algorithms; supporting (4)(C) purpose and goals. Enrichment practice only.</span></p><p class="micro">Game Studio is ungraded enrichment. Your previous CS web-design grades and Friday’s assessment remain separate.</p></div><div class="slot art"><strong>One evolving game</strong><span>Plan → Movement → Score → Playtest</span></div></section><section class="panel warm"><span class="kicker">01 · 4 minutes</span><h2>Connect: Think Like a Player</h2><p>Imagine you open a game. Nothing tells you which key to press, what earns points, or how to restart. Would you keep playing? What single improvement would help first?</p><p><strong>Think / tell a partner:</strong> Answer in one sentence. No prior coding required.</p></section><section class="panel learn"><span class="kicker">02 · 8 minutes</span><h2>Vocabulary and the Big Idea</h2><p>A good game has a player goal, a repeated pattern, clear feedback, and a consequence for mistakes. Planning exposes missing rules before code makes them harder to fix.</p><ul><li><strong>Pseudocode:</strong> ordered program steps written in everyday language.</li><li><strong>Game loop:</strong> the repeated actions during play.</li><li><strong>Mechanic:</strong> an action or rule that controls how a game works.</li><li><strong>User interface (UI):</strong> the controls and information the player sees.</li></ul></section><section class="panel practice"><span class="kicker">03 · What and why</span><h2>See the Whole Game</h2><figure style="margin:14px 0;padding:15px;background:#fff;border:1px solid #c9d8ee;border-radius:12px"><svg role="img" aria-label="Turkey on the left, two obstacle columns with a center gap on the right, and a score display at top" viewBox="0 0 660 235" style="width:100%;height:auto"><rect width="660" height="235" rx="12" fill="#edf6ff"/><text x="20" y="35" fill="#142063" font-size="20" font-weight="bold">SCORE: 0</text><text x="20" y="210" fill="#303e67" font-size="15">SPACE = FLAP     ·     GREEN FLAG = RESTART</text><circle cx="155" cy="126" r="33" fill="#9c5737"/><circle cx="163" cy="112" r="6" fill="#fff"/><circle cx="165" cy="112" r="3" fill="#111"/><polygon points="184,123 203,130 184,139" fill="#f6ba39"/><path d="M128 145 Q95 155 114 117" fill="none" stroke="#7b3f27" stroke-width="12"/><rect x="410" y="0" width="62" height="68" fill="#4f9e62"/><rect x="410" y="169" width="62" height="66" fill="#4f9e62"/><rect x="406" y="60" width="70" height="12" fill="#2f7947"/><rect x="406" y="165" width="70" height="12" fill="#2f7947"/><path d="M206 126 L390 126" stroke="#5578b6" stroke-width="3" stroke-dasharray="8 8"/><text x="282" y="113" font-size="14" fill="#142063">gap</text><text x="505" y="113" font-size="16" fill="#142063">pipes move ←</text></svg><figcaption class="micro">Original instructional sketch. A pipe sprite contains two separate blocks with a clear, transparent gap between them.</figcaption></figure><p><strong>Challenge:</strong> Keep the turkey inside the stage, fly through the open gap, earn one point for each pipe that passes, and restart after hitting a pipe or boundary.</p><p>A game with a score but no visible controls is less usable than a smaller game whose actions are obvious.</p></section><section class="panel perform"><span class="kicker">03 · 25 minutes · local editor</span><h2>Make It Work</h2><p>Use the ready-made game sketch above and the sample mechanics below. Make decisions; do not open TurboWarp or write blocks today.</p><ol class="perform-step-list"><li>Choose a game title and one-sentence theme. Turkey Escape is the default; a different respectful title is fine.</li><li>Name <strong>three mechanics</strong>: for example Space makes a flap, gravity pulls down, and moving pipes must be avoided. Explain what triggers each.</li><li>Name <strong>two progression elements</strong>: a score for successful pipe passes and a speed increase at a milestone.</li><li>Name <strong>two interface elements</strong>: a visible score and a short Space/restart instruction. Describe where a new player will see them.</li><li>Write the ten-line pseudocode below in your notebook or Google Classroom planning document. Add one improvement or variation.</li><li>Use the check: Could a classmate explain how to play and restart without your help? If not, clarify the plan.</li></ol><pre style="white-space:pre-wrap;overflow-wrap:anywhere;background:#fff9ed;color:#242943;padding:14px;border:1px solid #b8a98a;border-radius:10px;font-size:15px;line-height:1.5" class="game-code" aria-label="TurboWarp block recipe"><code>1. WHEN green flag clicked, set score to 0 and playing to true.
+2. Put turkey at the left and pipe just right of the stage.
+3. WHILE playing, repeat the movement loop.
+4. Gravity pulls turkey downward.
+5. IF Space is pressed, give turkey an upward push.
+6. Move pipe left; IF off-screen, move it to right at new height.
+7. IF pipe passes turkey once, add 1 to score.
+8. IF score reaches 5 or 10, make the pipe faster.
+9. IF turkey hits a pipe or an edge, set playing to false.
+10. WHEN green flag clicked again, restart from the initial state.</code></pre><p><strong>Planning evidence (ungraded):</strong> a title, 3 mechanics, 2 progression features, 2 UI elements, and ordered pseudocode. Keep this plan for tomorrow.</p></section><section class="panel practice"><span class="kicker">04 · 10 minutes · walk through</span><h2>Check Your Plan</h2><ul><li>A title and audience-friendly one-line theme.</li><li>Three clear mechanics with cause and effect.</li><li>Two progression items and two visible UI elements.</li><li>An ordered game loop and ending/restart.</li></ul></section><section class="panel learn"><span class="kicker">05 · flexible finish</span><h2>Re-entry and Recovery</h2><p>If absent or interrupted, save the plan and start Tuesday with the ready-made block recipes. You can also complete previously assigned graded CS recovery work.</p><p><strong>Friday:</strong> The existing responsive HTML/CSS Major assessment stays separate. You will return to Turkey Escape only after the assessment or approved recovery work.</p></section><section class="panel temp" id="temperature"><span class="kicker">Learning reflection · not graded</span><h2>Today’s Temperature Check</h2><p>Think about this question, then tell a partner or record it in your planning document: <strong>Which rule makes the game fair to a first-time player?</strong></p><p class="micro">No new Collector Form or mastery question is assigned for this enrichment week.</p></section></article><footer class="footer">RTF Learning Guide · CS · Turkey Escape · Ungraded game enrichment · No release without teacher approval</footer></main>
+<script>
+'use strict';
+/* Master configuration is intentionally blank. Populate it only during an approved lesson build.
+  imagePools: [{src,alt}] target/temperature/labs; comics [{src,alt}]; skits [{title,lines:[{speaker,text}]}].
+  destinations: {warm,q1,q2,temp,labs} are verified Form URLs containing correct hidden keys. Warm-Up must use the reserved five-digit registry-backed key for 9998 (zero-pad to 09998 if required by existing schema); never use a mastery question key. RTF sticky notes are TEXT ONLY and credited to Tank, Forge, Joey, Captain, or Percival.12; never invent speech for Pixel or Onion.exe. Learn teaches curiosity-building concepts and mastery prerequisites; Practice gives exact teacher actions; Perform uses teacher-supplied materials while students make design choices. Verify each at lesson build.
+  Answer fragments use data-stem / data-phrase configured by the curriculum builder.
+  No current TEKS, submission keys, lessons, routes, or student answers are stored in the shell.
+*/
+// Inspection is tied to the canonical master pathname; copied Tech/CS/AAVTC lessons always use copy-gated submission.
+const IS_MASTER_TEMPLATE=/\/templates\/(?:7th-grade\/)?wayfinder-master\.html$/.test(window.location.pathname);
+const WAYFINDER_CONFIG={"mode":"STARTER","imagePools":{"target":[],"labs":[],"characters":[],"comics":[],"skits":[]},"destinations":{}};
+const $=(selector,root=document)=>root.querySelector(selector);
+const $$=(selector,root=document)=>Array.from(root.querySelectorAll(selector));
+const clean=s=>String(s||'').replace(/\s+/g,' ').trim();
+function choose(list){if(!Array.isArray(list)||!list.length)return null;return list[Math.floor(Math.random()*list.length)];}
+function placeArt(slot,pool){if(!slot)return;const candidates=Array.isArray(pool)?pool.filter(x=>x&&x.src):[];if(!candidates.length){slot.hidden=true;return;}const start=Math.floor(Math.random()*candidates.length);let attempt=0;const next=()=>{if(attempt>=candidates.length){slot.hidden=true;return;}const item=candidates[(start+attempt++)%candidates.length];const img=document.createElement('img');img.alt=item.alt||'Approved character artwork';img.loading='eager';img.onerror=next;img.onload=()=>{slot.hidden=false;slot.replaceChildren(img);};img.src=item.src;};next();}
+function rotateArt(slot,folder,pool){if(window.WF_ART)window.WF_ART.rotate(slot,folder,pool);else placeArt(slot,pool);}
+function placeSkit(slot,pool){
+ const showcase=$('#rtfShowcase'),comic=$('#comicBlock'),skit=$('#skitBlock');
+ if(!showcase||!comic||!skit||!slot)return;
+ const skits=Array.isArray(pool)?pool.filter(item=>item&&Array.isArray(item.lines)&&item.lines.length):[];
+ const hasComic=Array.isArray(WAYFINDER_CONFIG.imagePools.comics)&&WAYFINDER_CONFIG.imagePools.comics.some(item=>item&&item.src);
+ const count=hasComic?1:Math.min(3,skits.length);
+ const chosen=skits.slice().sort(()=>Math.random()-.5).slice(0,count);
+ if(!IS_MASTER_TEMPLATE){comic.hidden=!hasComic;skit.hidden=!chosen.length;showcase.hidden=!hasComic&&!chosen.length;}
+ showcase.classList.toggle('skits-only',!hasComic);
+ if(!chosen.length)return;
+ slot.replaceChildren();
+ for(const item of chosen){const article=document.createElement('article');article.className='skit-entry';if(item.title){const h=document.createElement('h4');h.textContent=item.title;article.append(h);}for(const line of item.lines){const p=document.createElement('p');const name=document.createElement('strong');name.textContent=`${line.speaker||'RTF'}: `;p.append(name,document.createTextNode(line.text||''));article.append(p);}slot.append(article);}
+}
+function setStatus(id,msg){const e=document.getElementById(id);if(e)e.textContent=msg;}
+const evidenceDrafts={warm:'',temp:'',labs:''};
+function resetSubmission(key){const button=document.querySelector('button.evidence-final[data-submission="'+key+'"]');if(button)button.disabled=true;const preview=document.getElementById(key+'Preview');if(preview){preview.textContent='';preview.hidden=true;}evidenceDrafts[key]='';}
+function copyText(text){if(!clean(text))return false;const el=document.createElement('textarea');el.value=text;el.readOnly=true;el.style.cssText='position:fixed;left:-9999px;top:0;opacity:0';document.body.append(el);let copied=false;try{el.focus();el.select();copied=Boolean(document.execCommand('copy'));}catch(_){copied=false;}finally{el.remove();}return copied;}
+function evidenceAnswer(key){
+ if(key==='warm'){const choices=$('[data-warm-choices]');const choice=choices&&!choices.hidden?$('input[name="warmPage"]:checked')?.value:'';const answer=clean($('#warmAnswer').value);if(!answer||(choices&&!choices.hidden&&!choice))return '';return (choice?'I chose '+choice+'. ':'')+answer;}
+ if(key==='temp'){const confidence=$('input[name="tempConfidence"]:checked')?.value||'',feedback=clean($('#temperatureFeedback').value);return confidence&&feedback?'My confidence: '+confidence+'. Lesson feedback: '+feedback:'';}
+ return clean($('#studioEvidence').value);
+}
+function createEvidence(key){if(key==='labs'&&$('#creativeLabs').hidden)return;const answer=evidenceAnswer(key),status=key==='warm'?'warmStatus':key==='temp'?'tempStatus':'labStatus';if(!answer){setStatus(status,'Complete the required answer before creating your response.');return;}evidenceDrafts[key]=answer;const preview=document.getElementById(key+'Preview');preview.textContent=answer;preview.hidden=false;document.querySelector('button.evidence-final[data-submission="'+key+'"]').disabled=false;setStatus(status,'Review your answer, then choose Copy & Submit My Answer.');}
+function submitEvidence(key){const status=key==='warm'?'warmStatus':key==='temp'?'tempStatus':'labStatus',answer=evidenceDrafts[key];if(!answer||answer!==evidenceAnswer(key)){resetSubmission(key);setStatus(status,'Create My Response again after editing.');return;}if(IS_MASTER_TEMPLATE){setStatus(status,'Master template demonstration only.');return;}const url=WAYFINDER_CONFIG.destinations[key];if(!url||!/^https:\/\//.test(url)){setStatus(status,'School Form link is unavailable. Tell your teacher.');return;}const copied=copyText(answer);
+ if(!copied){setStatus(status,'Copy did not succeed. Try Copy & Submit again.');return;}
+ setStatus(status,'Copied. Paste your answer into the school Form and submit.');
+ window.open(url,'_blank','noopener');
+}
+function assemble(which){
+ const root=$(`[data-assembler="${which}"]`);if(!root)return {ok:false,text:'',reason:'Answer section unavailable.'};const parts=$$('[data-answer-part]',root),fragments=[];
+ if(!parts.length)return {ok:false,text:'',reason:'Scaffolds have not been configured for this question.'};
+ for(const part of parts){
+  const type=part.dataset.type||'open-response',radios=$$('input[type="radio"]',part),chosen=$('input[type="radio"]:checked',part);
+  if(radios.length&&!chosen)return {ok:false,text:'',reason:'Choose an answer in each selection field.'};
+  const boxes=$$('input[type="checkbox"]',part),marked=boxes.filter(x=>x.checked);
+  if(boxes.length&&!marked.length)return {ok:false,text:'',reason:'Select at least one relevant option.'};
+  const dropdown=$('select[data-answer-select]',part);
+  if(dropdown&&!clean(dropdown.value))return {ok:false,text:'',reason:'Select an answer from the menu.'};
+  if(type==='fill-blank'){
+   const blanks=$$('input[data-blank]',part),sentence=part.dataset.sentence||'';
+   if(!blanks.length||blanks.some(x=>!clean(x.value)))return {ok:false,text:'',reason:'Complete each blank.'};
+   if(!sentence||(sentence.split('{blank}').length-1)!==blanks.length)return {ok:false,text:'',reason:'Configure one sentence placeholder per blank before publication.'};
+   let i=0;fragments.push(sentence.replace(/\{blank\}/g,()=>clean(blanks[i++]?.value)));continue;
+  }
+  const fields=$$('textarea[data-open-response],input[data-open-response],textarea[data-fragment]',part),answers=fields.map(x=>clean(x.value)).filter(Boolean);
+  const requireWhy=['multiple-choice','true-false-why','dropdown','checkboxes','open-response'].includes(type)||part.dataset.requireWhy==='true';
+  if(requireWhy&&(!fields.length||fields.some(x=>!clean(x.value))))return {ok:false,text:'',reason:'Explain WHY in your own words.'};
+  if(chosen)fragments.push(clean(chosen.dataset.phrase||chosen.value));
+  if(marked.length)fragments.push(marked.map(x=>clean(x.dataset.phrase||x.value)).filter(Boolean).join('; '));
+  if(dropdown)fragments.push(clean(dropdown.selectedOptions?.[0]?.dataset.phrase||dropdown.value));
+  fragments.push(...answers);
+ }
+ if(!fragments.length)return {ok:false,text:'',reason:'Complete your answer pieces.'};
+ return {ok:true,text:fragments.map(v=>/[.!?]$/.test(v)?v:v+'.').join(' ')};
+}
+/* Mastery workflow: preview is built locally; final button alone copies and opens Forms. */
+const responseDrafts={one:{text:'',valid:false,revision:0},two:{text:'',valid:false,revision:0}};
+function invalidateResponse(which){
+ const st=responseDrafts[which],num=which==='one'?1:2;
+ st.revision++;st.valid=false;st.text='';
+ const preview=$('#q'+num+'assembled'),empty=$('#q'+num+'empty'),loading=$('#q'+num+'loading');
+ preview.hidden=true;preview.textContent='';empty.hidden=false;loading.hidden=true;
+ const create=$('.create-response[data-question="'+which+'"]'),submit=$('.finalize-response[data-question="'+which+'"]');
+ create.disabled=false;submit.disabled=true;
+ setStatus(questionStatus(which),'Your answers changed. Select Create My Response to review your updated paragraph.');
+}
+function prepareResponse(which){
+ const st=responseDrafts[which],num=which==='one'?1:2,button=$('.create-response[data-question="'+which+'"]');
+ let result=assemble(which);
+ if(IS_MASTER_TEMPLATE&&!result.ok)result={ok:true,text:'I would choose an illustration that matches the story, resize it so every sentence stays readable, and place it beside the words because the picture should help younger readers understand the scene.'};
+ if(!result.ok){setStatus(questionStatus(which),result.reason||'Complete your answer pieces.');return;}
+ const token=++st.revision;st.valid=false;st.text='';button.disabled=true;
+ $('.finalize-response[data-question="'+which+'"]').disabled=true;
+ const preview=$('#q'+num+'assembled'),empty=$('#q'+num+'empty'),loading=$('#q'+num+'loading');
+ preview.hidden=true;empty.hidden=true;loading.hidden=false;
+ setStatus(questionStatus(which),'Creating your response…');
+ const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ window.setTimeout(()=>{
+   if(st.revision!==token)return;
+   st.text=result.text;st.valid=true;loading.hidden=true;
+   preview.textContent=st.text;preview.hidden=false;button.disabled=false;
+   $('.finalize-response[data-question="'+which+'"]').disabled=false;
+   setStatus(questionStatus(which),'Read your paragraph. To change it, edit the answers above and create it again.');
+ },reduced?0:650);
+}
+function submitResponse(which){
+ const st=responseDrafts[which],key=questionSubmit(which);
+ if(!st.valid||!st.text){setStatus(questionStatus(which),'First select Create My Response and review your paragraph.');return;}
+ const current=assemble(which);
+ if(!IS_MASTER_TEMPLATE&&(!current.ok||current.text!==st.text)){invalidateResponse(which);return;}
+ if(IS_MASTER_TEMPLATE){setStatus(questionStatus(which),'Master template demonstration only. No live Form is connected.');return;}
+ const url=WAYFINDER_CONFIG.destinations[key];
+ if(!url||!/^https:\/\//.test(url)){setStatus(questionStatus(which),'The Submission Form is not configured. Tell your teacher.');return;}
+ // Copy while this lesson still has focus, before opening the Form.
+ const copied=copyText(st.text);
+
+ if(!copied){setStatus(questionStatus(which),'Copy did not succeed. Try Copy & Submit again.');return;}
+ setStatus(questionStatus(which),'Copied. Paste your response into the school Form and submit.');
+ window.open(url,'_blank','noopener');
+}
+
+function questionStatus(which){return which==='one'?'q1Status':'q2Status';}
+function questionSubmit(which){return which==='one'?'q1':'q2';}
+function updateMirror(){for(const key of ['learning-target','priority-teks']){const source=$(`[data-slot="${key}"]`);const mirror=$(`[data-mirror="${key}"]`);if(source&&mirror)mirror.textContent=source.textContent;}}
+function updateGate(){const checks=Array.from(document.querySelectorAll('.gate-check'));const ready=IS_MASTER_TEMPLATE || ['ASSESSMENT','RECOVERY'].includes(WAYFINDER_CONFIG.mode) || (checks.length===4 && checks.every(c=>c.checked));if(!$('#creativeLabs')||!$('#labLock'))return;$('#creativeLabs').hidden=!ready;const lab=$('#labLock');lab.classList.toggle('labs-locked',!ready);lab.hidden=!ready;lab.toggleAttribute('inert',!ready);lab.setAttribute('aria-disabled',String(!ready));setStatus('gateStatus',ready?'Creative Studio unlocked. Explore, then record what you tried or learned.':'Creative Studio unlocks after all four checks.');if(!ready)resetSubmission('labs');}
+function onEditReset(){
+ for(const which of ['one','two']){
+  const container=$('[data-assembler="'+which+'"]');
+  if(container){container.addEventListener('input',()=>invalidateResponse(which));container.addEventListener('change',()=>invalidateResponse(which));}
+ }
+ $('#warmAnswer')?.addEventListener('input',()=>resetSubmission('warm'));
+ Array.from(document.querySelectorAll('input[name="warmPage"]')).forEach(x=>x.addEventListener('change',()=>resetSubmission('warm')));
+ $('#temperatureFeedback')?.addEventListener('input',()=>resetSubmission('temp'));
+ $$('input[name="tempConfidence"]').forEach(x=>x.addEventListener('change',()=>resetSubmission('temp')));
+ $('#studioEvidence')?.addEventListener('input',()=>resetSubmission('labs'));
+}
+function init(){if(IS_MASTER_TEMPLATE){for(const key of ['warm','temp','labs'])resetSubmission(key);}rotateArt($('#targetArt'),'target',WAYFINDER_CONFIG.imagePools.target);rotateArt($('#labArt'),'characters',WAYFINDER_CONFIG.imagePools.labs);rotateArt($('#comicSlot'),'comics',WAYFINDER_CONFIG.imagePools.comics);placeSkit($('#skitSlot'),WAYFINDER_CONFIG.imagePools.skits);updateMirror();onEditReset();initAssessment();$$('.gate-check').forEach(x=>x.addEventListener('change',updateGate));updateGate();
+$$('button.create-response[data-question]').forEach(button=>button.addEventListener('click',()=>prepareResponse(button.dataset.question)));
+$$('button.finalize-response[data-question]').forEach(button=>button.addEventListener('click',()=>submitResponse(button.dataset.question)));
+$$('button.evidence-create').forEach(button=>button.addEventListener('click',()=>createEvidence(button.dataset.submission)));
+$$('button.evidence-final').forEach(button=>button.addEventListener('click',()=>submitEvidence(button.dataset.submission)));
+}
+
+/* Four independently keyed assessment cards use the canonical assembler/copy action. */
+const sectionDrafts={};
+function initAssessment(){
+ $$('.assessment-section[data-n]').forEach(section=>{
+  const n=section.dataset.n,which='assessment'+n,preview=$('#preview'+n),build=$('.section-build',section),submit=$('.section-submit',section),root=$('[data-assembler]',section);
+  const reset=()=>{sectionDrafts[n]='';preview.textContent='';preview.hidden=true;submit.disabled=true;setStatus('sectionStatus'+n,'Create your response after any changes.');};
+  root.addEventListener('input',reset);root.addEventListener('change',reset);
+  build.addEventListener('click',()=>{const result=assemble(which);if(!result.ok){setStatus('sectionStatus'+n,result.reason);return;}sectionDrafts[n]=result.text;preview.textContent=result.text;preview.hidden=false;submit.disabled=false;setStatus('sectionStatus'+n,'Review your response before submitting.');});
+  submit.addEventListener('click',()=>{const current=assemble(which),answer=sectionDrafts[n];if(!answer||!current.ok||current.text!==answer){reset();return;}const url=WAYFINDER_CONFIG.destinations['section'+n];if(!url||!/^https:\/\//.test(url)){setStatus('sectionStatus'+n,'School Form link is unavailable. Tell your teacher.');return;}if(!copyText(answer)){setStatus('sectionStatus'+n,'Copy did not succeed. Try Copy & Submit again.');return;}setStatus('sectionStatus'+n,'Copied. Paste your answer into the school Form and submit.');window.open(url,'_blank','noopener');});
+ });
+}
+
+function startWayfinder(){try{init();}catch(error){console.error('Wayfinder startup failed',error);document.querySelectorAll('.status').forEach(el=>{el.textContent='Something did not load correctly. Tell your teacher before submitting.';});}}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',startWayfinder);else startWayfinder();
+</script>
+</body></html>
