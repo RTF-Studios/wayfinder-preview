@@ -1,7 +1,9 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
 <!-- UNIVERSAL CAPTURE-FIRST ENGINE v1 (Captain GO 2026-11-11): The code is common across Tech/CS/AAVTC and all lesson modes. Missing selections, blanks and explanations are serialized as visible [Not answered: ...] evidence, NEVER validation-blocked. One read-only preview, one Create button and one copy-before-Form button per submission. No lesson-specific JavaScript; only content/scaffold HTML, prompt, rubric, DayID and form keys vary. -->
+
+
 
 
 <meta charset="utf-8"/>
@@ -30,8 +32,12 @@
 @media(max-width:760px){.target{grid-template-columns:1fr}.notes{grid-template-columns:repeat(2,1fr)}.lab-grid{grid-template-columns:1fr}.two-col{grid-template-columns:1fr}.rtf-showcase{grid-template-columns:1fr}.sidelink{top:auto;bottom:12px}.wrap{margin-top:12px}.notebook{padding:18px 13px}.temperature-choice{grid-template-columns:1fr}.checks{grid-template-columns:1fr}.mast{padding:20px 16px}}@media print{body{background:#fff}.sidelink,.actions,.notes{display:none!important}.notebook{box-shadow:none;border:0}.panel{break-inside:avoid}}
 
 
+
+
 /* Locked seventh-grade semantic palette; do not rotate. */
 :root{--outer:#e5e7eb;--paper:#f9fbff;--warmup-and-labs:#ede3fa;--learn-blue:#e5f1ff;--practice-green:#e8f2d2;--perform-gold:#ffefc3;--mastery-purple:#392468} .mast,.mast h1{color:#fff}.warm,.labs{background:var(--warmup-and-labs)}.learn{background:var(--learn-blue)}.practice{background:var(--practice-green)}.perform{background:var(--perform-gold)}.mastery,.lab-evidence{background:var(--mastery-purple)}.temp{background:var(--warmup-and-labs);border-color:#b69edb;color:var(--ink)}.sidelink{background:var(--perform-gold)}.stem-set{background:#f2f4fa;border-radius:9px;padding:10px 14px;margin:10px 0}.stem-set p{margin:3px 0}.blank{display:inline-block;min-width:120px;border-bottom:2px solid #58358b}.scaffold .type-sample{border:1px dashed #9c91be;border-radius:9px;padding:12px;margin:10px 0}.scaffold-library{display:none!important}.lab-evidence{background:#392468}.lab-evidence .hint{color:#eee4ff}
+
+
 
 
 /* Universal progression: warm paper → muted gold Copy → bright jeweled gold Submit.
@@ -73,6 +79,8 @@ textarea::placeholder,input::placeholder{color:#68604f;opacity:1}
 @media(max-width:760px){.rtf-showcase.skits-only .skit-list{grid-template-columns:1fr}}
 
 
+
+
 /* Two-step mastery response interface: notebook inputs > read-only preview > final copy/open. */
 .mastery .scaffold textarea[data-open-response]{height:62px;min-height:54px;line-height:26px;padding:8px 11px;resize:vertical}
 .mastery .answer-parts [data-answer-part]{margin:8px 0}
@@ -103,6 +111,8 @@ textarea::placeholder,input::placeholder{color:#68604f;opacity:1}
 @media(prefers-reduced-motion:reduce){.loading-fill{animation:none;transform:scaleX(1)}.loading-sparkle,.response-preview-shell .assembled-preview{animation:none}.response-submit-actions .finalize-response{transition:none}}
 
 
+
+
 /* Perform: required resources always above steps; guidance stays optional. */
 .perform-resources{background:#f2e8d8;border:1px solid #bb9c78;border-left:4px solid #704b27;border-radius:11px;padding:13px 16px;margin:14px 0 18px;color:#422d1b}
 .perform-resources h3{color:#704b27;margin:0 0 8px}
@@ -118,6 +128,8 @@ textarea::placeholder,input::placeholder{color:#68604f;opacity:1}
 @media(max-width:600px){.perform-resources{padding:11px}.perform-step-list{padding-left:23px}.perform-step>summary{padding:11px}}
 
 
+
+
 /* Student Learning Leader: light, readable aloud prompts; not a separate teacher script. */
 .leader-intro{background:#f4f9ff;border-left:3px solid #497caf;padding:9px 12px;border-radius:7px}
 .leader-discussion{background:#f5faff;border:1px solid #b5d0ed;border-radius:9px;padding:10px 14px;margin:12px 0}
@@ -128,6 +140,14 @@ textarea::placeholder,input::placeholder{color:#68604f;opacity:1}
 /* STARTER mode only: populated Part roadmap within the canonical shared shell. */
 .starter-roadmap{background:#f0ecfa;border-color:#a89bd9}.starter-roadmap h2,.starter-roadmap h3{color:#392468}.starter-roadmap .starter-destination{background:#fff;border:1px solid #c9b8e7;border-radius:12px;padding:16px;margin:12px 0}.starter-roadmap .starter-example{background:#eef3ff;padding:12px;border-radius:10px}.starter-roadmap .starter-steps{display:grid;gap:8px;padding-left:26px}.starter-roadmap .starter-success{padding-left:26px}.starter-roadmap .starter-today{background:#fff1c7;padding:12px;border-left:4px solid #b78925;border-radius:7px}
 </style>
+
+
+
+
+
+
+
+
 
 
 
@@ -165,6 +185,8 @@ textarea::placeholder,input::placeholder{color:#68604f;opacity:1}
 <template id="wf-starter-roadmap"><section class="panel starter-roadmap" id="partRoadmap" aria-label="Our Part roadmap"><span class="kicker">Our journey · The big picture</span><h2>[Part title] — Where we're going</h2><p class="starter-why">[Why this Part matters to real people and careers, in concrete middle-school-friendly language]</p><div class="starter-destination"><h3>What we'll create</h3><p>[Authentic final product, intended audience and its purpose]</p><div class="starter-example">[Verified real or teacher-produced finished-product visual / usable labeled exemplar — never a fabricated screenshot]</div></div><h3>Our roadmap</h3><ol class="starter-steps"><li>[Big idea or milestone 1]</li><li>[Big idea or milestone 2]</li><li>[Big idea or milestone 3]</li><li>[Big idea or milestone 4, if needed]</li></ol><h3>What success looks like</h3><ul class="starter-success"><li>[Specific observable product/learning criterion 1]</li><li>[Specific observable criterion 2]</li><li>[Specific observable criterion 3]</li></ul><p class="starter-today"><strong>Today:</strong> [Explore 2–4 high-level concepts only; about half a normal Learn day's new content. No requirement to build the final project today.]</p></section></template>
 <!-- ASSESSMENT-MODE COMPONENT SPEC (Captain GO 2026-11-10; open-notes extension GO): Configure ONLY on an approved assessment-day copy. No live keys or correct answers in the master. Open with a compact Study & Recall reference: actually taught key vocabulary and definitions, relationships, and concept prompts; allow student to consult notes during the test. Notes are deliberately PARTIAL: never reproduce exact choices, worked scenario solutions or complete code answers. Assess transfer, interpretation, diagnosis, and justification rather than only matching definitions. Then use roughly four independently submitted 3–6-prompt sections using the approved mastery scaffold, ruled inputs, purple READ-ONLY preview and exactly TWO controls: Create My Response (assemble + show ONE preview; do not copy) and Copy & Submit My Answer (synchronously copy the reviewed response using document.execCommand('copy'), then open the verified prefilled Form). Never use navigator.clipboard.writeText, navigator.permissions.query or permission prompts. Do not introduce standalone Copy or third Submit controls, or display a duplicate preview. Use the existing purple preview only—never introduce a duplicate response area or third action. Editing invalidates preview and disables the final control until recreated. Strip duplicate numbering from question legends in the assembled text. Separate section keys and saved drafts. Follow with the topic-specific TEKS Temperature Check (standard three thumbs + written confidence/confusion feedback), then an UNLOCKED post-test Creative Studio (three creative ideas using already taught tools, one separate Xtra submission). Add only approved RTF art/skits, no answer leaks. Each section's complete pinned teacher prompt, correct answer key and holistic rubric lives in the current TEKS Register for Collector lookup, without grading as an ordinary daily mastery question. Sections make one MAJOR grade; Temperature and Studio are separate Xtra. Assessment component replaces regular Warmup/Practice/Perform/mastery shells. Offline standalone HTML has NO navigation menu and NO cross-guide/library links. Plan approximately 3 minutes notes, 2 instructions, 35 minutes sections, 3 minutes reflection and 7 minutes Studio including submission transitions; adjust to actual student pace. -->
 <template id="wf-assessment-section"><section class="panel mastery assessment-section"><span class="kicker">Assessment Section [NN]</span><h2>[Concept cluster title]</h2><div class="scaffold">[3–6 varied prompts using native controls, independent of project performance]</div><div class="response"><p class="preview-caption">My assembled section response</p><div class="assembled-preview" role="status" aria-live="polite" hidden></div><div class="actions"><button type="button" class="btn copy-action create-response">Create My Response</button><button type="button" class="btn submit finalize-response" disabled>Copy &amp; Submit My Answer</button></div><p class="status" role="status" aria-live="polite"></p></div></section></template>
+
+
 
 
 <script>
@@ -295,6 +317,8 @@ function submitResponse(which){
 }
 
 
+
+
 function questionStatus(which){return which==='one'?'q1Status':'q2Status';}
 function questionSubmit(which){return which==='one'?'q1':'q2';}
 function updateMirror(){for(const key of ['learning-target','priority-teks']){const source=$(`[data-slot="${key}"]`);const mirror=$(`[data-mirror="${key}"]`);if(source&&mirror)mirror.textContent=source.textContent;}}
@@ -318,6 +342,8 @@ $$('button.evidence-final').forEach(button=>button.addEventListener('click',()=>
 }
 
 
+
+
 /* Four independently keyed assessment cards use the canonical assembler/copy action. */
 const sectionDrafts={};
 function initAssessment(){
@@ -329,6 +355,8 @@ function initAssessment(){
   submit.addEventListener('click',()=>{const current=assemble(which),answer=sectionDrafts[n];if(!answer||!current.ok||current.text!==answer){reset();return;}const url=WAYFINDER_CONFIG.destinations['section'+n];if(!url||!/^https:\/\//.test(url)){setStatus('sectionStatus'+n,'School Form link is unavailable. Tell your teacher.');return;}if(!copyText(answer)){setStatus('sectionStatus'+n,'Copy did not succeed. Try Copy & Submit again.');return;}setStatus('sectionStatus'+n,'Copied. Paste your answer into the school Form and submit.');window.open(url,'_blank','noopener');});
  });
 }
+
+
 
 
 function startWayfinder(){try{init();}catch(error){console.error('Wayfinder startup failed',error);document.querySelectorAll('.status').forEach(el=>{el.textContent='Something did not load correctly. Tell your teacher before submitting.';});}}
