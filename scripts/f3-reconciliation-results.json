@@ -1,0 +1,807 @@
+{
+  "authorization": "Captain F3 GO 2026-11-15; identity reconciliation only; no student release",
+  "code_commit": "70fb962dfa25b6b16d9cca0ae48788b2f66b67cf",
+  "test_wait_fix_commit": "09245fa65a9c8d24a0ead1120fc450e66a2ba6cd",
+  "scope": {
+    "Tech": "3050201–3050207 / 3050301–3050305 / 3050401–3050405",
+    "CS": "2090301–2090304"
+  },
+  "changes": [
+    "Corrected native Prototype Part 1→2, Story Part 2→3, Innovation Part 3→4; Part and production phase now distinct",
+    "Builders read permanent titles from actual refreshed source headings instead of hardcoded fallback title arrays",
+    "Refreshed three existing native source snapshots from current Personal Drive Master Outlines",
+    "Six native closeout headings now explicitly contain their established permanent titles; bodies preserved",
+    "Corrected two Story source references to Innovation Part 4; one appears in existing Tech/3050303.html",
+    "Exact one-string HTML correction in Tech/3050303.html and same JISD Drive file ID; no full guide rebuild",
+    "Recorded explicit existing-name summary in the existing F3 Dispatch checkpoint, independently read it with native outline headings and live Control Station",
+    "Added dated independent-source snapshot and targeted offline browser acceptance job; F1 validator implementations unchanged"
+  ],
+  "source_docs": [
+    {
+      "id": "1uT88cp1mVW7D8HFj6EL51_nlvlRc531uiGZcKcHEI48",
+      "revision": "AHj4eMTLQSGxDstLPtQoTtlK01NkYbOSVO4FwDxHKLdHeR8_rDWDK_diEM6U3XOklqWH1cjvb42c1tNbTPi_I4choZpO04KNnKGQvJO8pxQ"
+    },
+    {
+      "id": "1c9eO4pf8USmC6hNrXX4FqZW7q8yy5EuuDIIabLQzL4Q",
+      "revision": "AHj4eMTAakH4JA-q1i4qf5FQpAJwHbHkKD81Jyp_zzlROEnDdLrdTLTZCaH4Z6Hrt8k29T3p6x15_jhbZ65hgQ14rqsHZBKVQZNF6yWk4KI"
+    },
+    {
+      "id": "1Tng6s69tYbPg3sGNHd6ZUpgEUc45C0rlV2j4pMl31ZA",
+      "revision": "AHj4eMQChESVv4EjQC0tQo9Q7aykiUkfSlTl_KB7ZhV8S3jBidGkrybmyU7RYB1uvP1dD6RVts22D-5QWiLr8K6hsjYg_EMjSEJFYqgigEo"
+    }
+  ],
+  "tests": {
+    "F1_regression": {
+      "status": "PASS",
+      "tests": 69,
+      "command": "node scripts/test-wayfinder-identity.cjs"
+    },
+    "independent_identity_sources": {
+      "status": "PASS",
+      "lessons": 21,
+      "snapshot": "scripts/wayfinder-identity-sources-20261115.json"
+    },
+    "native_production_builders": {
+      "status": "PASS",
+      "isolated_temp_builds": 17,
+      "canonical_HTML_writes": 0
+    },
+    "rendered_identity_headers": {
+      "status": "PASS",
+      "files": 21,
+      "command": "node .github/guide-identity-qa.cjs Tech/30502*.html Tech/30503*.html Tech/30504*.html CS/20903*.html"
+    },
+    "offline_static": {
+      "status": "PASS",
+      "files": 21
+    },
+    "source_body_preservation": "PASS except explicitly enumerated identity reference corrections; question/rubric/evidence records preserved",
+    "HTML_byte_preservation": "PASS: all existing HTML bytes preserved except exact Part 3 → Part 4 (Innovation) reference substitution in one file",
+    "F1_implementation_preservation": "PASS: scripts/wayfinder-identity.cjs, scripts/wayfinder_identity.py and .github/guide-identity-qa.cjs unchanged",
+    "control_station_and_File_Links": "PASS: exact before/after readback unchanged; no Show/Hide edits",
+    "native_source_heading_readback": "PASS: six exact title headings; no other heading-repair body changes",
+    "offline_runtime": {
+      "status": "PASS",
+      "viewports": 42,
+      "lessons": 21,
+      "widths": [
+        1280,
+        390
+      ],
+      "networkRequests": 0,
+      "brokenImages": 0,
+      "horizontalOverflow": 0,
+      "checks": "Real Chromium offline media/rendering, response previews on visible mastery controls, disclosure opening and JS startup",
+      "run": 43724247938,
+      "job": 132842721663,
+      "artifact": 14165482323,
+      "results": [
+        {
+          "dayid": "2090301",
+          "width": 1280,
+          "pass": true,
+          "h1": "Unit 9 · Part 3 · Day 1 — Turkey Escape: Plan the Game",
+          "eyebrow": "RTF Wayfinder · Computer Science · Unit 9 · Part 3 · Day 1",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "2090301",
+          "width": 390,
+          "pass": true,
+          "h1": "Unit 9 · Part 3 · Day 1 — Turkey Escape: Plan the Game",
+          "eyebrow": "RTF Wayfinder · Computer Science · Unit 9 · Part 3 · Day 1",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "2090302",
+          "width": 1280,
+          "pass": true,
+          "h1": "Unit 9 · Part 3 · Day 2 — Turkey Escape: Flap and Dodge",
+          "eyebrow": "RTF Wayfinder · Computer Science · Unit 9 · Part 3 · Day 2",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "2090302",
+          "width": 390,
+          "pass": true,
+          "h1": "Unit 9 · Part 3 · Day 2 — Turkey Escape: Flap and Dodge",
+          "eyebrow": "RTF Wayfinder · Computer Science · Unit 9 · Part 3 · Day 2",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "2090303",
+          "width": 1280,
+          "pass": true,
+          "h1": "Unit 9 · Part 3 · Day 3 — Turkey Escape: Score and Level Up",
+          "eyebrow": "RTF Wayfinder · Computer Science · Unit 9 · Part 3 · Day 3",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "2090303",
+          "width": 390,
+          "pass": true,
+          "h1": "Unit 9 · Part 3 · Day 3 — Turkey Escape: Score and Level Up",
+          "eyebrow": "RTF Wayfinder · Computer Science · Unit 9 · Part 3 · Day 3",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "2090304",
+          "width": 1280,
+          "pass": true,
+          "h1": "Unit 9 · Part 3 · Day 4 — Turkey Escape: Playtest and Polish",
+          "eyebrow": "RTF Wayfinder · Computer Science · Unit 9 · Part 3 · Day 4",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "2090304",
+          "width": 390,
+          "pass": true,
+          "h1": "Unit 9 · Part 3 · Day 4 — Turkey Escape: Playtest and Polish",
+          "eyebrow": "RTF Wayfinder · Computer Science · Unit 9 · Part 3 · Day 4",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050201",
+          "width": 1280,
+          "pass": true,
+          "h1": "Build a Game from Shapes",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 2 · Day 1 — Prototype",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050201",
+          "width": 390,
+          "pass": true,
+          "h1": "Build a Game from Shapes",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 2 · Day 1 — Prototype",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050202",
+          "width": 1280,
+          "pass": true,
+          "h1": "Make the Player Move",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 2 · Day 2 — Prototype",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050202",
+          "width": 390,
+          "pass": true,
+          "h1": "Make the Player Move",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 2 · Day 2 — Prototype",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050203",
+          "width": 1280,
+          "pass": true,
+          "h1": "Make the Circle Fall Forever",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 2 · Day 3 — Prototype",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050203",
+          "width": 390,
+          "pass": true,
+          "h1": "Make the Circle Fall Forever",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 2 · Day 3 — Prototype",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050204",
+          "width": 1280,
+          "pass": true,
+          "h1": "Lives, Hits and Fair Rules",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 2 · Day 4 — Prototype",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050204",
+          "width": 390,
+          "pass": true,
+          "h1": "Lives, Hits and Fair Rules",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 2 · Day 4 — Prototype",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050205",
+          "width": 1280,
+          "pass": true,
+          "h1": "Score, Challenge and Playtesting",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 2 · Day 5 — Prototype",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050205",
+          "width": 390,
+          "pass": true,
+          "h1": "Score, Challenge and Playtesting",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 2 · Day 5 — Prototype",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050206",
+          "width": 1280,
+          "pass": true,
+          "h1": "Prototype Skills — Assessment & Daily Recovery",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 2 · Day 6 — Prototype",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050206",
+          "width": 390,
+          "pass": true,
+          "h1": "Prototype Skills — Assessment & Daily Recovery",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 2 · Day 6 — Prototype",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050207",
+          "width": 1280,
+          "pass": true,
+          "h1": "Finish the Prototype & Recover Evidence",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 2 · Day 7 — Prototype",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050207",
+          "width": 390,
+          "pass": true,
+          "h1": "Finish the Prototype & Recover Evidence",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 2 · Day 7 — Prototype",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050301",
+          "width": 1280,
+          "pass": true,
+          "h1": "Give the Game a World",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 3 · Day 1 — Story & Art",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050301",
+          "width": 390,
+          "pass": true,
+          "h1": "Give the Game a World",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 3 · Day 1 — Story & Art",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050302",
+          "width": 1280,
+          "pass": true,
+          "h1": "Design Readable Character Art",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 3 · Day 2 — Story & Art",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050302",
+          "width": 390,
+          "pass": true,
+          "h1": "Design Readable Character Art",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 3 · Day 2 — Story & Art",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050303",
+          "width": 1280,
+          "pass": true,
+          "h1": "Replace Art Without Breaking Gameplay",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 3 · Day 3 — Story & Art",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050303",
+          "width": 390,
+          "pass": true,
+          "h1": "Replace Art Without Breaking Gameplay",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 3 · Day 3 — Story & Art",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050304",
+          "width": 1280,
+          "pass": true,
+          "h1": "Storytelling & Visual Design — Assessment",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 3 · Day 4 — Story & Art",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050304",
+          "width": 390,
+          "pass": true,
+          "h1": "Storytelling & Visual Design — Assessment",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 3 · Day 4 — Story & Art",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050305",
+          "width": 1280,
+          "pass": true,
+          "h1": "Finish Your Story World & Recover Evidence",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 3 · Day 5 — Story & Art",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050305",
+          "width": 390,
+          "pass": true,
+          "h1": "Finish Your Story World & Recover Evidence",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 3 · Day 5 — Story & Art",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050401",
+          "width": 1280,
+          "pass": true,
+          "h1": "Invent One Special Game Mechanic",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 4 · Day 1 — Innovation",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050401",
+          "width": 390,
+          "pass": true,
+          "h1": "Invent One Special Game Mechanic",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 4 · Day 1 — Innovation",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050402",
+          "width": 1280,
+          "pass": true,
+          "h1": "Turn Your Idea into Working Code",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 4 · Day 2 — Innovation",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050402",
+          "width": 390,
+          "pass": true,
+          "h1": "Turn Your Idea into Working Code",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 4 · Day 2 — Innovation",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050403",
+          "width": 1280,
+          "pass": true,
+          "h1": "Playtest, Debug and Polish",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 4 · Day 3 — Innovation",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050403",
+          "width": 390,
+          "pass": true,
+          "h1": "Playtest, Debug and Polish",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 4 · Day 3 — Innovation",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050404",
+          "width": 1280,
+          "pass": true,
+          "h1": "Innovation Skills — Assessment",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 4 · Day 4 — Innovation",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050404",
+          "width": 390,
+          "pass": true,
+          "h1": "Innovation Skills — Assessment",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 4 · Day 4 — Innovation",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050405",
+          "width": 1280,
+          "pass": true,
+          "h1": "Final Game Showcase & Recovery",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 4 · Day 5 — Innovation",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        },
+        {
+          "dayid": "3050405",
+          "width": 390,
+          "pass": true,
+          "h1": "Final Game Showcase & Recovery",
+          "eyebrow": "RTF Wayfinder · Tech · Unit 5 · Part 4 · Day 5 — Innovation",
+          "brokenImages": 0,
+          "overflow": false,
+          "errors": [],
+          "networkRequests": 0
+        }
+      ],
+      "note": "Initial acceptance test sampled asynchronous preview too early; corrected to await actual content. Final run 42/42 PASS. Local headless socket restriction remains separate."
+    },
+    "hosted_F1": {
+      "status": "PASS",
+      "run": 43724247938,
+      "job": 132842600479
+    },
+    "deployed_changed_HTML": {
+      "status": "PASS",
+      "path": "Tech/3050303.html",
+      "note": "Actual deployed Pages bytes equal canonical source and downloaded Drive bytes."
+    }
+  },
+  "parity": [
+    {
+      "dayid": "3050201",
+      "parity": true,
+      "bytes": 324247,
+      "sha256": "7471096fba1388814b6330f6ac4baca5b57f7ce72601aeb3846816caf4679b41",
+      "driveId": "16CfNK5omI_4P573emoNm2K4IimimrLbh",
+      "filename": "Intro Technology Unit 05 Part 02 Day 01.html",
+      "parents": [
+        "15T7cNpKopCVQBx3FJ-JKy0aQjT-VTOCu"
+      ]
+    },
+    {
+      "dayid": "2090304",
+      "parity": true,
+      "bytes": 49209,
+      "sha256": "ecde931fe8a05dde860313544b94286a2eddcb0c8973cf43fbbc69ccca3aeabe",
+      "driveId": "1MjE98LQFMaGnPxJkM-gLC43i4nWH-d3M",
+      "filename": "Computer Science Unit 09 Part 03 Day 04.html",
+      "parents": [
+        "10yZRDEGVnjO7Kgp3t3Ch9ilXQ7zkQ4_G"
+      ]
+    },
+    {
+      "dayid": "2090301",
+      "parity": true,
+      "bytes": 49385,
+      "sha256": "f62cc0f299f9afb44842d1f8ebab4611513e0f5f71e0d4e93fe3b2c500e50d03",
+      "driveId": "1pXD90NbVVyB2_GFdNpsPqgUcGgxYV9-0",
+      "filename": "Computer Science Unit 09 Part 03 Day 01.html",
+      "parents": [
+        "10yZRDEGVnjO7Kgp3t3Ch9ilXQ7zkQ4_G"
+      ]
+    },
+    {
+      "dayid": "3050404",
+      "parity": true,
+      "bytes": 318732,
+      "sha256": "edc7f6ccfc6eff66d822be642f40b3bb31bf6a1c46f3abd6a555ab3ef8012f56",
+      "driveId": "1H2LgE-P68ixX-Ie61MaO9zmEbbnDNLS2",
+      "filename": "Intro Technology Unit 05 Part 04 Day 04.html",
+      "parents": [
+        "15T7cNpKopCVQBx3FJ-JKy0aQjT-VTOCu"
+      ]
+    },
+    {
+      "dayid": "3050403",
+      "parity": true,
+      "bytes": 325934,
+      "sha256": "42760d88b8f705a1da23be51a8475a0e08e610ac62da30444b2700be921b8ebd",
+      "driveId": "1cp1xqAVpGgLi8Qz-wF_HwBKN8hYQ5dd7",
+      "filename": "Intro Technology Unit 05 Part 04 Day 03.html",
+      "parents": [
+        "15T7cNpKopCVQBx3FJ-JKy0aQjT-VTOCu"
+      ]
+    },
+    {
+      "dayid": "3050202",
+      "parity": true,
+      "bytes": 323144,
+      "sha256": "3bfaaf1222ce5d4fe157eb6a8a69ccb15b37d762697ea184ee99aa5f5cd3c405",
+      "driveId": "1noc3aO-UGmPqnzkRDHjqRFDo5BkDliY0",
+      "filename": "Intro Technology Unit 05 Part 02 Day 02.html",
+      "parents": [
+        "15T7cNpKopCVQBx3FJ-JKy0aQjT-VTOCu"
+      ]
+    },
+    {
+      "dayid": "3050401",
+      "parity": true,
+      "bytes": 322153,
+      "sha256": "9c2e1cde607900f34d3cc6a5514049559bbbce91f169ec413a260eb06453c2af",
+      "driveId": "19DXbEnYx6P0iQkiiue7xRgsiFWh9ZWmQ",
+      "filename": "Intro Technology Unit 05 Part 04 Day 01.html",
+      "parents": [
+        "15T7cNpKopCVQBx3FJ-JKy0aQjT-VTOCu"
+      ]
+    },
+    {
+      "dayid": "2090303",
+      "parity": true,
+      "bytes": 49663,
+      "sha256": "9a8c6e4210178621f5df87663081e32e054336620563d999f0a8f2a652c94a53",
+      "driveId": "1BiDL-5uQq-qOZ5JJ2l0VwaZQvQPj0Kce",
+      "filename": "Computer Science Unit 09 Part 03 Day 03.html",
+      "parents": [
+        "10yZRDEGVnjO7Kgp3t3Ch9ilXQ7zkQ4_G"
+      ]
+    },
+    {
+      "dayid": "3050205",
+      "parity": true,
+      "bytes": 320478,
+      "sha256": "b90b8a5a0104ba3eb43abe25de0638527f55b12081b51cbb54821c185d09abb6",
+      "driveId": "1Gwb3bew35nsnA-ZYj4CcG_0mvp-8YdsI",
+      "filename": "Intro Technology Unit 05 Part 02 Day 05.html",
+      "parents": [
+        "15T7cNpKopCVQBx3FJ-JKy0aQjT-VTOCu"
+      ]
+    },
+    {
+      "dayid": "3050303",
+      "parity": true,
+      "bytes": 322575,
+      "sha256": "087f3ca776c9f976a6551bac9e00be83132a7bd203939a0916655caf7de9a9da",
+      "driveId": "1d0aI78tf-rBcvogJs9gui5yISha2maeG",
+      "filename": "Intro Technology Unit 05 Part 03 Day 03.html",
+      "parents": [
+        "15T7cNpKopCVQBx3FJ-JKy0aQjT-VTOCu"
+      ]
+    },
+    {
+      "dayid": "3050207",
+      "parity": true,
+      "bytes": 314700,
+      "sha256": "d9dc85419014e2168e39e3edb0ddb5e5ec82e7e1cae52a953ba3f190e752e07c",
+      "driveId": "1IawPzptNE3cTWXHjzqBOEtU0CqLvVy40",
+      "filename": "Intro Technology Unit 05 Part 02 Day 07.html",
+      "parents": [
+        "15T7cNpKopCVQBx3FJ-JKy0aQjT-VTOCu"
+      ]
+    },
+    {
+      "dayid": "3050304",
+      "parity": true,
+      "bytes": 318692,
+      "sha256": "4f9ee2dbca41630d48b6f820a2c733c4273c5334fa5ae9e2b3ebc598651c63d0",
+      "driveId": "1tRgdZPvVdT2tWpCvjhQVjtujjuVK1khJ",
+      "filename": "Intro Technology Unit 05 Part 03 Day 04.html",
+      "parents": [
+        "15T7cNpKopCVQBx3FJ-JKy0aQjT-VTOCu"
+      ]
+    },
+    {
+      "dayid": "3050402",
+      "parity": true,
+      "bytes": 326652,
+      "sha256": "0b168a7674c5544d2b57f98d304c2db6f021fb4dc6da68aa60495e1899ba411b",
+      "driveId": "1XVp7Lq6Ybv0Mi4DOVKUGpBr7vued8FcT",
+      "filename": "Intro Technology Unit 05 Part 04 Day 02.html",
+      "parents": [
+        "15T7cNpKopCVQBx3FJ-JKy0aQjT-VTOCu"
+      ]
+    },
+    {
+      "dayid": "3050305",
+      "parity": true,
+      "bytes": 314331,
+      "sha256": "ecc87323b3e14fde910a6bf0d4828c4ae378bbbc5494b7c8a95ac793bca49cf6",
+      "driveId": "1cBXni5KdhIBzJrJzVu5Eu4QuAwn9RKH4",
+      "filename": "Intro Technology Unit 05 Part 03 Day 05.html",
+      "parents": [
+        "15T7cNpKopCVQBx3FJ-JKy0aQjT-VTOCu"
+      ]
+    },
+    {
+      "dayid": "3050301",
+      "parity": true,
+      "bytes": 323479,
+      "sha256": "6c83ea38edcf49e4120f179da408a5fc33aeeed3430673d9caa843a051811ef2",
+      "driveId": "1bTk_ZiMKoxMGRatzFV_nzdYkAmse_1Hi",
+      "filename": "Intro Technology Unit 05 Part 03 Day 01.html",
+      "parents": [
+        "15T7cNpKopCVQBx3FJ-JKy0aQjT-VTOCu"
+      ]
+    },
+    {
+      "dayid": "3050405",
+      "parity": true,
+      "bytes": 319187,
+      "sha256": "c4526cfd8b6df67561eebed7fd6151ff01e65cba0a8e37ac6b63b56c1fb62496",
+      "driveId": "1hSu-puB_We5IIwjG4CP8F-Vai6cmygEV",
+      "filename": "Intro Technology Unit 05 Part 04 Day 05.html",
+      "parents": [
+        "15T7cNpKopCVQBx3FJ-JKy0aQjT-VTOCu"
+      ]
+    },
+    {
+      "dayid": "3050204",
+      "parity": true,
+      "bytes": 319897,
+      "sha256": "6e75f936ef461b6575c12e711627e571e6ebcbb635d5566099a37c46dbcf931e",
+      "driveId": "1R-McL3cRmYP7r0yvsgW2YKEqiTTgb-4f",
+      "filename": "Intro Technology Unit 05 Part 02 Day 04.html",
+      "parents": [
+        "15T7cNpKopCVQBx3FJ-JKy0aQjT-VTOCu"
+      ]
+    },
+    {
+      "dayid": "3050203",
+      "parity": true,
+      "bytes": 319588,
+      "sha256": "524e5bd6ae05f691fffb9cd67958f0c4128fe060af21e00d8748102bea3ada09",
+      "driveId": "1IyU_9P95l5ZzVE26SJZ9q7QfJSoyJqcE",
+      "filename": "Intro Technology Unit 05 Part 02 Day 03.html",
+      "parents": [
+        "15T7cNpKopCVQBx3FJ-JKy0aQjT-VTOCu"
+      ]
+    },
+    {
+      "dayid": "3050302",
+      "parity": true,
+      "bytes": 320862,
+      "sha256": "005257ca7e535b139a4f1a6f2aeae40b2fd748b51549863a633679d7224b61a0",
+      "driveId": "1U1fi4lDcWMkXC-s6Ri0GCqQAVRh1-g36",
+      "filename": "Intro Technology Unit 05 Part 03 Day 02.html",
+      "parents": [
+        "15T7cNpKopCVQBx3FJ-JKy0aQjT-VTOCu"
+      ]
+    },
+    {
+      "dayid": "2090302",
+      "parity": true,
+      "bytes": 50860,
+      "sha256": "88a3904e5197135b43ab743deaed20946625ff96485514cf50e39d2f60434604",
+      "driveId": "1VA9SpYPWPZ95K8UndRx0fGMosIKL5Hh3",
+      "filename": "Computer Science Unit 09 Part 03 Day 02.html",
+      "parents": [
+        "10yZRDEGVnjO7Kgp3t3Ch9ilXQ7zkQ4_G"
+      ]
+    },
+    {
+      "dayid": "3050206",
+      "parity": true,
+      "bytes": 316960,
+      "sha256": "fd82ae37c5d8806922bf62d4951167759c091ddaef6abb5be32adff95b5f7dc4",
+      "driveId": "1daBmzZzAz3RX44t-9ffM3x4oanax6Slw",
+      "filename": "Intro Technology Unit 05 Part 02 Day 06.html",
+      "parents": [
+        "15T7cNpKopCVQBx3FJ-JKy0aQjT-VTOCu"
+      ]
+    }
+  ],
+  "remaining_issues": [
+    {
+      "status": "FAIL",
+      "scope": "Existing global media budget, outside F3",
+      "run": 43724061915,
+      "files": [
+        "assets/lesson-content-assets/foggy-swamp-scenes-and-playgrounds-a.webp",
+        "assets/lesson-content-assets/foggy-swamp-scenes-and-playgrounds-b.webp",
+        "assets/lesson-content-assets/moss-swamp-creatures-and-props-a.webp",
+        "assets/lesson-content-assets/moss-swamp-creatures-and-props-b.webp"
+      ],
+      "note": "Existing oversize files unchanged; 21 scoped offline HTML budgets pass."
+    },
+    {
+      "status": "UNTESTED",
+      "scope": "Real school Form/Collector receipt, district Chromebook/classroom installed TurboWarp; no readiness/release claim"
+    }
+  ],
+  "release": "NOT RELEASED; existing DayIDs, Drive IDs, question keys, prompts, rubrics, student evidence and Show/Hide preserved"
+}
