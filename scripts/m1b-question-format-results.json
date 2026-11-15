@@ -408,13 +408,15 @@
       "Extra Help disclosures are flattened into step strings.",
       "New vocabulary/tool pane; exemplar moved; source fields repeated; original course-meta Prototype descriptor absent and STARTER capitalization differs.",
       "Warm-Up shows both baseline scenario and native source prompt; pacing labels map evidence minutes to hand-in.",
-      "Master default checklist/footer language replaces existing lesson-specific wording."
+      "Master default checklist/footer language replaces existing lesson-specific wording.",
+      "Final 390px screenshot shows the standalone classroom diagram clipped within its container despite no document-level horizontal overflow. Visual responsiveness is FAIL/HOLD."
     ],
     "canonicalSourceChanged": false,
     "canonicalHtmlChanged": false,
     "rendererChanged": false,
     "masterChanged": false,
-    "note": "Question-format repair is tested independently of remaining pre-existing adapter incompatibilities; this pilot output must not replace existing HTML."
+    "note": "Question-format repair is tested independently of remaining pre-existing adapter incompatibilities; this pilot output must not replace existing HTML.",
+    "visualEvidence": "Final hosted desktop/mobile screenshots inspected; original-versus-pilot layout differs. The prior broken SVG was corrected in fixture serialization; mobile diagram clipping remains."
   },
   "hosted": {
     "run": 43733005980,
