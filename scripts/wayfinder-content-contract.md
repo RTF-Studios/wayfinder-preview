@@ -62,7 +62,12 @@ that a caller's claimed revision is the latest remote revision.
   output; and embeds the existing artwork helper verbatim.
 
 All eight enumerated answer formats are supported. Regular graded questions
-carry separately scored A/B/C source parts; assessment mode carries four Major
+carry the actual approved response fields: one single response or any explicitly
+declared multipart structure, with unique part IDs and unchanged prompts. Never
+infer or manufacture A/B/C. Each field requires a supported format, nonblank
+accepted answers and scoring criteria; choice answers reference explicit option
+values. Rubrics retain exact source text and complete nonoverlapping integer
+bands covering 0–100. Assessment mode carries four Major
 section definitions. Xtra fields and their reserved identities remain separate.
 The unchanged regular master has two graded-question shells; a source requiring
 more than two regular questions is a blocking renderer compatibility issue,

@@ -7,6 +7,18 @@ const valid=make();const extract=f=>C.extractLesson(f.source,f.payload.identity.
 const reject=p=>assert.throws(()=>C.extractLesson(valid.sourceFor(p),p.identity?.dayid||valid.payload.identity.dayid),/M1/);
 for(const course of ['Tech','CS','AAVTC'])for(const mode of ['STARTER','LEARN','PERFORM','ASSESSMENT'])test('valid source extraction '+course+' '+mode,()=>{const f=make(course,mode),r=extract(f);assert.deepEqual(r.payload,f.payload);assert.equal(r.provenance.tabId,f.source.tabs[0].id);assert.ok(Object.isFrozen(r.payload));});
 for(const type of TYPES)test('explicit answer format '+type,()=>extract(make('Tech','PERFORM',type)));
+for(const ids of [['response'],['reason','test'],['A','B','C'],['one','two','three','four']])test('approved response structure '+ids.join('/'),()=>{const p=clone(valid.payload);p.evidence.graded.items[0].parts=ids.map(id=>({...clone(p.evidence.graded.items[0].parts[0]),id}));assert.deepEqual(C.extractLesson(valid.sourceFor(p),p.identity.dayid).payload.evidence.graded.items[0].parts.map(p=>p.id),ids)});
+for(const type of TYPES)test('single response '+type,()=>{const f=make('CS','PERFORM',type),p=clone(f.payload);p.evidence.graded.items[0].parts=p.evidence.graded.items[0].parts.slice(0,1);p.evidence.graded.items[0].parts[0].id='response';C.extractLesson(f.sourceFor(p),p.identity.dayid)});
+for(const [label,mutate] of [
+ ['empty response fields',q=>q.parts=[]],['blank accepted answer',q=>q.parts[0].acceptedAnswers=[' ']],
+ ['missing accepted answers',q=>delete q.parts[0].acceptedAnswers],['missing scoring criteria',q=>q.parts[0].scoringCriteria=[]],
+ ['blank rubric',q=>q.rubric.text=' '],['empty rubric bands',q=>q.rubric.bands=[]],
+ ['rubric gap',q=>q.rubric.bands[1].minimum=71],['rubric overlap',q=>q.rubric.bands[1].minimum=69],
+ ['rubric missing lower coverage',q=>q.rubric.bands[0].minimum=1],['rubric missing upper coverage',q=>q.rubric.bands[1].maximum=99],
+ ['rubric missing criteria',q=>q.rubric.bands[0].criteria=[]],['duplicate rubric bands',q=>q.rubric.bands[1].name=q.rubric.bands[0].name],
+ ['fractional rubric bounds',q=>q.rubric.bands[0].maximum=69.5],['duplicate accepted answers',q=>q.parts[0].acceptedAnswers.push(q.parts[0].acceptedAnswers[0])]
+])test('reject '+label,()=>{const p=clone(valid.payload);mutate(p.evidence.graded.items[0]);reject(p)});
+for(const type of ['selected_choice','multiple_choice','checkbox','dropdown','true_false'])test('reject unlisted accepted option '+type,()=>{const f=make('Tech','PERFORM',type),p=clone(f.payload);p.evidence.graded.items[0].parts[0].acceptedAnswers=['missing-option'];assert.throws(()=>C.extractLesson(f.sourceFor(p),p.identity.dayid),/M1/)});
 for(const field of Object.keys(valid.payload))test('missing required '+field,()=>{const p=clone(valid.payload);delete p[field];reject(p)});
 for(const field of ['documentId','revision','account','summaryApprovalReference','tabs'])test('missing provenance '+field,()=>{const f=make();delete f.source[field];assert.throws(()=>extract(f),/M1/)});
 for(const [field,value]of [['mode','RECOVERY'],['mode','ASSESS'],['mode','learn'],['vocabulary',[]],['vocabulary',[{term:'one',definition:'one'}]],['vocabulary',Array.from({length:5},(_,n)=>({term:'term'+n,definition:'definition'}))],['tools',[]],['learningTarget',{text:'I can test.',what:'test',why:'missing'}]])test('invalid '+field+' '+JSON.stringify(value).slice(0,30),()=>reject({...clone(valid.payload),[field]:value}));

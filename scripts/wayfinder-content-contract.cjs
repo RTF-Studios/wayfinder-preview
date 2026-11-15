@@ -60,9 +60,17 @@ function validatePayload(r){
  if(r.mode!=='ASSESSMENT'&&graded.some(q=>q.category!=='DAILY'))error('evidence','regular modes use DAILY evidence');
  const keys=new Set();
  for(const q of graded){if(!q.fullKey.startsWith(id)||keys.has(q.fullKey))error('evidence','wrong DayID or duplicate full key');keys.add(q.fullKey);checkURL(q.submissionUrl,q.fullKey);unique(q.parts,'answer parts');
-  if(r.mode!=='ASSESSMENT'&&q.parts.map(p=>p.id).join(',')!=='A,B,C')error('evidence','regular graded questions require explicit independently scored A/B/C parts');
-  unique(q.rubric.bands,'rubric bands','name');for(const b of q.rubric.bands)if(b.minimum>b.maximum)error('rubric','band minimum exceeds maximum');
-  for(const p of q.parts){unique(p.options,'options','value');if(['selected_choice','multiple_choice','checkbox','dropdown','true_false'].includes(p.answerType)&&p.options.length<2)error('parts.'+p.id,'explicit options required');if(['short_text','fill_blank','comparison_diagram_response'].includes(p.answerType)&&p.options.length)error('parts.'+p.id,'text format cannot carry choice options');if(p.answerType==='fill_blank'&&(p.blanks<1||p.sentence.split('{blank}').length-1!==p.blanks))error('parts.'+p.id,'blank count and source sentence disagree');if(p.answerType==='comparison_diagram_response'&&!p.stimulusIds.length)error('parts.'+p.id,'explicit comparison/diagram stimulus required');for(const m of p.stimulusIds)if(!mediaIds.has(m))error('parts.'+p.id,'unknown source stimulus '+m);}
+  // Response fields are declared by the approved question, never inferred as A/B/C.
+  unique(q.rubric.bands,'rubric bands','name');
+  const bands=[...q.rubric.bands].sort((a,b)=>a.minimum-b.minimum);let next=0;
+  for(const b of bands){if(!Number.isInteger(b.minimum)||!Number.isInteger(b.maximum)||b.minimum!==next||b.minimum>b.maximum)error('rubric','complete nonoverlapping integer bands covering 0–100 required');next=b.maximum+1;}
+  if(next!==101)error('rubric','incomplete 0–100 coverage');
+  for(const p of q.parts){unique(p.options,'options','value');
+   if(new Set(p.acceptedAnswers).size!==p.acceptedAnswers.length)error('parts.'+p.id,'duplicate accepted answer');
+   if(['selected_choice','multiple_choice','checkbox','dropdown','true_false'].includes(p.answerType)&&p.acceptedAnswers.some(a=>!p.options.some(o=>o.value===a)))error('parts.'+p.id,'accepted answer must reference an explicit option value');
+   if(p.answerType==='true_false'&&p.options.length!==2)error('parts.'+p.id,'true_false requires exactly two explicit options');
+   if(p.answerType!=='fill_blank'&&(p.blanks!==0||p.sentence!==''))error('parts.'+p.id,'blank structure belongs only to fill_blank');
+   if(['selected_choice','multiple_choice','checkbox','dropdown','true_false'].includes(p.answerType)&&p.options.length<2)error('parts.'+p.id,'explicit options required');if(['short_text','fill_blank','comparison_diagram_response'].includes(p.answerType)&&p.options.length)error('parts.'+p.id,'text format cannot carry choice options');if(p.answerType==='fill_blank'&&(p.blanks<1||p.sentence.split('{blank}').length-1!==p.blanks))error('parts.'+p.id,'blank count and source sentence disagree');if(p.answerType==='comparison_diagram_response'&&!p.stimulusIds.length)error('parts.'+p.id,'explicit comparison/diagram stimulus required');for(const m of p.stimulusIds)if(!mediaIds.has(m))error('parts.'+p.id,'unknown source stimulus '+m);}
  }
  for(const [name,suffix,section]of [['warmUp','09998','warm_up'],['temperature','29999','temperature'],['studio','20000','studio']]){
   const x=r.evidence.xtra[name];if((x.status==='applicable')!==active(section))error('xtra.'+name,'section applicability disagrees');

@@ -1,0 +1,48 @@
+{
+  "summary": {
+    "approved": true,
+    "reference": "https://docs.google.com/document/d/1hdYPNgciqTp5-xSmwtS0ZWhvObttA_3C7C5Ydy9NBTg/edit",
+    "revision": "AHj4eMRD3czHZwiXMMpNfRYGHc4_aWZOfTofX7nNsCdyolg4Xisj787EhmAxntCvmFiI1Jy1D2kLKcg4fpUcHICsH2jL72TGRZgzxQV-nZo",
+    "locator": "F3 SOURCE IDENTITY CHECKPOINT explicit Tech | 3050201 | Unit 5 | Part 2 | Day 1 | Build a Game from Shapes; independently reread 2026-11-15",
+    "identities": [
+      {
+        "course": "Tech",
+        "dayid": "3050201",
+        "unit": 5,
+        "part": 2,
+        "day": 1,
+        "title": "Build a Game from Shapes"
+      }
+    ]
+  },
+  "masterOutline": {
+    "reference": "https://docs.google.com/document/d/1uT88cp1mVW7D8HFj6EL51_nlvlRc531uiGZcKcHEI48/edit",
+    "revision": "AHj4eMTLQSGxDstLPtQoTtlK01NkYbOSVO4FwDxHKLdHeR8_rDWDK_diEM6U3XOklqWH1cjvb42c1tNbTPi_I4choZpO04KNnKGQvJO8pxQ",
+    "locator": "native Day tab t.d8j00o96rl62 freshly read 2026-11-15",
+    "identities": [
+      {
+        "course": "Tech",
+        "dayid": "3050201",
+        "unit": 5,
+        "part": 2,
+        "day": 1,
+        "title": "Build a Game from Shapes"
+      }
+    ]
+  },
+  "controlStation": {
+    "reference": "https://docs.google.com/spreadsheets/d/1B6Qk618U56ee-vCi2kCCCFNhySxuCJku17xgG_xm8R8/edit",
+    "revision": "fresh read 2026-11-15",
+    "locator": "Tech!D15:H15: 3050201, Unit 5 · Part 2 · Day 1 — Build a Game from Shapes, Unit 5 · Part 2 — Prototype; Show FALSE",
+    "identities": [
+      {
+        "course": "Tech",
+        "dayid": "3050201",
+        "unit": 5,
+        "part": 2,
+        "day": 1,
+        "title": "Build a Game from Shapes"
+      }
+    ]
+  }
+}
