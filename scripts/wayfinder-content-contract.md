@@ -104,3 +104,14 @@ provenance cases, unchanged master JS/CSS, source-bound production consumption,
 one isolated native build, and byte preservation of existing HTML on failure.
 The existing mandatory workflow runs both suites before downstream QA. Tests
 never submit Forms, write canonical lesson HTML, or change student visibility.
+
+## M1b compatibility pilot
+
+The production boundary now accepts a source-declared single response or
+multipart question without an A/B/C requirement. Run
+`node scripts/test-m1b-3050201.cjs` for an isolated native-entry build of the
+frozen single-response question 305020130059 and failed-write checks. The
+fixture is an explicitly authorized source COPY, not a migrated native outline.
+See `m1b-question-format-results.json` for actual comparison results and remaining
+adapter fidelity/offline issues. A successful question-format check does not
+certify that generated pilot HTML can replace the existing lesson.
