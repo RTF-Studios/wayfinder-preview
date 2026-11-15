@@ -1,0 +1,76 @@
+{
+  "scope": "Captain M1a only, 2026-11-15",
+  "status": "HOLD — stopped under explicit incompatibility stop rule",
+  "target": {
+    "course": "Tech",
+    "dayid": "3050201",
+    "mode": "STARTER",
+    "title": "Build a Game from Shapes",
+    "fullKey": "305020130059"
+  },
+  "originals": {
+    "github": {
+      "commit": "ee16e453e4b175cdc2970e08c2d67a09d3dce1f2",
+      "path": "Tech/3050201.html",
+      "blob": "5a0c95691641c63b3bac165319848aa4016db5d3",
+      "bytes": 324247,
+      "sha256": "7471096fba1388814b6330f6ac4baca5b57f7ce72601aeb3846816caf4679b41",
+      "snapshot": "scripts/fixtures/m1a-3050201/original.html.txt"
+    },
+    "personalSource": {
+      "documentId": "1uT88cp1mVW7D8HFj6EL51_nlvlRc531uiGZcKcHEI48",
+      "revision": "AHj4eMTLQSGxDstLPtQoTtlK01NkYbOSVO4FwDxHKLdHeR8_rDWDK_diEM6U3XOklqWH1cjvb42c1tNbTPi_I4choZpO04KNnKGQvJO8pxQ",
+      "tabId": "t.d8j00o96rl62",
+      "tabTextSha256": "4367d547b4b88e06e94924b051c1ea72404981a30fc50ccd8286529d76ffcf58",
+      "snapshot": "scripts/fixtures/m1a-3050201/original-day.txt"
+    }
+  },
+  "pass": [
+    "Opened current START HERE, SOP Registry, applicable WF-01/02/03 and existing OPEN M1a checkpoint",
+    "Preserved exact current source-tab and GitHub HTML snapshots; originals not modified",
+    "Source prompt equals actual rendered baseline prompt exactly",
+    "Baseline has one mastery answer part and exactly one typed response; full key 305020130059 is present",
+    "Original question and pinned rubric preserved verbatim in read-only source snapshot"
+  ],
+  "question": {
+    "prompt": "A student puts the player square and falling circle in ONE sprite. Explain why two separate sprites would make coding easier and identify one test proving the objects are controlled separately.",
+    "typedResponses": 1,
+    "answerParts": 1,
+    "rubric": "Holistic 0–100: 90–100 accurate, specific and independently justified with a feasible test; 70–89 Explains independent sprite code and describes a real test of separate behavior; 50–69 partially correct, missing important detail or validation; below 50 insufficient/contradictory evidence. Missing/unsubmitted is a separate nonnumeric state under RTS-02."
+  },
+  "compatibility": {
+    "status": "FAIL/HOLD",
+    "implementation": "scripts/wayfinder-content-contract.cjs",
+    "commit": "ee16e453e4b175cdc2970e08c2d67a09d3dce1f2",
+    "blockingRule": "r.mode!=='ASSESSMENT' && q.parts.map(p=>p.id).join(',')!=='A,B,C'",
+    "message": "regular graded questions require explicit independently scored A/B/C parts",
+    "finding": "Approved STARTER lesson has one typed answer part. M1 requires three A/B/C source parts. Adding invented parts, duplicating prompts, changing mode/category, hiding graded evidence or weakening validation would violate the authorized pilot. No faithful M1-compatible fixture was created."
+  },
+  "untested": [
+    "Actual production F1+M1 build: stopped before construction due to the confirmed question-shape incompatibility",
+    "Successful-output curriculum/layout/naming/key/functionality/offline comparison: no output generated",
+    "Invalid-fixture construction and failed-build byte-preservation test: not executed after mandatory STOP; baseline original bytes snapshotted, not overwritten",
+    "Other required M1 field mappings and live Collector lookup/receipt"
+  ],
+  "separateSourceCaution": "Existing teacher reference says Evergreen target TECH-U05-P01 although current DayID is Part 2. Flagged for later authorized curricular review; not altered.",
+  "changes": [
+    "Added read-only original snapshots and this inspection report only",
+    "Updated existing M1a Dispatch checkpoint"
+  ],
+  "unchanged": [
+    "Authoritative Personal Drive Master Outline",
+    "Tech/3050201.html and all other canonical HTML",
+    "M1/F1 schema/validators/builders",
+    "templates/wayfinder-master.html",
+    "Question/rubric/evidence identities",
+    "Drive files and Control Station/Show/Hide"
+  ],
+  "nextStep": "A separately authorized contract-compatibility decision is required to represent the frozen single-response question. Preserve the curriculum; do not invent A/B/C parts or relax validation under M1a.",
+  "notExecuted": [
+    "M2",
+    "M3",
+    "M4",
+    "bulk rebuilding",
+    "student release"
+  ]
+}
