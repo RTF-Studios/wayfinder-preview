@@ -1,0 +1,47 @@
+name: M1e controlled integration simulations only
+on:
+  push:
+    paths:
+      - 'scripts/check-m1e-controlled.cjs'
+      - '.github/workflows/m1e-controlled-integration.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  m1e-controlled:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install the existing test browser dependency
+        run: |
+          python -m pip install beautifulsoup4==4.15.0
+          mkdir -p .github/qa-run
+          npm install --prefix .github/qa-run --no-save playwright@1.56.1
+          .github/qa-run/node_modules/.bin/playwright install --with-deps chromium
+      - name: Rerun F1 and M1 validation
+        run: |
+          node scripts/test-wayfinder-identity.cjs
+          node scripts/test-wayfinder-content-contract.cjs
+      - name: Recreate isolated build and verify overwrite protection
+        env:
+          M1C_PILOT_DIR: /tmp/m1e-isolated
+        run: node scripts/test-m1c-3050201.cjs
+      - name: Test controlled clipboard and mock intake without production access
+        env:
+          M1C_PILOT_DIR: /tmp/m1e-isolated
+        run: node scripts/check-m1e-controlled.cjs
+      - name: Preserve simulation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m1e-controlled-simulation-evidence
+          path: |
+            qa-artifacts/m1e
+            /tmp/m1e-isolated/static-results.json
