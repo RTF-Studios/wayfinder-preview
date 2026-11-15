@@ -1,0 +1,177 @@
+{
+  "status": "PASS",
+  "authorization": "Captain GO M3 five-item checklist plus active-caller safeguard",
+  "removedRegions": [
+    {
+      "path": "scripts/wayfinder-outline-builder.js",
+      "firstRemovedLine": 50,
+      "removedLines": 45,
+      "removedCharacters": 10682
+    },
+    {
+      "path": "scripts/build-tech-u5-prototype.py",
+      "firstRemovedLine": 121,
+      "removedLines": 98,
+      "removedCharacters": 12843
+    },
+    {
+      "path": "scripts/build-tech-u5-part1-day5.py",
+      "firstRemovedLine": 18,
+      "removedLines": 63,
+      "removedCharacters": 11858
+    },
+    {
+      "path": "scripts/build-tech-u5-part1-day6.py",
+      "firstRemovedLine": 18,
+      "removedLines": 65,
+      "removedCharacters": 8764
+    },
+    {
+      "path": "scripts/build-tech-u5-final-parts.py",
+      "firstRemovedLine": 70,
+      "removedLines": 61,
+      "removedCharacters": 11312
+    }
+  ],
+  "activePreservation": {
+    "python": [
+      {
+        "file": "build-tech-u5-prototype.py",
+        "activeSyntaxTreeUnchanged": true
+      },
+      {
+        "file": "build-tech-u5-part1-day5.py",
+        "activeSyntaxTreeUnchanged": true
+      },
+      {
+        "file": "build-tech-u5-part1-day6.py",
+        "activeSyntaxTreeUnchanged": true
+      },
+      {
+        "file": "build-tech-u5-final-parts.py",
+        "activeSyntaxTreeUnchanged": true
+      }
+    ],
+    "jsOnlyPrivateFunctionRemoved": true,
+    "exportedHelpersAndBuildByteUnchanged": true
+  },
+  "m1": {
+    "status": "PASS",
+    "tests": 145,
+    "canonicalWrites": 0
+  },
+  "m2": {
+    "status": "PASS",
+    "tests": 70
+  },
+  "pilot": {
+    "status": "PASS",
+    "nativeBuild": "F1 + M1 production entry",
+    "question": "305020130059",
+    "responseFields": 1,
+    "originalSha256": "7471096fba1388814b6330f6ac4baca5b57f7ce72601aeb3846816caf4679b41",
+    "masterSha256": "9b0ce775bca5d73b71e9b3968db6b697665389e86c28fb412c3f1756a857ae93",
+    "outputSha256": "9f43ef8f317e56241ffe40ef77d3d92848f779f1dd5cb0e58d57a8a6e28ff0bc",
+    "outputBytes": 322634,
+    "sourceSha256": "d159bf5797a76c5bd765ec2fbbe39d4b9dc84bd105d4fb62a8c3082ff84c62ba",
+    "negativeNativeBuilds": 29,
+    "rendererFailure": "rejects before output write",
+    "canonicalWrites": 0,
+    "clipboard": "UNTESTED",
+    "collectorReceipt": "UNTESTED"
+  },
+  "retainedDependencies": [
+    "WFBuilder exported parse/outline/build/offline/E/steps",
+    "three Python builders import Prototype P.MASTER",
+    "check-tech-u5-production.py reads B.P.FORM",
+    "shared Prototype helper functions/constants and all active imports"
+  ],
+  "clipboardForm": "existing proven code/evidence reused",
+  "productionDataWrites": 0,
+  "studentRelease": false,
+  "sourceLinesRemoved": 332,
+  "implementationCommit": "859d796adba357d00fd3d00d144f537389081687",
+  "callerAudit": {
+    "filesInspected": 37,
+    "privateLegacyBuildOccurrencesBefore": 1,
+    "activeCallerPreservation": "All shared helpers/constants/imports retained; no active caller was removed."
+  },
+  "hosted": {
+    "run": 43767051956,
+    "url": "https://github.com/RTF-Studios/wayfinder-preview/actions/runs/43767051956",
+    "conclusion": "success",
+    "counts": [
+      {
+        "status": "fulfilled",
+        "value": {
+          "job_id": 132974434067,
+          "results": [
+            {
+              "status": "PASS",
+              "tests": 69
+            }
+          ]
+        }
+      },
+      {
+        "status": "fulfilled",
+        "value": {
+          "job_id": 132974497213,
+          "results": [
+            {
+              "status": "PASS",
+              "tests": 145
+            },
+            {
+              "status": "PASS"
+            }
+          ]
+        }
+      },
+      {
+        "status": "fulfilled",
+        "value": {
+          "job_id": 132974607900,
+          "results": [
+            {
+              "status": "PASS",
+              "tests": 70,
+              "pilot": "PASS"
+            }
+          ]
+        }
+      }
+    ],
+    "artifact": {
+      "id": 14182741842,
+      "name": "m2-curriculum-quality",
+      "size_in_bytes": 1697,
+      "url": "https://api.github.com/repos/RTF-Studios/wayfinder-preview/actions/artifacts/14182741842",
+      "archive_download_url": "https://api.github.com/repos/RTF-Studios/wayfinder-preview/actions/artifacts/14182741842/zip",
+      "expired": false,
+      "created_at": "2026-11-15T22:03:46Z",
+      "expires_at": "2027-02-13T22:03:02Z",
+      "updated_at": "2026-11-15T22:03:46Z",
+      "digest": "sha256:b4ea2f8bc3cc5bfdf8b956c8bd39cd334e1d03f187247514030792ba417488b9",
+      "workflow_run": {
+        "id": 43767051956,
+        "repository_id": 1433536919,
+        "head_repository_id": 1433536919,
+        "head_branch": "main",
+        "head_sha": "859d796adba357d00fd3d00d144f537389081687"
+      }
+    },
+    "browserJobs": "5 skipped; proven clipboard/Form runtime reused"
+  },
+  "changedFiles": [
+    "scripts/wayfinder-outline-builder.js",
+    "scripts/build-tech-u5-prototype.py",
+    "scripts/build-tech-u5-part1-day5.py",
+    "scripts/build-tech-u5-part1-day6.py",
+    "scripts/build-tech-u5-final-parts.py",
+    "scripts/wayfinder-content-contract.md",
+    "scripts/m3-legacy-cleanup-results.json"
+  ],
+  "protectedTrackedFiles": "All other repository blobs unchanged; no tracked file deleted",
+  "unverified": "No new real-school-browser/Collector test performed; prior evidence reused as directed. No student-ready/release claim."
+}
