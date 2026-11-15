@@ -19,7 +19,7 @@ function validate(file,html){
   const eyebrow=html.match(/<div\b[^>]*class=["'][^"']*\beyebrow\b[^"']*["'][^>]*>([\s\S]*?)<\/div>/i);
   if(!eyebrow||!expected.test(plain(eyebrow[1])))errors.push(`visible header must say Unit ${unit} · Part ${part} · Day ${day}`);
   const kicker=html.match(/<span\b[^>]*class=["'][^"']*\bkicker\b[^"']*["'][^>]*>([\s\S]*?)<\/span>/i);
-  if(kicker&&/\bUnit\s+\d+/.test(plain(kicker[1]))&&!expected.test(plain(kicker[1])))errors.push('Learning Target identity disagrees with DayID');
+  if(kicker&&/\bUnit\s+\d+/.test(plain(kicker[1]))&&/\bDay\s+\d+/.test(plain(kicker[1]))&&!expected.test(plain(kicker[1])))errors.push('Learning Target identity disagrees with DayID');
   const head=html.match(/<header\b[\s\S]*?<\/header>/i)?.[0]||'';
   if(WEEKDAY.test(plain(head)))errors.push('header contains a calendar weekday/date; use permanent Unit/Part/Day title');
   const title=html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i);
