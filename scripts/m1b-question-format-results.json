@@ -1,22 +1,22 @@
 {
-  "scope": "M1b only — approved question structure compatibility repair and isolated 3050201 comparison",
+  "scope": "M1b only \u2014 approved question structure compatibility repair and isolated 3050201 comparison",
   "date": "2026-11-15",
   "status": {
     "questionFormatRepair": "PASS",
-    "F1Regression": "PASS — 69 tests",
-    "M1Regression": "PASS — 145 tests",
+    "F1Regression": "PASS \u2014 69 tests",
+    "M1Regression": "PASS \u2014 145 tests",
     "isolatedProductionBuild": "PASS",
-    "failedValidationPreservesHtml": "PASS — 7 rejected builds",
-    "singleResponsePromptRubricKey": "PASS — exact approved content, one typed field",
+    "failedValidationPreservesHtml": "PASS \u2014 7 rejected builds",
+    "singleResponsePromptRubricKey": "PASS \u2014 exact approved content, one typed field",
     "allEightFormatBrowserAssembly": "PASS",
-    "fullCurriculumAndLayoutFidelity": "FAIL/HOLD — current adapter differences listed below",
-    "offlineNoNetwork": "FAIL/HOLD — 3 artwork discovery requests per generated viewport; original 0",
+    "fullCurriculumAndLayoutFidelity": "FAIL/HOLD \u2014 current adapter differences listed below",
+    "offlineNoNetwork": "FAIL/HOLD \u2014 3 artwork discovery requests per generated viewport; original 0",
     "liveClipboardAndCollectorReceipts": "UNTESTED"
   },
   "implementation": [
     "Removed mandatory A/B/C ID comparison; each question keeps its source-declared nonempty unique response fields. No inferred splitting.",
     "Supported answer formats remain the existing eight. Choice accepted answers must identify actual option values; missing/blank/duplicate accepted answers, invalid formats, duplicate identities and incomplete rubric definitions fail before HTML.",
-    "Holistic rubric text retained exactly; bands require complete nonoverlapping integer 0–100 coverage, unique names and nonblank criteria. Missing/unsubmitted remains a separate nonnumeric state.",
+    "Holistic rubric text retained exactly; bands require complete nonoverlapping integer 0\u2013100 coverage, unique names and nonblank criteria. Missing/unsubmitted remains a separate nonnumeric state.",
     "Existing F1 and immutable current-source/provenance gate remain unchanged. Production workflow executes both M1 regression and actual native bridge pilot.",
     "Updated synthetic accepted options for stricter linkage only; no actual curriculum changed."
   ],
@@ -212,8 +212,8 @@
         "name": "original",
         "width": 1280,
         "title": "Build a Game from Shapes",
-        "meta": "Tech · Unit 5 · Part 2 · Day 1 — Prototype",
-        "mode": "Day 1 · Starter Focused",
+        "meta": "Tech \u00b7 Unit 5 \u00b7 Part 2 \u00b7 Day 1 \u2014 Prototype",
+        "mode": "Day 1 \u00b7 Starter Focused",
         "question": "A student puts the player square and falling circle in ONE sprite. Explain why two separate sprites would make coding easier and identify one test proving the objects are controlled separately.",
         "answerParts": 1,
         "typedResponses": 1,
@@ -244,8 +244,8 @@
         "name": "original",
         "width": 390,
         "title": "Build a Game from Shapes",
-        "meta": "Tech · Unit 5 · Part 2 · Day 1 — Prototype",
-        "mode": "Day 1 · Starter Focused",
+        "meta": "Tech \u00b7 Unit 5 \u00b7 Part 2 \u00b7 Day 1 \u2014 Prototype",
+        "mode": "Day 1 \u00b7 Starter Focused",
         "question": "A student puts the player square and falling circle in ONE sprite. Explain why two separate sprites would make coding easier and identify one test proving the objects are controlled separately.",
         "answerParts": 1,
         "typedResponses": 1,
@@ -276,8 +276,8 @@
         "name": "3050201",
         "width": 1280,
         "title": "Build a Game from Shapes",
-        "meta": "Tech · Unit 5 · Part 2 · Day 1",
-        "mode": "Day 1 · STARTER Focused",
+        "meta": "Tech \u00b7 Unit 5 \u00b7 Part 2 \u00b7 Day 1",
+        "mode": "Day 1 \u00b7 STARTER Focused",
         "question": "A student puts the player square and falling circle in ONE sprite. Explain why two separate sprites would make coding easier and identify one test proving the objects are controlled separately.",
         "answerParts": 1,
         "typedResponses": 1,
@@ -313,8 +313,8 @@
         "name": "3050201",
         "width": 390,
         "title": "Build a Game from Shapes",
-        "meta": "Tech · Unit 5 · Part 2 · Day 1",
-        "mode": "Day 1 · STARTER Focused",
+        "meta": "Tech \u00b7 Unit 5 \u00b7 Part 2 \u00b7 Day 1",
+        "mode": "Day 1 \u00b7 STARTER Focused",
         "question": "A student puts the player square and falling circle in ONE sprite. Explain why two separate sprites would make coding easier and identify one test proving the objects are controlled separately.",
         "answerParts": 1,
         "typedResponses": 1,
@@ -388,11 +388,11 @@
     "unchangedSlotContentExcept": [
       {
         "slot": "course-meta",
-        "baselineText": "Tech · Unit 5 · Part 2 · Day 1 — Prototype"
+        "baselineText": "Tech \u00b7 Unit 5 \u00b7 Part 2 \u00b7 Day 1 \u2014 Prototype"
       },
       {
         "slot": "lesson-mode",
-        "baselineText": "Day 1 · Starter Focused"
+        "baselineText": "Day 1 \u00b7 Starter Focused"
       },
       {
         "slot": "perform-criteria",
@@ -442,11 +442,1194 @@
   },
   "compatibility": [
     "The actual native outline still has no typed blocks; this is an authorized isolated source COPY, not a competing curriculum source or native migration. Document/revision identify the original; typed-copy hash is distinct.",
-    "Accepted/scoring text uses the existing 70–89 criterion; machine ID response introduces no new question part or answer. Original holistic text is verbatim.",
+    "Accepted/scoring text uses the existing 70\u201389 criterion; machine ID response introduces no new question part or answer. Original holistic text is verbatim.",
     "The inline baseline SVG needed the standard XML namespace for standalone embedding; only the isolated fixture serialization changed. Initial browser failure included one broken SVG; final run has zero broken images.",
     "Artwork helper embedded by the unchanged M1 adapter calls GitHub discovery despite supplied embedded pools. External favicon also remains in generated markup; browser counted only the 3 API requests. Original offline packaging suppresses this discovery. No offline repair or template redesign attempted.",
     "Historical teacher reference TECH-U05-P01 remains despite Part2 DayID; preserved and flagged.",
     "Independent media rights, actual classroom tool installation, real clipboard permission/copy behavior, full Xtra/checklist transaction regression, live school Form/Collector receipt, student access and release remain UNTESTED."
   ],
-  "nextSteps": "Stop after M1b. Retain existing canonical lesson. Separate authorization is needed to address the recorded source-to-renderer fidelity/offline compatibility issues before replacing any real lesson. No M2–M4, migration, bulk rebuild or student release."
+  "nextSteps": "Stop after M1b. Retain existing canonical lesson. Separate authorization is needed to address the recorded source-to-renderer fidelity/offline compatibility issues before replacing any real lesson. No M2\u2013M4, migration, bulk rebuild or student release.",
+  "latestCheckpoint": "m1cContinuation",
+  "m1cContinuation": {
+    "scope": "Captain GO M1c only; isolated 3050201, no M2\u2013M4, bulk rebuilding or student release",
+    "date": "2026-11-15",
+    "status": {
+      "rendererRepair": "PASS",
+      "isolatedProductionBuild": "PASS",
+      "contentFidelity": "PASS \u2014 complete normalized visible text identical, including expanded help and skit",
+      "layoutFidelity": "PASS against current unchanged universal master; historical typography difference recorded below",
+      "offlineNoNetwork": "PASS \u2014 original and pilot zero HTTP calls at 1280/768/390, including Studio unlock",
+      "F1": "PASS \u2014 69 tests locally and hosted",
+      "M1": "PASS \u2014 145 tests locally and hosted",
+      "failedBuildPreservation": "PASS \u2014 29 rejected native builds preserve original and previous-success bytes",
+      "clipboard": "UNTESTED \u2014 pilot browser stubs copy",
+      "collectorReceipt": "UNTESTED \u2014 Form destinations intercepted, no transaction",
+      "otherProductionLessonsAndModes": "UNTESTED \u2014 no certification from this one pilot",
+      "studentRelease": "NOT AUTHORIZED"
+    },
+    "implementation": [
+      "Strict optional source-declared STARTER presentation restores Prototype descriptor, mission, roadmap/sequence/success, Learning Leader/discussion, original exemplar location, complete collapsed Perform disclosures and criteria, answer placeholder, corrective-feedback hint, checklist, Studio intro, footer, comic hint and Official Dress Code skit.",
+      "Vocabulary remains in approved Learn prose; no new vocabulary/tool panel, pacing labels or duplicated activities/hand-in/bridge workloads. Core fields remain validated in record.",
+      "Canonical master CSS block and submission engine remain byte-identical; approved comic minimum image width is a separate exact source-declared bounded packaging rule copied from baseline.",
+      "Online-discovery helper omitted from generated HTML. Existing unchanged master placeArt fallback selects declared embedded pools and retains random choice/error fallback. Existing compass favicon embedded.",
+      "Approved SVG renders inline with normalized viewBox case and responsive width; no standalone mobile clipping. Static SVG whitelist rejects executable/network-bearing constructs.",
+      "F1 implementation untouched. Missing/invalid response fields, keys, rubrics, layout fields and media references remain blocking before output. F1 test change only copies newly required renderer/asset dependencies into isolated test sandbox."
+    ],
+    "source": {
+      "documentId": "1uT88cp1mVW7D8HFj6EL51_nlvlRc531uiGZcKcHEI48",
+      "revision": "AHj4eMTLQSGxDstLPtQoTtlK01NkYbOSVO4FwDxHKLdHeR8_rDWDK_diEM6U3XOklqWH1cjvb42c1tNbTPi_I4choZpO04KNnKGQvJO8pxQ",
+      "tabId": "t.d8j00o96rl62",
+      "originalDaySha256": "4367d547b4b88e06e94924b051c1ea72404981a30fc50ccd8286529d76ffcf58",
+      "typedMappingSha256": "d159bf5797a76c5bd765ec2fbbe39d4b9dc84bd105d4fb62a8c3082ff84c62ba",
+      "note": "Current native source read and matched exactly before mapping. Audit copy appends typed mappings; no typed blocks written to authoritative Doc. Existing independent F1 summary/Control Station inputs unchanged; live Tech row15 Show FALSE."
+    },
+    "pilot": {
+      "status": "PASS",
+      "nativeBuild": "F1 + M1 production entry",
+      "question": "305020130059",
+      "responseFields": 1,
+      "originalSha256": "7471096fba1388814b6330f6ac4baca5b57f7ce72601aeb3846816caf4679b41",
+      "masterSha256": "9b0ce775bca5d73b71e9b3968db6b697665389e86c28fb412c3f1756a857ae93",
+      "outputSha256": "9f43ef8f317e56241ffe40ef77d3d92848f779f1dd5cb0e58d57a8a6e28ff0bc",
+      "outputBytes": 322634,
+      "sourceSha256": "d159bf5797a76c5bd765ec2fbbe39d4b9dc84bd105d4fb62a8c3082ff84c62ba",
+      "negativeNativeBuilds": 29,
+      "rendererFailure": "rejects before output write",
+      "canonicalWrites": 0,
+      "clipboard": "UNTESTED",
+      "collectorReceipt": "UNTESTED"
+    },
+    "remainingDifferences": [
+      "Historical original embeds scaffold label weight750 and legend weight800. Current authoritative unchanged master uses400 for both. Pilot preserves400. Raw section geometry is identical at1280 and390; at768 the mastery panel is26.859px shorter because its regular-weight label wraps one fewer line. With ONLY those two historical baseline rules aligned in a read-only browser comparison, every section height agrees within3px. Raw and aligned baseline screenshots/geometry are retained; this is not represented as raw pixel identity.",
+      "Packaging/provenance serialization differs by design. Questions/rubrics/full key, student content, artwork bytes and supported behavior are preserved. Historical TECH-U05-P01 teacher-reference caution remains unchanged.",
+      "Authoritative outline remains free-form, with no production typed blocks. The isolated fixture is an audit mapping, not a competing source or deployment approval. Other production layouts/modes remain UNTESTED."
+    ],
+    "tests": {
+      "F1": 69,
+      "M1": 145,
+      "nativeRejectedBuilds": 29,
+      "schemaMetaValidation": "PASS",
+      "sourceAndCompleteSectionText": "PASS",
+      "uniqueIds": 36,
+      "mediaBytes": [
+        119346,
+        70854,
+        843
+      ],
+      "imageBudget": "PASS \u2014 each <250KiB",
+      "htmlBudget": "PASS \u2014 322634 bytes <2MiB",
+      "duplicateMedia": "none",
+      "masterEngineAndCanonicalCSS": "PASS unchanged",
+      "JSAndDiff": "PASS",
+      "browser": {
+        "status": "PASS",
+        "rows": [
+          {
+            "name": "original",
+            "width": 1280,
+            "sectionIds": [
+              "learningTarget",
+              "partRoadmap",
+              "warmup",
+              "groupLearn",
+              "groupPractice",
+              "masteryOne",
+              "perform",
+              "temperature",
+              "gateway",
+              "creativeLabs"
+            ],
+            "sectionBoxes": [
+              {
+                "id": "learningTarget",
+                "width": 948,
+                "height": 369.4375,
+                "x": 166,
+                "y": -4895.75
+              },
+              {
+                "id": "partRoadmap",
+                "width": 948,
+                "height": 805.25,
+                "x": 166,
+                "y": -4506.3125
+              },
+              {
+                "id": "warmup",
+                "width": 948,
+                "height": 610.4375,
+                "x": 166,
+                "y": -3681.0625
+              },
+              {
+                "id": "groupLearn",
+                "width": 948,
+                "height": 1051.203125,
+                "x": 166,
+                "y": -3050.625
+              },
+              {
+                "id": "groupPractice",
+                "width": 948,
+                "height": 398.328125,
+                "x": 166,
+                "y": -1979.421875
+              },
+              {
+                "id": "masteryOne",
+                "width": 948,
+                "height": 978.6875,
+                "x": 166,
+                "y": -1561.09375
+              },
+              {
+                "id": "perform",
+                "width": 948,
+                "height": 1689.046875,
+                "x": 166,
+                "y": -562.40625
+              },
+              {
+                "id": "temperature",
+                "width": 948,
+                "height": 532.109375,
+                "x": 166,
+                "y": 1146.640625
+              },
+              {
+                "id": "gateway",
+                "width": 948,
+                "height": 353.046875,
+                "x": 166,
+                "y": 1698.75
+              },
+              {
+                "id": "creativeLabs",
+                "width": 948,
+                "height": 1312.828125,
+                "x": 166,
+                "y": 2071.796875
+              }
+            ],
+            "diagramBoxes": [
+              {
+                "id": "",
+                "width": 480,
+                "height": 361,
+                "x": 234,
+                "y": -4360.796875
+              },
+              {
+                "id": "",
+                "width": 480,
+                "height": 361,
+                "x": 234,
+                "y": -2468
+              },
+              {
+                "id": "",
+                "width": 480,
+                "height": 361,
+                "x": 234,
+                "y": 624.53125
+              }
+            ],
+            "diagramViewBoxes": [
+              480,
+              480,
+              480
+            ],
+            "brokenImages": 0,
+            "overflow": false,
+            "diagramOverflow": false,
+            "answerParts": 1,
+            "typedResponses": 1,
+            "disclosures": 4,
+            "skit": "Official Dress CodeTank: Hi, I'm Tank.Joey: We know, Tank.Tank: It's on my shirt.",
+            "forms": [
+              "https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=305020130059",
+              "https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=305020109998",
+              "https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=305020129999",
+              "https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=305020120000"
+            ],
+            "masterAlignedSectionBoxes": [
+              {
+                "id": "learningTarget",
+                "width": 948,
+                "height": 369.4375,
+                "x": 166,
+                "y": -4895.75
+              },
+              {
+                "id": "partRoadmap",
+                "width": 948,
+                "height": 805.25,
+                "x": 166,
+                "y": -4506.3125
+              },
+              {
+                "id": "warmup",
+                "width": 948,
+                "height": 610.4375,
+                "x": 166,
+                "y": -3681.0625
+              },
+              {
+                "id": "groupLearn",
+                "width": 948,
+                "height": 1051.203125,
+                "x": 166,
+                "y": -3050.625
+              },
+              {
+                "id": "groupPractice",
+                "width": 948,
+                "height": 398.328125,
+                "x": 166,
+                "y": -1979.421875
+              },
+              {
+                "id": "masteryOne",
+                "width": 948,
+                "height": 978.6875,
+                "x": 166,
+                "y": -1561.09375
+              },
+              {
+                "id": "perform",
+                "width": 948,
+                "height": 1689.046875,
+                "x": 166,
+                "y": -562.40625
+              },
+              {
+                "id": "temperature",
+                "width": 948,
+                "height": 532.109375,
+                "x": 166,
+                "y": 1146.640625
+              },
+              {
+                "id": "gateway",
+                "width": 948,
+                "height": 353.046875,
+                "x": 166,
+                "y": 1698.75
+              },
+              {
+                "id": "creativeLabs",
+                "width": 948,
+                "height": 1312.828125,
+                "x": 166,
+                "y": 2071.796875
+              }
+            ],
+            "networkRequests": 0,
+            "requestUrls": [],
+            "errors": [],
+            "previewEmpty": "PASS",
+            "editReset": "PASS",
+            "copyFailure": "PASS simulated",
+            "formKey": "PASS intercepted without sending",
+            "xtraAndChecklist": "PASS",
+            "clipboard": "UNTESTED \u2014 stubbed",
+            "collectorReceipt": "UNTESTED"
+          },
+          {
+            "name": "3050201",
+            "width": 1280,
+            "sectionIds": [
+              "learningTarget",
+              "partRoadmap",
+              "warmup",
+              "groupLearn",
+              "groupPractice",
+              "masteryOne",
+              "perform",
+              "temperature",
+              "gateway",
+              "creativeLabs"
+            ],
+            "sectionBoxes": [
+              {
+                "id": "learningTarget",
+                "width": 948,
+                "height": 369.4375,
+                "x": 166,
+                "y": -4895.75
+              },
+              {
+                "id": "partRoadmap",
+                "width": 948,
+                "height": 805.25,
+                "x": 166,
+                "y": -4506.3125
+              },
+              {
+                "id": "warmup",
+                "width": 948,
+                "height": 610.4375,
+                "x": 166,
+                "y": -3681.0625
+              },
+              {
+                "id": "groupLearn",
+                "width": 948,
+                "height": 1051.203125,
+                "x": 166,
+                "y": -3050.625
+              },
+              {
+                "id": "groupPractice",
+                "width": 948,
+                "height": 398.328125,
+                "x": 166,
+                "y": -1979.421875
+              },
+              {
+                "id": "masteryOne",
+                "width": 948,
+                "height": 978.6875,
+                "x": 166,
+                "y": -1561.09375
+              },
+              {
+                "id": "perform",
+                "width": 948,
+                "height": 1689.046875,
+                "x": 166,
+                "y": -562.40625
+              },
+              {
+                "id": "temperature",
+                "width": 948,
+                "height": 532.109375,
+                "x": 166,
+                "y": 1146.640625
+              },
+              {
+                "id": "gateway",
+                "width": 948,
+                "height": 353.046875,
+                "x": 166,
+                "y": 1698.75
+              },
+              {
+                "id": "creativeLabs",
+                "width": 948,
+                "height": 1312.828125,
+                "x": 166,
+                "y": 2071.796875
+              }
+            ],
+            "diagramBoxes": [
+              {
+                "id": "",
+                "width": 480,
+                "height": 361,
+                "x": 234,
+                "y": -4360.796875
+              },
+              {
+                "id": "",
+                "width": 480,
+                "height": 361,
+                "x": 234,
+                "y": -2468
+              },
+              {
+                "id": "",
+                "width": 480,
+                "height": 361,
+                "x": 234,
+                "y": 624.53125
+              }
+            ],
+            "diagramViewBoxes": [
+              480,
+              480,
+              480
+            ],
+            "brokenImages": 0,
+            "overflow": false,
+            "diagramOverflow": false,
+            "answerParts": 1,
+            "typedResponses": 1,
+            "disclosures": 4,
+            "skit": "Official Dress CodeTank: Hi, I'm Tank.Joey: We know, Tank.Tank: It's on my shirt.",
+            "forms": [
+              "https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=305020130059",
+              "https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=305020109998",
+              "https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=305020129999",
+              "https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=305020120000"
+            ],
+            "networkRequests": 0,
+            "requestUrls": [],
+            "errors": [],
+            "previewEmpty": "PASS",
+            "editReset": "PASS",
+            "copyFailure": "PASS simulated",
+            "formKey": "PASS intercepted without sending",
+            "xtraAndChecklist": "PASS",
+            "clipboard": "UNTESTED \u2014 stubbed",
+            "collectorReceipt": "UNTESTED"
+          },
+          {
+            "name": "original",
+            "width": 768,
+            "sectionIds": [
+              "learningTarget",
+              "partRoadmap",
+              "warmup",
+              "groupLearn",
+              "groupPractice",
+              "masteryOne",
+              "perform",
+              "temperature",
+              "gateway",
+              "creativeLabs"
+            ],
+            "sectionBoxes": [
+              {
+                "id": "learningTarget",
+                "width": 668.5625,
+                "height": 483.0625,
+                "x": 49.71875,
+                "y": -5568.296875
+              },
+              {
+                "id": "partRoadmap",
+                "width": 668.5625,
+                "height": 844.625,
+                "x": 49.71875,
+                "y": -5065.234375
+              },
+              {
+                "id": "warmup",
+                "width": 668.5625,
+                "height": 636.640625,
+                "x": 49.71875,
+                "y": -4200.609375
+              },
+              {
+                "id": "groupLearn",
+                "width": 668.5625,
+                "height": 1161.203125,
+                "x": 49.71875,
+                "y": -3543.96875
+              },
+              {
+                "id": "groupPractice",
+                "width": 668.5625,
+                "height": 491,
+                "x": 49.71875,
+                "y": -2362.765625
+              },
+              {
+                "id": "masteryOne",
+                "width": 668.5625,
+                "height": 1109.671875,
+                "x": 49.71875,
+                "y": -1851.765625
+              },
+              {
+                "id": "perform",
+                "width": 668.5625,
+                "height": 1884.796875,
+                "x": 49.71875,
+                "y": -722.09375
+              },
+              {
+                "id": "temperature",
+                "width": 668.5625,
+                "height": 545.96875,
+                "x": 49.71875,
+                "y": 1182.703125
+              },
+              {
+                "id": "gateway",
+                "width": 668.5625,
+                "height": 365.5625,
+                "x": 49.71875,
+                "y": 1748.671875
+              },
+              {
+                "id": "creativeLabs",
+                "width": 668.5625,
+                "height": 1409.734375,
+                "x": 49.71875,
+                "y": 2134.234375
+              }
+            ],
+            "diagramBoxes": [
+              {
+                "id": "",
+                "width": 480,
+                "height": 361,
+                "x": 114.75,
+                "y": -4904.234375
+              },
+              {
+                "id": "",
+                "width": 480,
+                "height": 361,
+                "x": 114.75,
+                "y": -2848.375
+              },
+              {
+                "id": "",
+                "width": 480,
+                "height": 361,
+                "x": 114.75,
+                "y": 663.5625
+              }
+            ],
+            "diagramViewBoxes": [
+              480,
+              480,
+              480
+            ],
+            "brokenImages": 0,
+            "overflow": false,
+            "diagramOverflow": false,
+            "answerParts": 1,
+            "typedResponses": 1,
+            "disclosures": 4,
+            "skit": "Official Dress CodeTank: Hi, I'm Tank.Joey: We know, Tank.Tank: It's on my shirt.",
+            "forms": [
+              "https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=305020130059",
+              "https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=305020109998",
+              "https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=305020129999",
+              "https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=305020120000"
+            ],
+            "masterAlignedSectionBoxes": [
+              {
+                "id": "learningTarget",
+                "width": 668.5625,
+                "height": 483.0625,
+                "x": 49.71875,
+                "y": -5568.296875
+              },
+              {
+                "id": "partRoadmap",
+                "width": 668.5625,
+                "height": 844.625,
+                "x": 49.71875,
+                "y": -5065.234375
+              },
+              {
+                "id": "warmup",
+                "width": 668.5625,
+                "height": 636.640625,
+                "x": 49.71875,
+                "y": -4200.609375
+              },
+              {
+                "id": "groupLearn",
+                "width": 668.5625,
+                "height": 1161.203125,
+                "x": 49.71875,
+                "y": -3543.96875
+              },
+              {
+                "id": "groupPractice",
+                "width": 668.5625,
+                "height": 491,
+                "x": 49.71875,
+                "y": -2362.765625
+              },
+              {
+                "id": "masteryOne",
+                "width": 668.5625,
+                "height": 1082.8125,
+                "x": 49.71875,
+                "y": -1851.765625
+              },
+              {
+                "id": "perform",
+                "width": 668.5625,
+                "height": 1884.796875,
+                "x": 49.71875,
+                "y": -748.953125
+              },
+              {
+                "id": "temperature",
+                "width": 668.5625,
+                "height": 545.96875,
+                "x": 49.71875,
+                "y": 1155.84375
+              },
+              {
+                "id": "gateway",
+                "width": 668.5625,
+                "height": 365.5625,
+                "x": 49.71875,
+                "y": 1721.8125
+              },
+              {
+                "id": "creativeLabs",
+                "width": 668.5625,
+                "height": 1409.734375,
+                "x": 49.71875,
+                "y": 2107.375
+              }
+            ],
+            "networkRequests": 0,
+            "requestUrls": [],
+            "errors": [],
+            "previewEmpty": "PASS",
+            "editReset": "PASS",
+            "copyFailure": "PASS simulated",
+            "formKey": "PASS intercepted without sending",
+            "xtraAndChecklist": "PASS",
+            "clipboard": "UNTESTED \u2014 stubbed",
+            "collectorReceipt": "UNTESTED"
+          },
+          {
+            "name": "3050201",
+            "width": 768,
+            "sectionIds": [
+              "learningTarget",
+              "partRoadmap",
+              "warmup",
+              "groupLearn",
+              "groupPractice",
+              "masteryOne",
+              "perform",
+              "temperature",
+              "gateway",
+              "creativeLabs"
+            ],
+            "sectionBoxes": [
+              {
+                "id": "learningTarget",
+                "width": 668.5625,
+                "height": 483.0625,
+                "x": 49.71875,
+                "y": -5541.296875
+              },
+              {
+                "id": "partRoadmap",
+                "width": 668.5625,
+                "height": 844.625,
+                "x": 49.71875,
+                "y": -5038.234375
+              },
+              {
+                "id": "warmup",
+                "width": 668.5625,
+                "height": 636.640625,
+                "x": 49.71875,
+                "y": -4173.609375
+              },
+              {
+                "id": "groupLearn",
+                "width": 668.5625,
+                "height": 1161.203125,
+                "x": 49.71875,
+                "y": -3516.96875
+              },
+              {
+                "id": "groupPractice",
+                "width": 668.5625,
+                "height": 491,
+                "x": 49.71875,
+                "y": -2335.765625
+              },
+              {
+                "id": "masteryOne",
+                "width": 668.5625,
+                "height": 1082.8125,
+                "x": 49.71875,
+                "y": -1824.765625
+              },
+              {
+                "id": "perform",
+                "width": 668.5625,
+                "height": 1884.796875,
+                "x": 49.71875,
+                "y": -721.953125
+              },
+              {
+                "id": "temperature",
+                "width": 668.5625,
+                "height": 545.96875,
+                "x": 49.71875,
+                "y": 1182.84375
+              },
+              {
+                "id": "gateway",
+                "width": 668.5625,
+                "height": 365.5625,
+                "x": 49.71875,
+                "y": 1748.8125
+              },
+              {
+                "id": "creativeLabs",
+                "width": 668.5625,
+                "height": 1409.734375,
+                "x": 49.71875,
+                "y": 2134.375
+              }
+            ],
+            "diagramBoxes": [
+              {
+                "id": "",
+                "width": 480,
+                "height": 361,
+                "x": 114.75,
+                "y": -4877.234375
+              },
+              {
+                "id": "",
+                "width": 480,
+                "height": 361,
+                "x": 114.75,
+                "y": -2821.375
+              },
+              {
+                "id": "",
+                "width": 480,
+                "height": 361,
+                "x": 114.75,
+                "y": 663.703125
+              }
+            ],
+            "diagramViewBoxes": [
+              480,
+              480,
+              480
+            ],
+            "brokenImages": 0,
+            "overflow": false,
+            "diagramOverflow": false,
+            "answerParts": 1,
+            "typedResponses": 1,
+            "disclosures": 4,
+            "skit": "Official Dress CodeTank: Hi, I'm Tank.Joey: We know, Tank.Tank: It's on my shirt.",
+            "forms": [
+              "https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=305020130059",
+              "https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=305020109998",
+              "https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=305020129999",
+              "https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=305020120000"
+            ],
+            "networkRequests": 0,
+            "requestUrls": [],
+            "errors": [],
+            "previewEmpty": "PASS",
+            "editReset": "PASS",
+            "copyFailure": "PASS simulated",
+            "formKey": "PASS intercepted without sending",
+            "xtraAndChecklist": "PASS",
+            "clipboard": "UNTESTED \u2014 stubbed",
+            "collectorReceipt": "UNTESTED"
+          },
+          {
+            "name": "original",
+            "width": 390,
+            "sectionIds": [
+              "learningTarget",
+              "partRoadmap",
+              "warmup",
+              "groupLearn",
+              "groupPractice",
+              "masteryOne",
+              "perform",
+              "temperature",
+              "gateway",
+              "creativeLabs"
+            ],
+            "sectionBoxes": [
+              {
+                "id": "learningTarget",
+                "width": 326,
+                "height": 726.71875,
+                "x": 32,
+                "y": -8146.40625
+              },
+              {
+                "id": "partRoadmap",
+                "width": 326,
+                "height": 977.734375,
+                "x": 32,
+                "y": -7399.6875
+              },
+              {
+                "id": "warmup",
+                "width": 326,
+                "height": 977.375,
+                "x": 32,
+                "y": -6401.953125
+              },
+              {
+                "id": "groupLearn",
+                "width": 326,
+                "height": 1586.328125,
+                "x": 32,
+                "y": -5404.578125
+              },
+              {
+                "id": "groupPractice",
+                "width": 326,
+                "height": 761.015625,
+                "x": 32,
+                "y": -3798.25
+              },
+              {
+                "id": "masteryOne",
+                "width": 326,
+                "height": 1598.171875,
+                "x": 32,
+                "y": -3017.234375
+              },
+              {
+                "id": "perform",
+                "width": 326,
+                "height": 3056.140625,
+                "x": 32,
+                "y": -1399.0625
+              },
+              {
+                "id": "temperature",
+                "width": 326,
+                "height": 888.8125,
+                "x": 32,
+                "y": 1677.078125
+              },
+              {
+                "id": "gateway",
+                "width": 326,
+                "height": 613.515625,
+                "x": 32,
+                "y": 2585.890625
+              },
+              {
+                "id": "creativeLabs",
+                "width": 326,
+                "height": 2301.765625,
+                "x": 32,
+                "y": 3219.40625
+              }
+            ],
+            "diagramBoxes": [
+              {
+                "id": "",
+                "width": 208,
+                "height": 157,
+                "x": 91,
+                "y": -7164.140625
+              },
+              {
+                "id": "",
+                "width": 208,
+                "height": 157,
+                "x": 91,
+                "y": -4181.265625
+              },
+              {
+                "id": "",
+                "width": 208,
+                "height": 157,
+                "x": 91,
+                "y": 1260.53125
+              }
+            ],
+            "diagramViewBoxes": [
+              480,
+              480,
+              480
+            ],
+            "brokenImages": 0,
+            "overflow": false,
+            "diagramOverflow": false,
+            "answerParts": 1,
+            "typedResponses": 1,
+            "disclosures": 4,
+            "skit": "Official Dress CodeTank: Hi, I'm Tank.Joey: We know, Tank.Tank: It's on my shirt.",
+            "forms": [
+              "https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=305020130059",
+              "https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=305020109998",
+              "https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=305020129999",
+              "https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=305020120000"
+            ],
+            "masterAlignedSectionBoxes": [
+              {
+                "id": "learningTarget",
+                "width": 326,
+                "height": 726.71875,
+                "x": 32,
+                "y": -8146.40625
+              },
+              {
+                "id": "partRoadmap",
+                "width": 326,
+                "height": 977.734375,
+                "x": 32,
+                "y": -7399.6875
+              },
+              {
+                "id": "warmup",
+                "width": 326,
+                "height": 977.375,
+                "x": 32,
+                "y": -6401.953125
+              },
+              {
+                "id": "groupLearn",
+                "width": 326,
+                "height": 1586.328125,
+                "x": 32,
+                "y": -5404.578125
+              },
+              {
+                "id": "groupPractice",
+                "width": 326,
+                "height": 761.015625,
+                "x": 32,
+                "y": -3798.25
+              },
+              {
+                "id": "masteryOne",
+                "width": 326,
+                "height": 1598.171875,
+                "x": 32,
+                "y": -3017.234375
+              },
+              {
+                "id": "perform",
+                "width": 326,
+                "height": 3056.140625,
+                "x": 32,
+                "y": -1399.0625
+              },
+              {
+                "id": "temperature",
+                "width": 326,
+                "height": 888.8125,
+                "x": 32,
+                "y": 1677.078125
+              },
+              {
+                "id": "gateway",
+                "width": 326,
+                "height": 613.515625,
+                "x": 32,
+                "y": 2585.890625
+              },
+              {
+                "id": "creativeLabs",
+                "width": 326,
+                "height": 2301.765625,
+                "x": 32,
+                "y": 3219.40625
+              }
+            ],
+            "networkRequests": 0,
+            "requestUrls": [],
+            "errors": [],
+            "previewEmpty": "PASS",
+            "editReset": "PASS",
+            "copyFailure": "PASS simulated",
+            "formKey": "PASS intercepted without sending",
+            "xtraAndChecklist": "PASS",
+            "clipboard": "UNTESTED \u2014 stubbed",
+            "collectorReceipt": "UNTESTED"
+          },
+          {
+            "name": "3050201",
+            "width": 390,
+            "sectionIds": [
+              "learningTarget",
+              "partRoadmap",
+              "warmup",
+              "groupLearn",
+              "groupPractice",
+              "masteryOne",
+              "perform",
+              "temperature",
+              "gateway",
+              "creativeLabs"
+            ],
+            "sectionBoxes": [
+              {
+                "id": "learningTarget",
+                "width": 326,
+                "height": 726.71875,
+                "x": 32,
+                "y": -8146.40625
+              },
+              {
+                "id": "partRoadmap",
+                "width": 326,
+                "height": 977.734375,
+                "x": 32,
+                "y": -7399.6875
+              },
+              {
+                "id": "warmup",
+                "width": 326,
+                "height": 977.375,
+                "x": 32,
+                "y": -6401.953125
+              },
+              {
+                "id": "groupLearn",
+                "width": 326,
+                "height": 1586.328125,
+                "x": 32,
+                "y": -5404.578125
+              },
+              {
+                "id": "groupPractice",
+                "width": 326,
+                "height": 761.015625,
+                "x": 32,
+                "y": -3798.25
+              },
+              {
+                "id": "masteryOne",
+                "width": 326,
+                "height": 1598.171875,
+                "x": 32,
+                "y": -3017.234375
+              },
+              {
+                "id": "perform",
+                "width": 326,
+                "height": 3056.140625,
+                "x": 32,
+                "y": -1399.0625
+              },
+              {
+                "id": "temperature",
+                "width": 326,
+                "height": 888.8125,
+                "x": 32,
+                "y": 1677.078125
+              },
+              {
+                "id": "gateway",
+                "width": 326,
+                "height": 613.515625,
+                "x": 32,
+                "y": 2585.890625
+              },
+              {
+                "id": "creativeLabs",
+                "width": 326,
+                "height": 2301.765625,
+                "x": 32,
+                "y": 3219.40625
+              }
+            ],
+            "diagramBoxes": [
+              {
+                "id": "",
+                "width": 208,
+                "height": 157,
+                "x": 91,
+                "y": -7164.140625
+              },
+              {
+                "id": "",
+                "width": 208,
+                "height": 157,
+                "x": 91,
+                "y": -4181.265625
+              },
+              {
+                "id": "",
+                "width": 208,
+                "height": 157,
+                "x": 91,
+                "y": 1260.53125
+              }
+            ],
+            "diagramViewBoxes": [
+              480,
+              480,
+              480
+            ],
+            "brokenImages": 0,
+            "overflow": false,
+            "diagramOverflow": false,
+            "answerParts": 1,
+            "typedResponses": 1,
+            "disclosures": 4,
+            "skit": "Official Dress CodeTank: Hi, I'm Tank.Joey: We know, Tank.Tank: It's on my shirt.",
+            "forms": [
+              "https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=305020130059",
+              "https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=305020109998",
+              "https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=305020129999",
+              "https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=305020120000"
+            ],
+            "networkRequests": 0,
+            "requestUrls": [],
+            "errors": [],
+            "previewEmpty": "PASS",
+            "editReset": "PASS",
+            "copyFailure": "PASS simulated",
+            "formKey": "PASS intercepted without sending",
+            "xtraAndChecklist": "PASS",
+            "clipboard": "UNTESTED \u2014 stubbed",
+            "collectorReceipt": "UNTESTED"
+          }
+        ],
+        "content": "normalized complete visible text exact at all viewports",
+        "layout": "same section order/width; heights within 3px after only the two known historical label-weight rules align to current unchanged master",
+        "remainingDifference": "Historical guide uses bold scaffold labels/legends; generated pilot faithfully uses current master regular weight. Raw and master-aligned baseline screenshots/geometry retained.",
+        "offline": "zero HTTP requests with all HTTP blocked, including Studio unlock",
+        "clipboard": "UNTESTED",
+        "collectorReceipt": "UNTESTED"
+      },
+      "visualInspection": "PASS \u2014 hosted desktop/tablet/mobile screenshots inspected; roadmap/Perform diagrams fit, original comic scroll rule restored"
+    },
+    "hosted": {
+      "testedCommit": "c659f7041a4e2c1d2ee3ce7040d63b2150fe1f0a",
+      "runId": 43734967104,
+      "runUrl": "https://github.com/RTF-Studios/wayfinder-preview/actions/runs/43734967104",
+      "jobs": {
+        "preHtmlIdentity": 132875426619,
+        "lessonContentContract": 132875490010,
+        "m1cFidelity": 132875539092,
+        "m1bFormats": 132875539055
+      },
+      "specificJobs": "all listed SUCCESS; not a blanket global CI/readiness claim",
+      "artifactId": 14169902691,
+      "artifactUrl": "https://github.com/RTF-Studios/wayfinder-preview/actions/runs/43734967104/artifacts/14169902691",
+      "artifactSha256": "0bf222d9abe9c58e00cc88c52518e3ed56a1a5fc42df7115ba11f08478eb33da",
+      "earlierFailures": [
+        {
+          "run": 43734393072,
+          "reason": "caught missing original comic minimum-width packaging; repaired"
+        },
+        {
+          "run": 43734707146,
+          "reason": "raw historical label typography differs from current master; kept raw evidence and separately aligned only known weight rules for renderer comparison"
+        }
+      ]
+    },
+    "changedFiles": [
+      ".github/workflows/wayfinder-qa.yml",
+      "scripts/check-m1c-browser.cjs",
+      "scripts/fixtures/m1c-3050201/README.md",
+      "scripts/fixtures/m1c-3050201/source-copy.json",
+      "scripts/schema/wayfinder-lesson.schema.json",
+      "scripts/test-m1b-3050201.cjs",
+      "scripts/test-m1c-3050201.cjs",
+      "scripts/test-wayfinder-identity.cjs",
+      "scripts/wayfinder-content-contract.cjs",
+      "scripts/wayfinder-content-contract.md",
+      "scripts/wayfinder-presentation.cjs",
+      "scripts/wayfinder-record-renderer.cjs",
+      "scripts/m1b-question-format-results.json"
+    ],
+    "commits": [
+      "afae431c8e948bc2f80e363709e5f06733178b4d",
+      "8fa77fa580de54a47d94dbd95808b1df057e008b",
+      "c659f7041a4e2c1d2ee3ce7040d63b2150fe1f0a"
+    ],
+    "preserved": "All Tech/CS/AAVTC deployed HTML, universal master, shared artwork helper/favicon, authoritative Master Outline, F1 implementation, JISD files/IDs, Collector/evidence and Show/Hide untouched.",
+    "stop": "M1c stops here. Retain existing canonical 3050201. No M2\u2013M4 or student release. Return99."
+  }
 }
