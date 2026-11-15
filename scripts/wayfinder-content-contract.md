@@ -1,5 +1,53 @@
 # M1 source-to-build contract
 
+## M2 curriculum review before rendering
+
+After extraction and independent F1 validation, every production `buildRecord`
+call now runs `wayfinder-curriculum-quality.cjs` BEFORE the renderer. JS and
+native Python entries use this same boundary. Missing, stale, FAIL or UNTESTED
+curriculum review blocks construction and leaves previous HTML untouched.
+
+The assistant supplies `currentSource.curriculumReviews[DayID]` on the freshly
+read source snapshot. This is derived QA metadata, not a replacement lesson
+record, a second question registry, or another Captain signoff. Preserve the
+native outline and exact frozen question/rubric. Save the review evidence with
+the authorized build checkpoint; never use an old review for changed content.
+
+Each review has version1, reviewer/basis, PASS status, exact source binding
+(document, revision, tab, source-text SHA256, summary reference and full payload
+SHA256), WHAT/WHY alignment, priority-TEKS coverage, and every graded question's
+literal prompt/rubric plus all part prompts, accepted answers and criteria.
+Teaching anchors quote the supplied explanation, demonstration, prior learning,
+exemplar or assessment reference. Perform alone cannot supply the question's
+required prior knowledge. Explicitly distinguish introductory/partial practice
+from complete TEKS mastery. For multipart questions, record a wrong-earlier /
+fully-creditable-later counterexample for each pair; a source-declared single
+response has no invented A/B/C cases.
+
+Pacing review allocates the SAME source minutes among actual reading/task/save
+work, transitions and the exact number of planned evidence handoffs. The total
+must fit50minutes; numerical M1 acceptance of45–55minutes is not a feasibility
+review. Unresolved FAIL/UNTESTED findings hold the build. `inspect` returns named
+mismatches; `preflight` throws them before assembly.
+
+These checks verify review freshness, completeness and exact source references.
+They cannot judge the truth of a review rationale or certify teaching quality by
+keywords. Tank's assistant review makes those instructional judgments under the
+existing Captain-approved pillars/GO. No grades, source questions, master code,
+clipboard/Form logic, deployment, or student visibility are changed by M2.
+
+`fixtures/m2-review-fixtures.cjs` is TEST/AUDIT ONLY: synthetic fixtures and the
+two explicitly inspected immutable3050201 audit-source hashes. It must not be
+used to manufacture approval for a future source. The isolated review preserves
+the live Evergreen mapping of educational TECH-U05-P01 to legacy3050201–07.
+Production authors must read their actual current outline and targets.
+
+Run `node scripts/test-wayfinder-curriculum-quality.cjs` for focused gate tests.
+The required CI curriculum job follows F1/M1; unchanged submission-engine browser
+checks are reused when the diff affects curriculum/validation only. Runtime,
+layout, asset or lesson HTML changes continue to select the browser jobs.
+
+
 The approved Personal Drive Master Outline remains the only curriculum source.
 The schema is `schema/wayfinder-lesson.schema.json`; it describes data, not a new
 curriculum registry. `fixtures/m1-source-fixtures.cjs` contains synthetic source

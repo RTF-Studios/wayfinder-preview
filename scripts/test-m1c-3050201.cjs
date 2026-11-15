@@ -5,6 +5,7 @@ process.env.M1_PILOT_FIXTURE=path.join(__dirname,'fixtures/m1c-3050201');
 process.env.M1B_PILOT_DIR=process.env.M1C_PILOT_DIR||fs.mkdtempSync(path.join(os.tmpdir(),'m1c-pilot-'));
 require('./test-m1b-3050201.cjs'); // unchanged production entry + seven F1/M1 rejection cases
 const source=JSON.parse(fs.readFileSync(path.join(process.env.M1_PILOT_FIXTURE,'source-copy.json'))),record=C.extractLesson(source,'3050201'),native=source.tabs[0].text.split('\n:::lesson')[0];
+source.curriculumReviews={'3050201':require('./fixtures/m2-review-fixtures.cjs').pilotReview(record)};
 const original=fs.readFileSync(path.join(root,'Tech/3050201.html')),master=fs.readFileSync(path.join(root,'templates/wayfinder-master.html')),output=path.join(process.env.M1B_PILOT_DIR,'3050201.html'),good=fs.readFileSync(output);
 const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
 const testDir=fs.mkdtempSync(path.join(os.tmpdir(),'m1c-negative-')),src=path.join(testDir,'source.json'),out=path.join(testDir,'preserve.html');

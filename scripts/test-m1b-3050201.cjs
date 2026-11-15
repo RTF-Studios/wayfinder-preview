@@ -3,6 +3,8 @@
 const fs=require('node:fs'),path=require('node:path'),os=require('node:os'),cp=require('node:child_process'),crypto=require('node:crypto'),assert=require('node:assert/strict');
 const root=path.resolve(__dirname,'..'),dir=process.env.M1_PILOT_FIXTURE||path.join(__dirname,'fixtures/m1b-3050201'),base=path.join(__dirname,'fixtures/m1a-3050201');
 const source=JSON.parse(fs.readFileSync(path.join(dir,'source-copy.json'))),identities=JSON.parse(fs.readFileSync(path.join(__dirname,'fixtures/m1b-3050201/identity-sources.json'))),C=require('./wayfinder-content-contract.cjs');
+// Attach reviewed audit metadata to the transient snapshot only; native source stays intact.
+source.curriculumReviews={'3050201':require('./fixtures/m2-review-fixtures.cjs').pilotReview(C.extractLesson(source,'3050201'))};
 const sha=x=>crypto.createHash('sha256').update(x).digest('hex');
 const original=fs.readFileSync(path.join(root,'Tech/3050201.html')),master=fs.readFileSync(path.join(root,'templates/wayfinder-master.html'));
 assert.equal(sha(original),'7471096fba1388814b6330f6ac4baca5b57f7ce72601aeb3846816caf4679b41');assert.deepEqual(original,fs.readFileSync(path.join(base,'original.html.txt')));

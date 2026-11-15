@@ -138,6 +138,8 @@ function buildRecord(master,record,currentSource,identitySources){
  const r=validateRecord(record,currentSource);F1.preflight(r.payload.identity,identitySources,r.sourceText);
  if(!identitySources.masterOutline.reference.includes(r.provenance.documentId)||!identitySources.masterOutline.revision.includes(r.provenance.revision))error('provenance','F1 Master Outline document/revision disagrees with current source');
  if(identitySources.summary.reference!==r.provenance.summaryApprovalReference)error('provenance','summary approval reference disagrees with F1 summary');
+ // Curriculum review is source-bound and assistant-owned, not another Captain gate.
+ require('./wayfinder-curriculum-quality.cjs').preflight(r,currentSource.curriculumReviews?.[r.payload.identity.dayid]);
  return require('./wayfinder-record-renderer.cjs').render(master,r.payload,r.provenance);
 }
 if(require.main===module){try{const input=JSON.parse(fs.readFileSync(0,'utf8'));const r=extractLesson(input.source,input.dayid);if(input.expectedIdentity&&JSON.stringify(input.expectedIdentity)!==JSON.stringify(r.payload.identity)){for(const k of ['course','dayid','unit','part','day','title'])if(input.expectedIdentity[k]!==r.payload.identity[k])error('identity','native candidate disagrees with current source '+k);}if(input.expectedMode&&input.expectedMode!==r.payload.mode)error('mode','native candidate disagrees with current source');if(input.action==='build'){process.stdout.write(buildRecord(input.master,r,input.source,input.identitySources));}else process.stdout.write(JSON.stringify(r));}catch(e){process.stderr.write(e.message+'\n');process.exitCode=1;}}

@@ -57,7 +57,7 @@ test('browser production refuses missing validator',()=>{
 const temp=fs.mkdtempSync(path.join(os.tmpdir(),'wf-f1-'));
 try{
  fs.mkdirSync(path.join(temp,'scripts'));fs.mkdirSync(path.join(temp,'templates'));fs.mkdirSync(path.join(temp,'Tech'));
- for(const file of fs.readdirSync(__dirname).filter(f=>/^(?:build-tech.*\.py|tech-u5.*source\.json|wayfinder_identity\.py|wayfinder-identity\.cjs|wayfinder_lesson\.py|wayfinder-content-contract\.cjs|wayfinder-record-renderer\.cjs|wayfinder-presentation\.cjs)$/.test(f)))fs.copyFileSync(path.join(__dirname,file),path.join(temp,'scripts',file));
+ for(const file of fs.readdirSync(__dirname).filter(f=>/^(?:build-tech.*\.py|tech-u5.*source\.json|wayfinder_identity\.py|wayfinder-identity\.cjs|wayfinder_lesson\.py|wayfinder-content-contract\.cjs|wayfinder-record-renderer\.cjs|wayfinder-presentation\.cjs|wayfinder-curriculum-quality\.cjs)$/.test(f)))fs.copyFileSync(path.join(__dirname,file),path.join(temp,'scripts',file));
  fs.copyFileSync(path.join(root,'templates/wayfinder-master.html'),path.join(temp,'templates/wayfinder-master.html'));
  fs.cpSync(path.join(__dirname,'schema'),path.join(temp,'scripts/schema'),{recursive:true});fs.mkdirSync(path.join(temp,'assets/shared'),{recursive:true});fs.copyFileSync(path.join(root,'assets/shared/artwork-rotation.js'),path.join(temp,'assets/shared/artwork-rotation.js'));fs.copyFileSync(path.join(root,'assets/shared/rtf-compass-favicon.svg'),path.join(temp,'assets/shared/rtf-compass-favicon.svg'));
  function m1Source(x,mode){const f=m1Fixture('Tech',mode,'short_text',x),file=path.join(temp,'m1-source.json');fs.writeFileSync(file,JSON.stringify(f.source));fs.writeFileSync(path.join(temp,'sources.json'),JSON.stringify(f.identities));return file;}

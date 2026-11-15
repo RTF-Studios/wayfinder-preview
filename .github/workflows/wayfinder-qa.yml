@@ -4,6 +4,8 @@ on:
     paths:
       - 'scripts/*identity*'
       - 'scripts/*content-contract*'
+      - 'scripts/*curriculum-quality*'
+      - 'scripts/*runtime-scope*'
       - 'scripts/*m1b*'
       - 'scripts/*m1c*'
       - 'scripts/wayfinder-presentation.cjs'
@@ -32,6 +34,8 @@ on:
     paths:
       - 'scripts/*identity*'
       - 'scripts/*content-contract*'
+      - 'scripts/*curriculum-quality*'
+      - 'scripts/*runtime-scope*'
       - 'scripts/*m1b*'
       - 'scripts/*m1c*'
       - 'scripts/wayfinder-presentation.cjs'
@@ -63,8 +67,12 @@ jobs:
   pre-html-identity:
     runs-on: ubuntu-24.04
     timeout-minutes: 5
+    outputs:
+      runtime: ${{ steps.scope.outputs.runtime }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -75,8 +83,23 @@ jobs:
         run: python -m pip install beautifulsoup4==4.15.0
       - name: Prove production builders block invalid identities before HTML
         run: node scripts/test-wayfinder-identity.cjs
+      - name: Reuse proven runtime checks for curriculum-only changes
+        id: scope
+        env:
+          BASE_SHA: ${{ github.event.before || github.event.pull_request.base.sha }}
+        run: |
+          node - <<'JS'
+          const fs=require('node:fs'),cp=require('node:child_process');
+          let runtime=true;const base=process.env.BASE_SHA;
+          if(base&& !/^0+$/.test(base))try{
+            const names=cp.execFileSync('git',['diff','--name-only',base,'HEAD'],{encoding:'utf8'}).trim().split('\n');
+            runtime=names.some(p=>/^(?:templates\/|assets\/shared\/|(?:Tech|CS|AAVTC)\/.*\.html$|scripts\/wayfinder-(?:record-renderer|presentation)|\.github\/(?:submission-contract-qa|guide-identity-qa|.*browser|tech-prototype|cs-part2-qa|wayfinder-qa|master-qa))/.test(p));
+          }catch{runtime=true;}
+          fs.appendFileSync(process.env.GITHUB_OUTPUT,'runtime='+runtime+'\n');
+          JS
   tech-prototype-evidence:
-    needs: [pre-html-identity, lesson-content-contract]
+    needs: [pre-html-identity, lesson-content-contract, curriculum-quality]
+    if: needs['pre-html-identity'].outputs.runtime == 'true'
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
@@ -103,7 +126,8 @@ jobs:
           name: tech-prototype-browser-evidence
           path: qa-artifacts/tech-prototype*
   submission-contract:
-    needs: [pre-html-identity, lesson-content-contract]
+    needs: [pre-html-identity, lesson-content-contract, curriculum-quality]
+    if: needs['pre-html-identity'].outputs.runtime == 'true'
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
@@ -133,7 +157,8 @@ jobs:
           path: qa-artifacts/cs-part2
 
   identity-reconciliation-offline:
-    needs: [pre-html-identity, lesson-content-contract]
+    needs: [pre-html-identity, lesson-content-contract, curriculum-quality]
+    if: needs['pre-html-identity'].outputs.runtime == 'true'
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
@@ -173,7 +198,8 @@ jobs:
         run: node scripts/test-m1b-3050201.cjs
 
   m1b-isolated-browser:
-    needs: [pre-html-identity, lesson-content-contract]
+    needs: [pre-html-identity, lesson-content-contract, curriculum-quality]
+    if: needs['pre-html-identity'].outputs.runtime == 'true'
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
@@ -203,7 +229,8 @@ jobs:
           path: qa-artifacts/m1b
 
   m1c-production-fidelity:
-    needs: [pre-html-identity, lesson-content-contract]
+    needs: [pre-html-identity, lesson-content-contract, curriculum-quality]
+    if: needs['pre-html-identity'].outputs.runtime == 'true'
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
@@ -234,3 +261,28 @@ jobs:
           path: |
             qa-artifacts/m1c
             qa-artifacts-m1c-static.json
+
+  curriculum-quality:
+    needs: [pre-html-identity, lesson-content-contract]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reject unreviewed or mismatched curriculum before HTML
+        env:
+          M2_RESULTS_PATH: qa-artifacts/m2/results.json
+        run: |
+          mkdir -p qa-artifacts/m2
+          node scripts/test-wayfinder-curriculum-quality.cjs
+      - name: Preserve curriculum gate evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m2-curriculum-quality
+          path: qa-artifacts/m2
