@@ -1,0 +1,529 @@
+{
+  "purpose": "F3 build-time independently read source snapshots, not a replacement registry; refresh from canonical sources before later work",
+  "summary": {
+    "approved": true,
+    "reference": "https://docs.google.com/document/d/1hdYPNgciqTp5-xSmwtS0ZWhvObttA_3C7C5Ydy9NBTg/edit",
+    "revision": "AHj4eMT9xvydrtskc9CDoEFtwfKmvNLqBX75iUHMQcf_Fc84ob61gVD9T1CGT8a4Fh3IHa5GiVe5Hf53cy8IZBgkJpkulKLLCSeIGHY9E4c",
+    "locator": "Existing F3 checkpoint / F3 SOURCE IDENTITY CHECKPOINT — Captain F3 GO and Tank source-audit confirmation",
+    "identities": [
+      {
+        "course": "CS",
+        "dayid": "2090301",
+        "unit": 9,
+        "part": 3,
+        "day": 1,
+        "title": "Turkey Escape: Plan the Game"
+      },
+      {
+        "course": "CS",
+        "dayid": "2090302",
+        "unit": 9,
+        "part": 3,
+        "day": 2,
+        "title": "Turkey Escape: Flap and Dodge"
+      },
+      {
+        "course": "CS",
+        "dayid": "2090303",
+        "unit": 9,
+        "part": 3,
+        "day": 3,
+        "title": "Turkey Escape: Score and Level Up"
+      },
+      {
+        "course": "CS",
+        "dayid": "2090304",
+        "unit": 9,
+        "part": 3,
+        "day": 4,
+        "title": "Turkey Escape: Playtest and Polish"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050201",
+        "unit": 5,
+        "part": 2,
+        "day": 1,
+        "title": "Build a Game from Shapes"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050202",
+        "unit": 5,
+        "part": 2,
+        "day": 2,
+        "title": "Make the Player Move"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050203",
+        "unit": 5,
+        "part": 2,
+        "day": 3,
+        "title": "Make the Circle Fall Forever"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050204",
+        "unit": 5,
+        "part": 2,
+        "day": 4,
+        "title": "Lives, Hits and Fair Rules"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050205",
+        "unit": 5,
+        "part": 2,
+        "day": 5,
+        "title": "Score, Challenge and Playtesting"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050206",
+        "unit": 5,
+        "part": 2,
+        "day": 6,
+        "title": "Prototype Skills — Assessment & Daily Recovery"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050207",
+        "unit": 5,
+        "part": 2,
+        "day": 7,
+        "title": "Finish the Prototype & Recover Evidence"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050301",
+        "unit": 5,
+        "part": 3,
+        "day": 1,
+        "title": "Give the Game a World"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050302",
+        "unit": 5,
+        "part": 3,
+        "day": 2,
+        "title": "Design Readable Character Art"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050303",
+        "unit": 5,
+        "part": 3,
+        "day": 3,
+        "title": "Replace Art Without Breaking Gameplay"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050304",
+        "unit": 5,
+        "part": 3,
+        "day": 4,
+        "title": "Storytelling & Visual Design — Assessment"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050305",
+        "unit": 5,
+        "part": 3,
+        "day": 5,
+        "title": "Finish Your Story World & Recover Evidence"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050401",
+        "unit": 5,
+        "part": 4,
+        "day": 1,
+        "title": "Invent One Special Game Mechanic"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050402",
+        "unit": 5,
+        "part": 4,
+        "day": 2,
+        "title": "Turn Your Idea into Working Code"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050403",
+        "unit": 5,
+        "part": 4,
+        "day": 3,
+        "title": "Playtest, Debug and Polish"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050404",
+        "unit": 5,
+        "part": 4,
+        "day": 4,
+        "title": "Innovation Skills — Assessment"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050405",
+        "unit": 5,
+        "part": 4,
+        "day": 5,
+        "title": "Final Game Showcase & Recovery"
+      }
+    ]
+  },
+  "masterOutline": {
+    "reference": "1uT88cp1mVW7D8HFj6EL51_nlvlRc531uiGZcKcHEI48;1c9eO4pf8USmC6hNrXX4FqZW7q8yy5EuuDIIabLQzL4Q;1Tng6s69tYbPg3sGNHd6ZUpgEUc45C0rlV2j4pMl31ZA;1NFft0tRk-qnCibRuqVHx0hFdLalzdiK8PRrOgSg1qws",
+    "revision": "AHj4eMTLQSGxDstLPtQoTtlK01NkYbOSVO4FwDxHKLdHeR8_rDWDK_diEM6U3XOklqWH1cjvb42c1tNbTPi_I4choZpO04KNnKGQvJO8pxQ;AHj4eMTAakH4JA-q1i4qf5FQpAJwHbHkKD81Jyp_zzlROEnDdLrdTLTZCaH4Z6Hrt8k29T3p6x15_jhbZ65hgQ14rqsHZBKVQZNF6yWk4KI;AHj4eMQChESVv4EjQC0tQo9Q7aykiUkfSlTl_KB7ZhV8S3jBidGkrybmyU7RYB1uvP1dD6RVts22D-5QWiLr8K6hsjYg_EMjSEJFYqgigEo;AHj4eMRMyrWjBOOuIM5IkRfqFz8RWx3Wlb5odgvX7vmvR3bll49yRMUBMjWGUGYuyH-1ME2ehr70FlGRmKt7pWrqkQtA23xs1yLlg0v-4HI",
+    "locator": "Tech Part overview + explicit Day tab headings; CS T2 permanent identity register",
+    "identities": [
+      {
+        "course": "Tech",
+        "dayid": "3050201",
+        "unit": 5,
+        "part": 2,
+        "day": 1,
+        "title": "Build a Game from Shapes"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050202",
+        "unit": 5,
+        "part": 2,
+        "day": 2,
+        "title": "Make the Player Move"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050203",
+        "unit": 5,
+        "part": 2,
+        "day": 3,
+        "title": "Make the Circle Fall Forever"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050204",
+        "unit": 5,
+        "part": 2,
+        "day": 4,
+        "title": "Lives, Hits and Fair Rules"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050205",
+        "unit": 5,
+        "part": 2,
+        "day": 5,
+        "title": "Score, Challenge and Playtesting"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050206",
+        "unit": 5,
+        "part": 2,
+        "day": 6,
+        "title": "Prototype Skills — Assessment & Daily Recovery"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050207",
+        "unit": 5,
+        "part": 2,
+        "day": 7,
+        "title": "Finish the Prototype & Recover Evidence"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050301",
+        "unit": 5,
+        "part": 3,
+        "day": 1,
+        "title": "Give the Game a World"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050302",
+        "unit": 5,
+        "part": 3,
+        "day": 2,
+        "title": "Design Readable Character Art"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050303",
+        "unit": 5,
+        "part": 3,
+        "day": 3,
+        "title": "Replace Art Without Breaking Gameplay"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050304",
+        "unit": 5,
+        "part": 3,
+        "day": 4,
+        "title": "Storytelling & Visual Design — Assessment"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050305",
+        "unit": 5,
+        "part": 3,
+        "day": 5,
+        "title": "Finish Your Story World & Recover Evidence"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050401",
+        "unit": 5,
+        "part": 4,
+        "day": 1,
+        "title": "Invent One Special Game Mechanic"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050402",
+        "unit": 5,
+        "part": 4,
+        "day": 2,
+        "title": "Turn Your Idea into Working Code"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050403",
+        "unit": 5,
+        "part": 4,
+        "day": 3,
+        "title": "Playtest, Debug and Polish"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050404",
+        "unit": 5,
+        "part": 4,
+        "day": 4,
+        "title": "Innovation Skills — Assessment"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050405",
+        "unit": 5,
+        "part": 4,
+        "day": 5,
+        "title": "Final Game Showcase & Recovery"
+      },
+      {
+        "course": "CS",
+        "dayid": "2090301",
+        "unit": 9,
+        "part": 3,
+        "day": 1,
+        "title": "Turkey Escape: Plan the Game"
+      },
+      {
+        "course": "CS",
+        "dayid": "2090302",
+        "unit": 9,
+        "part": 3,
+        "day": 2,
+        "title": "Turkey Escape: Flap and Dodge"
+      },
+      {
+        "course": "CS",
+        "dayid": "2090303",
+        "unit": 9,
+        "part": 3,
+        "day": 3,
+        "title": "Turkey Escape: Score and Level Up"
+      },
+      {
+        "course": "CS",
+        "dayid": "2090304",
+        "unit": 9,
+        "part": 3,
+        "day": 4,
+        "title": "Turkey Escape: Playtest and Polish"
+      }
+    ]
+  },
+  "controlStation": {
+    "reference": "https://docs.google.com/spreadsheets/d/1B6Qk618U56ee-vCi2kCCCFNhySxuCJku17xgG_xm8R8/edit",
+    "revision": "2026-11-15T14:17:45.853Z",
+    "locator": "Tech rows 15–31; CS rows 18–21, columns D DayID/F title/H section; live readback",
+    "identities": [
+      {
+        "course": "Tech",
+        "dayid": "3050201",
+        "unit": 5,
+        "part": 2,
+        "day": 1,
+        "title": "Build a Game from Shapes"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050202",
+        "unit": 5,
+        "part": 2,
+        "day": 2,
+        "title": "Make the Player Move"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050203",
+        "unit": 5,
+        "part": 2,
+        "day": 3,
+        "title": "Make the Circle Fall Forever"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050204",
+        "unit": 5,
+        "part": 2,
+        "day": 4,
+        "title": "Lives, Hits and Fair Rules"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050205",
+        "unit": 5,
+        "part": 2,
+        "day": 5,
+        "title": "Score, Challenge and Playtesting"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050206",
+        "unit": 5,
+        "part": 2,
+        "day": 6,
+        "title": "Prototype Skills — Assessment & Daily Recovery"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050207",
+        "unit": 5,
+        "part": 2,
+        "day": 7,
+        "title": "Finish the Prototype & Recover Evidence"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050301",
+        "unit": 5,
+        "part": 3,
+        "day": 1,
+        "title": "Give the Game a World"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050302",
+        "unit": 5,
+        "part": 3,
+        "day": 2,
+        "title": "Design Readable Character Art"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050303",
+        "unit": 5,
+        "part": 3,
+        "day": 3,
+        "title": "Replace Art Without Breaking Gameplay"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050304",
+        "unit": 5,
+        "part": 3,
+        "day": 4,
+        "title": "Storytelling & Visual Design — Assessment"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050305",
+        "unit": 5,
+        "part": 3,
+        "day": 5,
+        "title": "Finish Your Story World & Recover Evidence"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050401",
+        "unit": 5,
+        "part": 4,
+        "day": 1,
+        "title": "Invent One Special Game Mechanic"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050402",
+        "unit": 5,
+        "part": 4,
+        "day": 2,
+        "title": "Turn Your Idea into Working Code"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050403",
+        "unit": 5,
+        "part": 4,
+        "day": 3,
+        "title": "Playtest, Debug and Polish"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050404",
+        "unit": 5,
+        "part": 4,
+        "day": 4,
+        "title": "Innovation Skills — Assessment"
+      },
+      {
+        "course": "Tech",
+        "dayid": "3050405",
+        "unit": 5,
+        "part": 4,
+        "day": 5,
+        "title": "Final Game Showcase & Recovery"
+      },
+      {
+        "course": "CS",
+        "dayid": "2090301",
+        "unit": 9,
+        "part": 3,
+        "day": 1,
+        "title": "Turkey Escape: Plan the Game"
+      },
+      {
+        "course": "CS",
+        "dayid": "2090302",
+        "unit": 9,
+        "part": 3,
+        "day": 2,
+        "title": "Turkey Escape: Flap and Dodge"
+      },
+      {
+        "course": "CS",
+        "dayid": "2090303",
+        "unit": 9,
+        "part": 3,
+        "day": 3,
+        "title": "Turkey Escape: Score and Level Up"
+      },
+      {
+        "course": "CS",
+        "dayid": "2090304",
+        "unit": 9,
+        "part": 3,
+        "day": 4,
+        "title": "Turkey Escape: Playtest and Polish"
+      }
+    ]
+  }
+}

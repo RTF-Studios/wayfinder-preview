@@ -62,14 +62,18 @@ try{
  for(const [file,args] of [['build-tech-u5-prototype.py',[]],['build-tech-u5-final-parts.py',['story']],['build-tech-u5-final-parts.py',['innovation']],['build-tech-u5-part1-day5.py',[]],['build-tech-u5-part1-day6.py',[]]])test('production '+file+' '+args+' stops without sources and preserves output',()=>{
   const r=run(file,args);assert.notEqual(r.status,0);assert.match(r.stderr,/WF_IDENTITY_SOURCES is required/);assert.equal(fs.readdirSync(path.join(temp,'Tech')).length,0);
  });
- // Valid reference bundle cannot excuse the existing phase-as-Part builder bug.
- fs.writeFileSync(path.join(temp,'sources.json'),JSON.stringify(sources()));
- test('actual Prototype builder rejects previous Part 1 error with valid sources',()=>{
-  const r=run('build-tech-u5-prototype.py',[],{WF_IDENTITY_SOURCES:path.join(temp,'sources.json')});assert.notEqual(r.status,0);assert.match(r.stderr,/Part\/Day disagree/);assert.equal(fs.readdirSync(path.join(temp,'Tech')).length,0);
- });
- for(const [phase,id,part,title] of [['story','3050301',3,'Give the Game a World'],['innovation','3050401',4,'Invent One Special Game Mechanic']])test('actual '+phase+' builder rejects previous phase-as-Part error',()=>{
-  fs.writeFileSync(path.join(temp,'sources.json'),JSON.stringify(sources({...c,dayid:id,part,title})));
-  const r=run('build-tech-u5-final-parts.py',[phase],{WF_IDENTITY_SOURCES:path.join(temp,'sources.json')});assert.notEqual(r.status,0);assert.match(r.stderr,/Part\/Day disagree/);assert.equal(fs.readdirSync(path.join(temp,'Tech')).length,0);
+ // Previous phase-as-Part invalid cases remain above. Reconciled production
+ // functions must now accept valid records and render the permanent Part.
+ for(const [file,expr,x] of [
+  ['build-tech-u5-prototype.py','m.build(1)',c],
+  ['build-tech-u5-final-parts.py',"m.build('story',1)",{...c,dayid:'3050301',part:3,title:'Give the Game a World'}],
+  ['build-tech-u5-final-parts.py',"m.build('innovation',1)",{...c,dayid:'3050401',part:4,title:'Invent One Special Game Mechanic'}]
+ ])test('reconciled production '+x.dayid+' accepts valid identity',()=>{
+  const input=path.join(temp,'sources.json');fs.writeFileSync(input,JSON.stringify(sources(x)));
+  const script=path.join(temp,'scripts',file);
+  const code="import sys,importlib.util;sys.path.insert(0,"+JSON.stringify(path.join(temp,'scripts'))+");s=importlib.util.spec_from_file_location('native',"+JSON.stringify(script)+");m=importlib.util.module_from_spec(s);s.loader.exec_module(m);"+expr;
+  const r=cp.spawnSync('python',['-c',code],{env:{...process.env,WF_IDENTITY_SOURCES:input},encoding:'utf8'});assert.equal(r.status,0,r.stderr);
+  const output=path.join(temp,'Tech',x.dayid+'.html');assert.match(fs.readFileSync(output,'utf8'),new RegExp('Unit 5 · Part '+x.part+' · Day 1'));fs.unlinkSync(output);
  });
  test('invalid native build preserves an existing file byte for byte',()=>{
   const x={course:'Tech',dayid:'3050105',unit:5,part:1,day:5,title:'Wrong source title'};

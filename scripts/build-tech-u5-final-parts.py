@@ -62,11 +62,11 @@ def recipes(shelf):
 def build(phase,day):
     src=json.loads((ROOT/f'scripts/tech-u5-{phase}-source.json').read_text());tab=src['tabs'][day];s=tab['text'];did=('30503' if phase=='story' else '30504')+f'{day:02d}'
     mode='STARTER' if day==1 else 'ASSESSMENT' if day==4 else 'RECOVERY' if day==5 else 'PERFORM'
-    label='Story & Art' if phase=='story' else 'Innovation';part=2 if phase=='story' else 3
-    first=s.splitlines()[0];title=first.split(' | ')[-1] if day<=3 else ('Storytelling & Visual Design — Assessment' if phase=='story' else 'Innovation Skills — Assessment') if day==4 else ('Finish Your Story World & Recover Evidence' if phase=='story' else 'Final Game Showcase & Recovery')
+    label='Story & Art' if phase=='story' else 'Innovation';part=3 if phase=='story' else 4
+    first=s.splitlines()[0];title=first.split(' | ')[3]
     preflight({'course':'Tech','dayid':did,'unit':5,'part':part,'day':day,'title':title},s)
     d=BeautifulSoup(P.MASTER,'html.parser')
-    for k,v in {'course-meta':f'Tech · Unit 5 · {label} · Phase {part} of 3 · Day {day}','lesson-mode':f'Day {day} · {mode.title()} Focused','lesson-title':title,'lesson-deck':'One continuing game: preserve your working mechanics, make it meaningful and test purposeful improvements.'}.items():P.replace_slot(d,k,v)
+    for k,v in {'course-meta':f'Tech · Unit 5 · Part {part} · Day {day} — {label}','lesson-mode':f'Day {day} · {mode.title()} Focused','lesson-title':title,'lesson-deck':'One continuing game: preserve your working mechanics, make it meaningful and test purposeful improvements.'}.items():P.replace_slot(d,k,v)
     target=field(s,'LEARNING TARGET:');P.replace_slot(d,'learning-target',esc(target).replace(' because ',' <strong>because</strong> '),True)
     teks=re.search(r'Priority TEKS — In Our Words\n((?:§[^\n]+\n)+)',s).group(1);P.replace_slot(d,'priority-teks',' '.join(teks.splitlines()));P.replace_slot(d,'supporting-teks',field(s,'Supporting TEKS:') or 'Apply the design-process and transfer skills named above; actual project tests provide performance evidence.')
     mission=d.find(id='learningTarget').select_one('.today-mission');mission.clear();mission.append(P.frag('<strong>Today’s Mission:</strong> '+esc(title)+'. Keep the same continuing game.'))

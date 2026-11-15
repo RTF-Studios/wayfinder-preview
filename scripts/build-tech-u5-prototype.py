@@ -114,10 +114,10 @@ def assessment_card(n,title,prompt,stem):
 def build(day):
     s=SOURCE['tabs'][day-1]['text'];did='305020'+str(day)
     mode=['STARTER','LEARN','PERFORM','PERFORM','PERFORM','ASSESSMENT','RECOVERY'][day-1]
-    title=['Build a Game from Shapes','Make the Player Move','Make the Circle Fall Forever','Lives, Hits and Fair Rules','Score, Challenge and Playtesting','Prototype Skills — Assessment & Daily Recovery','Finish the Prototype & Recover Evidence'][day-1]
-    preflight({'course':'Tech','dayid':did,'unit':5,'part':1,'day':day,'title':title},s)
+    title=s.splitlines()[0].split(' | ')[3]
+    preflight({'course':'Tech','dayid':did,'unit':5,'part':2,'day':day,'title':title},s)
     d=BeautifulSoup(MASTER,'html.parser')
-    replace_slot(d,'course-meta',f'Tech · Unit 5 · Prototype · Phase 1 of 3 · Day {day}')
+    replace_slot(d,'course-meta',f'Tech · Unit 5 · Part 2 · Day {day} — Prototype')
     replace_slot(d,'lesson-mode',f'Day {day} · {mode.title()} Focused')
     replace_slot(d,'lesson-title',title)
     replace_slot(d,'lesson-deck','One game, three phases: build the engine, add your story and art, then invent and test a feature.')
