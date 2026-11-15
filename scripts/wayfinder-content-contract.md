@@ -122,7 +122,7 @@ certify that generated pilot HTML can replace the existing lesson.
 faithfully mapping an existing approved guide. Every layout field is required
 when present: course descriptor/mission, roadmap, Learn leader/discussion,
 Perform resources and summary/help disclosures, criteria, checklist, feedback,
-answer placeholders, Studio skits, comic hint and footer. It supplements core
+answer placeholders, Studio skits, comic hint/minimum image width and footer. It supplements core
 source fields; it never supplies executable HTML/CSS/JS or replaces evidence.
 Diagram references must resolve to static embedded SVGs. Disclosure summary +
 help must equal the complete approved step; placeholders must match all actual
@@ -133,7 +133,8 @@ previous contract and require their own production fidelity proof.
 
 The renderer omits the network-discovery helper and uses the unchanged master's
 existing `placeArt` fallback over declared embedded pools. It embeds the approved
-compass favicon and normalizes inline SVG `viewBox`, without modifying master
+compass favicon, preserves the original bounded comic-image rule in a tagged
+packaging style, and normalizes inline SVG `viewBox`, without modifying master
 source, CSS or engine. Actual questions/rubrics and F1 checks remain blocking.
 Run `test-m1c-3050201.cjs` and hosted `check-m1c-browser.cjs`; the fixture remains an
 isolated audit mapping, never a replacement authoritative outline or deployed LG.

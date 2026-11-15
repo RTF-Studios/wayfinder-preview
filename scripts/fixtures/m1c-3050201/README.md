@@ -29,7 +29,9 @@ unchanged master's existing embedded-pool `placeArt` fallback; embed the existin
 compass favicon; render the approved static SVG inline with canonical `viewBox`
 case. SVGs with executable or external resource constructs reject. Random pool
 selection, image-error fallback, skit and all answer controls remain master-owned.
-No master CSS/JS, canonical lesson, Drive ID, Show setting or evidence is modified.
+The original scoped comic-image minimum-width rule is copied as strictly bounded
+source-declared packaging; the canonical master CSS block stays byte-identical.
+No master source/JS, canonical lesson, Drive ID, Show setting or evidence is modified.
 
 Tests: `node scripts/test-m1c-3050201.cjs` builds through the real native F1+M1 entry
 and runs failed-build preservation cases against both an original copy and a

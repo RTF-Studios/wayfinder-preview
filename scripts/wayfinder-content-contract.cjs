@@ -58,7 +58,7 @@ function validatePayload(r){
  // Inline diagram placement is content, never an execution or network surface.
  for(const a of assets.filter(a=>a.kind==='diagram')){
   const svg=Buffer.from(a.dataUri.split(',')[1],'base64').toString('utf8');
-  if(/<\s*(?:script|foreignObject|image|use|iframe|style|a|animate|set)\b|\bon[a-z]+\s*=|\b(?:href|src)\s*=|url\s*\(|@import|<!DOCTYPE|<!ENTITY/i.test(svg))error('media.'+a.id,'diagram must be static, self-contained SVG');
+  if([...svg.matchAll(/<\s*\/?\s*([A-Za-z][\w:-]*)/g)].some(m=>!['svg','g','defs','title','desc','text','tspan','rect','circle','ellipse','line','polyline','polygon','path','clippath','lineargradient','radialgradient','stop','pattern'].includes(m[1].toLowerCase()))||/\bon[a-z]+\s*=|\b(?:href|src)\s*=|url\s*\(|expression\s*\(|@import|<!DOCTYPE|<!ENTITY/i.test(svg))error('media.'+a.id,'diagram must be static, self-contained SVG');
  }
  const graded=r.evidence.graded.status==='applicable'?r.evidence.graded.items:[];
  if(r.mode==='ASSESSMENT'&&(graded.length!==4||graded.some(q=>q.category!=='MAJOR')))error('evidence','ASSESSMENT requires four explicit Major section definitions');

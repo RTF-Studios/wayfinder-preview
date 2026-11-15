@@ -39,7 +39,7 @@ try{for(const width of [1280,768,390]){
   });
   fs.writeFileSync(path.join(art,name+'-'+width+'-text.txt'),data.text);const text=data.text;delete data.text;
   assert.equal(errors.length,0);assert.equal(requests.length,0);assert.equal(data.brokenImages,0);assert.equal(data.overflow,false);assert.equal(data.diagramOverflow,false);assert.equal(data.answerParts,1);assert.equal(data.typedResponses,1);assert.equal(data.disclosures,4);assert.match(data.skit,/Official Dress Code/);assert.ok(data.diagramViewBoxes.every(x=>x===480));
-  const row={name,width,...data,networkRequests:requests.length,requestUrls:requests,errors,previewEmpty:'PASS',editReset:'PASS',copyFailure:'PASS simulated',formKey:'PASS intercepted without sending',xtraAndChecklist:'PASS',clipboard:'UNTESTED — stubbed',collectorReceipt:'UNTESTED'};pair.push({row,text});rows.push(row);await page.close();
+  const row={name,width,...data,networkRequests:requests.length,requestUrls:requests,errors,previewEmpty:'PASS',editReset:'PASS',copyFailure:'PASS simulated',formKey:'PASS intercepted without sending',xtraAndChecklist:'PASS',clipboard:'UNTESTED — stubbed',collectorReceipt:'UNTESTED'};pair.push({row,text});rows.push(row);fs.writeFileSync(path.join(art,'browser-progress.json'),JSON.stringify(rows,null,2)+'\n');await page.close();
  }
  assert.equal(norm(pair[1].text),norm(pair[0].text),'full visible content including disclosures/skit differs at '+width);
  assert.deepEqual(pair[1].row.sectionIds,pair[0].row.sectionIds);

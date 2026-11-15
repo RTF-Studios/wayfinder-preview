@@ -956,6 +956,11 @@
             "comicScrollHint": {
               "type": "string",
               "minLength": 1
+            },
+            "comicImageMinWidth": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 2000
             }
           },
           "required": [
@@ -971,7 +976,8 @@
             "masteryFeedback",
             "answerPlaceholders",
             "skits",
-            "comicScrollHint"
+            "comicScrollHint",
+            "comicImageMinWidth"
           ],
           "additionalProperties": false
         }

@@ -46,6 +46,10 @@ function apply(h,r,{slot,section,parts}){
  h=h.replace(/<footer class="footer">[\s\S]*?<\/footer>/,'<footer class="footer">'+E(l.footer)+'</footer>');
  h=h.replace('<div class="slot" id="comicSlot">','<div class="slot" id="comicSlot" aria-label="Four-panel comic; scroll horizontally to read every panel" style="display:block;aspect-ratio:auto;min-height:0;max-width:100%;overflow-x:auto" tabindex="0">');
  h=h.replace(/(<div class="slot" id="comicSlot"[^>]*>[\s\S]*?<\/div>)/,(_,a)=>a+'<p class="micro">'+E(l.comicScrollHint)+'</p>');
+ // Preserve the existing guide’s bounded comic-reading rule as source-declared
+ // packaging. The canonical master style block and JavaScript stay byte-identical.
+ h=h.replace('</head>','<style data-wf-packaging>'+comicRule(l)+'</style>\n</head>');
  return h;
 }
-module.exports={apply};
+function comicRule(l){return '#comicSlot img{width:100%;height:auto;min-width:'+l.comicImageMinWidth+'px;max-width:none}';}
+module.exports={apply,comicRule};
