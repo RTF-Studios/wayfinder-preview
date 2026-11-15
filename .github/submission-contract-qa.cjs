@@ -2,6 +2,7 @@
 const fs=require('fs'),path=require('path'),cp=require('child_process');
 const {pathToFileURL}=require('url');
 const {chromium}=require('./qa-run/node_modules/playwright');
+const {validate:validateGuideIdentity,selfTest:identitySelfTest}=require('./guide-identity-qa.cjs');
 const root=path.resolve(__dirname,'..'),issues=[],args=process.argv.slice(2);
 const evidenceDir=process.env.WF_QA_EVIDENCE_DIR;
 const evidenceRows=[];
@@ -39,11 +40,14 @@ function sharedPiece(source,start,end){
 
 const files=[...new Set(args.includes('--master-only')?[master]:[master,gold,...(args.includes('--changed')?changed():[]),...(args.includes('--all-upcoming')?allUpcoming:[]),...args.filter(x=>/^(Tech|CS|AAVTC)\/\d{7}\.html$/.test(x))])];
 async function run(){
+ identitySelfTest();
  const browser=await chromium.launch({headless:true,args:['--no-sandbox','--allow-file-access-from-files']});
  try{for(const f of files){
  const p=path.join(root,f);
  if(!fs.existsSync(p)){fail(f,'missing HTML');continue}
- const html=fs.readFileSync(p,'utf8'),js=[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map(x=>x[1]).join('\n');
+ const html=fs.readFileSync(p,'utf8');
+ if(/^(Tech|CS|AAVTC)\/\d{7}\.html$/.test(f))for(const issue of validateGuideIdentity(f,html))fail(f,issue);
+ const js=[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map(x=>x[1]).join('\n');
  check(/execCommand\(\s*['"]copy['"]\s*\)/.test(js),f,'must use synchronous copy');
  check(!/navigator\.(?:clipboard|permissions)\b/.test(js),f,'permission API forbidden');
  if(f!==master&&f!==gold)check(canonicalAssembler&&capture(html)===canonicalAssembler,f,'submission assembler has drifted from the universal master; rebuild from master, never customize question code');
