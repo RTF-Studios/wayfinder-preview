@@ -38,6 +38,20 @@ try{for(const width of [1280,768,390]){
    return {text:document.body.innerText,sectionIds:[...document.querySelectorAll('section[id]')].map(e=>e.id),sectionBoxes:boxes('section[id]'),diagramBoxes:boxes('figure svg'),diagramViewBoxes:[...document.querySelectorAll('figure svg')].map(e=>e.viewBox.baseVal.width),brokenImages:[...document.images].filter(i=>!i.complete||!i.naturalWidth).length,overflow:document.documentElement.scrollWidth>innerWidth+2,diagramOverflow:[...document.querySelectorAll('figure svg')].some(e=>{const a=e.getBoundingClientRect(),b=e.parentElement.getBoundingClientRect();return a.width>b.width+1}),answerParts:document.querySelectorAll('#masteryOne [data-answer-part]').length,typedResponses:document.querySelectorAll('#masteryOne textarea[data-open-response]').length,disclosures:document.querySelectorAll('#perform details.perform-step').length,skit:document.querySelector('#skitSlot').textContent,forms:window.__opened};
   });
   fs.writeFileSync(path.join(art,name+'-'+width+'-text.txt'),data.text);const text=data.text;delete data.text;
+  // The approved guide embeds the historical bold-label master. The current
+  // unchanged master deliberately uses 400-weight labels/legends. Keep raw
+  // screenshots/geometry, then align ONLY those two known rules in a read-only
+  // browser comparison to test renderer layout without undoing Captain's change.
+  if(name==='original'){
+   const aligned=await page.evaluate(()=>{
+    const style=[...document.querySelectorAll('style')].find(s=>s.textContent.includes('.scaffold label{font-weight:750;'));
+    if(!style||!style.textContent.includes('.scaffold legend{font-weight:800;'))throw Error('Historical typography baseline changed');
+    style.textContent=style.textContent.replace('.scaffold label{font-weight:750;','.scaffold label{font-weight:400;').replace('.scaffold legend{font-weight:800;','.scaffold legend{font-weight:400;');
+    return [...document.querySelectorAll('section[id]')].map(e=>{const r=e.getBoundingClientRect();return {id:e.id,width:r.width,height:r.height,x:r.x,y:r.y}});
+   });data.masterAlignedSectionBoxes=aligned;
+   await page.screenshot({path:path.join(art,'original-current-master-'+width+'.png'),fullPage:true});
+  }
+
   assert.equal(errors.length,0);assert.equal(requests.length,0);assert.equal(data.brokenImages,0);assert.equal(data.overflow,false);assert.equal(data.diagramOverflow,false);assert.equal(data.answerParts,1);assert.equal(data.typedResponses,1);assert.equal(data.disclosures,4);assert.match(data.skit,/Official Dress Code/);assert.ok(data.diagramViewBoxes.every(x=>x===480));
   const row={name,width,...data,networkRequests:requests.length,requestUrls:requests,errors,previewEmpty:'PASS',editReset:'PASS',copyFailure:'PASS simulated',formKey:'PASS intercepted without sending',xtraAndChecklist:'PASS',clipboard:'UNTESTED — stubbed',collectorReceipt:'UNTESTED'};pair.push({row,text});rows.push(row);fs.writeFileSync(path.join(art,'browser-progress.json'),JSON.stringify(rows,null,2)+'\n');await page.close();
  }
@@ -46,9 +60,9 @@ try{for(const width of [1280,768,390]){
  // Current master typography is authoritative. Record, rather than hide, any
  // geometry difference from the historical approved guide's older embedded CSS.
  for(let i=0;i<pair[0].row.sectionBoxes.length;i++){
-  const a=pair[0].row.sectionBoxes[i],b=pair[1].row.sectionBoxes[i];assert.equal(a.width,b.width);assert.ok(Math.abs(a.height-b.height)<=3,'section height '+a.id+' '+a.height+' vs '+b.height);
+  const a=pair[0].row.masterAlignedSectionBoxes[i],b=pair[1].row.sectionBoxes[i];assert.equal(a.width,b.width);assert.ok(Math.abs(a.height-b.height)<=3,'section height '+a.id+' '+a.height+' vs '+b.height);
  }
 }
 }finally{await browser.close()}
-const result={status:'PASS',rows,content:'normalized complete visible text exact at all viewports',layout:'same section order/width; heights within 3px',offline:'zero HTTP requests with all HTTP blocked, including Studio unlock',clipboard:'UNTESTED',collectorReceipt:'UNTESTED'};fs.writeFileSync(path.join(art,'browser-results.json'),JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));
+const result={status:'PASS',rows,content:'normalized complete visible text exact at all viewports',layout:'same section order/width; heights within 3px after only the two known historical label-weight rules align to current unchanged master',remainingDifference:'Historical guide uses bold scaffold labels/legends; generated pilot faithfully uses current master regular weight. Raw and master-aligned baseline screenshots/geometry retained.',offline:'zero HTTP requests with all HTTP blocked, including Studio unlock',clipboard:'UNTESTED',collectorReceipt:'UNTESTED'};fs.writeFileSync(path.join(art,'browser-results.json'),JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));
 })().catch(e=>{fs.mkdirSync(art,{recursive:true});fs.writeFileSync(path.join(art,'failure.txt'),e.stack);console.error(e);process.exitCode=1});
