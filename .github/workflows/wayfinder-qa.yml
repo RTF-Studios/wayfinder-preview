@@ -3,6 +3,11 @@ on:
   push:
     paths:
       - 'scripts/*identity*'
+      - 'scripts/*content-contract*'
+      - 'scripts/wayfinder-record-renderer.cjs'
+      - 'scripts/wayfinder_lesson.py'
+      - 'scripts/schema/**'
+      - 'scripts/fixtures/**'
       - 'scripts/tech-u5-*-source.json'
       - 'scripts/build-*.py'
       - 'scripts/wayfinder-outline-builder.js'
@@ -23,6 +28,11 @@ on:
   pull_request:
     paths:
       - 'scripts/*identity*'
+      - 'scripts/*content-contract*'
+      - 'scripts/wayfinder-record-renderer.cjs'
+      - 'scripts/wayfinder_lesson.py'
+      - 'scripts/schema/**'
+      - 'scripts/fixtures/**'
       - 'scripts/tech-u5-*-source.json'
       - 'scripts/build-*.py'
       - 'scripts/wayfinder-outline-builder.js'
@@ -60,7 +70,7 @@ jobs:
       - name: Prove production builders block invalid identities before HTML
         run: node scripts/test-wayfinder-identity.cjs
   tech-prototype-evidence:
-    needs: pre-html-identity
+    needs: [pre-html-identity, lesson-content-contract]
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
@@ -87,7 +97,7 @@ jobs:
           name: tech-prototype-browser-evidence
           path: qa-artifacts/tech-prototype*
   submission-contract:
-    needs: pre-html-identity
+    needs: [pre-html-identity, lesson-content-contract]
     runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
@@ -117,7 +127,7 @@ jobs:
           path: qa-artifacts/cs-part2
 
   identity-reconciliation-offline:
-    needs: pre-html-identity
+    needs: [pre-html-identity, lesson-content-contract]
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
@@ -138,3 +148,18 @@ jobs:
         with:
           name: f3-identity-offline
           path: qa-artifacts/f3-identity
+
+  lesson-content-contract:
+    needs: pre-html-identity
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify M1 source extraction, modes, schema and failed-write preservation
+        run: node scripts/test-wayfinder-content-contract.cjs

@@ -65,6 +65,8 @@ def build(phase,day):
     label='Story & Art' if phase=='story' else 'Innovation';part=3 if phase=='story' else 4
     first=s.splitlines()[0];title=first.split(' | ')[3]
     preflight({'course':'Tech','dayid':did,'unit':5,'part':part,'day':day,'title':title},s)
+    from wayfinder_lesson import build_from_outline
+    return build_from_outline({'course':'Tech','dayid':did,'unit':5,'part':part,'day':day,'title':title},mode,P.MASTER,ROOT/'Tech'/f'{did}.html')
     d=BeautifulSoup(P.MASTER,'html.parser')
     for k,v in {'course-meta':f'Tech · Unit 5 · Part {part} · Day {day} — {label}','lesson-mode':f'Day {day} · {mode.title()} Focused','lesson-title':title,'lesson-deck':'One continuing game: preserve your working mechanics, make it meaningful and test purposeful improvements.'}.items():P.replace_slot(d,k,v)
     target=field(s,'LEARNING TARGET:');P.replace_slot(d,'learning-target',esc(target).replace(' because ',' <strong>because</strong> '),True)

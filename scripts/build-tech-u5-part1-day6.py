@@ -12,6 +12,9 @@ assert [r['key'] for r in records]==['30501063999'+str(i) for i in range(1,5)]
 assert all(r['prompt'] in source['outline'] for r in records)
 from wayfinder_identity import preflight
 preflight({'course':'Tech','dayid':'3050106','unit':5,'part':1,'day':6,'title':'Game Design & TurboWarp Foundations'}, source['outline'])
+from wayfinder_lesson import build_from_outline
+build_from_outline({'course':'Tech','dayid':'3050106','unit':5,'part':1,'day':6,'title':'Game Design & TurboWarp Foundations'},'ASSESSMENT',P.MASTER,ROOT/'Tech/3050106.html')
+raise SystemExit(0)
 d=BeautifulSoup(P.MASTER,'html.parser')
 def para(t):return '<p>'+html.escape(t)+'</p>'
 def slot(k,v,raw=False):P.replace_slot(d,k,v,raw)

@@ -34,7 +34,20 @@ function questionPart(k,Q){const prompt=Q[k]?.question||"";let claim={"30050":"A
 if(claim)html=`<div data-answer-part data-type="true-false-why"><fieldset><legend>${E(claim)}</legend><label class="option"><input type="radio" name="claim-${k}" value="true" data-phrase="I think the statement is true"/>True</label><label class="option"><input type="radio" name="claim-${k}" value="false" data-phrase="I think the statement is false"/>False</label></fieldset><label>Why?</label><textarea data-open-response placeholder="This claim is ... because ..."></textarea></div>`;
 const stems=k==="20121"?"The HTML element ... . A class/id/test selector finds it by ... .":k==="20122"||k==="20124"?"At a narrow width ... . At a wide width ... . I would test ... .":k==="30053"?"One hardware change was ... and it helped designers ... . A second change was ... .":"My specific example is ... . My reason is ... . I would verify this by ... .";
 html+=`<div data-answer-part data-type="open-response"><label>${E(prompt)}</label><textarea data-open-response aria-label="Reasoning for registered mastery question" placeholder="${E(stems)}"></textarea><p class="micro">Optional stems only; explain every part in your own words.</p></div>`;return html;}
+// M1 production entry: no call to the legacy free-form/default parser.
 function build(master,raw,m,Q){
+ const identityGate=typeof require==='function'?require('./wayfinder-identity.cjs'):globalThis.WFIdentity;
+ if(!identityGate)throw new Error('Identity pre-HTML FAIL: load wayfinder-identity.cjs before building');
+ identityGate.preflight({course:m.course,dayid:m.dayid,unit:m.unit,part:m.part,day:m.day,title:m.title},m.identitySources,raw);
+ const contract=typeof require==='function'?require('./wayfinder-content-contract.cjs'):globalThis.WFContentContract;
+ if(!contract)throw new Error('M1 source extraction runtime unavailable; use the validated Node build entry');
+ const record=contract.extractLesson(m.source,m.dayid);
+ if(record.sourceText!==raw)throw new Error('M1 source text differs from the current native tab');
+ if(record.payload.mode!==m.mode)throw new Error('M1 mode differs from explicit source mode');
+ for(const field of ['course','dayid','unit','part','day','title'])if(record.payload.identity[field]!==m[field])throw new Error('M1 identity differs from builder '+field);
+ return contract.buildRecord(master,record,m.source,m.identitySources);
+}
+function legacyBuild(master,raw,m,Q){
 const identityGate=typeof require==='function'?require('./wayfinder-identity.cjs'):globalThis.WFIdentity;
 if(!identityGate)throw new Error('Identity pre-HTML FAIL: load wayfinder-identity.cjs before building');
 const identity=identityGate.preflight({course:m.course,dayid:m.dayid,unit:m.unit,part:m.part,day:m.day,title:m.title},m.identitySources,raw);

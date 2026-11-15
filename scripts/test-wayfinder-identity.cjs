@@ -39,12 +39,13 @@ for(const [id,part,title] of [['3050201',1,'Build a Game from Shapes'],['3050301
 // Exercise the actual JS production entry point: invalid inputs must fail before
 // touching master HTML (the sentinel throws if construction even starts).
 require('./wayfinder-outline-builder.js');
+const {make:m1Fixture}=require('./fixtures/m1-source-fixtures.cjs');
 const m={...c,mode:'PERFORM',keys:[],identitySources:sources()};
 test('JS production refuses absent sources before HTML construction',()=>assert.throws(()=>globalThis.WFBuilder.build(null,raw,{...m,identitySources:undefined},{}),/summary/));
 test('JS production refuses bad Part before HTML construction',()=>assert.throws(()=>globalThis.WFBuilder.build(null,raw,{...m,part:1},{}),/Part/));
 test('JS production accepts valid identity and constructs in memory',()=>{
- const lesson=raw+'\nWARM-UP\nThink about a familiar game.\nRECALL\nUse previous controls.\nPERFORM\n1. Open the file. 2. Save the file.\n';
- const h=globalThis.WFBuilder.build(fs.readFileSync(path.join(root,'templates/wayfinder-master.html'),'utf8'),lesson,m,{});
+ const f=m1Fixture('Tech','PERFORM','short_text',c);
+ const h=globalThis.WFBuilder.build(fs.readFileSync(path.join(root,'templates/wayfinder-master.html'),'utf8'),f.source.tabs[0].text,{...m,source:f.source,identitySources:f.identities},{});
  assert.ok(h.includes('Tech · Unit 5 · Part 2 · Day 1'));assert.ok(h.includes(c.title));
 });
 test('browser production refuses missing validator',()=>{
@@ -56,8 +57,10 @@ test('browser production refuses missing validator',()=>{
 const temp=fs.mkdtempSync(path.join(os.tmpdir(),'wf-f1-'));
 try{
  fs.mkdirSync(path.join(temp,'scripts'));fs.mkdirSync(path.join(temp,'templates'));fs.mkdirSync(path.join(temp,'Tech'));
- for(const file of fs.readdirSync(__dirname).filter(f=>/^(?:build-tech.*\.py|tech-u5.*source\.json|wayfinder_identity\.py|wayfinder-identity\.cjs)$/.test(f)))fs.copyFileSync(path.join(__dirname,file),path.join(temp,'scripts',file));
+ for(const file of fs.readdirSync(__dirname).filter(f=>/^(?:build-tech.*\.py|tech-u5.*source\.json|wayfinder_identity\.py|wayfinder-identity\.cjs|wayfinder_lesson\.py|wayfinder-content-contract\.cjs|wayfinder-record-renderer\.cjs)$/.test(f)))fs.copyFileSync(path.join(__dirname,file),path.join(temp,'scripts',file));
  fs.copyFileSync(path.join(root,'templates/wayfinder-master.html'),path.join(temp,'templates/wayfinder-master.html'));
+ fs.cpSync(path.join(__dirname,'schema'),path.join(temp,'scripts/schema'),{recursive:true});fs.mkdirSync(path.join(temp,'assets/shared'),{recursive:true});fs.copyFileSync(path.join(root,'assets/shared/artwork-rotation.js'),path.join(temp,'assets/shared/artwork-rotation.js'));
+ function m1Source(x,mode){const f=m1Fixture('Tech',mode,'short_text',x),file=path.join(temp,'m1-source.json');fs.writeFileSync(file,JSON.stringify(f.source));fs.writeFileSync(path.join(temp,'sources.json'),JSON.stringify(f.identities));return file;}
  function run(file,args=[],env={}){const e={...process.env,...env};if(!env.WF_IDENTITY_SOURCES)delete e.WF_IDENTITY_SOURCES;return cp.spawnSync('python',[path.join(temp,'scripts',file),...args],{env:e,encoding:'utf8'});}
  for(const [file,args] of [['build-tech-u5-prototype.py',[]],['build-tech-u5-final-parts.py',['story']],['build-tech-u5-final-parts.py',['innovation']],['build-tech-u5-part1-day5.py',[]],['build-tech-u5-part1-day6.py',[]]])test('production '+file+' '+args+' stops without sources and preserves output',()=>{
   const r=run(file,args);assert.notEqual(r.status,0);assert.match(r.stderr,/WF_IDENTITY_SOURCES is required/);assert.equal(fs.readdirSync(path.join(temp,'Tech')).length,0);
@@ -72,7 +75,7 @@ try{
   const input=path.join(temp,'sources.json');fs.writeFileSync(input,JSON.stringify(sources(x)));
   const script=path.join(temp,'scripts',file);
   const code="import sys,importlib.util;sys.path.insert(0,"+JSON.stringify(path.join(temp,'scripts'))+");s=importlib.util.spec_from_file_location('native',"+JSON.stringify(script)+");m=importlib.util.module_from_spec(s);s.loader.exec_module(m);"+expr;
-  const r=cp.spawnSync('python',['-c',code],{env:{...process.env,WF_IDENTITY_SOURCES:input},encoding:'utf8'});assert.equal(r.status,0,r.stderr);
+  const r=cp.spawnSync('python',['-c',code],{env:{...process.env,WF_IDENTITY_SOURCES:input,WF_MASTER_OUTLINE_SOURCE:m1Source(x,'STARTER')},encoding:'utf8'});assert.equal(r.status,0,r.stderr);
   const output=path.join(temp,'Tech',x.dayid+'.html');assert.match(fs.readFileSync(output,'utf8'),new RegExp('Unit 5 · Part '+x.part+' · Day 1'));fs.unlinkSync(output);
  });
  test('invalid native build preserves an existing file byte for byte',()=>{
@@ -84,7 +87,7 @@ try{
  test('valid native builder writes only isolated temporary output',()=>{
   const x={course:'Tech',dayid:'3050105',unit:5,part:1,day:5,title:'TurboWarp Desktop Fundamentals'};
   fs.writeFileSync(path.join(temp,'sources.json'),JSON.stringify(sources(x)));
-  const r=run('build-tech-u5-part1-day5.py',[],{WF_IDENTITY_SOURCES:path.join(temp,'sources.json')});assert.equal(r.status,0,r.stderr);
+  const r=run('build-tech-u5-part1-day5.py',[],{WF_IDENTITY_SOURCES:path.join(temp,'sources.json'),WF_MASTER_OUTLINE_SOURCE:m1Source(x,'PERFORM')});assert.equal(r.status,0,r.stderr);
   assert.ok(fs.readFileSync(path.join(temp,'Tech/3050105.html'),'utf8').includes(x.title));
  });
 }finally{fs.rmSync(temp,{recursive:true,force:true});}

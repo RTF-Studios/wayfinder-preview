@@ -116,6 +116,8 @@ def build(day):
     mode=['STARTER','LEARN','PERFORM','PERFORM','PERFORM','ASSESSMENT','RECOVERY'][day-1]
     title=s.splitlines()[0].split(' | ')[3]
     preflight({'course':'Tech','dayid':did,'unit':5,'part':2,'day':day,'title':title},s)
+    from wayfinder_lesson import build_from_outline
+    return build_from_outline({'course':'Tech','dayid':did,'unit':5,'part':2,'day':day,'title':title},mode,MASTER,ROOT/'Tech'/f'{did}.html')
     d=BeautifulSoup(MASTER,'html.parser')
     replace_slot(d,'course-meta',f'Tech · Unit 5 · Part 2 · Day {day} — Prototype')
     replace_slot(d,'lesson-mode',f'Day {day} · {mode.title()} Focused')
