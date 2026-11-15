@@ -6,7 +6,6 @@ const E=x=>String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&g
 const p=x=>'<p>'+E(x)+'</p>';
 function slot(h,name,value){const re=new RegExp('(<(h1|h2|h3|p|span|div)\\b[^>]*data-slot="'+name+'"[^>]*>)[\\s\\S]*?(<\\/\\2>)');if(!re.test(h))throw Error('M1 renderer: missing master slot '+name);return h.replace(re,(_,a,t,b)=>a+value+b);}
 function section(h,id,value){const re=new RegExp('<section\\b[^>]*\\bid="'+id+'"[^>]*>[\\s\\S]*?<\\/section>');if(!re.test(h))throw Error('M1 renderer: missing master section '+id);return h.replace(re,value);}
-function hiddenSection(h,id){return h.replace(new RegExp('(<section\\b[^>]*\\bid="'+id+'")'),'$1 hidden');}
 function parts(q){return q.parts.map(a=>{
  const name=E(q.fullKey+'-'+a.id);let controls='';
  if(['selected_choice','multiple_choice','true_false'].includes(a.answerType))controls='<fieldset><legend>'+E(a.prompt)+'</legend>'+a.options.map(o=>'<label class="option"><input type="radio" name="'+name+'" value="'+E(o.value)+'" data-phrase="'+E(o.label)+'"/> '+E(o.label)+'</label>').join('')+'</fieldset>';
@@ -41,8 +40,8 @@ function render(master,r,provenance){
  h=h.replace(/<div class="slot" data-slot="warm-specimen">[\s\S]*?<\/div>/,forPurpose('warm')).replace(/<fieldset data-warm-choices hidden>[\s\S]*?<\/fieldset>/,'<fieldset data-warm-choices hidden></fieldset>');
  h=slot(h,'warm-hook',active('warm_up')?E(sections.warm_up.text+'\n'+activityText('warm_up')+'\n'+r.evidence.xtra.warmUp.prompt):'');
  h=h.replace(/placeholder="\[Answer the question in the scenario using one or two sentences\.\]"/,'placeholder=""');
- if(!active('warm_up'))h=hiddenSection(h,'warmup');
- r.presentation.notes.forEach((n,k)=>{h=slot(h,'rtf-note-'+(k+1),E(n));});
+ for(let k=0;k<4;k++)h=slot(h,'rtf-note-'+(k+1),r.presentation.notes.status==='applicable'?E(r.presentation.notes.items[k]):'');
+ if(!active('warm_up'))h=section(h,'warmup','');
  const vocabulary='<section class="panel learn" id="lessonVocabulary"><h2>Vocabulary</h2><dl>'+r.vocabulary.map(x=>'<dt>'+E(x.term)+'</dt><dd>'+E(x.definition)+'</dd>').join('')+'</dl><ul>'+r.tools.map(t=>'<li>'+E(t.name+': '+t.instructions)+'</li>').join('')+'</ul></section>';
  h=h.replace(/(<section\b[^>]*\bid="warmup")/,vocabulary+'$1');
  h=section(h,'groupLearn',active('group_learn')?panel('group_learn','learn'):'');
@@ -67,8 +66,8 @@ function render(master,r,provenance){
   h=slot(h,'lab-'+word+'-title',idea?E(idea.title):'');h=slot(h,'lab-'+word+'-instructions',idea?E(idea.instructions):'');
   h=h.replace(new RegExp('<div class="slot" data-slot="lab-'+word+'-example">[\\s\\S]*?<\\/div>'),'');
  }
- if(!active('studio')){h=hiddenSection(h,'creativeLabs');h=hiddenSection(h,'gateway');}
- if(!active('temperature'))h=hiddenSection(h,'temperature');
+ if(!active('studio')){h=section(h,'creativeLabs','');h=section(h,'gateway','');}
+ if(!active('temperature'))h=section(h,'temperature','');
  else{h=h.replace('<label for="temperatureFeedback">Learning Guide feedback — required</label>','<label for="temperatureFeedback">'+E(r.evidence.xtra.temperature.prompt)+'</label>');h=h.replace('Name one thing that helped or one thing we should improve.',E(sections.temperature.text+'\n'+activityText('temperature')));}
  h=h.replace(/<span data-mirror="learning-target">[\s\S]*?<\/span>/,'<span data-mirror="learning-target">'+E(r.learningTarget.text)+'</span>');
  h=h.replace(/<span data-mirror="priority-teks">[\s\S]*?<\/span>/,'<span data-mirror="priority-teks">'+E(r.teks.priority.map(x=>x.code+': '+x.wording).join('\n'))+'</span>');
