@@ -1,0 +1,173 @@
+{
+  "scope": "Captain GO M1e only; controlled simulations, no production integration acceptance",
+  "run": {
+    "id": 43746647822,
+    "job": 132911302666,
+    "commit": "8c577caa8a1bd9ec42a6679cbbc3f14789da39fb",
+    "url": "https://github.com/RTF-Studios/wayfinder-preview/actions/runs/43746647822",
+    "conclusion": "success",
+    "artifact": 14174232328
+  },
+  "validation": [
+    {
+      "status": "PASS",
+      "tests": 69,
+      "canonicalHTMLWrites": 0
+    },
+    {
+      "status": "PASS",
+      "tests": 145,
+      "canonicalWrites": 0
+    }
+  ],
+  "native": {
+    "status": "PASS",
+    "nativeBuild": "F1 + M1 production entry",
+    "question": "305020130059",
+    "responseFields": 1,
+    "originalSha256": "7471096fba1388814b6330f6ac4baca5b57f7ce72601aeb3846816caf4679b41",
+    "masterSha256": "9b0ce775bca5d73b71e9b3968db6b697665389e86c28fb412c3f1756a857ae93",
+    "outputSha256": "9f43ef8f317e56241ffe40ef77d3d92848f779f1dd5cb0e58d57a8a6e28ff0bc",
+    "outputBytes": 322634,
+    "sourceSha256": "d159bf5797a76c5bd765ec2fbbe39d4b9dc84bd105d4fb62a8c3082ff84c62ba",
+    "negativeNativeBuilds": 29,
+    "rendererFailure": "rejects before output write",
+    "canonicalWrites": 0,
+    "clipboard": "UNTESTED",
+    "collectorReceipt": "UNTESTED"
+  },
+  "simulation": {
+    "status": "PASS — controlled simulations only",
+    "checks": [
+      {
+        "name": "simulated granted copy and exact route",
+        "status": "PASS",
+        "details": {
+          "preview": "M1E TEST ONLY — Two sprites keep their code separate. Move Player; FallingObject stays still. Symbols: < > & \"quoted\" café.",
+          "questionKey": "305020130059",
+          "keyLocation": "hidden Form URL; intentionally absent from copied answer",
+          "events": [
+            "copy",
+            "open"
+          ]
+        }
+      },
+      {
+        "name": "denied modern Clipboard API with legacy copy available",
+        "status": "PASS",
+        "details": "unchanged engine avoids permission API and succeeds through synchronous execCommand; simulated only"
+      },
+      {
+        "name": "legacy copy returns false",
+        "status": "PASS",
+        "details": "no Form opened; draft/preview retained and retry enabled"
+      },
+      {
+        "name": "legacy copy throws permission error",
+        "status": "PASS",
+        "details": "no Form opened; draft/preview retained and retry enabled"
+      },
+      {
+        "name": "copy retry after simulated permission recovery",
+        "status": "PASS",
+        "details": "fresh copy succeeds without rebuilding or losing draft"
+      },
+      {
+        "name": "edited response",
+        "status": "PASS",
+        "details": "current preview copied, earlier answer not reused"
+      },
+      {
+        "name": "edit invalidates final action",
+        "status": "PASS",
+        "details": "student must regenerate preview"
+      },
+      {
+        "name": "blank response capture",
+        "status": "PASS",
+        "details": "marked missing answer can be copied without academic rejection"
+      },
+      {
+        "name": "isolated offline execution",
+        "status": "PASS",
+        "details": "zero HTTP requests and script errors through create/copy/edit/failure/retry"
+      },
+      {
+        "name": "mock payload and acknowledgment",
+        "status": "PASS",
+        "details": {
+          "destination": "https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=305020130059",
+          "endpoint": "https://m1e.invalid/collector",
+          "key": "305020130059",
+          "response": "M1E TEST ONLY — Two sprites keep their code separate. Move Player; FallingObject stays still. Symbols: < > & \"quoted\" café.",
+          "receipt": "MOCK-M1E-1",
+          "scope": "TEST HARNESS mock envelope, not actual Google Form POST schema"
+        }
+      },
+      {
+        "name": "mock duplicate handling",
+        "status": "PASS",
+        "details": "mock endpoint recognizes exact same test payload and returns the original receipt; does not verify production deduplication"
+      },
+      {
+        "name": "mock network failure",
+        "status": "PASS",
+        "details": "no extra mock record; form draft retained; retry enabled"
+      },
+      {
+        "name": "mock timeout",
+        "status": "PASS",
+        "details": "controlled AbortController timeout; draft retained; retry enabled"
+      },
+      {
+        "name": "mock retry after timeout",
+        "status": "PASS",
+        "details": "same payload acknowledged without an extra mock record"
+      },
+      {
+        "name": "interrupted mock form before submit",
+        "status": "PASS",
+        "details": "closing without Submit creates no receipt; original guide still retains draft"
+      },
+      {
+        "name": "production write isolation",
+        "status": "PASS",
+        "details": "offline browser context; service workers blocked; window.open intercepted; catch-all route serves only .invalid mocks and aborts every other HTTP destination; zero production HTTP requests"
+      },
+      {
+        "name": "protected file preservation",
+        "status": "PASS",
+        "details": {
+          "Tech/3050201.html": "7471096fba1388814b6330f6ac4baca5b57f7ce72601aeb3846816caf4679b41",
+          "templates/wayfinder-master.html": "9b0ce775bca5d73b71e9b3968db6b697665389e86c28fb412c3f1756a857ae93",
+          "scripts/wayfinder-identity.cjs": "e16d546a9471af3e96aec05f39b4a53a2dae1a7ccdb498f2890fd1b326d1c920",
+          "scripts/wayfinder_identity.py": "227e7960e2eef425666c90d41d8bcb0ab5dc370ae9b2b0baf1f4e0e245a0a388"
+        }
+      }
+    ],
+    "observations": [
+      "Guide has no direct Collector POST, acknowledgment polling, network timeout, or duplicate-suppression implementation. It copies and opens the keyed school Form; paste/submit and receipt belong to Forms/Collector. Mock form/endpoint behavior is test-only and does not certify those production services.",
+      "Total copy denial provides retry with retained draft/preview and no navigation. No alternate manual-copy instruction or extra fallback button is implemented. Modern Clipboard permission denial alone does not affect its legacy synchronous copy path.",
+      "Full key is preserved in the destination/payload identity, deliberately excluded from copied answer under WF-04."
+    ],
+    "actualSchoolBrowserPermissions": "UNTESTED",
+    "actualCollectorReceipt": "UNTESTED",
+    "productionFormPostSchema": "UNTESTED",
+    "productionAcknowledgmentTimeoutDeduplication": "UNTESTED — mocked service behavior only",
+    "isolatedSha256": "9f43ef8f317e56241ffe40ef77d3d92848f779f1dd5cb0e58d57a8a6e28ff0bc",
+    "productionWrites": 0
+  },
+  "limits": {
+    "mockImplementation": "Mock form and in-memory endpoint are test-only models. They do not execute or certify the Google Forms/Collector backend; actual provider POST schema, acknowledgment, timeout and deduplication remain UNTESTED.",
+    "copyDenied": "Modern Clipboard API permission denial is bypassed by the existing legacy copy path; if legacy copy also fails, the existing UI preserves preview/draft, stays on guide and offers retry. No alternate manual-copy instructions added.",
+    "key": "305020130059 preserved in hidden Form route and mock identity, not injected into answer text under current WF-04."
+  },
+  "changedPaths": [
+    "scripts/check-m1e-controlled.cjs",
+    ".github/workflows/m1e-controlled-integration.yml",
+    "scripts/m1e-controlled-integration-results.json"
+  ],
+  "productionFilesChanged": [],
+  "productionDataWrites": 0,
+  "studentRelease": false
+}
