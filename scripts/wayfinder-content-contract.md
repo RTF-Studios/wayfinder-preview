@@ -115,3 +115,25 @@ fixture is an explicitly authorized source COPY, not a migrated native outline.
 See `m1b-question-format-results.json` for actual comparison results and remaining
 adapter fidelity/offline issues. A successful question-format check does not
 certify that generated pilot HTML can replace the existing lesson.
+
+## M1c source-declared presentation and offline packaging
+
+`presentation.layout` is an optional strict STARTER-roadmap composition for
+faithfully mapping an existing approved guide. Every layout field is required
+when present: course descriptor/mission, roadmap, Learn leader/discussion,
+Perform resources and summary/help disclosures, criteria, checklist, feedback,
+answer placeholders, Studio skits, comic hint and footer. It supplements core
+source fields; it never supplies executable HTML/CSS/JS or replaces evidence.
+Diagram references must resolve to static embedded SVGs. Disclosure summary +
+help must equal the complete approved step; placeholders must match all actual
+full-key/part identities. Vocabulary must remain in the inline Learn text.
+Unsupported mode/layout combinations, incomplete mappings and executable or
+external-resource SVG constructs fail before output. Other modes retain the
+previous contract and require their own production fidelity proof.
+
+The renderer omits the network-discovery helper and uses the unchanged master's
+existing `placeArt` fallback over declared embedded pools. It embeds the approved
+compass favicon and normalizes inline SVG `viewBox`, without modifying master
+source, CSS or engine. Actual questions/rubrics and F1 checks remain blocking.
+Run `test-m1c-3050201.cjs` and hosted `check-m1c-browser.cjs`; the fixture remains an
+isolated audit mapping, never a replacement authoritative outline or deployed LG.

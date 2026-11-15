@@ -55,6 +55,11 @@ function validatePayload(r){
  if(active('exemplar')&&!assets.some(a=>a.purpose==='exemplar'))error('exemplar','applicable exemplar requires explicit source reference/rights/offline metadata');
  if(active('warm_up')!==(r.presentation.notes.status==='applicable'))error('presentation.notes','notes applicability must follow the source warm-up section');
  for(const a of assets){const compatible={image:['image/webp'],diagram:['image/svg+xml'],code:['text/plain'],text:['text/plain'],document:['application/pdf'],video:['video/mp4'],audio:['audio/mpeg']};if(!compatible[a.kind].includes(a.mimeType)||!a.dataUri.startsWith('data:'+a.mimeType+';base64,')||!/^data:[^;]+;base64,[A-Za-z0-9+/]+={0,2}$/.test(a.dataUri))error('media.'+a.id,'unsupported asset or nonembedded bytes');if(Buffer.from(a.dataUri.split(',')[1],'base64').length===0)error('media.'+a.id,'empty asset');const bytes=Buffer.from(a.dataUri.split(',')[1],'base64');if(a.kind==='image'&&(bytes.toString('ascii',0,4)!=='RIFF'||bytes.toString('ascii',8,12)!=='WEBP'))error('media.'+a.id,'invalid WebP bytes');if(a.kind==='diagram'&&(!bytes.toString('utf8').includes('<svg')||/<script\b/i.test(bytes.toString('utf8'))))error('media.'+a.id,'invalid or executable SVG');if(['target','studio','comic'].includes(a.purpose)&&!['image','diagram'].includes(a.kind))error('media.'+a.id,'artwork pool requires image/diagram');}
+ // Inline diagram placement is content, never an execution or network surface.
+ for(const a of assets.filter(a=>a.kind==='diagram')){
+  const svg=Buffer.from(a.dataUri.split(',')[1],'base64').toString('utf8');
+  if(/<\s*(?:script|foreignObject|image|use|iframe|style|a|animate|set)\b|\bon[a-z]+\s*=|\b(?:href|src)\s*=|url\s*\(|@import|<!DOCTYPE|<!ENTITY/i.test(svg))error('media.'+a.id,'diagram must be static, self-contained SVG');
+ }
  const graded=r.evidence.graded.status==='applicable'?r.evidence.graded.items:[];
  if(r.mode==='ASSESSMENT'&&(graded.length!==4||graded.some(q=>q.category!=='MAJOR')))error('evidence','ASSESSMENT requires four explicit Major section definitions');
  if(r.mode!=='ASSESSMENT'&&graded.some(q=>q.category!=='DAILY'))error('evidence','regular modes use DAILY evidence');
@@ -77,6 +82,17 @@ function validatePayload(r){
   if(x.status==='applicable'){if(x.fullKey!==id+suffix||keys.has(x.fullKey))error('xtra.'+name,'reserved participation identity mismatch');keys.add(x.fullKey);checkURL(x.submissionUrl,x.fullKey);}
  }
  if(active('studio')){if(r.presentation.studioIdeas.status!=='applicable'||r.presentation.studioIdeas.items.length!==3)error('studio','exactly three explicit source ideas required');}else if(r.presentation.studioIdeas.status!=='not_applicable')error('studio','ideas must be explicitly not_applicable');
+ const layout=r.presentation.layout;
+ if(layout){
+  if(r.mode!=='STARTER'||!['warm_up','group_learn','group_practice','perform','exemplar','studio','temperature'].every(active))error('presentation.layout','this explicit roadmap layout requires applicable regular STARTER sections');
+  for(const id of [layout.roadmap.mediaId,layout.learn.mediaId,layout.perform.mediaId])if(!assets.some(a=>a.id===id&&a.kind==='diagram'))error('presentation.layout','missing static diagram reference '+id);
+  if(layout.perform.steps.length!==sections.get('perform').steps.length||layout.perform.steps.some((x,n)=>x.summary+' '+x.help!==sections.get('perform').steps[n]))error('presentation.layout','disclosures must preserve each complete approved Perform step');
+  for(const v of r.vocabulary)if(!sections.get('group_learn').text.includes(v.term))error('presentation.layout','inline vocabulary missing from Learn '+v.term);
+  unique(layout.answerPlaceholders.map(x=>({id:x.fullKey+':'+x.partId})),'answer placeholders');
+  const expected=graded.flatMap(q=>q.parts.map(p=>q.fullKey+':'+p.id)).sort();
+  const actual=layout.answerPlaceholders.map(x=>x.fullKey+':'+x.partId).sort();
+  if(JSON.stringify(expected)!==JSON.stringify(actual))error('presentation.layout','placeholder identities must match actual question fields exactly');
+ }
  return r;
 }
 function tabText(t){if(typeof t.text==='string')return t.text;function walk(o){if(!o||typeof o!=='object')return '';if(o.textRun)return o.textRun.content||'';return Object.values(o).map(v=>Array.isArray(v)?v.map(walk).join(''):typeof v==='object'?walk(v):'').join('');}return walk(t.body||t.documentTab?.body);}

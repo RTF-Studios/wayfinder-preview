@@ -6,14 +6,14 @@ const E=x=>String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&g
 const p=x=>'<p>'+E(x)+'</p>';
 function slot(h,name,value){const re=new RegExp('(<(h1|h2|h3|p|span|div)\\b[^>]*data-slot="'+name+'"[^>]*>)[\\s\\S]*?(<\\/\\2>)');if(!re.test(h))throw Error('M1 renderer: missing master slot '+name);return h.replace(re,(_,a,t,b)=>a+value+b);}
 function section(h,id,value){const re=new RegExp('<section\\b[^>]*\\bid="'+id+'"[^>]*>[\\s\\S]*?<\\/section>');if(!re.test(h))throw Error('M1 renderer: missing master section '+id);return h.replace(re,value);}
-function parts(q){return q.parts.map(a=>{
+function parts(q,includeHelp=true,placeholders=[]){return q.parts.map(a=>{
  const name=E(q.fullKey+'-'+a.id);let controls='';
  if(['selected_choice','multiple_choice','true_false'].includes(a.answerType))controls='<fieldset><legend>'+E(a.prompt)+'</legend>'+a.options.map(o=>'<label class="option"><input type="radio" name="'+name+'" value="'+E(o.value)+'" data-phrase="'+E(o.label)+'"/> '+E(o.label)+'</label>').join('')+'</fieldset>';
  else if(a.answerType==='checkbox')controls='<fieldset><legend>'+E(a.prompt)+'</legend>'+a.options.map(o=>'<label class="option"><input type="checkbox" value="'+E(o.value)+'" data-phrase="'+E(o.label)+'"/> '+E(o.label)+'</label>').join('')+'</fieldset>';
  else if(a.answerType==='dropdown')controls='<label>'+E(a.prompt)+'<select data-answer-select><option value=""></option>'+a.options.map(o=>'<option value="'+E(o.value)+'" data-phrase="'+E(o.label)+'">'+E(o.label)+'</option>').join('')+'</select></label>';
  else if(a.answerType==='fill_blank')controls='<label>'+E(a.prompt)+'</label>'+p(a.sentence)+Array.from({length:a.blanks},(_,i)=>'<input type="text" data-blank aria-label="'+E(a.prompt+' '+(i+1))+'"/>').join('');
- else controls='<label>'+E(a.prompt)+'<textarea data-open-response rows="3"></textarea></label>';
- return '<div data-answer-part data-type="'+(a.answerType==='fill_blank'?'fill-blank':'open-response')+'"'+(a.answerType==='fill_blank'?' data-sentence="'+E(a.sentence)+'"':'')+'>'+controls+'<details><summary>Extra Help</summary>'+p(a.help)+'</details></div>';
+ else controls='<label>'+E(a.prompt)+'</label><textarea data-open-response rows="3" placeholder="'+E(placeholders.find(p=>p.fullKey===q.fullKey&&p.partId===a.id)?.text||'')+'"></textarea>';
+ return '<div data-answer-part data-type="'+(a.answerType==='fill_blank'?'fill-blank':'open-response')+'"'+(a.answerType==='fill_blank'?' data-sentence="'+E(a.sentence)+'"':'')+'>'+controls+(includeHelp?'<details><summary>Extra Help</summary>'+p(a.help)+'</details>':'')+'</div>';
 }).join('');}
 function assessment(q,n,stimuli){return '<section class="panel mastery assessment-section" data-n="'+n+'" id="assessmentSection'+n+'"><span class="kicker">Assessment Section '+n+'</span><h2>'+E(q.title)+'</h2>'+p(q.prompt)+stimuli+'<div class="scaffold"><div class="answer-parts" data-assembler="assessment'+n+'">'+parts(q)+'</div></div><div class="response"><div class="assembled-preview" id="preview'+n+'" hidden role="status" aria-live="polite"></div><div class="actions"><button class="btn copy-action section-build" data-n="'+n+'" type="button">Create My Response</button><button class="btn submit section-submit" data-n="'+n+'" type="button" disabled>Copy &amp; Submit My Answer</button></div><p class="status" id="sectionStatus'+n+'" aria-live="polite"></p></div></section>';}
 function render(master,r,provenance){
@@ -72,14 +72,18 @@ function render(master,r,provenance){
  h=h.replace(/<span data-mirror="learning-target">[\s\S]*?<\/span>/,'<span data-mirror="learning-target">'+E(r.learningTarget.text)+'</span>');
  h=h.replace(/<span data-mirror="priority-teks">[\s\S]*?<\/span>/,'<span data-mirror="priority-teks">'+E(r.teks.priority.map(x=>x.code+': '+x.wording).join('\n'))+'</span>');
 
- const config={mode:r.mode,imagePools:{target:media.filter(m=>m.purpose==='target').map(m=>({src:m.dataUri,alt:m.alt})),temperature:[],labs:media.filter(m=>m.purpose==='studio').map(m=>({src:m.dataUri,alt:m.alt})),comics:media.filter(m=>m.purpose==='comic').map(m=>({src:m.dataUri,alt:m.alt})),skits:[]},destinations:{warm:r.evidence.xtra.warmUp.status==='applicable'?r.evidence.xtra.warmUp.submissionUrl:'',temp:r.evidence.xtra.temperature.status==='applicable'?r.evidence.xtra.temperature.submissionUrl:'',labs:r.evidence.xtra.studio.status==='applicable'?r.evidence.xtra.studio.submissionUrl:'',q1:'',q2:''}};
+ h=require('./wayfinder-presentation.cjs').apply(h,r,{slot,section,parts});
+ const config={mode:r.mode,imagePools:{target:media.filter(m=>m.purpose==='target').map(m=>({src:m.dataUri,alt:m.alt})),temperature:[],labs:media.filter(m=>m.purpose==='studio').map(m=>({src:m.dataUri,alt:m.alt})),comics:media.filter(m=>m.purpose==='comic').map(m=>({src:m.dataUri,alt:m.alt})),skits:r.presentation.layout?.skits||[]},destinations:{warm:r.evidence.xtra.warmUp.status==='applicable'?r.evidence.xtra.warmUp.submissionUrl:'',temp:r.evidence.xtra.temperature.status==='applicable'?r.evidence.xtra.temperature.submissionUrl:'',labs:r.evidence.xtra.studio.status==='applicable'?r.evidence.xtra.studio.submissionUrl:'',q1:'',q2:''}};
  qs.forEach((q,n)=>{config.destinations[r.mode==='ASSESSMENT'?'section'+(n+1):'q'+(n+1)]=q.submissionUrl;});
  h=h.replace(/const WAYFINDER_CONFIG=\{[^\n]*\};/,()=> 'const WAYFINDER_CONFIG='+JSON.stringify(config).replace(/</g,'\\u003c')+';');
- // Embed the existing shared artwork helper verbatim; no network dependency or
- // fork of its code, and no change to the master itself.
- const art=fs.readFileSync(path.resolve(__dirname,'../assets/shared/artwork-rotation.js'),'utf8');h=h.replace('<script src="../assets/shared/artwork-rotation.js"></script>','<script>'+art+'</script>');
+ // Standalone packaging: the unchanged master already falls back to placeArt
+ // when WF_ART is absent. Use the declared embedded pools; never discover online
+ // folders at runtime. Essential random rotation and error fallback stay intact.
+ h=h.replace('<script src="../assets/shared/artwork-rotation.js"></script>','');
+ const favicon=fs.readFileSync(path.resolve(__dirname,'../assets/shared/rtf-compass-favicon.svg'));
+ h=h.replace(/(<link rel="icon"[^>]*href=")[^"]*(")/,(_,a,b)=>a+'data:image/svg+xml;base64,'+favicon.toString('base64')+b);
  h=h.replace(/<template\b[\s\S]*?<\/template>/g,'');
- h=h.replace(/<footer class="footer">[\s\S]*?<\/footer>/,'<footer class="footer">'+E(i.course+' · '+i.title)+'</footer>');
+ if(!r.presentation.layout)h=h.replace(/<footer class="footer">[\s\S]*?<\/footer>/,'<footer class="footer">'+E(i.course+' · '+i.title)+'</footer>');
  return h.replace('<body','<!-- M1 source '+E(JSON.stringify(provenance))+' -->\n<body');
 }
 module.exports={render};

@@ -5,6 +5,8 @@ on:
       - 'scripts/*identity*'
       - 'scripts/*content-contract*'
       - 'scripts/*m1b*'
+      - 'scripts/*m1c*'
+      - 'scripts/wayfinder-presentation.cjs'
       - 'scripts/wayfinder-record-renderer.cjs'
       - 'scripts/wayfinder_lesson.py'
       - 'scripts/schema/**'
@@ -31,6 +33,8 @@ on:
       - 'scripts/*identity*'
       - 'scripts/*content-contract*'
       - 'scripts/*m1b*'
+      - 'scripts/*m1c*'
+      - 'scripts/wayfinder-presentation.cjs'
       - 'scripts/wayfinder-record-renderer.cjs'
       - 'scripts/wayfinder_lesson.py'
       - 'scripts/schema/**'
@@ -197,3 +201,36 @@ jobs:
         with:
           name: m1b-isolated-browser
           path: qa-artifacts/m1b
+
+  m1c-production-fidelity:
+    needs: [pre-html-identity, lesson-content-contract]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install existing browser QA dependency
+        run: |
+          mkdir -p .github/qa-run
+          npm install --prefix .github/qa-run --no-save playwright@1.56.1
+          .github/qa-run/node_modules/.bin/playwright install --with-deps chromium
+      - name: Build one isolated production pilot and test fidelity and offline controls
+        env:
+          M1C_PILOT_DIR: /tmp/m1c-isolated
+        run: |
+          node scripts/test-m1c-3050201.cjs
+          cp /tmp/m1c-isolated/static-results.json qa-artifacts-m1c-static.json
+          node scripts/check-m1c-browser.cjs
+      - name: Preserve isolated original and pilot comparison evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: m1c-production-fidelity
+          path: |
+            qa-artifacts/m1c
+            qa-artifacts-m1c-static.json

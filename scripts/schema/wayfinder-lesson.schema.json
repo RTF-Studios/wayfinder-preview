@@ -732,6 +732,248 @@
               "additionalProperties": false
             }
           ]
+        },
+        "layout": {
+          "type": "object",
+          "properties": {
+            "metaSuffix": {
+              "type": "string",
+              "minLength": 1
+            },
+            "mission": {
+              "type": "string",
+              "minLength": 1
+            },
+            "footer": {
+              "type": "string",
+              "minLength": 1
+            },
+            "warmPlaceholder": {
+              "type": "string",
+              "minLength": 1
+            },
+            "vocabularyPlacement": {
+              "enum": [
+                "inline_group_learn"
+              ]
+            },
+            "roadmap": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "intro": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "mediaId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "steps": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "minItems": 1
+                },
+                "success": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "title",
+                "intro",
+                "mediaId",
+                "steps",
+                "success"
+              ],
+              "additionalProperties": false
+            },
+            "learn": {
+              "type": "object",
+              "properties": {
+                "leaderIntro": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "discussionQuestion": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "discussionFollowup": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "mediaId": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "leaderIntro",
+                "discussionQuestion",
+                "discussionFollowup",
+                "mediaId"
+              ],
+              "additionalProperties": false
+            },
+            "perform": {
+              "type": "object",
+              "properties": {
+                "resourcesTitle": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "resourcesText": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "steps": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "summary": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "help": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": [
+                      "summary",
+                      "help"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "minItems": 1
+                },
+                "mediaId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "criteria": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "resourcesTitle",
+                "resourcesText",
+                "steps",
+                "mediaId",
+                "criteria"
+              ],
+              "additionalProperties": false
+            },
+            "checklist": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 4,
+              "maxItems": 4
+            },
+            "masteryFeedback": {
+              "type": "string",
+              "minLength": 1
+            },
+            "answerPlaceholders": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "fullKey": {
+                    "type": "string",
+                    "pattern": "^[123][0-9]{11}$"
+                  },
+                  "partId": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "text": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "fullKey",
+                  "partId",
+                  "text"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 1
+            },
+            "skits": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "lines": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "speaker": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "text": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "required": [
+                        "speaker",
+                        "text"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "minItems": 1
+                  }
+                },
+                "required": [
+                  "title",
+                  "lines"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 1
+            },
+            "comicScrollHint": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "metaSuffix",
+            "mission",
+            "footer",
+            "warmPlaceholder",
+            "vocabularyPlacement",
+            "roadmap",
+            "learn",
+            "perform",
+            "checklist",
+            "masteryFeedback",
+            "answerPlaceholders",
+            "skits",
+            "comicScrollHint"
+          ],
+          "additionalProperties": false
         }
       },
       "required": [
