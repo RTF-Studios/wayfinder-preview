@@ -1,0 +1,536 @@
+{
+  "status": "PASS",
+  "tests": 70,
+  "checks": [
+    {
+      "name": "reuse runtime checks: curriculum-only diff",
+      "status": "PASS"
+    },
+    {
+      "name": "reuse runtime checks: master diff",
+      "status": "PASS"
+    },
+    {
+      "name": "reuse runtime checks: lesson layout diff",
+      "status": "PASS"
+    },
+    {
+      "name": "reuse runtime checks: renderer diff",
+      "status": "PASS"
+    },
+    {
+      "name": "source-bound reviewed Tech STARTER",
+      "status": "PASS"
+    },
+    {
+      "name": "source-bound reviewed Tech LEARN",
+      "status": "PASS"
+    },
+    {
+      "name": "source-bound reviewed Tech PERFORM",
+      "status": "PASS"
+    },
+    {
+      "name": "source-bound reviewed Tech ASSESSMENT",
+      "status": "PASS"
+    },
+    {
+      "name": "source-bound reviewed CS STARTER",
+      "status": "PASS"
+    },
+    {
+      "name": "source-bound reviewed CS LEARN",
+      "status": "PASS"
+    },
+    {
+      "name": "source-bound reviewed CS PERFORM",
+      "status": "PASS"
+    },
+    {
+      "name": "source-bound reviewed CS ASSESSMENT",
+      "status": "PASS"
+    },
+    {
+      "name": "source-bound reviewed AAVTC STARTER",
+      "status": "PASS"
+    },
+    {
+      "name": "source-bound reviewed AAVTC LEARN",
+      "status": "PASS"
+    },
+    {
+      "name": "source-bound reviewed AAVTC PERFORM",
+      "status": "PASS"
+    },
+    {
+      "name": "source-bound reviewed AAVTC ASSESSMENT",
+      "status": "PASS"
+    },
+    {
+      "name": "approved structure selected_choice does not force A/B/C",
+      "status": "PASS"
+    },
+    {
+      "name": "approved structure multiple_choice does not force A/B/C",
+      "status": "PASS"
+    },
+    {
+      "name": "approved structure checkbox does not force A/B/C",
+      "status": "PASS"
+    },
+    {
+      "name": "approved structure short_text does not force A/B/C",
+      "status": "PASS"
+    },
+    {
+      "name": "approved structure fill_blank does not force A/B/C",
+      "status": "PASS"
+    },
+    {
+      "name": "approved structure dropdown does not force A/B/C",
+      "status": "PASS"
+    },
+    {
+      "name": "approved structure true_false does not force A/B/C",
+      "status": "PASS"
+    },
+    {
+      "name": "approved structure comparison_diagram_response does not force A/B/C",
+      "status": "PASS"
+    },
+    {
+      "name": "reject missing review",
+      "status": "PASS"
+    },
+    {
+      "name": "reject unreviewed status",
+      "status": "PASS"
+    },
+    {
+      "name": "reject failed status",
+      "status": "PASS"
+    },
+    {
+      "name": "reject stale revision",
+      "status": "PASS"
+    },
+    {
+      "name": "reject stale source text",
+      "status": "PASS"
+    },
+    {
+      "name": "reject detached lesson content",
+      "status": "PASS"
+    },
+    {
+      "name": "reject wrong WHAT",
+      "status": "PASS"
+    },
+    {
+      "name": "reject missing target",
+      "status": "PASS"
+    },
+    {
+      "name": "reject duplicate target",
+      "status": "PASS"
+    },
+    {
+      "name": "reject wrong TEKS wording",
+      "status": "PASS"
+    },
+    {
+      "name": "reject absent target explanation",
+      "status": "PASS"
+    },
+    {
+      "name": "reject unknown evidence key",
+      "status": "PASS"
+    },
+    {
+      "name": "reject unmapped question",
+      "status": "PASS"
+    },
+    {
+      "name": "reject fabricated teaching quote",
+      "status": "PASS"
+    },
+    {
+      "name": "reject Perform-only question support",
+      "status": "PASS"
+    },
+    {
+      "name": "reject missing question",
+      "status": "PASS"
+    },
+    {
+      "name": "reject wrong question prompt",
+      "status": "PASS"
+    },
+    {
+      "name": "reject changed rubric",
+      "status": "PASS"
+    },
+    {
+      "name": "reject missing answer part",
+      "status": "PASS"
+    },
+    {
+      "name": "reject criterion not elicited",
+      "status": "PASS"
+    },
+    {
+      "name": "reject wrong accepted answer",
+      "status": "PASS"
+    },
+    {
+      "name": "reject project prerequisite",
+      "status": "PASS"
+    },
+    {
+      "name": "reject missing non-cascading case",
+      "status": "PASS"
+    },
+    {
+      "name": "reject no full-credit-later answer",
+      "status": "PASS"
+    },
+    {
+      "name": "reject missing pace review",
+      "status": "PASS"
+    },
+    {
+      "name": "reject unreviewed feasibility",
+      "status": "PASS"
+    },
+    {
+      "name": "reject work exceeds source minutes",
+      "status": "PASS"
+    },
+    {
+      "name": "reject no transition allowance",
+      "status": "PASS"
+    },
+    {
+      "name": "reject no submission allowance",
+      "status": "PASS"
+    },
+    {
+      "name": "reject wrong handoff count",
+      "status": "PASS"
+    },
+    {
+      "name": "reject unresolved instructional defect",
+      "status": "PASS"
+    },
+    {
+      "name": "reject missing verification",
+      "status": "PASS"
+    },
+    {
+      "name": "changing source invalidates an otherwise PASS review",
+      "status": "PASS"
+    },
+    {
+      "name": "55-minute structural allowance cannot masquerade as 50-minute curriculum fit",
+      "status": "PASS"
+    },
+    {
+      "name": "real single-response pilot review fits exact source and frozen evidence",
+      "status": "PASS"
+    },
+    {
+      "name": "actual native F1+M1+M2 build stays byte-identical to M1c",
+      "status": "PASS"
+    },
+    {
+      "name": "native missing review preserves original",
+      "status": "PASS"
+    },
+    {
+      "name": "native missing review preserves previous build",
+      "status": "PASS"
+    },
+    {
+      "name": "native failed teaching preserves original",
+      "status": "PASS"
+    },
+    {
+      "name": "native failed teaching preserves previous build",
+      "status": "PASS"
+    },
+    {
+      "name": "native stale review preserves original",
+      "status": "PASS"
+    },
+    {
+      "name": "native stale review preserves previous build",
+      "status": "PASS"
+    },
+    {
+      "name": "native untaught scoring demand preserves original",
+      "status": "PASS"
+    },
+    {
+      "name": "native untaught scoring demand preserves previous build",
+      "status": "PASS"
+    },
+    {
+      "name": "native overfull pace preserves original",
+      "status": "PASS"
+    },
+    {
+      "name": "native overfull pace preserves previous build",
+      "status": "PASS"
+    }
+  ],
+  "pilot": {
+    "status": "PASS",
+    "errors": [],
+    "source": {
+      "documentId": "1uT88cp1mVW7D8HFj6EL51_nlvlRc531uiGZcKcHEI48",
+      "revision": "AHj4eMTLQSGxDstLPtQoTtlK01NkYbOSVO4FwDxHKLdHeR8_rDWDK_diEM6U3XOklqWH1cjvb42c1tNbTPi_I4choZpO04KNnKGQvJO8pxQ",
+      "tabId": "t.d8j00o96rl62",
+      "summaryApprovalReference": "https://docs.google.com/document/d/1hdYPNgciqTp5-xSmwtS0ZWhvObttA_3C7C5Ydy9NBTg/edit",
+      "sourceSha256": "d159bf5797a76c5bd765ec2fbbe39d4b9dc84bd105d4fb62a8c3082ff84c62ba",
+      "payloadSha256": "cc963d6a9c291ecfe16a91022c342b70b6498eade7654a922191703248b57427"
+    },
+    "limitations": "Checks review coverage, exact source anchors and freshness. Instructional judgment remains an explicit assistant review, not automated semantic proof or student mastery certification."
+  },
+  "productionGuideWrites": 0,
+  "masterChanges": 0,
+  "clipboardForm": "existing proven implementation reused; no repeated integration tests",
+  "scope": "M2 source-bound assistant review, not automatic semantic proof, release or student grading",
+  "review": {
+    "version": 1,
+    "binding": {
+      "documentId": "1uT88cp1mVW7D8HFj6EL51_nlvlRc531uiGZcKcHEI48",
+      "revision": "AHj4eMTLQSGxDstLPtQoTtlK01NkYbOSVO4FwDxHKLdHeR8_rDWDK_diEM6U3XOklqWH1cjvb42c1tNbTPi_I4choZpO04KNnKGQvJO8pxQ",
+      "tabId": "t.d8j00o96rl62",
+      "summaryApprovalReference": "https://docs.google.com/document/d/1hdYPNgciqTp5-xSmwtS0ZWhvObttA_3C7C5Ydy9NBTg/edit",
+      "sourceSha256": "d159bf5797a76c5bd765ec2fbbe39d4b9dc84bd105d4fb62a8c3082ff84c62ba",
+      "payloadSha256": "cc963d6a9c291ecfe16a91022c342b70b6498eade7654a922191703248b57427"
+    },
+    "reviewer": "Tank perspective — assistant curriculum review",
+    "basis": "WF-01 evidence-first design, non-cascading mastery and instructional QA before HTML; current WF-02 source boundary",
+    "status": "PASS",
+    "learningTarget": {
+      "text": "I can recognize TurboWarp's stage, sprites and code tools because simple reusable shapes help me test a new interactive design.",
+      "what": "recognize TurboWarp's stage, sprites and code tools",
+      "why": "simple reusable shapes help me test a new interactive design.",
+      "teaching": [
+        {
+          "sectionId": "group_learn",
+          "quote": "each SPRITE is an independently controlled object"
+        },
+        {
+          "sectionId": "group_practice",
+          "quote": "confirming that clicking one sprite changes its code workspace"
+        }
+      ],
+      "reason": "Recognizing stage, sprite and code workspace is modeled before creating two separate plain objects. The WHY is testing an interactive design with reusable placeholders; this Day introduces that purpose without claiming a completed working game."
+    },
+    "targets": [
+      {
+        "code": "§126.18(c)(3)(B)",
+        "wording": "Plan, choose digital tools, build a prototype, and improve it through tests and revisions.",
+        "coverage": "practiced",
+        "teaching": [
+          {
+            "sectionId": "group_learn",
+            "quote": "each SPRITE is an independently controlled object"
+          },
+          {
+            "sectionId": "group_practice",
+            "quote": "confirming that clicking one sprite changes its code workspace"
+          }
+        ],
+        "evidenceKeys": [
+          "305020130059"
+        ],
+        "reason": "Today introduces prototype construction and a feasible independence test. One explanation is partial design-process evidence; it does not certify a complete prototype or the whole TEKS."
+      },
+      {
+        "code": "§126.18(c)(4)(C)",
+        "wording": "Use what you already know to learn an unfamiliar technology.",
+        "coverage": "practiced",
+        "teaching": [
+          {
+            "sectionId": "group_learn",
+            "quote": "each SPRITE is an independently controlled object"
+          },
+          {
+            "sectionId": "group_practice",
+            "quote": "confirming that clicking one sprite changes its code workspace"
+          }
+        ],
+        "evidenceKeys": [
+          "305020130059"
+        ],
+        "reason": "Students apply prior object/shape knowledge in the unfamiliar editor. The question elicits independent-object reasoning, not complete mastery of all technology-transfer skills."
+      }
+    ],
+    "questions": [
+      {
+        "fullKey": "305020130059",
+        "prompt": "A student puts the player square and falling circle in ONE sprite. Explain why two separate sprites would make coding easier and identify one test proving the objects are controlled separately.",
+        "rubricText": "Holistic 0–100: 90–100 accurate, specific and independently justified with a feasible test; 70–89 Explains independent sprite code and describes a real test of separate behavior; 50–69 partially correct, missing important detail or validation; below 50 insufficient/contradictory evidence. Missing/unsubmitted is a separate nonnumeric state under RTS-02.",
+        "rubricReason": "The exact frozen prompt asks why separate sprites simplify coding and for a test of separate control. Its pinned Meets criterion requires independent sprite code plus a real separate-behavior test; the upper band adds specificity and justification, not an unseen project requirement.",
+        "projectIndependent": true,
+        "projectIndependentReason": "The one-sprite scenario, definition of independently controlled sprite, and teacher selection/code-workspace demonstration supply the information needed. A student may propose dragging/selecting one sprite and observing the other without completing the Perform or coding next-day motion.",
+        "parts": [
+          {
+            "id": "response",
+            "prompt": "Explain the complete scenario and include the requested test or reason.",
+            "scoringCriteria": [
+              "Explains independent sprite code and describes a real test of separate behavior"
+            ],
+            "acceptedAnswers": [
+              "Explains independent sprite code and describes a real test of separate behavior"
+            ],
+            "teaching": [
+              {
+                "sectionId": "group_learn",
+                "quote": "each SPRITE is an independently controlled object"
+              },
+              {
+                "sectionId": "group_practice",
+                "quote": "confirming that clicking one sprite changes its code workspace"
+              }
+            ],
+            "reason": "The single approved response asks for the same two ideas scored by its accepted evidence and rubric: separate sprite control/code, then one observable independence check. This is one frozen response, not invented A/B/C parts."
+          }
+        ],
+        "independenceCases": []
+      }
+    ],
+    "pacing": {
+      "status": "PASS",
+      "submissionCount": 4,
+      "reason": "One short mastery paragraph and three short Xtra handoffs fit the existing 50-minute schedule. Four minutes cover copy/paste/Form handoffs; four embedded minutes cover section/tool transitions. Perform includes saving and reopening two plain sprites, with no motion script or finished-game obligation.",
+      "allocations": [
+        {
+          "id": "Warm-Up",
+          "workMinutes": 3,
+          "transitionMinutes": 0,
+          "submissionMinutes": 1,
+          "workload": "Short prior-knowledge Warm-Up and its handoff."
+        },
+        {
+          "id": "Group Learn with live teacher demo",
+          "workMinutes": 12,
+          "transitionMinutes": 1,
+          "submissionMinutes": 0,
+          "workload": "Read the defined editor/object terms and observe a small whole-class example."
+        },
+        {
+          "id": "Group Practice/prediction",
+          "workMinutes": 6,
+          "transitionMinutes": 1,
+          "submissionMinutes": 0,
+          "workload": "Teacher models selection, shape creation, names and separate code workspace."
+        },
+        {
+          "id": "independent DAILY evidence",
+          "workMinutes": 5,
+          "transitionMinutes": 0,
+          "submissionMinutes": 1,
+          "workload": "Write and review the one concise independent-sprite explanation/test."
+        },
+        {
+          "id": "project build/test",
+          "workMinutes": 13,
+          "transitionMinutes": 2,
+          "submissionMinutes": 0,
+          "workload": "Create two plain named sprites, select/separate them, save and reload the same project."
+        },
+        {
+          "id": "save/TEKS Temperature/Studio as appropriate",
+          "workMinutes": 3,
+          "transitionMinutes": 0,
+          "submissionMinutes": 2,
+          "workload": "Brief confidence/reflection and a small same-tool Studio change; two handoffs."
+        }
+      ]
+    },
+    "findings": [
+      {
+        "id": "TARGET-MAP",
+        "status": "PASS",
+        "detail": "Live Evergreen Learning Targets explicitly maps educational TECH-U05-P01 Prototype to legacy DayIDs3050201–3050207. Preserve numeric Part2 identities; do not treat target Part1 as an automatic mismatch. Source: Personal TEKS Roadmap & Register, Evergreen Learning Targets, TECH-U05-P01, read2026-11-15."
+      },
+      {
+        "id": "FROZEN-RESPONSE",
+        "status": "PASS",
+        "detail": "Preserve the existing single-response question and scoring; M2 does not retroactively impose a new A/B/C architecture or rewrite evidence."
+      },
+      {
+        "id": "EVIDENCE-LIMIT",
+        "status": "PASS",
+        "detail": "Question is partial/introductory evidence of the selected TEKS. Neither the saved project nor full target mastery is asserted from this paragraph alone."
+      }
+    ]
+  },
+  "savedCodeCommit": "36501063888722f79a692fe4b0cf1afcb3ede2a8",
+  "hostedValidation": {
+    "status": "PASS",
+    "runId": 43748484495,
+    "url": "https://github.com/RTF-Studios/wayfinder-preview/actions/runs/43748484495",
+    "f1": {
+      "jobId": 132916962863,
+      "tests": 69
+    },
+    "m1": {
+      "jobId": 132917078365,
+      "tests": 145
+    },
+    "m2": {
+      "jobId": 132917127560,
+      "tests": 70
+    },
+    "runtimeJobs": "5 skipped — proven runtime reused for curriculum-only diff",
+    "artifact": {
+      "id": 14174474412,
+      "name": "m2-curriculum-quality",
+      "size_in_bytes": 1697,
+      "url": "https://api.github.com/repos/RTF-Studios/wayfinder-preview/actions/artifacts/14174474412",
+      "archive_download_url": "https://api.github.com/repos/RTF-Studios/wayfinder-preview/actions/artifacts/14174474412/zip",
+      "expired": false,
+      "created_at": "2026-11-15T18:45:39Z",
+      "expires_at": "2027-02-13T18:44:57Z",
+      "updated_at": "2026-11-15T18:45:39Z",
+      "digest": "sha256:4d87491f4f0e79ce3c4024554e9081f8a9484f14fd2362c9d3059df8a77681d0",
+      "workflow_run": {
+        "id": 43748484495,
+        "repository_id": 1433536919,
+        "head_repository_id": 1433536919,
+        "head_branch": "main",
+        "head_sha": "36501063888722f79a692fe4b0cf1afcb3ede2a8"
+      }
+    }
+  },
+  "productionGuidesAndMaster": "unchanged",
+  "nativeSourceReadback": {
+    "documentId": "1uT88cp1mVW7D8HFj6EL51_nlvlRc531uiGZcKcHEI48",
+    "tabId": "t.d8j00o96rl62",
+    "revision": "AHj4eMTLQSGxDstLPtQoTtlK01NkYbOSVO4FwDxHKLdHeR8_rDWDK_diEM6U3XOklqWH1cjvb42c1tNbTPi_I4choZpO04KNnKGQvJO8pxQ",
+    "nonblankParagraphTextMatches": true
+  },
+  "isolatedHtmlSha256": "9f43ef8f317e56241ffe40ef77d3d92848f779f1dd5cb0e58d57a8a6e28ff0bc",
+  "productionHtmlSha256": "7471096fba1388814b6330f6ac4baca5b57f7ce72601aeb3846816caf4679b41",
+  "masterSha256": "9b0ce775bca5d73b71e9b3968db6b697665389e86c28fb412c3f1756a857ae93",
+  "changedPaths": [
+    "scripts/wayfinder-curriculum-quality.cjs",
+    "scripts/wayfinder-content-contract.cjs",
+    "scripts/fixtures/m2-review-fixtures.cjs",
+    "scripts/fixtures/m1-source-fixtures.cjs",
+    "scripts/test-wayfinder-curriculum-quality.cjs",
+    "scripts/test-wayfinder-identity.cjs",
+    "scripts/test-m1b-3050201.cjs",
+    "scripts/test-m1c-3050201.cjs",
+    "scripts/wayfinder-content-contract.md",
+    ".github/workflows/wayfinder-qa.yml",
+    "scripts/m2-curriculum-results.json"
+  ],
+  "productionDataWrites": 0,
+  "studentRelease": false
+}
