@@ -5,6 +5,7 @@ No engine forks. This does not certify browser, school intake or Drive parity.
 import json,re,html,hashlib
 from pathlib import Path
 from bs4 import BeautifulSoup
+from wayfinder_identity import preflight
 
 ROOT=Path(__file__).resolve().parents[1]
 SOURCE=json.loads((ROOT/'scripts/tech-u5-prototype-source.json').read_text())
@@ -111,9 +112,11 @@ def answer_markup(prompt,stem,choice=None):
 def assessment_card(n,title,prompt,stem):
     return f'''<section class="panel mastery assessment-section" data-n="{n}" id="assessmentSection{n}"><span class="kicker">Assessment Section {n}</span><h2>{html.escape(title)}</h2><p>{html.escape(prompt)}</p><div class="scaffold"><div class="answer-parts" data-assembler="assessment{n}">{answer_markup('Answer both parts in one brief response.',stem)}</div><details><summary>Extra Help</summary><p>Read one part at a time. Explain the change or prediction, then give the requested reason or test. Sentence starts: {html.escape(stem)}</p></details></div><div class="response"><div class="assembled-preview" id="preview{n}" hidden role="status" aria-live="polite"></div><div class="actions"><button class="btn copy-action section-build" data-n="{n}" type="button">Create My Response</button><button class="btn submit section-submit" data-n="{n}" type="button" disabled>Copy &amp; Submit My Answer</button></div><p class="status" id="sectionStatus{n}" aria-live="polite"></p></div></section>'''
 def build(day):
-    s=SOURCE['tabs'][day-1]['text'];d=BeautifulSoup(MASTER,'html.parser');did='305020'+str(day)
+    s=SOURCE['tabs'][day-1]['text'];did='305020'+str(day)
     mode=['STARTER','LEARN','PERFORM','PERFORM','PERFORM','ASSESSMENT','RECOVERY'][day-1]
     title=['Build a Game from Shapes','Make the Player Move','Make the Circle Fall Forever','Lives, Hits and Fair Rules','Score, Challenge and Playtesting','Prototype Skills — Assessment & Daily Recovery','Finish the Prototype & Recover Evidence'][day-1]
+    preflight({'course':'Tech','dayid':did,'unit':5,'part':1,'day':day,'title':title},s)
+    d=BeautifulSoup(MASTER,'html.parser')
     replace_slot(d,'course-meta',f'Tech · Unit 5 · Prototype · Phase 1 of 3 · Day {day}')
     replace_slot(d,'lesson-mode',f'Day {day} · {mode.title()} Focused')
     replace_slot(d,'lesson-title',title)
