@@ -123,9 +123,16 @@ never a reason to discard evidence or invent a custom engine.
 
 ## Compatibility and scope
 
-Legacy `parse`, `outline` and historical assembly bodies remain in the repo for
-separately authorized migration/cleanup. They are not reachable through the new
-production build entry. Old free-form snapshots lacking explicit M1 fields are
+M3 removed the private, uncalled JavaScript `legacyBuild` function and only the
+unreachable native assembly statements after unconditional `build_from_outline`
+returns or module exits. Exported `parse`, `outline`, `offline`, `E`, `steps` and
+`build` remain unchanged. Active source loading, command-line dispatch, imports
+and shared helpers/constants are preserved: the native builders import the
+Prototype module for its master, and the production checker reads `B.P.FORM`.
+No supposedly unused shared helper was removed. F1/M1/M2 still run through the
+same production boundary before the renderer and output write.
+
+Old free-form snapshots lacking explicit M1 fields are
 rejected. Missing provenance and old `RECOVERY`/`ASSESS` modes are also rejected;
 M1 does not silently migrate them, change their source content, or rebuild HTML.
 

@@ -67,67 +67,6 @@ def build(phase,day):
     preflight({'course':'Tech','dayid':did,'unit':5,'part':part,'day':day,'title':title},s)
     from wayfinder_lesson import build_from_outline
     return build_from_outline({'course':'Tech','dayid':did,'unit':5,'part':part,'day':day,'title':title},mode,P.MASTER,ROOT/'Tech'/f'{did}.html')
-    d=BeautifulSoup(P.MASTER,'html.parser')
-    for k,v in {'course-meta':f'Tech · Unit 5 · Part {part} · Day {day} — {label}','lesson-mode':f'Day {day} · {mode.title()} Focused','lesson-title':title,'lesson-deck':'One continuing game: preserve your working mechanics, make it meaningful and test purposeful improvements.'}.items():P.replace_slot(d,k,v)
-    target=field(s,'LEARNING TARGET:');P.replace_slot(d,'learning-target',esc(target).replace(' because ',' <strong>because</strong> '),True)
-    teks=re.search(r'Priority TEKS — In Our Words\n((?:§[^\n]+\n)+)',s).group(1);P.replace_slot(d,'priority-teks',' '.join(teks.splitlines()));P.replace_slot(d,'supporting-teks',field(s,'Supporting TEKS:') or 'Apply the design-process and transfer skills named above; actual project tests provide performance evidence.')
-    mission=d.find(id='learningTarget').select_one('.today-mission');mission.clear();mission.append(P.frag('<strong>Today’s Mission:</strong> '+esc(title)+'. Keep the same continuing game.'))
-    for id in ['masteryTwo']:d.find(id=id).decompose()
-    records=source_records(s);dest={'temp':P.FORM+did+'29999','labs':P.FORM+did+'20000'}
-    if day<=3:
-        dest.update(warm=P.FORM+did+'09998',q1=P.FORM+records[0]['key']);P.replace_slot(d,'warm-hook',findfield(s,'WARM-UP ('));d.select_one('[data-slot="warm-specimen"]').decompose();d.select_one('[data-warm-choices]').decompose();d.find(id='warmAnswer')['placeholder']='Write a brief answer from your own observation or imagination.'
-        notes=['Tank: Keep the same game; make one purposeful improvement.','Forge: Save a working backup before changing the project.','Joey: A player needs to see what matters.','Percival.12: Describe what your test actually showed.']
-        for i,note in enumerate(notes,1):P.replace_slot(d,f'rtf-note-{i}',note)
-        P.replace_slot(d,'mastery-q1',records[0]['prompt']);r=d.select_one('[data-assembler="one"]');r.clear();r.append(P.frag(P.answer_markup('Explain every requested part of the scenario.',STEMS[phase][day-1])))
-        P.replace_slot(d,'q1-help','Use the shared example; a finished game is not required to explain your reasoning. '+STEMS[phase][day-1])
-        d.find(id='masteryOne').append(P.frag(paragraph('Daily mastery: explain the requested design choices and test. Find grades and corrective feedback in Skyward; improve the weak part and resubmit through this same question and Form.')))
-        if phase=='story' and day in [2,3]:d.find(id='masteryOne').find('h2').insert_after(P.frag(figure('contrast' if day==2 else 'collision')))
-    else:
-        d.find(id='warmup').decompose();d.find(id='masteryOne').decompose()
-    if day==1:
-        P.replace_slot(d,'group-learn',field(s,'LEARN:'));P.replace_slot(d,'authentic-example','Professional design connection: Nintendo’s Super Mario games use a recognizable hero, world, goals and feedback to give running and jumping rules meaning. Our classroom game keeps its own original art and story. Source: Nintendo, Super Mario.');P.replace_slot(d,'leader-discussion','<p><strong>Discuss:</strong> Which design decision changes the player’s experience without creating an unrelated game? Explain one reason.</p>',True)
-        for slot in ['learn-design-guidance','rtf-learning-skit']:d.select_one('[data-slot="'+slot+'"]').decompose()
-        d.select_one('[data-slot="learn-content"]').replace_with(P.frag(figure('story') if phase=='story' else paragraph('Feature pitch: story reason → trigger → changed state/rule → visible feedback → fair test. A precise feature describes what happens and how the player notices it.')))
-        P.replace_slot(d,'group-practice',field(s,'GROUP PRACTICE:'));P.replace_slot(d,'practice-steps','<li>Observe the teacher’s shared example.</li><li>Identify what stays the same and what changes.</li><li>Predict one way to test the design choice.</li>',True);d.select_one('[data-slot="practice-specimen"]').decompose()
-        road='<section class="panel starter-roadmap" id="partRoadmap"><h2>Our '+label+' Roadmap</h2>'+paragraph(src['tabs'][0]['text'].splitlines()[1])+('<ol><li>Plan your character, world, conflict and audience.</li><li>Make original readable costumes and backdrop.</li><li>Test that the art preserves the working rules.</li><li>Assess taught skills, finish the milestone and recover posted feedback.</li></ol>' if phase=='story' else '<ol><li>Pitch one story-related feature and a fair test.</li><li>Adapt one supported code recipe.</li><li>Playtest, fix one problem and polish.</li><li>Assess taught concepts, finish the arcade showcase and recover posted feedback.</li></ol>')+paragraph('Success: '+(field(s,'MILESTONE:') or 'One purposeful feature plan that builds on the same working story game.'))+'</section>'
-        d.find(id='learningTarget').insert_after(P.frag(road))
-    else:
-        d.find(id='groupLearn').decompose();d.find(id='groupPractice').decompose()
-    if day!=4:
-        steps=(STORY_STEPS if phase=='story' else INNOVATION_STEPS)[day];P.replace_slot(d,'perform-goal',findfield(s,'PERFORM (') if day<=3 else 'Use about half the class to finish and submit the same game milestone; use the other half for recovery from posted feedback.');add_steps(d,steps)
-        shelf=d.select_one('[data-slot="perform-resources"]');shelf.attrs.pop('hidden',None);shelf.clear();shelf.append(P.frag('<h3>Resources for today’s work</h3>'+paragraph('Use the teacher-approved TurboWarp editor, your SAME saved .sb3, and your '+('Story Map' if phase=='story' else 'Feature Card')+'. Original drawing uses built-in tools; no external art download or account is needed. File > Save to your computer keeps the editable project.')))
-        if day in [2,3]:shelf.append(P.frag('<details><summary>Tool reminder and teacher demonstration</summary>'+paragraph(field(s,'LEARN:'))+paragraph(field(s,'GROUP PRACTICE:'))+'</details>'))
-        if phase=='story' and day>=3:recipes(shelf)
-        if phase=='innovation':
-            if day>=2:add_innovation_recipes(shelf)
-            else:shelf.append(P.frag(paragraph('Choose one supported direction for your plan: a timed shield, gradual speed progression, or one additional enemy. Implement it during the next work session.')))
-        exemplar=d.select_one('[data-slot="perform-exemplar"]');exemplar.replace_with(P.frag(figure('story') if phase=='story' else paragraph('Test note: player action → expected result → observed result → one change → repeated test. Record your own actual results.')))
-        P.replace_slot(d,'perform-criteria',field(s,'MILESTONE:') or field(s,'MILESTONE CRITERIA:') or 'Same game saved and submitted, core behavior preserved, one real test/revision recorded; original evidence recovery uses posted feedback.')
-        if day==5:
-            d.find(id='perform').find('h2').string='Finish, Showcase & Recover';d.find(id='gateway').decompose()
-    else:
-        d.find(id='perform').decompose();d.find(id='gateway').decompose();study=findfield(s,'PARTIAL STUDY & RECALL') or findfield(s,'STUDY & RECALL')
-        guide='<section class="panel learn" id="studyRecall"><h2>Study & Recall</h2>'+paragraph(study)+paragraph('A protagonist acts; a setting is the world; a conflict creates stakes. A costume is a sprite’s artwork; contrast separates visual elements. A mechanic is a repeatable rule; a variable stores changing state; a condition checks a rule. A playtest compares expected and observed results; a targeted revision addresses an observed problem.')+paragraph('Consult these notes during the short assessment. Budget about 25 minutes, including four Form trips. Four equally weighted sections make one Major grade. No game building during the test.')+'</section>'
-        d.find(id='learningTarget').insert_after(P.frag(guide));anchor=d.find(id='studyRecall')
-        for rec in records:
-            n=rec['n'];stem=['My design choice is … because … .','I would change … so the player … .','I would check … and repeat … .','The useful observation is … . I would revise … and verify … .'][n-1]
-            card=P.frag(P.assessment_card(n,rec['title'],rec['prompt'],stem).replace('id="assessmentSection','id="section'));anchor.insert_after(card);anchor=d.find(id='section'+str(n));dest['section'+str(n)]=P.FORM+rec['key']
-        anchor.insert_after(P.frag('<section class="panel practice" id="priorDailyRecovery"><h2>After the Assessment: Earlier Daily Recovery</h2>'+paragraph('Use posted Skyward feedback to improve earlier Daily answers through their original guides and Form routes. Do not recover the new Major before section feedback is posted. If that feedback is delayed, move its recovery opportunity and continue genuine Daily recovery.')+'</section>'))
-    if day<=3:
-        for label,text in zip(d.find(id='gateway').select('label'),['I recorded my Warm-Up.','I submitted the Daily question through its school Form.','I completed and saved today’s planned work.','I submitted my TEKS Temperature Check.']):
-            c=label.find('input');c.extract();label.clear();label.append(c);label.append(' '+text)
-    for i,word in enumerate(['one','two','three']):P.replace_slot(d,'lab-'+word+'-title','Idea '+str(i+1));P.replace_slot(d,'lab-'+word+'-instructions',IDEAS[phase][day-1][i]);d.select_one('[data-slot="lab-'+word+'-example"]').decompose()
-    P.replace_slot(d,'labs-intro','Use today’s taught tools for one playful extension. Try, combine or adapt one of these ideas, then record what you tried or discovered. A meaningful attempt counts; you do not need three finished products.')
-    for t in d.find_all('template'):t.decompose()
-    d.select_one('.footer').string='RTF Wayfinder · Tech · Game Design Studio'
-    comic=d.find(id='comicSlot');comic['style']='display:block;aspect-ratio:auto;min-height:0;max-width:100%;overflow-x:auto';comic['tabindex']='0';comic['aria-label']='Four-panel comic; scroll horizontally to read every panel';comic.insert_after(P.frag('<p class="micro">Swipe or use arrow keys to read all four comic panels.</p>'))
-    style=d.new_tag('style');style.string='#comicSlot img{width:100%;height:auto;min-width:560px;max-width:none}';d.head.append(style)
-    config={'mode':mode,'imagePools':{'target':[{'src':'../assets/learning-target/pixel-archery-target.webp','alt':'Pixel holding a learning target'}],'temperature':[],'labs':[],'comics':[{'src':'../assets/rtf-comics/comic-pet-supervision.webp','alt':'Approved pet-supervision office comic with Pixel, Onion.exe and Percival'}],'skits':P.SKITS},'destinations':dest}
-    for mirror in d.select('[data-mirror]'):
-        orig=d.select_one('[data-slot="'+mirror['data-mirror']+'"]');mirror.string=orig.get_text(' ',strip=True)
-    out=str(d);out=re.sub(r'const WAYFINDER_CONFIG=.*?;',lambda m:'const WAYFINDER_CONFIG='+json.dumps(config,ensure_ascii=False)+';',out,count=1)
-    meta={'dayid':did,'source_document':src['documentId'],'source_revision':src['revision'],'source_tab':tab['id'],'master_sha256':hashlib.sha256(P.MASTER.encode()).hexdigest(),'Captain_checks':'UNTESTED — Forms, visual layout and student-facing functionality; no release','pinned_records':records}
-    out=out.replace('<body','<!-- WF-HANDOFF '+json.dumps(meta,ensure_ascii=False)+' -->\n<body',1);out=out.replace('</head>','<meta name="robots" content="noindex"/>\n</head>');(ROOT/'Tech'/f'{did}.html').write_text(out);return did
 
 def add_innovation_recipes(shelf):
     # The original controls continue unchanged for every branch.
