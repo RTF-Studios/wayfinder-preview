@@ -1,0 +1,243 @@
+{
+  "status": "FAIL",
+  "scope": "Read-only batch delivery audit; not publication/student readiness or release",
+  "selected": [
+    "Tech/3050202",
+    "Tech/3050203"
+  ],
+  "selectedCount": 2,
+  "resultCount": 2,
+  "results": [
+    {
+      "selection": "Tech/3050202",
+      "status": "FAIL",
+      "checks": {
+        "githubReadback": {
+          "status": "PASS",
+          "detail": {
+            "commit": "f2388d30198168afbfd6d37875ef68fc5d603786",
+            "blobSha": "6f791e63d7f47511eb7f99ae6a68da904760b8eb"
+          }
+        },
+        "identity": {
+          "status": "PASS",
+          "findings": []
+        },
+        "offline": {
+          "status": "PASS",
+          "findings": []
+        },
+        "content": {
+          "status": "PASS",
+          "detail": {
+            "mode": "LEARN",
+            "questionKeys": [
+              "305020230060"
+            ],
+            "sourceRevision": "AHj4eMTLQSGxDstLPtQoTtlK01NkYbOSVO4FwDxHKLdHeR8_rDWDK_diEM6U3XOklqWH1cjvb42c1tNbTPi_I4choZpO04KNnKGQvJO8pxQ",
+            "sourceSha256": "8c7ad43528ae16749fa1e0ae5eec77abc408b57df299a1f2991c78120427342f",
+            "scope": "Existing native source delivery fidelity; no new curriculum approval"
+          }
+        },
+        "masterVersion": {
+          "status": "FAIL",
+          "finding": "Shared engine differs from current master; Master CSS differs; no normalization/automatic repair permitted"
+        },
+        "fileSize": {
+          "status": "PASS",
+          "detail": {
+            "bytes": 323144,
+            "maximumBytes": 2097152
+          }
+        },
+        "byteParity": {
+          "status": "PASS",
+          "detail": {
+            "bytesEqual": true,
+            "sha256Equal": true
+          }
+        },
+        "mappingsAndPreservation": {
+          "status": "PASS",
+          "detail": {
+            "driveId": "1noc3aO-UGmPqnzkRDHjqRFDo5BkDliY0",
+            "show": false,
+            "preview": "https://rtf-studios.github.io/wayfinder-preview/Tech/3050202.html",
+            "download": "https://drive.google.com/uc?export=download&id=1noc3aO-UGmPqnzkRDHjqRFDo5BkDliY0",
+            "scope": "Authenticated metadata/mapping/formula readback; hidden guides not released or clicked as students"
+          }
+        }
+      },
+      "dayid": "3050202",
+      "path": "Tech/3050202.html",
+      "bytes": 323144,
+      "githubSha256": "3bfaaf1222ce5d4fe157eb6a8a69ccb15b37d762697ea184ee99aa5f5cd3c405",
+      "driveBytes": 323144,
+      "driveSha256": "3bfaaf1222ce5d4fe157eb6a8a69ccb15b37d762697ea184ee99aa5f5cd3c405"
+    },
+    {
+      "selection": "Tech/3050203",
+      "status": "FAIL",
+      "checks": {
+        "githubReadback": {
+          "status": "PASS",
+          "detail": {
+            "commit": "f2388d30198168afbfd6d37875ef68fc5d603786",
+            "blobSha": "ffa42cc55d130f1604f0e06a9fc958fc44cd7943"
+          }
+        },
+        "identity": {
+          "status": "PASS",
+          "findings": []
+        },
+        "offline": {
+          "status": "PASS",
+          "findings": []
+        },
+        "content": {
+          "status": "PASS",
+          "detail": {
+            "mode": "PERFORM",
+            "questionKeys": [
+              "305020330061"
+            ],
+            "sourceRevision": "AHj4eMTLQSGxDstLPtQoTtlK01NkYbOSVO4FwDxHKLdHeR8_rDWDK_diEM6U3XOklqWH1cjvb42c1tNbTPi_I4choZpO04KNnKGQvJO8pxQ",
+            "sourceSha256": "13e1c7a61cfad83a346ffc237fb0e4c29cc492022b131164ff7e9aae41562fd6",
+            "scope": "Existing native source delivery fidelity; no new curriculum approval"
+          }
+        },
+        "masterVersion": {
+          "status": "FAIL",
+          "finding": "Shared engine differs from current master; Master CSS differs; no normalization/automatic repair permitted"
+        },
+        "fileSize": {
+          "status": "PASS",
+          "detail": {
+            "bytes": 319588,
+            "maximumBytes": 2097152
+          }
+        },
+        "byteParity": {
+          "status": "PASS",
+          "detail": {
+            "bytesEqual": true,
+            "sha256Equal": true
+          }
+        },
+        "mappingsAndPreservation": {
+          "status": "PASS",
+          "detail": {
+            "driveId": "1IyU_9P95l5ZzVE26SJZ9q7QfJSoyJqcE",
+            "show": false,
+            "preview": "https://rtf-studios.github.io/wayfinder-preview/Tech/3050203.html",
+            "download": "https://drive.google.com/uc?export=download&id=1IyU_9P95l5ZzVE26SJZ9q7QfJSoyJqcE",
+            "scope": "Authenticated metadata/mapping/formula readback; hidden guides not released or clicked as students"
+          }
+        }
+      },
+      "dayid": "3050203",
+      "path": "Tech/3050203.html",
+      "bytes": 319588,
+      "githubSha256": "524e5bd6ae05f691fffb9cd67958f0c4128fe060af21e00d8748102bea3ada09",
+      "driveBytes": 319588,
+      "driveSha256": "524e5bd6ae05f691fffb9cd67958f0c4128fe060af21e00d8748102bea3ada09"
+    }
+  ],
+  "untested": [
+    "Real school-browser permissions",
+    "Actual Collector receipts",
+    "Student-account download access",
+    "New M1 structured-source/M2 curriculum-review acceptance of these existing legacy guides"
+  ],
+  "productionWrites": 0,
+  "studentRelease": false,
+  "m4Execution": "COMPLETE_WITH_FINDINGS; no production repairs authorized",
+  "authorization": "Captain GO M4 F4.1-F4.4 and two-guide read-only pilot",
+  "detectionTests": {
+    "status": "PASS",
+    "tests": 17,
+    "isolatedOnly": true,
+    "productionMutations": 0,
+    "cases": [
+      "missing GitHub file",
+      "missing Drive file",
+      "same-size and changed-size mismatch",
+      "missing evidence",
+      "invalid and duplicate DayIDs",
+      "question mismatch",
+      "wrong GitHub blob",
+      "Drive ID/Show mismatch",
+      "old shared engine/CSS",
+      "external resource",
+      "oversized HTML",
+      "two-guide temporary positive control"
+    ]
+  },
+  "preservationChecks": {
+    "F1": {
+      "status": "PASS",
+      "tests": 69
+    },
+    "M1": {
+      "status": "PASS",
+      "tests": 145
+    },
+    "M2": {
+      "status": "PASS",
+      "tests": 70
+    },
+    "isolated3050201": "9f43ef8f317e56241ffe40ef77d3d92848f779f1dd5cb0e58d57a8a6e28ff0bc",
+    "M3": "current baseline f2388d30198168afbfd6d37875ef68fc5d603786; no builder code changed"
+  },
+  "masterDifference": {
+    "status": "FAIL",
+    "guides": [
+      "Tech/3050202.html",
+      "Tech/3050203.html"
+    ],
+    "javascript": "Guides use ASSESSMENT/RECOVERY Studio auto-unlock; current master uses ASSESSMENT only. Selected Learn/Perform modes do not activate either auto-unlock branch; no behavior regression is asserted.",
+    "css": "Guide .scaffold label font-weight 750 and legend 800; current master both 400.",
+    "action": "Recorded only; no Recovery, CSS, template or lesson correction under this GO."
+  },
+  "unrelatedBaseline": {
+    "scope": "Read-only tracked asset byte-size inventory; not part of selected guide results",
+    "maximumImageBytes": 256000,
+    "oversizedWebP": [
+      {
+        "path": "assets/lesson-content-assets/foggy-swamp-scenes-and-playgrounds-a.webp",
+        "bytes": 693242,
+        "blobSha": "7444fdb85832b2fc5f297ae62fab1ea3ff73c1a9",
+        "status": "FAIL"
+      },
+      {
+        "path": "assets/lesson-content-assets/foggy-swamp-scenes-and-playgrounds-b.webp",
+        "bytes": 649036,
+        "blobSha": "c20b0199c8edff3eb703dba122552fee91a85387",
+        "status": "FAIL"
+      },
+      {
+        "path": "assets/lesson-content-assets/moss-swamp-creatures-and-props-a.webp",
+        "bytes": 501762,
+        "blobSha": "edae08e2cc529737248e82175dc2b9e1dd01fb61",
+        "status": "FAIL"
+      },
+      {
+        "path": "assets/lesson-content-assets/moss-swamp-creatures-and-props-b.webp",
+        "bytes": 443378,
+        "blobSha": "effeffdd69f68219a540dd505dda3bedfa34d68e",
+        "status": "FAIL"
+      }
+    ],
+    "selectedGuideEmbeddedMediaChecks": "PASS; these four oversized derivatives are not required by either selected guide",
+    "repairs": "NOT AUTHORIZED"
+  },
+  "changedQAPaths": [
+    "scripts/check-batch-delivery.py",
+    "scripts/test-batch-delivery.py",
+    "scripts/batch-delivery-audit.md",
+    "scripts/fixtures/m4-delivery/evidence.json",
+    ".github/workflows/wayfinder-qa.yml",
+    "scripts/m4-batch-delivery-results.json"
+  ],
+  "hostedDetectionTests": "PENDING remote commit and CI readback; authenticated pilot results above are local connector-readback audit"
+}
