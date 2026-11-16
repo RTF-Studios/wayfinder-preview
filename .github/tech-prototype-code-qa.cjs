@@ -46,7 +46,9 @@ async function run(){
   await page.screenshot({path:path.join(output,'305020'+fixture.day+'-running.png')});
   // Bind executed fixture back to the exact current visible HTML text.
   await page.goto(require('url').pathToFileURL(path.join(root,fixture.path)).href);
-  assert.deepEqual(await page.locator('pre[aria-label="Block recipe"]').allTextContents(),fixture.recipes);
+  const html=fs.readFileSync(path.join(root,fixture.path),'utf8');
+  if([2,3].includes(fixture.day)&&html.includes('WF-INSTRUCTION-ROLES '))require('./tech-prototype-native-binding.cjs').binding(fixture,await page.locator('body').innerText(),html);
+  else assert.deepEqual(await page.locator('pre[aria-label="Block recipe"]').allTextContents(),fixture.recipes);
   results.push({day:fixture.day,status:'PASS',observed});await page.close();
  }}finally{await browser.close()}
 }

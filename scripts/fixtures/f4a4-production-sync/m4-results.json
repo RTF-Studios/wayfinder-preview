@@ -1,0 +1,300 @@
+{
+  "status": "PASS",
+  "scope": "Read-only batch delivery audit; not publication/student readiness or release",
+  "selected": [
+    "Tech/3050202",
+    "Tech/3050203"
+  ],
+  "selectedCount": 2,
+  "resultCount": 2,
+  "results": [
+    {
+      "selection": "Tech/3050202",
+      "status": "PASS",
+      "checks": {
+        "githubReadback": {
+          "status": "PASS",
+          "detail": {
+            "commit": "48e09b5dc1697e4968bbde8c85c02a3f5ba5bfc6",
+            "blobSha": "da8c2533b378bbbe68650a85cdb765405e1bcbf8"
+          }
+        },
+        "identity": {
+          "status": "PASS",
+          "findings": []
+        },
+        "offline": {
+          "status": "PASS",
+          "findings": []
+        },
+        "content": {
+          "status": "PASS",
+          "detail": {
+            "mode": "LEARN",
+            "questionKeys": [
+              "305020230060"
+            ],
+            "sourceRevision": "AHj4eMTLQSGxDstLPtQoTtlK01NkYbOSVO4FwDxHKLdHeR8_rDWDK_diEM6U3XOklqWH1cjvb42c1tNbTPi_I4choZpO04KNnKGQvJO8pxQ",
+            "sourceSha256": "c38504d11b0db26bdeeaf20c082e2ec6a161fac08b621f29279e5b451901f4d5",
+            "scope": "Existing native source delivery fidelity; no new curriculum approval"
+          }
+        },
+        "masterVersion": {
+          "status": "PASS",
+          "detail": {
+            "engineSha256": "e03551d7e7d9424a20fb01b78c0bbf0f7c8e1bf650d340d450b7626202cc30ec",
+            "cssSha256": "6249ec2e7a82b3c0f46db4021418ace60e875e2d162c3271fa44e97730730f0f",
+            "classification": "CURRENT_MASTER",
+            "currentMasterMatch": true
+          }
+        },
+        "packaging": {
+          "status": "PASS",
+          "detail": {
+            "auditStatus": "PASS",
+            "defects": [],
+            "styles": [
+              {
+                "index": 0,
+                "sha256": "6249ec2e7a82b3c0f46db4021418ace60e875e2d162c3271fa44e97730730f0f"
+              },
+              {
+                "index": 1,
+                "sha256": "40e77a295f2bd7f2018e00d315dac96497bb32cbcfc41829bcf20b961b3e01c9"
+              }
+            ],
+            "scripts": [
+              {
+                "index": 0,
+                "sha256": "e0199a135d343b0022b4051f9c8066e37c02ab8c0c38ee1e3aea63ee201b3b92",
+                "src": null,
+                "role": "shared-engine"
+              }
+            ],
+            "inlineStyles": [
+              {
+                "tag": "div",
+                "style": "max-width:440px;min-height:120px",
+                "id": "labArt",
+                "slot": null,
+                "role": null
+              },
+              {
+                "tag": "div",
+                "style": "display:block;aspect-ratio:auto;min-height:0;max-width:100%;overflow-x:auto",
+                "id": "comicSlot",
+                "slot": null,
+                "role": "Four-panel comic; scroll horizontally to read every panel"
+              }
+            ],
+            "inlineEventHandlers": [],
+            "classification": "DOCUMENTED_LESSON_PACKAGING",
+            "reference": "F4a3 isolated current-master Learn/Perform composition; exact comic access rule; no extra scripts or event handlers",
+            "knownAdditions": [],
+            "scope": "Exact M4a-inspected packaging; not global template approval or browser verification"
+          }
+        },
+        "sections": {
+          "status": "PASS",
+          "detail": {
+            "auditStatus": "PASS",
+            "defects": [],
+            "needsReview": [],
+            "mode": "LEARN",
+            "sections": [
+              "learningTarget",
+              "warmup",
+              "lessonVocabulary",
+              "group_learn",
+              "groupPractice",
+              "masteryOne",
+              "lessonClose",
+              "temperature",
+              "gateway",
+              "creativeLabs"
+            ],
+            "scope": "Validated current native mapped roles and literal passage fidelity; no curriculum waiver"
+          }
+        },
+        "fileSize": {
+          "status": "PASS",
+          "detail": {
+            "bytes": 316139,
+            "maximumBytes": 2097152
+          }
+        },
+        "byteParity": {
+          "status": "PASS",
+          "detail": {
+            "bytesEqual": true,
+            "sha256Equal": true
+          }
+        },
+        "mappingsAndPreservation": {
+          "status": "PASS",
+          "detail": {
+            "driveId": "1noc3aO-UGmPqnzkRDHjqRFDo5BkDliY0",
+            "show": false,
+            "preview": "https://rtf-studios.github.io/wayfinder-preview/Tech/3050202.html",
+            "download": "https://drive.google.com/uc?export=download&id=1noc3aO-UGmPqnzkRDHjqRFDo5BkDliY0",
+            "scope": "Authenticated metadata/mapping/formula readback; hidden guides not released or clicked as students"
+          }
+        }
+      },
+      "dayid": "3050202",
+      "path": "Tech/3050202.html",
+      "bytes": 316139,
+      "githubSha256": "84675dda2378eb97aff7c9c9ef8ade8356951cfb4ea439b7f0c3c4a51ee25890",
+      "driveBytes": 316139,
+      "driveSha256": "84675dda2378eb97aff7c9c9ef8ade8356951cfb4ea439b7f0c3c4a51ee25890"
+    },
+    {
+      "selection": "Tech/3050203",
+      "status": "PASS",
+      "checks": {
+        "githubReadback": {
+          "status": "PASS",
+          "detail": {
+            "commit": "48e09b5dc1697e4968bbde8c85c02a3f5ba5bfc6",
+            "blobSha": "d0d12455e5a4af2ed499b1aaa2c8f9d741453736"
+          }
+        },
+        "identity": {
+          "status": "PASS",
+          "findings": []
+        },
+        "offline": {
+          "status": "PASS",
+          "findings": []
+        },
+        "content": {
+          "status": "PASS",
+          "detail": {
+            "mode": "PERFORM",
+            "questionKeys": [
+              "305020330061"
+            ],
+            "sourceRevision": "AHj4eMTLQSGxDstLPtQoTtlK01NkYbOSVO4FwDxHKLdHeR8_rDWDK_diEM6U3XOklqWH1cjvb42c1tNbTPi_I4choZpO04KNnKGQvJO8pxQ",
+            "sourceSha256": "02b54cdaad2e51dd7b336d4099c59bba5e78d3348bc068af6fea19c711f07b26",
+            "scope": "Existing native source delivery fidelity; no new curriculum approval"
+          }
+        },
+        "masterVersion": {
+          "status": "PASS",
+          "detail": {
+            "engineSha256": "e03551d7e7d9424a20fb01b78c0bbf0f7c8e1bf650d340d450b7626202cc30ec",
+            "cssSha256": "6249ec2e7a82b3c0f46db4021418ace60e875e2d162c3271fa44e97730730f0f",
+            "classification": "CURRENT_MASTER",
+            "currentMasterMatch": true
+          }
+        },
+        "packaging": {
+          "status": "PASS",
+          "detail": {
+            "auditStatus": "PASS",
+            "defects": [],
+            "styles": [
+              {
+                "index": 0,
+                "sha256": "6249ec2e7a82b3c0f46db4021418ace60e875e2d162c3271fa44e97730730f0f"
+              },
+              {
+                "index": 1,
+                "sha256": "40e77a295f2bd7f2018e00d315dac96497bb32cbcfc41829bcf20b961b3e01c9"
+              }
+            ],
+            "scripts": [
+              {
+                "index": 0,
+                "sha256": "0ef6ea282d22fa45f1f98634be8d6f7b0ff010814eca1608af03b76d2953668b",
+                "src": null,
+                "role": "shared-engine"
+              }
+            ],
+            "inlineStyles": [
+              {
+                "tag": "div",
+                "style": "max-width:440px;min-height:120px",
+                "id": "labArt",
+                "slot": null,
+                "role": null
+              },
+              {
+                "tag": "div",
+                "style": "display:block;aspect-ratio:auto;min-height:0;max-width:100%;overflow-x:auto",
+                "id": "comicSlot",
+                "slot": null,
+                "role": "Four-panel comic; scroll horizontally to read every panel"
+              }
+            ],
+            "inlineEventHandlers": [],
+            "classification": "DOCUMENTED_LESSON_PACKAGING",
+            "reference": "F4a3 isolated current-master Learn/Perform composition; exact comic access rule; no extra scripts or event handlers",
+            "knownAdditions": [],
+            "scope": "Exact M4a-inspected packaging; not global template approval or browser verification"
+          }
+        },
+        "sections": {
+          "status": "PASS",
+          "detail": {
+            "auditStatus": "PASS",
+            "defects": [],
+            "needsReview": [],
+            "mode": "PERFORM",
+            "sections": [
+              "learningTarget",
+              "warmup",
+              "lessonVocabulary",
+              "groupPractice",
+              "masteryOne",
+              "perform",
+              "lessonClose",
+              "temperature",
+              "gateway",
+              "creativeLabs"
+            ],
+            "scope": "Validated current native mapped roles and literal passage fidelity; no curriculum waiver"
+          }
+        },
+        "fileSize": {
+          "status": "PASS",
+          "detail": {
+            "bytes": 316365,
+            "maximumBytes": 2097152
+          }
+        },
+        "byteParity": {
+          "status": "PASS",
+          "detail": {
+            "bytesEqual": true,
+            "sha256Equal": true
+          }
+        },
+        "mappingsAndPreservation": {
+          "status": "PASS",
+          "detail": {
+            "driveId": "1IyU_9P95l5ZzVE26SJZ9q7QfJSoyJqcE",
+            "show": false,
+            "preview": "https://rtf-studios.github.io/wayfinder-preview/Tech/3050203.html",
+            "download": "https://drive.google.com/uc?export=download&id=1IyU_9P95l5ZzVE26SJZ9q7QfJSoyJqcE",
+            "scope": "Authenticated metadata/mapping/formula readback; hidden guides not released or clicked as students"
+          }
+        }
+      },
+      "dayid": "3050203",
+      "path": "Tech/3050203.html",
+      "bytes": 316365,
+      "githubSha256": "080c5efc2f24c39604a3c26cfa6922d9127ccdf110bc2a173106e6d6a003fa55",
+      "driveBytes": 316365,
+      "driveSha256": "080c5efc2f24c39604a3c26cfa6922d9127ccdf110bc2a173106e6d6a003fa55"
+    }
+  ],
+  "untested": [
+    "Real school-browser permissions",
+    "Actual Collector receipts",
+    "Student-account download access",
+    "New M1 structured-source/M2 curriculum-review acceptance of these existing legacy guides"
+  ],
+  "productionWrites": 0,
+  "studentRelease": false
+}

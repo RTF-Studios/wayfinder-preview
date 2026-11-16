@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "rows": [
+    {
+      "dayid": "3050202",
+      "F1": "PASS",
+      "M1": "PASS",
+      "M2": "PASS",
+      "sourceSha256": "c38504d11b0db26bdeeaf20c082e2ec6a161fac08b621f29279e5b451901f4d5",
+      "fullKeys": [
+        "305020230060"
+      ],
+      "pacing": 50,
+      "freshBuildEqualsBothSavedCopies": true
+    },
+    {
+      "dayid": "3050203",
+      "F1": "PASS",
+      "M1": "PASS",
+      "M2": "PASS",
+      "sourceSha256": "02b54cdaad2e51dd7b336d4099c59bba5e78d3348bc068af6fea19c711f07b26",
+      "fullKeys": [
+        "305020330061"
+      ],
+      "pacing": 50,
+      "freshBuildEqualsBothSavedCopies": true
+    }
+  ]
+}

@@ -3,6 +3,7 @@ const fs=require('fs'),path=require('path'),cp=require('child_process');
 const {pathToFileURL}=require('url');
 const {chromium}=require('./qa-run/node_modules/playwright');
 const {validate:validateGuideIdentity,selfTest:identitySelfTest}=require('./guide-identity-qa.cjs');
+const destinationEntries=require('./wayfinder-destination-entries.cjs');
 const root=path.resolve(__dirname,'..'),issues=[],args=process.argv.slice(2);
 const evidenceDir=process.env.WF_QA_EVIDENCE_DIR;
 const evidenceRows=[];
@@ -40,7 +41,7 @@ function sharedPiece(source,start,end){
 
 const files=[...new Set(args.includes('--master-only')?[master]:[master,gold,...(args.includes('--changed')?changed():[]),...(args.includes('--all-upcoming')?allUpcoming:[]),...args.filter(x=>/^(Tech|CS|AAVTC)\/\d{7}\.html$/.test(x))])];
 async function run(){
- identitySelfTest();
+ identitySelfTest();destinationEntries.selfTest();
  const browser=await chromium.launch({headless:true,args:['--no-sandbox','--allow-file-access-from-files']});
  try{for(const f of files){
  const p=path.join(root,f);
@@ -63,6 +64,7 @@ async function run(){
   section:[...document.querySelectorAll('button.section-build[data-n]')].map(x=>x.dataset.n),
   evidence:[...document.querySelectorAll('button.evidence-create[data-submission]')].map(x=>x.dataset.submission),
   question:[...document.querySelectorAll('button.create-response[data-question]')].map(x=>x.dataset.question),
+  questionShells:['q1','q2'].filter((slot,n)=>document.querySelector(n===0?'#masteryOne,[data-question=one],[data-assembler=one]':'#masteryTwo,[data-question=two],[data-assembler=two]')),
   xtra:['tempCopy','studioCopy'].filter(x=>document.getElementById(x)),
   legacy:document.querySelectorAll('button.section-copy,button.copy,a.submit[data-submission],textarea.manual-response,.manual-copy-fallback').length,
   previews:document.querySelectorAll('.assembled-preview').length
@@ -86,10 +88,10 @@ async function run(){
   check(captured.full.ok&&!captured.full.text.includes('[Not answered:'),f,'fully filled evidence has no incomplete markers');
  }
  if(f!==master&&f!==gold){
-  const keys=await page.evaluate(()=>Object.entries(WAYFINDER_CONFIG.destinations||{}).map(([slot,url])=>{
+  const keys=destinationEntries.active(await page.evaluate(()=>Object.entries(WAYFINDER_CONFIG.destinations||{}).map(([slot,url])=>{
    let full='';try{full=new URL(url).searchParams.get('entry.1954781253')||''}catch(e){}
    return {slot,full,url};
-  }));
+  })),pairs.questionShells);
   const day=path.basename(f,'.html');
   check(keys.length>0&&keys.every(x=>/^\d{12}$/.test(x.full)&&x.full.startsWith(day)),f,'all Form destination keys must be full unique DayID-prefixed 12-digit identities');
   check(new Set(keys.map(x=>x.full)).size===keys.length,f,'duplicate full Form destination key');

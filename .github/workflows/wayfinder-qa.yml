@@ -26,6 +26,8 @@ on:
       - 'AAVTC/**/*.html'
       - 'templates/wayfinder-master.html'
       - '.github/submission-contract-qa.cjs'
+      - '.github/wayfinder-destination-entries.cjs'
+      - '.github/test-tech-prototype-native-binding.cjs'
       - '.github/guide-identity-qa.cjs'
       - '.github/tech-prototype-*'
       - '.github/cs-part2-qa.cjs'
@@ -61,6 +63,8 @@ on:
       - 'AAVTC/**/*.html'
       - 'templates/wayfinder-master.html'
       - '.github/submission-contract-qa.cjs'
+      - '.github/wayfinder-destination-entries.cjs'
+      - '.github/test-tech-prototype-native-binding.cjs'
       - '.github/guide-identity-qa.cjs'
       - '.github/tech-prototype-*'
       - '.github/cs-part2-qa.cjs'
@@ -121,7 +125,7 @@ jobs:
           let runtime=true;const base=process.env.BASE_SHA;
           if(base&& !/^0+$/.test(base))try{
             const names=cp.execFileSync('git',['diff','--name-only',base,'HEAD'],{encoding:'utf8'}).trim().split('\n');
-            runtime=names.some(p=>/^(?:templates\/|assets\/shared\/|(?:Tech|CS|AAVTC)\/.*\.html$|scripts\/wayfinder-(?:record-renderer|presentation)|\.github\/(?:submission-contract-qa|guide-identity-qa|.*browser|tech-prototype|cs-part2-qa|wayfinder-qa|master-qa))/.test(p));
+            runtime=names.some(p=>/^(?:templates\/|assets\/shared\/|(?:Tech|CS|AAVTC)\/.*\.html$|scripts\/wayfinder-(?:record-renderer|presentation)|\.github\/(?:submission-contract-qa|guide-identity-qa|wayfinder-destination-entries|.*browser|tech-prototype|cs-part2-qa|wayfinder-qa|master-qa))/.test(p));
           }catch{runtime=true;}
           fs.appendFileSync(process.env.GITHUB_OUTPUT,'runtime='+runtime+'\n');
           JS
@@ -146,7 +150,9 @@ jobs:
         run: node .github/submission-contract-qa.cjs Tech/3050201.html Tech/3050202.html Tech/3050203.html Tech/3050204.html Tech/3050205.html Tech/3050206.html Tech/3050207.html
       - name: Execute the displayed block recipes in TurboWarp
         if: always()
-        run: node .github/tech-prototype-code-qa.cjs
+        run: |
+          node .github/test-tech-prototype-native-binding.cjs
+          node .github/tech-prototype-code-qa.cjs
       - name: Preserve offline browser, clipboard and viewport evidence
         if: always()
         uses: actions/upload-artifact@v4

@@ -1,0 +1,355 @@
+{
+  "schemaVersion": 1,
+  "purpose": "F4a4 actual authenticated production synchronization audit. before/after are the read-only post-write audit window; deploymentBefore retains actual predeployment metadata/hashes.",
+  "capturedAt": "2026-11-16",
+  "repository": "RTF-Studios/wayfinder-preview",
+  "entries": {
+    "3050202": {
+      "course": "Tech",
+      "mode": "LEARN",
+      "github": {
+        "commit": "48e09b5dc1697e4968bbde8c85c02a3f5ba5bfc6",
+        "blobSha": "da8c2533b378bbbe68650a85cdb765405e1bcbf8"
+      },
+      "source": {
+        "documentId": "1uT88cp1mVW7D8HFj6EL51_nlvlRc531uiGZcKcHEI48",
+        "revision": "AHj4eMTLQSGxDstLPtQoTtlK01NkYbOSVO4FwDxHKLdHeR8_rDWDK_diEM6U3XOklqWH1cjvb42c1tNbTPi_I4choZpO04KNnKGQvJO8pxQ",
+        "tabId": "t.o8ac01279hmn",
+        "text": "DAY 2 | DAYID 3050202 | LEARN | Make the Player Move\nLEARNING TARGET: I can connect events, loops and position changes because repeatable controls make interactive objects predictable.\nPriority TEKS — In Our Words\n§126.18(c)(3)(B): Plan, choose digital tools, build a prototype, and improve it through tests and revisions.\n§126.18(c)(4)(C): Use what you already know to learn an unfamiliar technology.\nSupporting TEKS: §126.18(c)(1)(D): Work together on a flowchart showing a problem, solutions and a development timeline. §126.18(c)(1)(F): Explain why repeating code or steps can make an algorithm useful.\n50-MINUTE RHYTHM: 4 min Warm-Up; 13 min Group Learn with live teacher demo; 7 min Group Practice/prediction; 6 min independent DAILY evidence; 15 min project build/test; 5 min save/TEKS Temperature/Studio as appropriate. Shrink activities before rushing or making assumptions about previous class completion.\nWARM-UP (participation; full key 305020209998): Which arrow key should move the square toward the right side of the screen, and how would you check?\nGROUP LEARN / HOOK: An EVENT starts a script; a FOREVER loop repeats checks; CHANGE X changes horizontal position. The teacher projects and models this exact Player script: when green flag clicked → go to x:0 y:−125 → forever {if key [right arrow] pressed? then change x by 8; if key [left arrow] pressed? then change x by −8; if x position > 215 then set x to 215; if x position < −215 then set x to −215}. Students observe how each block is located in Events, Motion, Control, Sensing and Operators. A restart must reset the same position each time.\nGROUP PRACTICE: Teacher drags one block at a time while class predicts outcome: green flag resets position; right key increases x; left decreases x; boundaries prevent disappearing. Students arrange a paper block-flow sketch before implementing.\nDAILY MASTERY STUDENT QUESTION — FULL KEY 305020230060: The player is at x=0 and must move right when a key is held. Name the relevant event/loop and x-change behavior, then describe how you would test that the green flag resets the player.\nPINNED HOLISTIC RUBRIC: Holistic 0–100: 90–100 accurate, specific and independently justified with a feasible test; 70–89 Names event and repeating input/motion steps and proposes a valid reset test; 50–69 partially correct, missing important detail or validation; below 50 insufficient/contradictory evidence. Missing/unsubmitted is a separate nonnumeric state under RTS-02.\nINDEPENDENCE: The question is answerable from TODAY'S teaching and examples without requiring the actual game to work or reference to an unfinished artifact. At most ONE short typed answer field; accessible optional selections may support it. Submit through the shared capture-first two-button Form workflow; no fabricated receipt.\nPERFORM / PROJECT DEVELOPMENT: Select Player only. Build the displayed reset-and-forever keyboard control. Test right, left, both stage edges, and stopping/restarting. Leave FallingObject untouched. Save the SAME project; do not duplicate it.\nCREATIVE STUDIO (one required participation zone, separate Xtra; student's choice using same taught tools): Try a slower value and explain the effect; compare two keyboard speeds; invent a player-friendly controls hint.\nTEKS TEMPERATURE CHECK: thumbs for today's skill plus optional specific confusion. Separate Xtra, not part of DAILY mastery or Major.\nEND-OF-DAY SAVED EVIDENCE: Square moves right and left, stays visible and resets on restart.\nNEXT DAY PREPARATION: Keep original file; do not start a second game or replace placeholder sprites until Part 3 (Story & Art).\n\nTeacher Reference / Evidence Alignment\nOfficial source: Texas Education Agency, 19 TAC Chapter 126, Subchapter B, §126.18(c), August 2024 PDF, page 5. https://tea.texas.gov/laws-and-rules/sboe-rules-tac/sboe-tac-currently-effect/ch126b.pdf . Verified 2026-11-12. Evergreen target: TECH-U05-P01. Unit planning: Personal TEKS Roadmap, Unit Roadmap TECH Unit 5 row 6; dates remain teacher-only.\n§126.18(c)(3)(B) official wording: “discuss and implement a design process that includes planning and selecting digital tools to develop and refine a prototype or model through trial and error.”\n§126.18(c)(4)(C) official wording: “transfer current knowledge to the learning of newly encountered technologies.”\n§126.18(c)(1)(D) official wording: “design a plan collaboratively using flowcharts to document a problem, possible solutions, and an expected timeline for the development of a coded solution.”\n§126.18(c)(1)(F) official wording: “analyze the benefits of using iteration (code and sequence repetition) in algorithms.”\nEvidence alignment: DAILY 305020230060: The player is at x=0 and must move right when a key is held. Name the relevant event/loop and x-change behavior, then describe how you would test that the green flag resets the player. The pinned rubric defines the limited reasoning evidence elicited here; an answer is not proof that the game ran.\nProject evidence: The approved Practice and Perform steps exercise tool selection, trial, test and revision (3B), and transfer from known controls/design ideas to TurboWarp (4C). Verify actual performance before treating it as demonstrated. Where listed, 3C industry process and 4B global trends are contextual/supporting exposure unless a source task explicitly asks for that explanation. Flowchart planning (1A/1D), generalization (1C), debugging analysis (1E), iteration benefits (1F), and variable/data-type explanations (2A) remain partial support unless all stated clauses are actually elicited or observed. Do not infer full standard mastery from using a tool, copying a recipe, drawing art or participating. No claim to text-based nested-loop standard (2B).\n\n"
+      },
+      "identity": {
+        "course": "Tech",
+        "dayid": "3050202",
+        "unit": 5,
+        "part": 2,
+        "day": 2,
+        "title": "Make the Player Move"
+      },
+      "identitySources": {
+        "summary": {
+          "approved": true,
+          "reference": "https://docs.google.com/document/d/1hdYPNgciqTp5-xSmwtS0ZWhvObttA_3C7C5Ydy9NBTg/edit",
+          "revision": "AHj4eMR535cB2jE35yX17g2Ep8h7l-2Yeyg-19Jut-14OdbkUnVY4Y56tXbNpoFTSN0NZjoMdWrst66-mWHjw_I27Xp53UJcyY98S3roeU4",
+          "locator": "Existing F3 checkpoint / F3 SOURCE IDENTITY CHECKPOINT — Captain F3 GO and Tank source-audit confirmation",
+          "identities": [
+            {
+              "course": "Tech",
+              "dayid": "3050202",
+              "unit": 5,
+              "part": 2,
+              "day": 2,
+              "title": "Make the Player Move"
+            },
+            {
+              "course": "Tech",
+              "dayid": "3050203",
+              "unit": 5,
+              "part": 2,
+              "day": 3,
+              "title": "Make the Circle Fall Forever"
+            }
+          ]
+        },
+        "masterOutline": {
+          "reference": "1uT88cp1mVW7D8HFj6EL51_nlvlRc531uiGZcKcHEI48",
+          "revision": "AHj4eMTLQSGxDstLPtQoTtlK01NkYbOSVO4FwDxHKLdHeR8_rDWDK_diEM6U3XOklqWH1cjvb42c1tNbTPi_I4choZpO04KNnKGQvJO8pxQ",
+          "locator": "t.o8ac01279hmn",
+          "identities": [
+            {
+              "course": "Tech",
+              "dayid": "3050202",
+              "unit": 5,
+              "part": 2,
+              "day": 2,
+              "title": "Make the Player Move"
+            }
+          ]
+        },
+        "controlStation": {
+          "reference": "https://docs.google.com/spreadsheets/d/1B6Qk618U56ee-vCi2kCCCFNhySxuCJku17xgG_xm8R8/edit?ouid=114469627065110853282",
+          "revision": "F4a4 live selected-cell readback 2026-11-16",
+          "locator": "Tech!A16:I16",
+          "identities": [
+            {
+              "course": "Tech",
+              "dayid": "3050202",
+              "unit": 5,
+              "part": 2,
+              "day": 2,
+              "title": "Unit 5 · Part 2 · Day 2 — Make the Player Move"
+            }
+          ]
+        }
+      },
+      "collector": [
+        [
+          "305020230060",
+          "The player is at x=0 and must move right when a key is held. Name the relevant event/loop and x-change behavior, then describe how you would test that the green flag resets the player.",
+          "Holistic 0–100: 90–100 accurate, specific and independently justified with a feasible test; 70–89 Names event and repeating input/motion steps and proposes a valid reset test; 50–69 partially correct, missing important detail or validation; below 50 insufficient/contradictory evidence. Missing/unsubmitted is a separate nonnumeric state under RTS-02.",
+          "Approved Unit 5 source GO 2026-11-11; full-key pinned directly from Master Outline; HTML/student display parity pending",
+          "TECH-U05-P01"
+        ]
+      ],
+      "before": {
+        "drive": {
+          "id": "1noc3aO-UGmPqnzkRDHjqRFDo5BkDliY0",
+          "name": "Intro Technology Unit 05 Part 02 Day 02.html",
+          "size": 316139,
+          "modified": "2026-11-16T13:08:47.080Z",
+          "parents": [
+            "15T7cNpKopCVQBx3FJ-JKy0aQjT-VTOCu"
+          ],
+          "mimeType": "text/html"
+        },
+        "control": {
+          "dayid": "3050202",
+          "show": false,
+          "released": "",
+          "title": "Unit 5 · Part 2 · Day 2 — Make the Player Move",
+          "preview": "https://rtf-studios.github.io/wayfinder-preview/Tech/3050202.html",
+          "section": "Unit 5 · Part 2 — Prototype"
+        },
+        "library": {
+          "dayid": "3050202",
+          "driveId": "1noc3aO-UGmPqnzkRDHjqRFDo5BkDliY0"
+        },
+        "downloadFormula": "=IFERROR(IF('File Links'!G2=\"\",\"\",HYPERLINK(\"https://drive.google.com/uc?export=download&id=\"&VLOOKUP('File Links'!G2,'File Links'!A:B,2,FALSE),\"⬇ DOWNLOAD HTML\")),\"\")",
+        "visibilityFormula": "=IFERROR(LET(raw,IMPORTRANGE(\"1B6Qk618U56ee-vCi2kCCCFNhySxuCJku17xgG_xm8R8\",\"Tech!C2:H\"),shown,FILTER(raw,INDEX(raw,0,1)=TRUE,INDEX(raw,0,2)<>\"\"),priority,MAP(INDEX(shown,0,3),LAMBDA(n,IF(n=\"\",1000000,IFERROR(VALUE(n),-1)))),arranged,SORT(HSTACK(shown,priority,SEQUENCE(ROWS(shown))),7,FALSE,8,TRUE),HSTACK(INDEX(arranged,0,6),INDEX(arranged,0,4),INDEX(arranged,0,2))),\"\")"
+      },
+      "expectedFolder": "15T7cNpKopCVQBx3FJ-JKy0aQjT-VTOCu",
+      "after": {
+        "drive": {
+          "id": "1noc3aO-UGmPqnzkRDHjqRFDo5BkDliY0",
+          "name": "Intro Technology Unit 05 Part 02 Day 02.html",
+          "size": 316139,
+          "modified": "2026-11-16T13:08:47.080Z",
+          "parents": [
+            "15T7cNpKopCVQBx3FJ-JKy0aQjT-VTOCu"
+          ],
+          "mimeType": "text/html"
+        },
+        "control": {
+          "dayid": "3050202",
+          "show": false,
+          "released": "",
+          "title": "Unit 5 · Part 2 · Day 2 — Make the Player Move",
+          "preview": "https://rtf-studios.github.io/wayfinder-preview/Tech/3050202.html",
+          "section": "Unit 5 · Part 2 — Prototype"
+        },
+        "library": {
+          "dayid": "3050202",
+          "driveId": "1noc3aO-UGmPqnzkRDHjqRFDo5BkDliY0"
+        },
+        "downloadFormula": "=IFERROR(IF('File Links'!G2=\"\",\"\",HYPERLINK(\"https://drive.google.com/uc?export=download&id=\"&VLOOKUP('File Links'!G2,'File Links'!A:B,2,FALSE),\"⬇ DOWNLOAD HTML\")),\"\")",
+        "visibilityFormula": "=IFERROR(LET(raw,IMPORTRANGE(\"1B6Qk618U56ee-vCi2kCCCFNhySxuCJku17xgG_xm8R8\",\"Tech!C2:H\"),shown,FILTER(raw,INDEX(raw,0,1)=TRUE,INDEX(raw,0,2)<>\"\"),priority,MAP(INDEX(shown,0,3),LAMBDA(n,IF(n=\"\",1000000,IFERROR(VALUE(n),-1)))),arranged,SORT(HSTACK(shown,priority,SEQUENCE(ROWS(shown))),7,FALSE,8,TRUE),HSTACK(INDEX(arranged,0,6),INDEX(arranged,0,4),INDEX(arranged,0,2))),\"\")"
+      },
+      "deploymentBefore": {
+        "drive": {
+          "id": "1noc3aO-UGmPqnzkRDHjqRFDo5BkDliY0",
+          "name": "Intro Technology Unit 05 Part 02 Day 02.html",
+          "size": 323144,
+          "modified": "2026-11-15T12:28:47.404Z",
+          "parents": [
+            "15T7cNpKopCVQBx3FJ-JKy0aQjT-VTOCu"
+          ],
+          "mimeType": "text/html"
+        },
+        "authenticatedSha256": "3bfaaf1222ce5d4fe157eb6a8a69ccb15b37d762697ea184ee99aa5f5cd3c405"
+      },
+      "sourceEnvelope": {
+        "documentId": "1uT88cp1mVW7D8HFj6EL51_nlvlRc531uiGZcKcHEI48",
+        "revision": "AHj4eMTLQSGxDstLPtQoTtlK01NkYbOSVO4FwDxHKLdHeR8_rDWDK_diEM6U3XOklqWH1cjvb42c1tNbTPi_I4choZpO04KNnKGQvJO8pxQ",
+        "account": "Personal",
+        "summaryApprovalReference": "https://docs.google.com/document/d/1hdYPNgciqTp5-xSmwtS0ZWhvObttA_3C7C5Ydy9NBTg/edit",
+        "tabs": [
+          {
+            "id": "t.0",
+            "text": "TECH UNIT 5 — PART 2: PROTOTYPE (production phase 1 of 3) — canonical DayID family 30502\nUnit-level deliverable: ONE personally designed Falling Objects Game in TurboWarp, progressively built through three production phases (Parts 2–4). This Part is only the ENGINE: common shapes, common game loop, intentionally uniform supported code, no decorative or story artwork until Part 3 (Story & Art). Prior 3050101 game-history lesson has actual receipts and is FROZEN; unused 3050102–05 remain historical/draft, not assigned as prerequisite.\nLearning/TEKS: Primary §126.18(c)(3)(B–C) design/process/industry and §126.18(c)(4)(B–C) trends/transfer, with §126.18(c)(4)(A) already introduced in 3050101. Supporting §126.18(c)(1)(A–F) flow/iteration/debugging and §126.18(c)(2)(A) variables; DO NOT claim TurboWarp satisfies text-based nested loops in §126.18(c)(2)(B).\nDay 1 STARTER: editor navigation, draw Player square and FallingObject circle; daily Q305020130059.\nDay 2 LEARN: identical left/right player controls, event and forever loop; daily Q305020230060.\nDay 3 PERFORM: circle falls repeatedly with reset and randomized x; daily Q305020330061.\nDay 4 PERFORM: collision/lives once per fall with visible counters; daily Q305020430062.\nDay 5 PERFORM: score a successful dodge, test and revise fair difficulty; daily Q305020530063.\nDay 6 ASSESSMENT + PRIOR DAILY RECOVERY: a compact cumulative four-section one-MAJOR exam, approximately half a class, and remaining time to recover older Daily evidence; keys 305020639991–305020639994.\nDay 7 PART MILESTONE + MAJOR/DAILY RECOVERY: finish/save one stable playable prototype made of plain shapes; use feedback on Day 6 sections and prior Daily work; no new mastery ID.\nAssessable DAILY prompts/rubrics are written in their day tabs and must be pinned verbatim in JISD Collector Question Bank; assessment section prompts/rubrics must be pinned in Collector Assessment Sections. Major = equal-weight mean of 4 section scores, one Skyward assignment. Recovery updates SAME assignment only after better verified evidence, never effort alone. Feedback must be posted before Major recovery or that opportunity moves.\nSupported student files: one saved TurboWarp project, no external art, no account/sign-in claims. Validated teacher code recipes are required in final HTML (do not treat this curriculum outline as working code). All previous grades and receipts preserved.\nOperating gates: never release until complete template-based offline HTML, source/Collector parity, real copy-before-Form and accessible/visual/browser QA, GitHub/JISD byte-identical, Captain SHOW/RELEASE authorized. SOURCE OUTLINE ONLY; HTML NOT DONE.\nMode reconciliation — approved source repair 2026-11-12: Preserve the Captain-approved same-game daily tasks and dominant mode. Prototype Day 2's player controls are isolated teacher-guided new-tool practice within LEARN, not an additional independent project. On PERFORM days, place brief retrieval and the exact supported recipe in the work runway; do not add a second general Group Learn workload. Source teaching and tested code instructions remain available beside the required work. The approved Part-specific progression governs this build; no DayID, pinned question/rubric or milestone is changed.\n\n"
+          },
+          {
+            "id": "t.o8ac01279hmn",
+            "text": "DAY 2 | DAYID 3050202 | LEARN | Make the Player Move\nLEARNING TARGET: I can connect events, loops and position changes because repeatable controls make interactive objects predictable.\nPriority TEKS — In Our Words\n§126.18(c)(3)(B): Plan, choose digital tools, build a prototype, and improve it through tests and revisions.\n§126.18(c)(4)(C): Use what you already know to learn an unfamiliar technology.\nSupporting TEKS: §126.18(c)(1)(D): Work together on a flowchart showing a problem, solutions and a development timeline. §126.18(c)(1)(F): Explain why repeating code or steps can make an algorithm useful.\n50-MINUTE RHYTHM: 4 min Warm-Up; 13 min Group Learn with live teacher demo; 7 min Group Practice/prediction; 6 min independent DAILY evidence; 15 min project build/test; 5 min save/TEKS Temperature/Studio as appropriate. Shrink activities before rushing or making assumptions about previous class completion.\nWARM-UP (participation; full key 305020209998): Which arrow key should move the square toward the right side of the screen, and how would you check?\nGROUP LEARN / HOOK: An EVENT starts a script; a FOREVER loop repeats checks; CHANGE X changes horizontal position. The teacher projects and models this exact Player script: when green flag clicked → go to x:0 y:−125 → forever {if key [right arrow] pressed? then change x by 8; if key [left arrow] pressed? then change x by −8; if x position > 215 then set x to 215; if x position < −215 then set x to −215}. Students observe how each block is located in Events, Motion, Control, Sensing and Operators. A restart must reset the same position each time.\nGROUP PRACTICE: Teacher drags one block at a time while class predicts outcome: green flag resets position; right key increases x; left decreases x; boundaries prevent disappearing. Students arrange a paper block-flow sketch before implementing.\nDAILY MASTERY STUDENT QUESTION — FULL KEY 305020230060: The player is at x=0 and must move right when a key is held. Name the relevant event/loop and x-change behavior, then describe how you would test that the green flag resets the player.\nPINNED HOLISTIC RUBRIC: Holistic 0–100: 90–100 accurate, specific and independently justified with a feasible test; 70–89 Names event and repeating input/motion steps and proposes a valid reset test; 50–69 partially correct, missing important detail or validation; below 50 insufficient/contradictory evidence. Missing/unsubmitted is a separate nonnumeric state under RTS-02.\nINDEPENDENCE: The question is answerable from TODAY'S teaching and examples without requiring the actual game to work or reference to an unfinished artifact. At most ONE short typed answer field; accessible optional selections may support it. Submit through the shared capture-first two-button Form workflow; no fabricated receipt.\nPERFORM / PROJECT DEVELOPMENT: Select Player only. Build the displayed reset-and-forever keyboard control. Test right, left, both stage edges, and stopping/restarting. Leave FallingObject untouched. Save the SAME project; do not duplicate it.\nCREATIVE STUDIO (one required participation zone, separate Xtra; student's choice using same taught tools): Try a slower value and explain the effect; compare two keyboard speeds; invent a player-friendly controls hint.\nTEKS TEMPERATURE CHECK: thumbs for today's skill plus optional specific confusion. Separate Xtra, not part of DAILY mastery or Major.\nEND-OF-DAY SAVED EVIDENCE: Square moves right and left, stays visible and resets on restart.\nNEXT DAY PREPARATION: Keep original file; do not start a second game or replace placeholder sprites until Part 3 (Story & Art).\n\nTeacher Reference / Evidence Alignment\nOfficial source: Texas Education Agency, 19 TAC Chapter 126, Subchapter B, §126.18(c), August 2024 PDF, page 5. https://tea.texas.gov/laws-and-rules/sboe-rules-tac/sboe-tac-currently-effect/ch126b.pdf . Verified 2026-11-12. Evergreen target: TECH-U05-P01. Unit planning: Personal TEKS Roadmap, Unit Roadmap TECH Unit 5 row 6; dates remain teacher-only.\n§126.18(c)(3)(B) official wording: “discuss and implement a design process that includes planning and selecting digital tools to develop and refine a prototype or model through trial and error.”\n§126.18(c)(4)(C) official wording: “transfer current knowledge to the learning of newly encountered technologies.”\n§126.18(c)(1)(D) official wording: “design a plan collaboratively using flowcharts to document a problem, possible solutions, and an expected timeline for the development of a coded solution.”\n§126.18(c)(1)(F) official wording: “analyze the benefits of using iteration (code and sequence repetition) in algorithms.”\nEvidence alignment: DAILY 305020230060: The player is at x=0 and must move right when a key is held. Name the relevant event/loop and x-change behavior, then describe how you would test that the green flag resets the player. The pinned rubric defines the limited reasoning evidence elicited here; an answer is not proof that the game ran.\nProject evidence: The approved Practice and Perform steps exercise tool selection, trial, test and revision (3B), and transfer from known controls/design ideas to TurboWarp (4C). Verify actual performance before treating it as demonstrated. Where listed, 3C industry process and 4B global trends are contextual/supporting exposure unless a source task explicitly asks for that explanation. Flowchart planning (1A/1D), generalization (1C), debugging analysis (1E), iteration benefits (1F), and variable/data-type explanations (2A) remain partial support unless all stated clauses are actually elicited or observed. Do not infer full standard mastery from using a tool, copying a recipe, drawing art or participating. No claim to text-based nested-loop standard (2B).\n\n"
+          },
+          {
+            "id": "t.gek820lkmn31",
+            "text": "DAY 3 | DAYID 3050203 | PERFORM | Make the Circle Fall Forever\nLEARNING TARGET: I can use repetition and random positioning because a game needs repeatable behavior with changing challenges.\nPriority TEKS — In Our Words\n§126.18(c)(3)(B): Plan, choose digital tools, build a prototype, and improve it through tests and revisions.\n§126.18(c)(4)(C): Use what you already know to learn an unfamiliar technology.\nSupporting TEKS: §126.18(c)(1)(F): Explain why repeating code or steps can make an algorithm useful. §126.18(c)(2)(A): Change and rename variables, and describe the kinds of data they store.\n50-MINUTE RHYTHM: 4 min Warm-Up; 13 min Group Learn with live teacher demo; 7 min Group Practice/prediction; 6 min independent DAILY evidence; 15 min project build/test; 5 min save/TEKS Temperature/Studio as appropriate. Shrink activities before rushing or making assumptions about previous class completion.\nWARM-UP (participation; full key 305020309998): If y decreases as a circle falls, what happens after it passes the bottom edge?\nGROUP LEARN / HOOK: The falling script belongs to FallingObject, not Player. Exact teacher recipe: when green flag clicked → forever {go to x:(pick random −210 to 210) y:170; repeat until (y position < −175) {change y by −5; wait 0.03 seconds}}. Forever restarts the drop; repeat until ends an individual fall; random x varies each start. Keep its sprite a plain circle. Compare one loop that repeats the entire game and another loop that controls one falling trip. Change the speed cautiously and test from a known reset.\nGROUP PRACTICE: Teacher predicts output for fixed x versus pick random, demonstrates sign of negative y, then changes only one parameter. Class identifies loop nesting and why a sprite script must be attached to the correct object.\nDAILY MASTERY STUDENT QUESTION — FULL KEY 305020330061: A circle falls correctly once and then stops. Explain what a forever loop and a reset near the top accomplish, and how random x changes the next round.\nPINNED HOLISTIC RUBRIC: Holistic 0–100: 90–100 accurate, specific and independently justified with a feasible test; 70–89 Correctly explains repeated falling, top reset and controlled random starting x; 50–69 partially correct, missing important detail or validation; below 50 insufficient/contradictory evidence. Missing/unsubmitted is a separate nonnumeric state under RTS-02.\nINDEPENDENCE: The question is answerable from TODAY'S teaching and examples without requiring the actual game to work or reference to an unfinished artifact. At most ONE short typed answer field; accessible optional selections may support it. Submit through the shared capture-first two-button Form workflow; no fabricated receipt.\nPERFORM / PROJECT DEVELOPMENT: Use the exact supplied FallingObject recipe, test at least five drops, verify the player still responds, and save SAME project. Keep a simple scoreboard note listing observed spawn x changes, fall direction and restart behavior.\nCREATIVE STUDIO (one required participation zone, separate Xtra; student's choice using same taught tools): Compare two safe falling speeds; test fixed versus random starting x; sketch an optional second falling-object type without coding it.\nTEKS TEMPERATURE CHECK: thumbs for today's skill plus optional specific confusion. Separate Xtra, not part of DAILY mastery or Major.\nEND-OF-DAY SAVED EVIDENCE: Player moves independently while the circle repeatedly falls from changing x positions.\nNEXT DAY PREPARATION: Keep original file; do not start a second game or replace placeholder sprites until Part 3 (Story & Art).\n\nTeacher Reference / Evidence Alignment\nOfficial source: Texas Education Agency, 19 TAC Chapter 126, Subchapter B, §126.18(c), August 2024 PDF, page 5. https://tea.texas.gov/laws-and-rules/sboe-rules-tac/sboe-tac-currently-effect/ch126b.pdf . Verified 2026-11-12. Evergreen target: TECH-U05-P01. Unit planning: Personal TEKS Roadmap, Unit Roadmap TECH Unit 5 row 6; dates remain teacher-only.\n§126.18(c)(3)(B) official wording: “discuss and implement a design process that includes planning and selecting digital tools to develop and refine a prototype or model through trial and error.”\n§126.18(c)(4)(C) official wording: “transfer current knowledge to the learning of newly encountered technologies.”\n§126.18(c)(1)(F) official wording: “analyze the benefits of using iteration (code and sequence repetition) in algorithms.”\n§126.18(c)(2)(A) official wording: “manipulate and rename variables and describe different data types.”\nEvidence alignment: DAILY 305020330061: A circle falls correctly once and then stops. Explain what a forever loop and a reset near the top accomplish, and how random x changes the next round. The pinned rubric defines the limited reasoning evidence elicited here; an answer is not proof that the game ran.\nProject evidence: The approved Practice and Perform steps exercise tool selection, trial, test and revision (3B), and transfer from known controls/design ideas to TurboWarp (4C). Verify actual performance before treating it as demonstrated. Where listed, 3C industry process and 4B global trends are contextual/supporting exposure unless a source task explicitly asks for that explanation. Flowchart planning (1A/1D), generalization (1C), debugging analysis (1E), iteration benefits (1F), and variable/data-type explanations (2A) remain partial support unless all stated clauses are actually elicited or observed. Do not infer full standard mastery from using a tool, copying a recipe, drawing art or participating. No claim to text-based nested-loop standard (2B).\n\n"
+          }
+        ]
+      }
+    },
+    "3050203": {
+      "course": "Tech",
+      "mode": "PERFORM",
+      "github": {
+        "commit": "48e09b5dc1697e4968bbde8c85c02a3f5ba5bfc6",
+        "blobSha": "d0d12455e5a4af2ed499b1aaa2c8f9d741453736"
+      },
+      "source": {
+        "documentId": "1uT88cp1mVW7D8HFj6EL51_nlvlRc531uiGZcKcHEI48",
+        "revision": "AHj4eMTLQSGxDstLPtQoTtlK01NkYbOSVO4FwDxHKLdHeR8_rDWDK_diEM6U3XOklqWH1cjvb42c1tNbTPi_I4choZpO04KNnKGQvJO8pxQ",
+        "tabId": "t.gek820lkmn31",
+        "text": "DAY 3 | DAYID 3050203 | PERFORM | Make the Circle Fall Forever\nLEARNING TARGET: I can use repetition and random positioning because a game needs repeatable behavior with changing challenges.\nPriority TEKS — In Our Words\n§126.18(c)(3)(B): Plan, choose digital tools, build a prototype, and improve it through tests and revisions.\n§126.18(c)(4)(C): Use what you already know to learn an unfamiliar technology.\nSupporting TEKS: §126.18(c)(1)(F): Explain why repeating code or steps can make an algorithm useful. §126.18(c)(2)(A): Change and rename variables, and describe the kinds of data they store.\n50-MINUTE RHYTHM: 4 min Warm-Up; 13 min Group Learn with live teacher demo; 7 min Group Practice/prediction; 6 min independent DAILY evidence; 15 min project build/test; 5 min save/TEKS Temperature/Studio as appropriate. Shrink activities before rushing or making assumptions about previous class completion.\nWARM-UP (participation; full key 305020309998): If y decreases as a circle falls, what happens after it passes the bottom edge?\nGROUP LEARN / HOOK: The falling script belongs to FallingObject, not Player. Exact teacher recipe: when green flag clicked → forever {go to x:(pick random −210 to 210) y:170; repeat until (y position < −175) {change y by −5; wait 0.03 seconds}}. Forever restarts the drop; repeat until ends an individual fall; random x varies each start. Keep its sprite a plain circle. Compare one loop that repeats the entire game and another loop that controls one falling trip. Change the speed cautiously and test from a known reset.\nGROUP PRACTICE: Teacher predicts output for fixed x versus pick random, demonstrates sign of negative y, then changes only one parameter. Class identifies loop nesting and why a sprite script must be attached to the correct object.\nDAILY MASTERY STUDENT QUESTION — FULL KEY 305020330061: A circle falls correctly once and then stops. Explain what a forever loop and a reset near the top accomplish, and how random x changes the next round.\nPINNED HOLISTIC RUBRIC: Holistic 0–100: 90–100 accurate, specific and independently justified with a feasible test; 70–89 Correctly explains repeated falling, top reset and controlled random starting x; 50–69 partially correct, missing important detail or validation; below 50 insufficient/contradictory evidence. Missing/unsubmitted is a separate nonnumeric state under RTS-02.\nINDEPENDENCE: The question is answerable from TODAY'S teaching and examples without requiring the actual game to work or reference to an unfinished artifact. At most ONE short typed answer field; accessible optional selections may support it. Submit through the shared capture-first two-button Form workflow; no fabricated receipt.\nPERFORM / PROJECT DEVELOPMENT: Use the exact supplied FallingObject recipe, test at least five drops, verify the player still responds, and save SAME project. Keep a simple scoreboard note listing observed spawn x changes, fall direction and restart behavior.\nCREATIVE STUDIO (one required participation zone, separate Xtra; student's choice using same taught tools): Compare two safe falling speeds; test fixed versus random starting x; sketch an optional second falling-object type without coding it.\nTEKS TEMPERATURE CHECK: thumbs for today's skill plus optional specific confusion. Separate Xtra, not part of DAILY mastery or Major.\nEND-OF-DAY SAVED EVIDENCE: Player moves independently while the circle repeatedly falls from changing x positions.\nNEXT DAY PREPARATION: Keep original file; do not start a second game or replace placeholder sprites until Part 3 (Story & Art).\n\nTeacher Reference / Evidence Alignment\nOfficial source: Texas Education Agency, 19 TAC Chapter 126, Subchapter B, §126.18(c), August 2024 PDF, page 5. https://tea.texas.gov/laws-and-rules/sboe-rules-tac/sboe-tac-currently-effect/ch126b.pdf . Verified 2026-11-12. Evergreen target: TECH-U05-P01. Unit planning: Personal TEKS Roadmap, Unit Roadmap TECH Unit 5 row 6; dates remain teacher-only.\n§126.18(c)(3)(B) official wording: “discuss and implement a design process that includes planning and selecting digital tools to develop and refine a prototype or model through trial and error.”\n§126.18(c)(4)(C) official wording: “transfer current knowledge to the learning of newly encountered technologies.”\n§126.18(c)(1)(F) official wording: “analyze the benefits of using iteration (code and sequence repetition) in algorithms.”\n§126.18(c)(2)(A) official wording: “manipulate and rename variables and describe different data types.”\nEvidence alignment: DAILY 305020330061: A circle falls correctly once and then stops. Explain what a forever loop and a reset near the top accomplish, and how random x changes the next round. The pinned rubric defines the limited reasoning evidence elicited here; an answer is not proof that the game ran.\nProject evidence: The approved Practice and Perform steps exercise tool selection, trial, test and revision (3B), and transfer from known controls/design ideas to TurboWarp (4C). Verify actual performance before treating it as demonstrated. Where listed, 3C industry process and 4B global trends are contextual/supporting exposure unless a source task explicitly asks for that explanation. Flowchart planning (1A/1D), generalization (1C), debugging analysis (1E), iteration benefits (1F), and variable/data-type explanations (2A) remain partial support unless all stated clauses are actually elicited or observed. Do not infer full standard mastery from using a tool, copying a recipe, drawing art or participating. No claim to text-based nested-loop standard (2B).\n\n"
+      },
+      "identity": {
+        "course": "Tech",
+        "dayid": "3050203",
+        "unit": 5,
+        "part": 2,
+        "day": 3,
+        "title": "Make the Circle Fall Forever"
+      },
+      "identitySources": {
+        "summary": {
+          "approved": true,
+          "reference": "https://docs.google.com/document/d/1hdYPNgciqTp5-xSmwtS0ZWhvObttA_3C7C5Ydy9NBTg/edit",
+          "revision": "AHj4eMR535cB2jE35yX17g2Ep8h7l-2Yeyg-19Jut-14OdbkUnVY4Y56tXbNpoFTSN0NZjoMdWrst66-mWHjw_I27Xp53UJcyY98S3roeU4",
+          "locator": "Existing F3 checkpoint / F3 SOURCE IDENTITY CHECKPOINT — Captain F3 GO and Tank source-audit confirmation",
+          "identities": [
+            {
+              "course": "Tech",
+              "dayid": "3050202",
+              "unit": 5,
+              "part": 2,
+              "day": 2,
+              "title": "Make the Player Move"
+            },
+            {
+              "course": "Tech",
+              "dayid": "3050203",
+              "unit": 5,
+              "part": 2,
+              "day": 3,
+              "title": "Make the Circle Fall Forever"
+            }
+          ]
+        },
+        "masterOutline": {
+          "reference": "1uT88cp1mVW7D8HFj6EL51_nlvlRc531uiGZcKcHEI48",
+          "revision": "AHj4eMTLQSGxDstLPtQoTtlK01NkYbOSVO4FwDxHKLdHeR8_rDWDK_diEM6U3XOklqWH1cjvb42c1tNbTPi_I4choZpO04KNnKGQvJO8pxQ",
+          "locator": "t.gek820lkmn31",
+          "identities": [
+            {
+              "course": "Tech",
+              "dayid": "3050203",
+              "unit": 5,
+              "part": 2,
+              "day": 3,
+              "title": "Make the Circle Fall Forever"
+            }
+          ]
+        },
+        "controlStation": {
+          "reference": "https://docs.google.com/spreadsheets/d/1B6Qk618U56ee-vCi2kCCCFNhySxuCJku17xgG_xm8R8/edit?ouid=114469627065110853282",
+          "revision": "F4a4 live selected-cell readback 2026-11-16",
+          "locator": "Tech!A17:I17",
+          "identities": [
+            {
+              "course": "Tech",
+              "dayid": "3050203",
+              "unit": 5,
+              "part": 2,
+              "day": 3,
+              "title": "Unit 5 · Part 2 · Day 3 — Make the Circle Fall Forever"
+            }
+          ]
+        }
+      },
+      "collector": [
+        [
+          "305020330061",
+          "A circle falls correctly once and then stops. Explain what a forever loop and a reset near the top accomplish, and how random x changes the next round.",
+          "Holistic 0–100: 90–100 accurate, specific and independently justified with a feasible test; 70–89 Correctly explains repeated falling, top reset and controlled random starting x; 50–69 partially correct, missing important detail or validation; below 50 insufficient/contradictory evidence. Missing/unsubmitted is a separate nonnumeric state under RTS-02.",
+          "Approved Unit 5 source GO 2026-11-11; full-key pinned directly from Master Outline; HTML/student display parity pending",
+          "TECH-U05-P01"
+        ]
+      ],
+      "before": {
+        "drive": {
+          "id": "1IyU_9P95l5ZzVE26SJZ9q7QfJSoyJqcE",
+          "name": "Intro Technology Unit 05 Part 02 Day 03.html",
+          "size": 316365,
+          "modified": "2026-11-16T13:08:50.411Z",
+          "parents": [
+            "15T7cNpKopCVQBx3FJ-JKy0aQjT-VTOCu"
+          ],
+          "mimeType": "text/html"
+        },
+        "control": {
+          "dayid": "3050203",
+          "show": false,
+          "released": "",
+          "title": "Unit 5 · Part 2 · Day 3 — Make the Circle Fall Forever",
+          "preview": "https://rtf-studios.github.io/wayfinder-preview/Tech/3050203.html",
+          "section": "Unit 5 · Part 2 — Prototype"
+        },
+        "library": {
+          "dayid": "3050203",
+          "driveId": "1IyU_9P95l5ZzVE26SJZ9q7QfJSoyJqcE"
+        },
+        "downloadFormula": "=IFERROR(IF('File Links'!G2=\"\",\"\",HYPERLINK(\"https://drive.google.com/uc?export=download&id=\"&VLOOKUP('File Links'!G2,'File Links'!A:B,2,FALSE),\"⬇ DOWNLOAD HTML\")),\"\")",
+        "visibilityFormula": "=IFERROR(LET(raw,IMPORTRANGE(\"1B6Qk618U56ee-vCi2kCCCFNhySxuCJku17xgG_xm8R8\",\"Tech!C2:H\"),shown,FILTER(raw,INDEX(raw,0,1)=TRUE,INDEX(raw,0,2)<>\"\"),priority,MAP(INDEX(shown,0,3),LAMBDA(n,IF(n=\"\",1000000,IFERROR(VALUE(n),-1)))),arranged,SORT(HSTACK(shown,priority,SEQUENCE(ROWS(shown))),7,FALSE,8,TRUE),HSTACK(INDEX(arranged,0,6),INDEX(arranged,0,4),INDEX(arranged,0,2))),\"\")"
+      },
+      "expectedFolder": "15T7cNpKopCVQBx3FJ-JKy0aQjT-VTOCu",
+      "after": {
+        "drive": {
+          "id": "1IyU_9P95l5ZzVE26SJZ9q7QfJSoyJqcE",
+          "name": "Intro Technology Unit 05 Part 02 Day 03.html",
+          "size": 316365,
+          "modified": "2026-11-16T13:08:50.411Z",
+          "parents": [
+            "15T7cNpKopCVQBx3FJ-JKy0aQjT-VTOCu"
+          ],
+          "mimeType": "text/html"
+        },
+        "control": {
+          "dayid": "3050203",
+          "show": false,
+          "released": "",
+          "title": "Unit 5 · Part 2 · Day 3 — Make the Circle Fall Forever",
+          "preview": "https://rtf-studios.github.io/wayfinder-preview/Tech/3050203.html",
+          "section": "Unit 5 · Part 2 — Prototype"
+        },
+        "library": {
+          "dayid": "3050203",
+          "driveId": "1IyU_9P95l5ZzVE26SJZ9q7QfJSoyJqcE"
+        },
+        "downloadFormula": "=IFERROR(IF('File Links'!G2=\"\",\"\",HYPERLINK(\"https://drive.google.com/uc?export=download&id=\"&VLOOKUP('File Links'!G2,'File Links'!A:B,2,FALSE),\"⬇ DOWNLOAD HTML\")),\"\")",
+        "visibilityFormula": "=IFERROR(LET(raw,IMPORTRANGE(\"1B6Qk618U56ee-vCi2kCCCFNhySxuCJku17xgG_xm8R8\",\"Tech!C2:H\"),shown,FILTER(raw,INDEX(raw,0,1)=TRUE,INDEX(raw,0,2)<>\"\"),priority,MAP(INDEX(shown,0,3),LAMBDA(n,IF(n=\"\",1000000,IFERROR(VALUE(n),-1)))),arranged,SORT(HSTACK(shown,priority,SEQUENCE(ROWS(shown))),7,FALSE,8,TRUE),HSTACK(INDEX(arranged,0,6),INDEX(arranged,0,4),INDEX(arranged,0,2))),\"\")"
+      },
+      "deploymentBefore": {
+        "drive": {
+          "id": "1IyU_9P95l5ZzVE26SJZ9q7QfJSoyJqcE",
+          "name": "Intro Technology Unit 05 Part 02 Day 03.html",
+          "size": 319588,
+          "modified": "2026-11-15T12:28:34.433Z",
+          "parents": [
+            "15T7cNpKopCVQBx3FJ-JKy0aQjT-VTOCu"
+          ],
+          "mimeType": "text/html"
+        },
+        "authenticatedSha256": "524e5bd6ae05f691fffb9cd67958f0c4128fe060af21e00d8748102bea3ada09"
+      },
+      "sourceEnvelope": {
+        "documentId": "1uT88cp1mVW7D8HFj6EL51_nlvlRc531uiGZcKcHEI48",
+        "revision": "AHj4eMTLQSGxDstLPtQoTtlK01NkYbOSVO4FwDxHKLdHeR8_rDWDK_diEM6U3XOklqWH1cjvb42c1tNbTPi_I4choZpO04KNnKGQvJO8pxQ",
+        "account": "Personal",
+        "summaryApprovalReference": "https://docs.google.com/document/d/1hdYPNgciqTp5-xSmwtS0ZWhvObttA_3C7C5Ydy9NBTg/edit",
+        "tabs": [
+          {
+            "id": "t.0",
+            "text": "TECH UNIT 5 — PART 2: PROTOTYPE (production phase 1 of 3) — canonical DayID family 30502\nUnit-level deliverable: ONE personally designed Falling Objects Game in TurboWarp, progressively built through three production phases (Parts 2–4). This Part is only the ENGINE: common shapes, common game loop, intentionally uniform supported code, no decorative or story artwork until Part 3 (Story & Art). Prior 3050101 game-history lesson has actual receipts and is FROZEN; unused 3050102–05 remain historical/draft, not assigned as prerequisite.\nLearning/TEKS: Primary §126.18(c)(3)(B–C) design/process/industry and §126.18(c)(4)(B–C) trends/transfer, with §126.18(c)(4)(A) already introduced in 3050101. Supporting §126.18(c)(1)(A–F) flow/iteration/debugging and §126.18(c)(2)(A) variables; DO NOT claim TurboWarp satisfies text-based nested loops in §126.18(c)(2)(B).\nDay 1 STARTER: editor navigation, draw Player square and FallingObject circle; daily Q305020130059.\nDay 2 LEARN: identical left/right player controls, event and forever loop; daily Q305020230060.\nDay 3 PERFORM: circle falls repeatedly with reset and randomized x; daily Q305020330061.\nDay 4 PERFORM: collision/lives once per fall with visible counters; daily Q305020430062.\nDay 5 PERFORM: score a successful dodge, test and revise fair difficulty; daily Q305020530063.\nDay 6 ASSESSMENT + PRIOR DAILY RECOVERY: a compact cumulative four-section one-MAJOR exam, approximately half a class, and remaining time to recover older Daily evidence; keys 305020639991–305020639994.\nDay 7 PART MILESTONE + MAJOR/DAILY RECOVERY: finish/save one stable playable prototype made of plain shapes; use feedback on Day 6 sections and prior Daily work; no new mastery ID.\nAssessable DAILY prompts/rubrics are written in their day tabs and must be pinned verbatim in JISD Collector Question Bank; assessment section prompts/rubrics must be pinned in Collector Assessment Sections. Major = equal-weight mean of 4 section scores, one Skyward assignment. Recovery updates SAME assignment only after better verified evidence, never effort alone. Feedback must be posted before Major recovery or that opportunity moves.\nSupported student files: one saved TurboWarp project, no external art, no account/sign-in claims. Validated teacher code recipes are required in final HTML (do not treat this curriculum outline as working code). All previous grades and receipts preserved.\nOperating gates: never release until complete template-based offline HTML, source/Collector parity, real copy-before-Form and accessible/visual/browser QA, GitHub/JISD byte-identical, Captain SHOW/RELEASE authorized. SOURCE OUTLINE ONLY; HTML NOT DONE.\nMode reconciliation — approved source repair 2026-11-12: Preserve the Captain-approved same-game daily tasks and dominant mode. Prototype Day 2's player controls are isolated teacher-guided new-tool practice within LEARN, not an additional independent project. On PERFORM days, place brief retrieval and the exact supported recipe in the work runway; do not add a second general Group Learn workload. Source teaching and tested code instructions remain available beside the required work. The approved Part-specific progression governs this build; no DayID, pinned question/rubric or milestone is changed.\n\n"
+          },
+          {
+            "id": "t.o8ac01279hmn",
+            "text": "DAY 2 | DAYID 3050202 | LEARN | Make the Player Move\nLEARNING TARGET: I can connect events, loops and position changes because repeatable controls make interactive objects predictable.\nPriority TEKS — In Our Words\n§126.18(c)(3)(B): Plan, choose digital tools, build a prototype, and improve it through tests and revisions.\n§126.18(c)(4)(C): Use what you already know to learn an unfamiliar technology.\nSupporting TEKS: §126.18(c)(1)(D): Work together on a flowchart showing a problem, solutions and a development timeline. §126.18(c)(1)(F): Explain why repeating code or steps can make an algorithm useful.\n50-MINUTE RHYTHM: 4 min Warm-Up; 13 min Group Learn with live teacher demo; 7 min Group Practice/prediction; 6 min independent DAILY evidence; 15 min project build/test; 5 min save/TEKS Temperature/Studio as appropriate. Shrink activities before rushing or making assumptions about previous class completion.\nWARM-UP (participation; full key 305020209998): Which arrow key should move the square toward the right side of the screen, and how would you check?\nGROUP LEARN / HOOK: An EVENT starts a script; a FOREVER loop repeats checks; CHANGE X changes horizontal position. The teacher projects and models this exact Player script: when green flag clicked → go to x:0 y:−125 → forever {if key [right arrow] pressed? then change x by 8; if key [left arrow] pressed? then change x by −8; if x position > 215 then set x to 215; if x position < −215 then set x to −215}. Students observe how each block is located in Events, Motion, Control, Sensing and Operators. A restart must reset the same position each time.\nGROUP PRACTICE: Teacher drags one block at a time while class predicts outcome: green flag resets position; right key increases x; left decreases x; boundaries prevent disappearing. Students arrange a paper block-flow sketch before implementing.\nDAILY MASTERY STUDENT QUESTION — FULL KEY 305020230060: The player is at x=0 and must move right when a key is held. Name the relevant event/loop and x-change behavior, then describe how you would test that the green flag resets the player.\nPINNED HOLISTIC RUBRIC: Holistic 0–100: 90–100 accurate, specific and independently justified with a feasible test; 70–89 Names event and repeating input/motion steps and proposes a valid reset test; 50–69 partially correct, missing important detail or validation; below 50 insufficient/contradictory evidence. Missing/unsubmitted is a separate nonnumeric state under RTS-02.\nINDEPENDENCE: The question is answerable from TODAY'S teaching and examples without requiring the actual game to work or reference to an unfinished artifact. At most ONE short typed answer field; accessible optional selections may support it. Submit through the shared capture-first two-button Form workflow; no fabricated receipt.\nPERFORM / PROJECT DEVELOPMENT: Select Player only. Build the displayed reset-and-forever keyboard control. Test right, left, both stage edges, and stopping/restarting. Leave FallingObject untouched. Save the SAME project; do not duplicate it.\nCREATIVE STUDIO (one required participation zone, separate Xtra; student's choice using same taught tools): Try a slower value and explain the effect; compare two keyboard speeds; invent a player-friendly controls hint.\nTEKS TEMPERATURE CHECK: thumbs for today's skill plus optional specific confusion. Separate Xtra, not part of DAILY mastery or Major.\nEND-OF-DAY SAVED EVIDENCE: Square moves right and left, stays visible and resets on restart.\nNEXT DAY PREPARATION: Keep original file; do not start a second game or replace placeholder sprites until Part 3 (Story & Art).\n\nTeacher Reference / Evidence Alignment\nOfficial source: Texas Education Agency, 19 TAC Chapter 126, Subchapter B, §126.18(c), August 2024 PDF, page 5. https://tea.texas.gov/laws-and-rules/sboe-rules-tac/sboe-tac-currently-effect/ch126b.pdf . Verified 2026-11-12. Evergreen target: TECH-U05-P01. Unit planning: Personal TEKS Roadmap, Unit Roadmap TECH Unit 5 row 6; dates remain teacher-only.\n§126.18(c)(3)(B) official wording: “discuss and implement a design process that includes planning and selecting digital tools to develop and refine a prototype or model through trial and error.”\n§126.18(c)(4)(C) official wording: “transfer current knowledge to the learning of newly encountered technologies.”\n§126.18(c)(1)(D) official wording: “design a plan collaboratively using flowcharts to document a problem, possible solutions, and an expected timeline for the development of a coded solution.”\n§126.18(c)(1)(F) official wording: “analyze the benefits of using iteration (code and sequence repetition) in algorithms.”\nEvidence alignment: DAILY 305020230060: The player is at x=0 and must move right when a key is held. Name the relevant event/loop and x-change behavior, then describe how you would test that the green flag resets the player. The pinned rubric defines the limited reasoning evidence elicited here; an answer is not proof that the game ran.\nProject evidence: The approved Practice and Perform steps exercise tool selection, trial, test and revision (3B), and transfer from known controls/design ideas to TurboWarp (4C). Verify actual performance before treating it as demonstrated. Where listed, 3C industry process and 4B global trends are contextual/supporting exposure unless a source task explicitly asks for that explanation. Flowchart planning (1A/1D), generalization (1C), debugging analysis (1E), iteration benefits (1F), and variable/data-type explanations (2A) remain partial support unless all stated clauses are actually elicited or observed. Do not infer full standard mastery from using a tool, copying a recipe, drawing art or participating. No claim to text-based nested-loop standard (2B).\n\n"
+          },
+          {
+            "id": "t.gek820lkmn31",
+            "text": "DAY 3 | DAYID 3050203 | PERFORM | Make the Circle Fall Forever\nLEARNING TARGET: I can use repetition and random positioning because a game needs repeatable behavior with changing challenges.\nPriority TEKS — In Our Words\n§126.18(c)(3)(B): Plan, choose digital tools, build a prototype, and improve it through tests and revisions.\n§126.18(c)(4)(C): Use what you already know to learn an unfamiliar technology.\nSupporting TEKS: §126.18(c)(1)(F): Explain why repeating code or steps can make an algorithm useful. §126.18(c)(2)(A): Change and rename variables, and describe the kinds of data they store.\n50-MINUTE RHYTHM: 4 min Warm-Up; 13 min Group Learn with live teacher demo; 7 min Group Practice/prediction; 6 min independent DAILY evidence; 15 min project build/test; 5 min save/TEKS Temperature/Studio as appropriate. Shrink activities before rushing or making assumptions about previous class completion.\nWARM-UP (participation; full key 305020309998): If y decreases as a circle falls, what happens after it passes the bottom edge?\nGROUP LEARN / HOOK: The falling script belongs to FallingObject, not Player. Exact teacher recipe: when green flag clicked → forever {go to x:(pick random −210 to 210) y:170; repeat until (y position < −175) {change y by −5; wait 0.03 seconds}}. Forever restarts the drop; repeat until ends an individual fall; random x varies each start. Keep its sprite a plain circle. Compare one loop that repeats the entire game and another loop that controls one falling trip. Change the speed cautiously and test from a known reset.\nGROUP PRACTICE: Teacher predicts output for fixed x versus pick random, demonstrates sign of negative y, then changes only one parameter. Class identifies loop nesting and why a sprite script must be attached to the correct object.\nDAILY MASTERY STUDENT QUESTION — FULL KEY 305020330061: A circle falls correctly once and then stops. Explain what a forever loop and a reset near the top accomplish, and how random x changes the next round.\nPINNED HOLISTIC RUBRIC: Holistic 0–100: 90–100 accurate, specific and independently justified with a feasible test; 70–89 Correctly explains repeated falling, top reset and controlled random starting x; 50–69 partially correct, missing important detail or validation; below 50 insufficient/contradictory evidence. Missing/unsubmitted is a separate nonnumeric state under RTS-02.\nINDEPENDENCE: The question is answerable from TODAY'S teaching and examples without requiring the actual game to work or reference to an unfinished artifact. At most ONE short typed answer field; accessible optional selections may support it. Submit through the shared capture-first two-button Form workflow; no fabricated receipt.\nPERFORM / PROJECT DEVELOPMENT: Use the exact supplied FallingObject recipe, test at least five drops, verify the player still responds, and save SAME project. Keep a simple scoreboard note listing observed spawn x changes, fall direction and restart behavior.\nCREATIVE STUDIO (one required participation zone, separate Xtra; student's choice using same taught tools): Compare two safe falling speeds; test fixed versus random starting x; sketch an optional second falling-object type without coding it.\nTEKS TEMPERATURE CHECK: thumbs for today's skill plus optional specific confusion. Separate Xtra, not part of DAILY mastery or Major.\nEND-OF-DAY SAVED EVIDENCE: Player moves independently while the circle repeatedly falls from changing x positions.\nNEXT DAY PREPARATION: Keep original file; do not start a second game or replace placeholder sprites until Part 3 (Story & Art).\n\nTeacher Reference / Evidence Alignment\nOfficial source: Texas Education Agency, 19 TAC Chapter 126, Subchapter B, §126.18(c), August 2024 PDF, page 5. https://tea.texas.gov/laws-and-rules/sboe-rules-tac/sboe-tac-currently-effect/ch126b.pdf . Verified 2026-11-12. Evergreen target: TECH-U05-P01. Unit planning: Personal TEKS Roadmap, Unit Roadmap TECH Unit 5 row 6; dates remain teacher-only.\n§126.18(c)(3)(B) official wording: “discuss and implement a design process that includes planning and selecting digital tools to develop and refine a prototype or model through trial and error.”\n§126.18(c)(4)(C) official wording: “transfer current knowledge to the learning of newly encountered technologies.”\n§126.18(c)(1)(F) official wording: “analyze the benefits of using iteration (code and sequence repetition) in algorithms.”\n§126.18(c)(2)(A) official wording: “manipulate and rename variables and describe different data types.”\nEvidence alignment: DAILY 305020330061: A circle falls correctly once and then stops. Explain what a forever loop and a reset near the top accomplish, and how random x changes the next round. The pinned rubric defines the limited reasoning evidence elicited here; an answer is not proof that the game ran.\nProject evidence: The approved Practice and Perform steps exercise tool selection, trial, test and revision (3B), and transfer from known controls/design ideas to TurboWarp (4C). Verify actual performance before treating it as demonstrated. Where listed, 3C industry process and 4B global trends are contextual/supporting exposure unless a source task explicitly asks for that explanation. Flowchart planning (1A/1D), generalization (1C), debugging analysis (1E), iteration benefits (1F), and variable/data-type explanations (2A) remain partial support unless all stated clauses are actually elicited or observed. Do not infer full standard mastery from using a tool, copying a recipe, drawing art or participating. No claim to text-based nested-loop standard (2B).\n\n"
+          }
+        ]
+      }
+    }
+  },
+  "readbackCompletedAt": "2026-11-16T00:15:04.411Z"
+}
