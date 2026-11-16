@@ -1035,13 +1035,28 @@
               "type": "integer",
               "minimum": 1,
               "maximum": 2000
+            },
+            "studentContext": {
+              "type": "string",
+              "minLength": 1
+            },
+            "studentMission": {
+              "type": "string",
+              "minLength": 1
+            },
+            "toolInstructions": {
+              "type": "string",
+              "minLength": 1
             }
           },
           "required": [
             "kind",
             "skits",
             "comicScrollHint",
-            "comicImageMinWidth"
+            "comicImageMinWidth",
+            "studentContext",
+            "studentMission",
+            "toolInstructions"
           ],
           "additionalProperties": false
         }

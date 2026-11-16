@@ -86,6 +86,8 @@ function validatePayload(r){
  if(composed){
   if(r.presentation.layout||!['LEARN','PERFORM'].includes(r.mode))error('presentation.instructionLayout','requires exclusive Learn/Perform composition');
   if(!['warm_up','group_practice','studio','temperature'].every(active))error('presentation.instructionLayout','missing regular mapped section');
+  if(!sections.get('prior_learning_hook').text.startsWith(composed.studentContext)||!r.tools.some(t=>t.instructions.startsWith(composed.toolInstructions)))error('presentation.instructionLayout','student display fields must retain native source spans');
+  const outcomes=[...r.activities.map(a=>a.outcome),...(active('perform')?[sections.get('perform').text]:[])];if(!outcomes.includes(composed.studentMission))error('presentation.instructionLayout','mission must match original saved outcome');
   if(!assets.some(a=>a.purpose==='comic'))error('presentation.instructionLayout','approved comic required with skit');
  }
  const layout=r.presentation.layout;

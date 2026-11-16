@@ -579,7 +579,25 @@
               }
             ],
             "comicScrollHint": "Swipe or use arrow keys to read all four comic panels.",
-            "comicImageMinWidth": 560
+            "comicImageMinWidth": 560,
+            "studentContext": {
+              "$source": "t.0",
+              "paragraph": 1,
+              "start": 0,
+              "length": 307
+            },
+            "studentMission": {
+              "$source": "t.o8ac01279hmn",
+              "paragraph": 16,
+              "start": 27,
+              "length": 65
+            },
+            "toolInstructions": {
+              "$source": "t.0",
+              "paragraph": 11,
+              "start": 0,
+              "length": 97
+            }
           }
         }
       },
@@ -1238,7 +1256,25 @@
               }
             ],
             "comicScrollHint": "Swipe or use arrow keys to read all four comic panels.",
-            "comicImageMinWidth": 560
+            "comicImageMinWidth": 560,
+            "studentContext": {
+              "$source": "t.0",
+              "paragraph": 1,
+              "start": 0,
+              "length": 307
+            },
+            "studentMission": {
+              "$source": "t.gek820lkmn31",
+              "paragraph": 16,
+              "start": 27,
+              "length": 87
+            },
+            "toolInstructions": {
+              "$source": "t.0",
+              "paragraph": 11,
+              "start": 0,
+              "length": 97
+            }
           }
         }
       },

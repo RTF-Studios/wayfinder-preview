@@ -26,10 +26,10 @@
         "tabId": "t.o8ac01279hmn",
         "summaryApprovalReference": "https://docs.google.com/document/d/1hdYPNgciqTp5-xSmwtS0ZWhvObttA_3C7C5Ydy9NBTg/edit",
         "sourceSha256": "a26c891264997fe875909763b3e5c64e9aabfc561e1e15ef4d187c6d62981424",
-        "payloadSha256": "c5f0181e614cf9d7476bbc207e3dc40e3862e39a06a8fa953cc81b96bbb80b7e"
+        "payloadSha256": "9baa0e0486526ed39d1b199cc82c534e920ec8f53af70cf226d7d7bc1dfea211"
       },
       "reviewer": "Assistant — F4a3 current-native source and unchanged instructional-content review",
-      "basis": "Fresh native Docs readback; F4a2 approved exact passage mapping and Part Overview; F4a3 GO. Original native blank separator retained. Mapping arrangement, exact question/rubric, 42+4+4 minute budget independently rechecked; presentation adds archived skit/comic access only.",
+      "basis": "Fresh native Docs readback; F4a2 approved exact passage mapping and Part Overview; F4a3 GO. Original native blank separator retained. Mapping arrangement, exact question/rubric, 42+4+4 minute budget independently rechecked; presentation adds archived skit/comic access only. Affected presentation review: student header/mission/tools use exact native context and saved-outcome spans; teacher receipt/freeze/build metadata remains in authoritative source and derived record. All day instructional passages/questions/scoring/pacing unchanged. Warm-Up precedes taught vocabulary.",
       "status": "PASS",
       "learningTarget": {
         "text": "I can connect events, loops and position changes because repeatable controls make interactive objects predictable.",
@@ -185,10 +185,10 @@
         "tabId": "t.gek820lkmn31",
         "summaryApprovalReference": "https://docs.google.com/document/d/1hdYPNgciqTp5-xSmwtS0ZWhvObttA_3C7C5Ydy9NBTg/edit",
         "sourceSha256": "23bdd49db174fdac2431e2ca43f1be94ed53c109697093d89ffe7462f5c511ec",
-        "payloadSha256": "72b6fd2b09ca4e3bc558a798d127effdbd647e3c54e1f2db151a3c8531016123"
+        "payloadSha256": "0593831ef33af92378a4822e9943ac5b4ed7b742ab4e3f3da7afd7e25b42d198"
       },
       "reviewer": "Assistant — F4a3 current-native source and unchanged instructional-content review",
-      "basis": "Fresh native Docs readback; F4a2 approved exact passage mapping and Part Overview; F4a3 GO. Original native blank separator retained. Mapping arrangement, exact question/rubric, 42+4+4 minute budget independently rechecked; presentation adds archived skit/comic access only.",
+      "basis": "Fresh native Docs readback; F4a2 approved exact passage mapping and Part Overview; F4a3 GO. Original native blank separator retained. Mapping arrangement, exact question/rubric, 42+4+4 minute budget independently rechecked; presentation adds archived skit/comic access only. Affected presentation review: student header/mission/tools use exact native context and saved-outcome spans; teacher receipt/freeze/build metadata remains in authoritative source and derived record. All day instructional passages/questions/scoring/pacing unchanged. Warm-Up precedes taught vocabulary.",
       "status": "PASS",
       "learningTarget": {
         "text": "I can use repetition and random positioning because a game needs repeatable behavior with changing challenges.",

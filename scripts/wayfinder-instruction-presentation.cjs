@@ -5,6 +5,11 @@ const p=x=>'<p>'+E(x)+'</p>';
 function apply(h,r,{slot,section}){
  const l=r.presentation.instructionLayout;if(!l)return h;
  const s=Object.fromEntries(r.sections.map(s=>[s.id,s]));
+ h=slot(h,'lesson-deck',E(l.studentContext));
+ h=h.replace(/(<p class="today-mission"><strong>Today's Mission:<\/strong>)[\s\S]*?(<\/p>)/,(_,a,b)=>a+' '+E(l.studentMission)+b);
+ h=h.replace('<li>'+E(r.tools[0].name+': '+r.tools[0].instructions)+'</li>','<li>'+E(r.tools[0].name+': '+l.toolInstructions)+'</li>');
+ const vocab=/<section\b[^>]*\bid="lessonVocabulary"[^>]*>[\s\S]*?<\/section>/,v=h.match(vocab)?.[0];
+ if(!v)throw Error('M1 presentation: missing vocabulary');h=h.replace(vocab,'');h=h.replace(/(<section\b[^>]*\bid="warmup"[^>]*>[\s\S]*?<\/section>)/,(_,a)=>a+v);
  const rawSteps=id=>s[id].steps.concat(r.activities.filter(a=>a.sectionId===id).map(a=>a.instructions));
  const steps=id=>'<ol class="steps perform-step-list">'+rawSteps(id).map(text=>'<li><details class="perform-step"><summary>'+E(text)+'</summary></details></li>').join('')+'</ol>';
  const outcomes=id=>r.activities.filter(a=>a.sectionId===id).map(a=>p(a.outcome)).join('');
@@ -22,7 +27,6 @@ function apply(h,r,{slot,section}){
  }
  // Preserve source hand-in and bridge once, without promoting teacher metadata
  // or duplicating the evidence instructions in the header and teaching panel.
- const primary=r.mode==='LEARN'?'group_learn':'perform';
  const trailer='<h3>'+E(s.hand_in.title)+'</h3>'+p(s.hand_in.text)+'<h3>'+E(s.next_day_bridge.title)+'</h3>'+p(s.next_day_bridge.text);
  if(r.mode==='LEARN')h=h.replace(trailer,'');
  h=h.replace(/(<section\b[^>]*\bid="temperature")/,'<section class="panel" id="lessonClose"><h2>'+E(s.next_day_bridge.title)+'</h2>'+p(s.next_day_bridge.text)+'</section>$1');
