@@ -753,8 +753,26 @@
       "scripts/fixtures/m4-delivery/template-baselines.json",
       "scripts/m4-batch-delivery-results.json"
     ],
-    "hosted": "PENDING verified commit/CI",
+    "hosted": {
+      "status": "PASS",
+      "run": 43785563012,
+      "url": "https://github.com/RTF-Studios/wayfinder-preview/actions/runs/43785563012",
+      "implementationCommit": "8e4194a97f1d57b55c7ff3eaa4b38976a9aa410b",
+      "detectionTests": 44,
+      "detectionJob": 133032284639,
+      "F1job": 133032285001,
+      "M1job": 133032403645,
+      "M2job": 133032461929,
+      "browserJobs": "5 skipped; unchanged proven runtime reused",
+      "scope": "Synthetic detection + unchanged build guards; fresh actual connector byte audit reported separately"
+    },
     "productionWrites": 0,
-    "studentRelease": false
+    "studentRelease": false,
+    "remoteVerification": {
+      "allFiveQAPathsReadBackExact": true,
+      "allOtherTrackedBlobsUnchanged": true,
+      "deletedTrackedFiles": 0,
+      "finalDriveMetadataControlStationLibraryReadbackExact": true
+    }
   }
 }
