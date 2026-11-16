@@ -6,8 +6,9 @@ import json
 import re
 import subprocess
 import sys
+from collections import Counter
 from pathlib import Path
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Comment
 
 ROOT = Path(__file__).resolve().parents[1]
 FORM = 'https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253='
@@ -40,18 +41,141 @@ def configuration(doc, require_json=True):
     cfg = json.loads(re.sub(r'window\.__WF_MEDIA\["[^"]+"\]', 'null', match[1])) if require_json else {}
     return cfg, script[:match.start(1)] + '{}' + script[match.end(1):]
 
-def master_checks(data):
+def baseline_profiles():
+    # Repository-controlled evidence, never an allowlist supplied by the caller.
+    return json.loads((ROOT / 'scripts/fixtures/m4-delivery/template-baselines.json').read_text())
+
+def master_checks(data, entry):
     doc = BeautifulSoup(data.decode('utf-8'), 'html.parser')
     _, engine = configuration(doc)
     master = BeautifulSoup((ROOT / 'templates/wayfinder-master.html').read_text(), 'html.parser')
     _, master_engine = configuration(master, require_json=False)
-    findings = []
-    if engine != master_engine:
-        findings.append('Shared engine differs from current master')
-    if not doc.find('style') or doc.find('style').string != master.find('style').string:
-        findings.append('Master CSS differs')
-    check(not findings, '; '.join(findings) + '; no normalization/automatic repair permitted')
-    return {'engineSha256': sha(engine.encode()), 'cssSha256': sha(doc.find('style').string.encode())}
+    css = doc.find('style').string if doc.find('style') else ''
+    hashes = {'engineSha256': sha(engine.encode()), 'cssSha256': sha((css or '').encode())}
+    current = engine == master_engine and css == master.find('style').string
+    if current:
+        return dict(hashes, classification='CURRENT_MASTER', currentMasterMatch=True)
+    handoffs = []
+    for text in doc.find_all(string=lambda item: isinstance(item, Comment)):
+        if str(text).strip().startswith('WF-HANDOFF '):
+            try:
+                handoffs.append(json.loads(str(text).strip()[len('WF-HANDOFF '):]))
+            except ValueError:
+                pass
+    did = entry['identity']['dayid']
+    for profile in baseline_profiles()['historicalTemplates']:
+        if (did in profile['dayids'] and all(hashes[key] == profile[key] for key in hashes)
+                and len(handoffs) == 1 and handoffs[0].get('dayid') == did
+                and handoffs[0].get('master_sha256') == profile['templateSha256']):
+            return dict(hashes, classification='VERIFIED_HISTORICAL_TEMPLATE', currentMasterMatch=False,
+                        baseline=profile, scope='Template age only; no exemption for content, packaging, identity or parity')
+    return dict(hashes, auditStatus='FAIL', currentMasterMatch=False, classification='UNRECOGNIZED_TEMPLATE_CHANGE',
+                defects=['Engine/CSS differ from current master and no exact, provenance-bound historical baseline matches'])
+
+def packaging_checks(data, entry):
+    """Inventory all style/script blocks, inline styling and event handlers.
+
+    Only exact inspected hashes/attributes are recognized. A known template never
+    grants permission to append a new style/script or change answer behavior.
+    """
+    doc = BeautifulSoup(data.decode('utf-8'), 'html.parser')
+    did = entry['identity']['dayid']
+    profile = baseline_profiles()['packaging'].get(did)
+    check(profile, 'No inspected packaging profile for selected guide; review required')
+    styles = [{'index': n, 'sha256': sha((tag.string or '').encode())} for n, tag in enumerate(doc.find_all('style'))]
+    scripts = []
+    for n, tag in enumerate(doc.find_all('script')):
+        text = tag.string or ''
+        scripts.append({'index': n, 'sha256': sha(text.encode()), 'src': tag.get('src'),
+                        'role': 'shared-engine' if 'const WAYFINDER_CONFIG=' in text else 'lesson-addition'})
+    inline = [{'tag': tag.name, 'style': tag['style'], 'id': tag.get('id'),
+               'slot': tag.get('data-slot'), 'role': tag.get('aria-label')} for tag in doc.select('[style]')]
+    handlers = [{'tag': tag.name, 'attribute': key} for tag in doc.find_all(True)
+                for key in tag.attrs if key.lower().startswith('on')]
+    defects = []
+    if Counter(item['sha256'] for item in styles[1:]) != Counter(profile['extraStyles']):
+        defects.append('Added/removed/changed lesson-specific style block outside inspected profile')
+    extra_scripts = [item['sha256'] for item in scripts if item['role'] != 'shared-engine']
+    if Counter(extra_scripts) != Counter(item['sha256'] for item in profile['extraScripts']):
+        defects.append('Added/removed/changed lesson-specific script outside inspected profile')
+    if any(item['src'] for item in scripts):
+        defects.append('External script is not permitted in this standalone packaging profile')
+    serialized = lambda rows: Counter(json.dumps(item, sort_keys=True) for item in rows)
+    if serialized(inline) != serialized(profile['inlineStyles']):
+        defects.append('Added/removed/changed inline styling outside inspected profile')
+    if handlers:
+        defects.append('Unreviewed inline event handler')
+    return {'auditStatus': 'FAIL' if defects else 'PASS', 'defects': defects,
+            'styles': styles, 'scripts': scripts, 'inlineStyles': inline, 'inlineEventHandlers': handlers,
+            'classification': 'DOCUMENTED_LESSON_PACKAGING' if not defects else 'UNREVIEWED_LESSON_CHANGE',
+            'reference': profile['reference'], 'knownAdditions': profile['extraScripts'],
+            'scope': 'Exact M4a-inspected packaging; not global template approval or browser verification'}
+
+def section_checks(data, entry):
+    doc = BeautifulSoup(data.decode('utf-8'), 'html.parser')
+    raw, mode = entry['source']['text'], entry['mode']
+    defects, review = [], []
+    aliases = {'learn': '#groupLearn, #group_learn', 'practice': '#groupPractice, #group_practice',
+               'perform': '#perform'}
+    def present(selector):
+        tag = doc.select_one(selector)
+        return tag if tag and not any(parent.has_attr('hidden') for parent in [tag, *tag.parents]
+                                     if getattr(parent, 'attrs', None) is not None) else None
+    for identifier in ['learningTarget', 'warmup', 'masteryOne', 'temperature', 'gateway']:
+        if present('#' + identifier) is None:
+            defects.append('Missing/hidden required section: ' + identifier)
+    # Studio is correctly hidden until the four checks; presence still is required.
+    if doc.find(id='creativeLabs') is None:
+        defects.append('Missing required section: creativeLabs')
+    learn, practice, perform = [present(aliases[key]) for key in ['learn', 'practice', 'perform']]
+    source_learn = re.search(r'^GROUP LEARN / HOOK: (.+)$', raw, re.M)
+    source_practice = re.search(r'^GROUP PRACTICE: (.+)$', raw, re.M)
+    source_perform = re.search(r'^PERFORM / PROJECT DEVELOPMENT: (.+)$', raw, re.M)
+    source_pacing = re.search(r'^50-MINUTE RHYTHM: (.+)$', raw, re.M)
+    def source_matches(tag, source, label):
+        visible = BeautifulSoup(str(tag), 'html.parser') if tag is not None else None
+        if visible:
+            for hidden in visible.select('[hidden], script, style, template'):
+                hidden.decompose()
+        if source and (visible is None or normalize(source[1]) not in normalize(visible.get_text(' ', strip=True))):
+            defects.append('Native ' + label + ' instructions omitted or altered')
+    if mode in ['STARTER', 'LEARN']:
+        source_matches(learn, source_learn, 'Group Learn')
+        if learn is None:
+            defects.append(mode + ' requires Group Learn')
+    if source_practice or mode in ['STARTER', 'PERFORM']:
+        source_matches(practice, source_practice, 'Group Practice')
+        if practice is None and not source_practice:
+            defects.append(mode + ' requires Group Practice')
+    if mode == 'PERFORM':
+        source_matches(perform, source_perform, 'Perform')
+        if perform is None:
+            defects.append('PERFORM requires a Perform section')
+        if learn is not None:
+            defects.append('PERFORM contains a full Group Learn section')
+        if source_learn:
+            review.append('Native Perform source still plans full Group Learn; reconcile its sections/pacing without silently rewriting it')
+        if source_pacing and re.search(r'[1-9]\d* min Group Learn', source_pacing[1]):
+            review.append('Native Perform pacing allocates Group Learn time; mode/source decision required')
+    if mode == 'LEARN' and source_pacing and re.search(r'[1-9]\d* min project\b', source_pacing[1]):
+        review.append('Native Learn pacing allocates project work; isolated-practice/source mapping requires review')
+    if mode == 'LEARN' and perform is not None:
+        title = perform.find(['h2', 'h3'])
+        isolated = title and title.get_text(' ', strip=True) == 'Guided Tool Practice'
+        if isolated and entry['identity']['dayid'] == '3050202':
+            source_matches(perform, source_perform, 'Learn tool practice')
+            review.append('Native Learn tool-practice/Perform representation conflicts with the current M1 contract; F4a2 decision outstanding')
+        else:
+            defects.append('LEARN contains a project/Perform section instead of source-declared isolated practice')
+    elif mode == 'LEARN' and source_perform:
+        review.append('Native Learn source specifies Perform/project work absent from HTML; source/mode reconciliation required')
+    if mode in ['STARTER', 'PERFORM'] or (mode == 'LEARN' and perform is not None):
+        if perform is None or not 3 <= len(perform.select('.perform-step')) <= 5:
+            defects.append('Mode-applicable novice scaffold requires 3–5 Perform/tool-practice steps')
+    return {'auditStatus': 'FAIL' if defects else 'UNTESTED' if review else 'PASS',
+            'defects': list(dict.fromkeys(defects)), 'needsReview': review,
+            'mode': mode, 'sections': [tag.get('id') for tag in doc.select('section')],
+            'scope': 'Literal native section fidelity and mode compatibility; not semantic curriculum certification'}
 
 def content_checks(data, entry):
     """Same source/target/TEKS/pin/engine/ID checks as existing production QA.
@@ -94,7 +218,6 @@ def content_checks(data, entry):
     check(doc.select_one('[data-slot="q1-help"]'), 'Missing question help')
     check(len(doc.select('[data-assembler="one"] textarea')) == 1, 'Native single-response field differs')
     check(len(doc.select('.gate-check')) == 4, 'Missing completion checks')
-    check(len(doc.select('.perform-step')) >= 4, 'Missing Perform scaffold')
     check(len(doc.select('.lab-grid .lab')) == 3 and len(doc.select('#studioEvidence')) == 1, 'Studio structure differs')
     check(not doc.select('template'), 'Unused template remains')
     return {'mode': cfg['mode'], 'questionKeys': [key], 'sourceRevision': entry['source']['revision'],
@@ -163,7 +286,9 @@ def audit(dayids, evidence, root=ROOT, drive_root=None):
             def record(name, action):
                 try:
                     detail = action()
-                    checks[name] = {'status': 'PASS', 'detail': detail}
+                    status = detail.get('auditStatus', 'PASS') if isinstance(detail, dict) else 'PASS'
+                    check(status in ['PASS', 'FAIL', 'UNTESTED'], 'Invalid audit check status')
+                    checks[name] = {'status': status, 'detail': detail}
                 except Exception as error:
                     checks[name] = {'status': 'FAIL', 'finding': str(error)}
             def github_binding():
@@ -180,7 +305,9 @@ def audit(dayids, evidence, root=ROOT, drive_root=None):
                 for name in ['identity', 'offline']:
                     checks[name] = {'status': 'FAIL', 'finding': str(error)}
             record('content', lambda: content_checks(data, entry))
-            record('masterVersion', lambda: master_checks(data))
+            record('masterVersion', lambda: master_checks(data, entry))
+            record('packaging', lambda: packaging_checks(data, entry))
+            record('sections', lambda: section_checks(data, entry))
             def size():
                 check(len(data) <= 2 * 1024 * 1024, 'HTML exceeds 2 MiB')
                 return {'bytes': len(data), 'maximumBytes': 2 * 1024 * 1024}
@@ -194,13 +321,15 @@ def audit(dayids, evidence, root=ROOT, drive_root=None):
                 return {'bytesEqual': True, 'sha256Equal': True}
             record('byteParity', parity)
             record('mappingsAndPreservation', lambda: mapping_checks(entry))
-            required = ['githubReadback', 'identity', 'offline', 'content', 'masterVersion', 'fileSize', 'byteParity', 'mappingsAndPreservation']
+            required = ['githubReadback', 'identity', 'offline', 'content', 'masterVersion', 'packaging', 'sections', 'fileSize', 'byteParity', 'mappingsAndPreservation']
             check(all(name in checks for name in required), 'Selected guide check skipped')
-            result['status'] = 'PASS' if all(checks[name]['status'] == 'PASS' for name in required) else 'FAIL'
+            statuses = [checks[name]['status'] for name in required]
+            result['status'] = 'FAIL' if 'FAIL' in statuses else 'UNTESTED' if 'UNTESTED' in statuses else 'PASS'
         except Exception as error:
             result['finding'] = str(error)
     check(len(results) == len(dayids), 'Selected guide result missing')
-    return {'status': 'PASS' if all(r['status'] == 'PASS' for r in results) else 'FAIL',
+    statuses = [row['status'] for row in results]
+    return {'status': 'FAIL' if 'FAIL' in statuses else 'UNTESTED' if 'UNTESTED' in statuses else 'PASS',
             'scope': 'Read-only batch delivery audit; not publication/student readiness or release',
             'selected': dayids, 'selectedCount': len(dayids), 'resultCount': len(results), 'results': results,
             'untested': ['Real school-browser permissions', 'Actual Collector receipts', 'Student-account download access',

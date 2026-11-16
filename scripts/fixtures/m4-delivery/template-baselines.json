@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Exact inspected historical baseline and lesson packaging; not a blanket approval or curriculum authority",
+  "historicalTemplates": [
+    {
+      "id": "prototype-20261112",
+      "commit": "8f7f7a3ce5ba97b41b1b045d3c0fe403fe16fa33",
+      "path": "templates/wayfinder-master.html",
+      "templateSha256": "85d89c64a1359b065e769ac032a7cf30a50030d84c35962643ec02bf5338b172",
+      "cssSha256": "a97e1d5776c038895afb30de295db47b078042ef74bd2ff23b9a1278c05ddfa4",
+      "engineSha256": "433aec2167b36008043567101d366365cdf8ac2e7b3545821c950b8fa3a02cf4",
+      "dayids": [
+        "3050202",
+        "3050203"
+      ],
+      "reference": "M4a finding A; original master snapshot and embedded WF-HANDOFF agree",
+      "differences": [
+        "scaffold labels750/legends800 versus current400/400",
+        "ASSESSMENT/RECOVERY Studio gate versus current ASSESSMENT-only; same selected Learn/Perform four-check behavior"
+      ]
+    }
+  ],
+  "packaging": {
+    "3050202": {
+      "reference": "M4a findings B/C; mobile fixes79c6e859e130b6e20daa1f487ef041d19683625f and e307b3880ddbe5598ecc92a7da43c22b60bef09a",
+      "extraStyles": [
+        "40e77a295f2bd7f2018e00d315dac96497bb32cbcfc41829bcf20b961b3e01c9"
+      ],
+      "extraScripts": [
+        {
+          "sha256": "2d2ecbd0bd6fb086092d38fec1860cf0923c146d25a91a69219defacbbd34e71",
+          "kind": "embedded-media-hydrator"
+        },
+        {
+          "sha256": "edfe9ff9cc2c46737597642b5bd3a6e3f9bf0781f7b82cc3993d787fa9d50652",
+          "kind": "offline-art-rotator"
+        }
+      ],
+      "inlineStyles": [
+        {
+          "tag": "svg",
+          "style": "width:100%;max-width:480px;background:white;border:2px solid #142063;border-radius:8px",
+          "id": null,
+          "slot": null,
+          "role": "A plain circle above a player square. The player moves left and right. A score and three lives are visible."
+        },
+        {
+          "tag": "select",
+          "style": "width:100%;max-width:100%;min-width:0",
+          "id": null,
+          "slot": null,
+          "role": "Which x-change direction is right?"
+        },
+        {
+          "tag": "pre",
+          "style": "white-space:pre-wrap;overflow-wrap:anywhere;background:#fff;padding:14px;border-radius:10px;color:#192244",
+          "id": null,
+          "slot": null,
+          "role": "Block recipe"
+        },
+        {
+          "tag": "svg",
+          "style": "width:100%;max-width:480px;background:white;border:2px solid #142063;border-radius:8px",
+          "id": null,
+          "slot": null,
+          "role": "A plain circle above a player square. The player moves left and right. A score and three lives are visible."
+        },
+        {
+          "tag": "div",
+          "style": "max-width:440px;min-height:120px",
+          "id": "labArt",
+          "slot": null,
+          "role": null
+        },
+        {
+          "tag": "div",
+          "style": "display:block;aspect-ratio:auto;min-height:0;max-width:100%;overflow-x:auto",
+          "id": "comicSlot",
+          "slot": null,
+          "role": "Four-panel comic; scroll horizontally to read every panel"
+        }
+      ]
+    },
+    "3050203": {
+      "reference": "M4a findings B/C; mobile fixes79c6e859e130b6e20daa1f487ef041d19683625f and e307b3880ddbe5598ecc92a7da43c22b60bef09a",
+      "extraStyles": [
+        "40e77a295f2bd7f2018e00d315dac96497bb32cbcfc41829bcf20b961b3e01c9"
+      ],
+      "extraScripts": [
+        {
+          "sha256": "2d2ecbd0bd6fb086092d38fec1860cf0923c146d25a91a69219defacbbd34e71",
+          "kind": "embedded-media-hydrator"
+        },
+        {
+          "sha256": "edfe9ff9cc2c46737597642b5bd3a6e3f9bf0781f7b82cc3993d787fa9d50652",
+          "kind": "offline-art-rotator"
+        }
+      ],
+      "inlineStyles": [
+        {
+          "tag": "select",
+          "style": "width:100%;max-width:100%;min-width:0",
+          "id": null,
+          "slot": null,
+          "role": "What should repeat?"
+        },
+        {
+          "tag": "pre",
+          "style": "white-space:pre-wrap;overflow-wrap:anywhere;background:#fff;padding:14px;border-radius:10px;color:#192244",
+          "id": null,
+          "slot": null,
+          "role": "Block recipe"
+        },
+        {
+          "tag": "pre",
+          "style": "white-space:pre-wrap;overflow-wrap:anywhere;background:#fff;padding:14px;border-radius:10px;color:#192244",
+          "id": null,
+          "slot": null,
+          "role": "Block recipe"
+        },
+        {
+          "tag": "svg",
+          "style": "width:100%;max-width:480px;background:white;border:2px solid #142063;border-radius:8px",
+          "id": null,
+          "slot": null,
+          "role": "A plain circle above a player square. The player moves left and right. A score and three lives are visible."
+        },
+        {
+          "tag": "div",
+          "style": "max-width:440px;min-height:120px",
+          "id": "labArt",
+          "slot": null,
+          "role": null
+        },
+        {
+          "tag": "div",
+          "style": "display:block;aspect-ratio:auto;min-height:0;max-width:100%;overflow-x:auto",
+          "id": "comicSlot",
+          "slot": null,
+          "role": "Four-panel comic; scroll horizontally to read every panel"
+        }
+      ]
+    }
+  }
+}
