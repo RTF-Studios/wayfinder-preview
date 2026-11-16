@@ -193,3 +193,51 @@ packaging style, and normalizes inline SVG `viewBox`, without modifying master
 source, CSS or engine. Actual questions/rubrics and F1 checks remain blocking.
 Run `test-m1c-3050201.cjs` and hosted `check-m1c-browser.cjs`; the fixture remains an
 isolated audit mapping, never a replacement authoritative outline or deployed LG.
+
+## F4a3 approved native intake and mapped instruction composition
+
+Normal `extractLesson`/WFBuilder/native Python build paths now project the two
+specifically approved Prototype native tabs (3050202 Learn, 3050203 Perform)
+without modifying their authoritative outline. `wayfinder-source-intake.cjs`
+resolves source-span pointers from the current native Day/Part Overview;
+`source-mappings/prototype-approved.json` is a reviewed, exact-hash projection
+contract, not a new curriculum registry. Runtime imports no audit fixture.
+Changed, missing or duplicate native text, wrong document/summary/overview,
+isolated-fixture input and changed asset bytes fail closed. Unmapped legacy
+sources still fail. Native blank paragraphs remain in original source provenance;
+projection pointers count nonempty paragraphs only. Current snapshot callers
+must actually fetch the native document; an offline validator cannot prove that
+an asserted revision is the latest remote revision.
+
+F1 still independently compares summary, outline and Control Station. M1 still
+forbids active Perform in Learn and active Group Learn in Perform. M2 still
+requires an explicit fresh source/payload-bound assistant review. The snapshot
+in `fixtures/f4a3-production` records the actual connector-read native text and
+review for reproducible isolated testing, not an alternate editable source or
+permission to replace deployed lessons. It preserves the native separator that
+F4a2's paragraph-only fixture omitted; source hash changes therefore are explicit.
+
+The exclusive `presentation.instructionLayout` supports these validated modes
+without weakening STARTER's existing roadmap-layout safeguards. It declares only
+archived skits and comic accessibility. The renderer keeps one connected Learn
+practice activity, or Perform preparation followed by independent evidence and
+project work. All original passages and outcome/test/save requirements occur
+once. Essential instructions stay in disclosure summaries; no invented help,
+replacement projects, questions, rubrics or code engine. Master CSS/JS remain
+identical. Existing exact comic packaging is reused, with no extra scripts.
+
+M4 re-extracts mapped roles from the supplied native envelope and checks its
+identity/provenance/raw text before inspecting passages, disclosure counts and
+ordering. It uses an exact inspected packaging profile for mapped builds;
+legacy profiles remain intact. Parsing configuration supports embedded data-URI
+semicolons, and an absent second mastery shell may have its unused q2 destination
+empty. Extra scripts/styles/handlers, missing/duplicated instructions, incorrect
+keys and mismatching delivery bytes continue to fail.
+
+Run `test-f4a3-production.cjs`, `test-f4a3-delivery.py`, and
+`check-f4a3-browser.cjs` with `F4A3_OUTPUT` pointing at an isolated output folder.
+M4 test mirrors are explicitly simulated Drive copies. Browser Form navigation
+is intercepted; real clipboard paste is tested, no Collector receipt is created.
+The hosted workflow preserves isolated HTML, browser screenshots and results.
+No production lesson, master, native outline, school data, Drive ID or Show
+setting is written by this batch. Deployment and student access remain separate.

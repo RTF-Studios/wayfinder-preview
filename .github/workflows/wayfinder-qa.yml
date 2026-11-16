@@ -10,6 +10,10 @@ on:
       - 'scripts/*m1b*'
       - 'scripts/*m1c*'
       - 'scripts/wayfinder-presentation.cjs'
+      - 'scripts/wayfinder-instruction-presentation.cjs'
+      - 'scripts/wayfinder-source-intake.cjs'
+      - 'scripts/source-mappings/**'
+      - 'scripts/*f4a3*'
       - 'scripts/wayfinder-record-renderer.cjs'
       - 'scripts/wayfinder_lesson.py'
       - 'scripts/schema/**'
@@ -41,6 +45,10 @@ on:
       - 'scripts/*m1b*'
       - 'scripts/*m1c*'
       - 'scripts/wayfinder-presentation.cjs'
+      - 'scripts/wayfinder-instruction-presentation.cjs'
+      - 'scripts/wayfinder-source-intake.cjs'
+      - 'scripts/source-mappings/**'
+      - 'scripts/*f4a3*'
       - 'scripts/wayfinder-record-renderer.cjs'
       - 'scripts/wayfinder_lesson.py'
       - 'scripts/schema/**'
@@ -304,3 +312,39 @@ jobs:
         with:
           name: m2-curriculum-quality
           path: qa-artifacts/m2
+
+  f4a3-production-compatibility:
+    needs: [pre-html-identity, lesson-content-contract, curriculum-quality]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install existing production test dependencies
+        run: |
+          python -m pip install beautifulsoup4==4.15.0
+          mkdir -p .github/qa-run
+          npm install --prefix .github/qa-run --no-save playwright@1.56.1
+          .github/qa-run/node_modules/.bin/playwright install --with-deps chromium
+      - name: Verify normal native intake, isolated builds, M4 checks and browser behavior
+        env:
+          F4A3_OUTPUT: /tmp/f4a3
+        run: |
+          node scripts/test-f4a3-production.cjs
+          python scripts/test-f4a3-delivery.py
+          node scripts/check-f4a3-browser.cjs
+      - name: Preserve isolated compatibility evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: f4a3-production-compatibility
+          path: |
+            qa-artifacts/f4a3
+            /tmp/f4a3/static-results.json
+            /tmp/f4a3/isolated-m4-results.json
+            /tmp/f4a3/Tech

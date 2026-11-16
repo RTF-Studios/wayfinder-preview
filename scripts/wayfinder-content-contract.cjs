@@ -82,6 +82,12 @@ function validatePayload(r){
   if(x.status==='applicable'){if(x.fullKey!==id+suffix||keys.has(x.fullKey))error('xtra.'+name,'reserved participation identity mismatch');keys.add(x.fullKey);checkURL(x.submissionUrl,x.fullKey);}
  }
  if(active('studio')){if(r.presentation.studioIdeas.status!=='applicable'||r.presentation.studioIdeas.items.length!==3)error('studio','exactly three explicit source ideas required');}else if(r.presentation.studioIdeas.status!=='not_applicable')error('studio','ideas must be explicitly not_applicable');
+ const composed=r.presentation.instructionLayout;
+ if(composed){
+  if(r.presentation.layout||!['LEARN','PERFORM'].includes(r.mode))error('presentation.instructionLayout','requires exclusive Learn/Perform composition');
+  if(!['warm_up','group_practice','studio','temperature'].every(active))error('presentation.instructionLayout','missing regular mapped section');
+  if(!assets.some(a=>a.purpose==='comic'))error('presentation.instructionLayout','approved comic required with skit');
+ }
  const layout=r.presentation.layout;
  if(layout){
   if(r.mode!=='STARTER'||!['warm_up','group_learn','group_practice','perform','exemplar','studio','temperature'].every(active))error('presentation.layout','this explicit roadmap layout requires applicable regular STARTER sections');
@@ -123,7 +129,7 @@ function extractLesson(source,dayid){
   }
   if(current)error('source','unterminated lesson');
  }
- const selected=found.get(dayid);if(!selected)error('source','no structured lesson block for '+dayid+'; legacy free-form outline requires explicit source fields, not defaults');
+ const selected=found.get(dayid)||require('./wayfinder-source-intake.cjs').project(source,tabs,dayid);if(!selected)error('source','no structured lesson block for '+dayid+'; legacy free-form outline requires explicit source fields, not defaults');
  const payload=validatePayload(selected.blocks);if(payload.identity.dayid!==dayid)error('identity','source block DayID mismatch');
  const headers=selected.tab.text.split(/\r?\n/).filter(l=>new RegExp('^DAY \\d+ \\| DAYID '+dayid+' \\|').test(l));if(headers.length>1)error('source','duplicate explicit Day header');if(headers.length){const fields=headers[0].split(' | ');if(Number(fields[0].slice(4))!==payload.identity.day||fields[2]!==payload.mode||fields[3]!==payload.identity.title)error('source','typed identity/mode disagrees with explicit Day heading');}
  const provenance={documentId:source.documentId,revision:source.revision,tabId:selected.tab.id,summaryApprovalReference:source.summaryApprovalReference,sourceSha256:sha(selected.tab.text)};

@@ -1,0 +1,1314 @@
+{
+  "authorization": "Captain GO F4a3 production intake; exact F4a2 approved projections, no native outline mutation",
+  "documentId": "1uT88cp1mVW7D8HFj6EL51_nlvlRc531uiGZcKcHEI48",
+  "overviewTab": "t.0",
+  "overviewSha256": "41e9d5df3521caa877217e37bffcfc6fee86f6814841b5f5331b4a7ae23842d9",
+  "summaryApprovalReference": "https://docs.google.com/document/d/1hdYPNgciqTp5-xSmwtS0ZWhvObttA_3C7C5Ydy9NBTg/edit",
+  "mappings": {
+    "3050202": {
+      "tabId": "t.o8ac01279hmn",
+      "nativeTextSha256": "a26c891264997fe875909763b3e5c64e9aabfc561e1e15ef4d187c6d62981424",
+      "projection": {
+        "schemaVersion": "1.0",
+        "identity": {
+          "course": "Tech",
+          "dayid": "3050202",
+          "unit": 5,
+          "part": 2,
+          "day": 2,
+          "title": {
+            "$source": "t.o8ac01279hmn",
+            "paragraph": 0,
+            "start": 32,
+            "length": 20
+          }
+        },
+        "mode": "LEARN",
+        "learningTarget": {
+          "text": {
+            "$source": "t.o8ac01279hmn",
+            "paragraph": 1,
+            "start": 17,
+            "length": 114
+          },
+          "what": {
+            "$source": "t.o8ac01279hmn",
+            "paragraph": 1,
+            "start": 23,
+            "length": 42
+          },
+          "why": {
+            "$source": "t.o8ac01279hmn",
+            "paragraph": 1,
+            "start": 74,
+            "length": 57
+          }
+        },
+        "teks": {
+          "priority": [
+            {
+              "code": {
+                "$source": "t.o8ac01279hmn",
+                "paragraph": 3,
+                "start": 0,
+                "length": 16
+              },
+              "wording": {
+                "$source": "t.o8ac01279hmn",
+                "paragraph": 3,
+                "start": 18,
+                "length": 90
+              }
+            },
+            {
+              "code": {
+                "$source": "t.o8ac01279hmn",
+                "paragraph": 4,
+                "start": 0,
+                "length": 16
+              },
+              "wording": {
+                "$source": "t.o8ac01279hmn",
+                "paragraph": 4,
+                "start": 18,
+                "length": 60
+              }
+            }
+          ],
+          "supporting": {
+            "status": "applicable",
+            "items": [
+              {
+                "code": {
+                  "$source": "t.o8ac01279hmn",
+                  "paragraph": 5,
+                  "start": 17,
+                  "length": 16
+                },
+                "wording": {
+                  "$source": "t.o8ac01279hmn",
+                  "paragraph": 5,
+                  "start": 35,
+                  "length": 85
+                }
+              },
+              {
+                "code": {
+                  "$source": "t.o8ac01279hmn",
+                  "paragraph": 5,
+                  "start": 121,
+                  "length": 16
+                },
+                "wording": {
+                  "$source": "t.o8ac01279hmn",
+                  "paragraph": 5,
+                  "start": 139,
+                  "length": 65
+                }
+              }
+            ]
+          }
+        },
+        "vocabulary": [
+          {
+            "term": "EVENT",
+            "definition": {
+              "$source": "t.o8ac01279hmn",
+              "paragraph": 8,
+              "start": 20,
+              "length": 24
+            }
+          },
+          {
+            "term": "FOREVER",
+            "definition": {
+              "$source": "t.o8ac01279hmn",
+              "paragraph": 8,
+              "start": 46,
+              "length": 29
+            }
+          },
+          {
+            "term": "CHANGE X",
+            "definition": {
+              "$source": "t.o8ac01279hmn",
+              "paragraph": 8,
+              "start": 77,
+              "length": 36
+            }
+          }
+        ],
+        "tools": [
+          {
+            "name": "TurboWarp",
+            "available": true,
+            "access": "installed",
+            "instructions": {
+              "$source": "t.0",
+              "paragraph": 11,
+              "start": 0,
+              "length": 255
+            }
+          }
+        ],
+        "sections": [
+          {
+            "id": "prior_learning_hook",
+            "status": "applicable",
+            "title": "Part context",
+            "text": {
+              "$source": "t.0",
+              "paragraph": 1,
+              "start": 0,
+              "length": 449
+            },
+            "steps": []
+          },
+          {
+            "id": "warm_up",
+            "status": "applicable",
+            "title": "Warm-Up",
+            "text": {
+              "$source": "t.o8ac01279hmn",
+              "paragraph": 7,
+              "start": 48,
+              "length": 100
+            },
+            "steps": []
+          },
+          {
+            "id": "group_learn",
+            "status": "applicable",
+            "title": "Events, loops and Player controls",
+            "text": {
+              "$source": "t.o8ac01279hmn",
+              "paragraph": 8,
+              "start": 20,
+              "length": 531
+            },
+            "steps": []
+          },
+          {
+            "id": "group_practice",
+            "status": "applicable",
+            "title": "Connected demonstration and guided Player building",
+            "text": {
+              "$source": "t.o8ac01279hmn",
+              "paragraph": 9,
+              "start": 16,
+              "length": 229
+            },
+            "steps": []
+          },
+          {
+            "id": "perform",
+            "status": "not_applicable",
+            "reason": "Captain F4a2 and approved Part Overview classify this building as isolated guided Learn practice, not a separate project workload."
+          },
+          {
+            "id": "assessment_runway",
+            "status": "not_applicable",
+            "reason": "This approved Daily lesson is not the Part Major assessment."
+          },
+          {
+            "id": "exemplar",
+            "status": "not_applicable",
+            "reason": "No separate professional exemplar is declared in this native day tab; preserve its supplied code teaching without inventing a new example."
+          },
+          {
+            "id": "temperature",
+            "status": "applicable",
+            "title": "TEKS Temperature Check",
+            "text": {
+              "$source": "t.o8ac01279hmn",
+              "paragraph": 15,
+              "start": 24,
+              "length": 109
+            },
+            "steps": []
+          },
+          {
+            "id": "studio",
+            "status": "applicable",
+            "title": "Creative Studio",
+            "text": {
+              "$source": "t.o8ac01279hmn",
+              "paragraph": 14,
+              "start": 0,
+              "length": 106
+            },
+            "steps": []
+          },
+          {
+            "id": "hand_in",
+            "status": "applicable",
+            "title": "Daily evidence and same-project hand-in",
+            "text": {
+              "$source": "t.o8ac01279hmn",
+              "paragraph": 12,
+              "start": 14,
+              "length": 317
+            },
+            "steps": []
+          },
+          {
+            "id": "next_day_bridge",
+            "status": "applicable",
+            "title": "Next day preparation",
+            "text": {
+              "$source": "t.o8ac01279hmn",
+              "paragraph": 17,
+              "start": 22,
+              "length": 105
+            },
+            "steps": []
+          }
+        ],
+        "activities": [
+          {
+            "id": "connected-player-controls",
+            "sectionId": "group_practice",
+            "instructions": {
+              "$source": "t.o8ac01279hmn",
+              "paragraph": 13,
+              "start": 31,
+              "length": 211
+            },
+            "outcome": {
+              "$source": "t.o8ac01279hmn",
+              "paragraph": 16,
+              "start": 27,
+              "length": 65
+            }
+          }
+        ],
+        "evidence": {
+          "graded": {
+            "status": "applicable",
+            "items": [
+              {
+                "fullKey": "305020230060",
+                "category": "DAILY",
+                "title": "Mastery Question 1",
+                "prompt": {
+                  "$source": "t.o8ac01279hmn",
+                  "paragraph": 10,
+                  "start": 56,
+                  "length": 184
+                },
+                "parts": [
+                  {
+                    "id": "response",
+                    "prompt": "Explain the complete scenario and include the requested test or reason.",
+                    "answerType": "short_text",
+                    "options": [],
+                    "acceptedAnswers": [
+                      {
+                        "$source": "t.o8ac01279hmn",
+                        "paragraph": 11,
+                        "start": 122,
+                        "length": 76
+                      }
+                    ],
+                    "scoringCriteria": [
+                      {
+                        "$source": "t.o8ac01279hmn",
+                        "paragraph": 11,
+                        "start": 122,
+                        "length": 76
+                      }
+                    ],
+                    "independentlyScored": true,
+                    "stimulusIds": [],
+                    "sentence": "",
+                    "blanks": 0,
+                    "help": {
+                      "$source": "t.o8ac01279hmn",
+                      "paragraph": 12,
+                      "start": 14,
+                      "length": 143
+                    }
+                  }
+                ],
+                "rubric": {
+                  "text": {
+                    "$source": "t.o8ac01279hmn",
+                    "paragraph": 11,
+                    "start": 24,
+                    "length": 351
+                  },
+                  "bands": [
+                    {
+                      "name": "below 50",
+                      "minimum": 0,
+                      "maximum": 49,
+                      "criteria": [
+                        {
+                          "$source": "t.o8ac01279hmn",
+                          "paragraph": 11,
+                          "start": 274,
+                          "length": 35
+                        }
+                      ]
+                    },
+                    {
+                      "name": "50–69",
+                      "minimum": 50,
+                      "maximum": 69,
+                      "criteria": [
+                        {
+                          "$source": "t.o8ac01279hmn",
+                          "paragraph": 11,
+                          "start": 206,
+                          "length": 57
+                        }
+                      ]
+                    },
+                    {
+                      "name": "70–89",
+                      "minimum": 70,
+                      "maximum": 89,
+                      "criteria": [
+                        {
+                          "$source": "t.o8ac01279hmn",
+                          "paragraph": 11,
+                          "start": 122,
+                          "length": 76
+                        }
+                      ]
+                    },
+                    {
+                      "name": "90–100",
+                      "minimum": 90,
+                      "maximum": 100,
+                      "criteria": [
+                        {
+                          "$source": "t.o8ac01279hmn",
+                          "paragraph": 11,
+                          "start": 47,
+                          "length": 67
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "pinnedSource": {
+                  "reference": "https://docs.google.com/document/d/1uT88cp1mVW7D8HFj6EL51_nlvlRc531uiGZcKcHEI48/edit?tab=t.o8ac01279hmn",
+                  "revision": "AHj4eMTLQSGxDstLPtQoTtlK01NkYbOSVO4FwDxHKLdHeR8_rDWDK_diEM6U3XOklqWH1cjvb42c1tNbTPi_I4choZpO04KNnKGQvJO8pxQ"
+                },
+                "submissionUrl": "https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=305020230060"
+              }
+            ]
+          },
+          "xtra": {
+            "warmUp": {
+              "status": "applicable",
+              "fullKey": "305020209998",
+              "prompt": "Your answer to the Warm-Up question",
+              "submissionUrl": "https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=305020209998"
+            },
+            "temperature": {
+              "status": "applicable",
+              "fullKey": "305020229999",
+              "prompt": "Learning Guide feedback — required",
+              "submissionUrl": "https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=305020229999"
+            },
+            "studio": {
+              "status": "applicable",
+              "fullKey": "305020220000",
+              "prompt": "What did you try, change, discover or learn? Describe work from any suggested idea or your own extension of today’s project. A meaningful attempt or discovery counts; you do not need three finished activities.",
+              "submissionUrl": "https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=305020220000"
+            }
+          }
+        },
+        "pacing": [
+          {
+            "id": "Warm-Up",
+            "sectionId": "warm_up",
+            "minutes": 4
+          },
+          {
+            "id": {
+              "$source": "t.o8ac01279hmn",
+              "paragraph": 6,
+              "start": 40,
+              "length": 34
+            },
+            "sectionId": "group_learn",
+            "minutes": 13
+          },
+          {
+            "id": {
+              "$source": "t.o8ac01279hmn",
+              "paragraph": 6,
+              "start": 82,
+              "length": 25
+            },
+            "sectionId": "group_practice",
+            "minutes": 7
+          },
+          {
+            "id": {
+              "$source": "t.o8ac01279hmn",
+              "paragraph": 6,
+              "start": 115,
+              "length": 26
+            },
+            "sectionId": "hand_in",
+            "minutes": 6
+          },
+          {
+            "id": {
+              "$source": "t.o8ac01279hmn",
+              "paragraph": 6,
+              "start": 150,
+              "length": 18
+            },
+            "sectionId": "group_practice",
+            "minutes": 15
+          },
+          {
+            "id": {
+              "$source": "t.o8ac01279hmn",
+              "paragraph": 6,
+              "start": 176,
+              "length": 43
+            },
+            "sectionId": "studio",
+            "minutes": 5
+          }
+        ],
+        "media": {
+          "status": "applicable",
+          "items": [
+            {
+              "id": "target0",
+              "kind": "image",
+              "purpose": "target",
+              "sourceReference": "GitHub baseline Tech/3050201.html imagePools.target",
+              "mimeType": "image/webp",
+              "alt": "Pixel holding a learning target",
+              "rightsApproved": true,
+              "attribution": "Existing approved RTF artwork; copied unchanged from baseline.",
+              "offlineEmbedded": true,
+              "dataUri": {
+                "$asset": "assets/learning-target/pixel-archery-target.webp",
+                "sha256": "43858ca3a95971dfaa25c2135e9dda07b6776521746632909153aa690476ca5f",
+                "mimeType": "image/webp"
+              }
+            },
+            {
+              "id": "comic0",
+              "kind": "image",
+              "purpose": "comic",
+              "sourceReference": "GitHub baseline Tech/3050201.html imagePools.comics",
+              "mimeType": "image/webp",
+              "alt": "Pixel, Onion.exe and Percival in the approved pet-supervision office comic",
+              "rightsApproved": true,
+              "attribution": "Existing approved RTF artwork; copied unchanged from baseline.",
+              "offlineEmbedded": true,
+              "dataUri": {
+                "$asset": "assets/rtf-comics/comic-pet-supervision-6e963345cbe3.webp",
+                "sha256": "6e963345cbe3d977909a3cef27510da9127ef10966e5b45a434c66ec7a4d3172",
+                "mimeType": "image/webp"
+              }
+            }
+          ]
+        },
+        "presentation": {
+          "notes": {
+            "status": "applicable",
+            "items": [
+              "Tank: Test the smallest working idea first.",
+              "Forge: Select the sprite before adding its blocks.",
+              "Joey: Clear shapes make behavior easy to see.",
+              "Percival.12: Record what happened, not what was expected."
+            ]
+          },
+          "studioIdeas": {
+            "status": "applicable",
+            "items": [
+              {
+                "title": "Idea 1",
+                "instructions": {
+                  "$source": "t.o8ac01279hmn",
+                  "paragraph": 14,
+                  "start": 108,
+                  "length": 41
+                }
+              },
+              {
+                "title": "Idea 2",
+                "instructions": {
+                  "$source": "t.o8ac01279hmn",
+                  "paragraph": 14,
+                  "start": 151,
+                  "length": 27
+                }
+              },
+              {
+                "title": "Idea 3",
+                "instructions": {
+                  "$source": "t.o8ac01279hmn",
+                  "paragraph": 14,
+                  "start": 180,
+                  "length": 39
+                }
+              }
+            ]
+          },
+          "instructionLayout": {
+            "kind": "mapped_instruction",
+            "skits": [
+              {
+                "title": "Official Dress Code",
+                "lines": [
+                  {
+                    "speaker": "Tank",
+                    "text": "Hi, I'm Tank."
+                  },
+                  {
+                    "speaker": "Joey",
+                    "text": "We know, Tank."
+                  },
+                  {
+                    "speaker": "Tank",
+                    "text": "It's on my shirt."
+                  }
+                ]
+              }
+            ],
+            "comicScrollHint": "Swipe or use arrow keys to read all four comic panels.",
+            "comicImageMinWidth": 560
+          }
+        }
+      },
+      "instructionPlacements": {
+        "learn": {
+          "paragraph": "An EVENT starts a script; a FOREVER loop repeats checks; CHANGE X changes horizontal position. The teacher projects and models this exact Player script: when green flag clicked → go to x:0 y:−125 → forever {if key [right arrow] pressed? then change x by 8; if key [left arrow] pressed? then change x by −8; if x position > 215 then set x to 215; if x position < −215 then set x to −215}. Students observe how each block is located in Events, Motion, Control, Sensing and Operators. A restart must reset the same position each time.",
+          "sectionId": "group_learn",
+          "field": "text"
+        },
+        "practice": {
+          "paragraph": "Teacher drags one block at a time while class predicts outcome: green flag resets position; right key increases x; left decreases x; boundaries prevent disappearing. Students arrange a paper block-flow sketch before implementing.",
+          "sectionId": "group_practice",
+          "field": "text"
+        },
+        "perform": {
+          "paragraph": "Select Player only. Build the displayed reset-and-forever keyboard control. Test right, left, both stage edges, and stopping/restarting. Leave FallingObject untouched. Save the SAME project; do not duplicate it.",
+          "sectionId": "group_practice",
+          "field": "activity.instructions"
+        }
+      },
+      "pacing": [
+        {
+          "sourceLabel": "Warm-Up",
+          "minutes": 4,
+          "mappedSectionId": "warm_up",
+          "workMinutes": 3,
+          "transitionMinutes": 0,
+          "submissionMinutes": 1
+        },
+        {
+          "sourceLabel": "Group Learn with live teacher demo",
+          "minutes": 13,
+          "mappedSectionId": "group_learn",
+          "workMinutes": 12,
+          "transitionMinutes": 1,
+          "submissionMinutes": 0
+        },
+        {
+          "sourceLabel": "Group Practice/prediction",
+          "minutes": 7,
+          "mappedSectionId": "group_practice",
+          "workMinutes": 6,
+          "transitionMinutes": 1,
+          "submissionMinutes": 0
+        },
+        {
+          "sourceLabel": "independent DAILY evidence",
+          "minutes": 6,
+          "mappedSectionId": "hand_in",
+          "workMinutes": 5,
+          "transitionMinutes": 0,
+          "submissionMinutes": 1
+        },
+        {
+          "sourceLabel": "project build/test",
+          "minutes": 15,
+          "mappedSectionId": "group_practice",
+          "workMinutes": 13,
+          "transitionMinutes": 2,
+          "submissionMinutes": 0
+        },
+        {
+          "sourceLabel": "save/TEKS Temperature/Studio as appropriate",
+          "minutes": 5,
+          "mappedSectionId": "studio",
+          "workMinutes": 3,
+          "transitionMinutes": 0,
+          "submissionMinutes": 2
+        }
+      ]
+    },
+    "3050203": {
+      "tabId": "t.gek820lkmn31",
+      "nativeTextSha256": "23bdd49db174fdac2431e2ca43f1be94ed53c109697093d89ffe7462f5c511ec",
+      "projection": {
+        "schemaVersion": "1.0",
+        "identity": {
+          "course": "Tech",
+          "dayid": "3050203",
+          "unit": 5,
+          "part": 2,
+          "day": 3,
+          "title": {
+            "$source": "t.gek820lkmn31",
+            "paragraph": 0,
+            "start": 34,
+            "length": 28
+          }
+        },
+        "mode": "PERFORM",
+        "learningTarget": {
+          "text": {
+            "$source": "t.gek820lkmn31",
+            "paragraph": 1,
+            "start": 17,
+            "length": 110
+          },
+          "what": {
+            "$source": "t.gek820lkmn31",
+            "paragraph": 1,
+            "start": 23,
+            "length": 37
+          },
+          "why": {
+            "$source": "t.gek820lkmn31",
+            "paragraph": 1,
+            "start": 69,
+            "length": 58
+          }
+        },
+        "teks": {
+          "priority": [
+            {
+              "code": {
+                "$source": "t.gek820lkmn31",
+                "paragraph": 3,
+                "start": 0,
+                "length": 16
+              },
+              "wording": {
+                "$source": "t.gek820lkmn31",
+                "paragraph": 3,
+                "start": 18,
+                "length": 90
+              }
+            },
+            {
+              "code": {
+                "$source": "t.gek820lkmn31",
+                "paragraph": 4,
+                "start": 0,
+                "length": 16
+              },
+              "wording": {
+                "$source": "t.gek820lkmn31",
+                "paragraph": 4,
+                "start": 18,
+                "length": 60
+              }
+            }
+          ],
+          "supporting": {
+            "status": "applicable",
+            "items": [
+              {
+                "code": {
+                  "$source": "t.gek820lkmn31",
+                  "paragraph": 5,
+                  "start": 17,
+                  "length": 16
+                },
+                "wording": {
+                  "$source": "t.gek820lkmn31",
+                  "paragraph": 5,
+                  "start": 35,
+                  "length": 65
+                }
+              },
+              {
+                "code": {
+                  "$source": "t.gek820lkmn31",
+                  "paragraph": 5,
+                  "start": 101,
+                  "length": 16
+                },
+                "wording": {
+                  "$source": "t.gek820lkmn31",
+                  "paragraph": 5,
+                  "start": 119,
+                  "length": 71
+                }
+              }
+            ]
+          }
+        },
+        "vocabulary": [
+          {
+            "term": "Forever",
+            "definition": {
+              "$source": "t.gek820lkmn31",
+              "paragraph": 8,
+              "start": 246,
+              "length": 25
+            }
+          },
+          {
+            "term": "repeat until",
+            "definition": {
+              "$source": "t.gek820lkmn31",
+              "paragraph": 8,
+              "start": 273,
+              "length": 36
+            }
+          },
+          {
+            "term": "random x",
+            "definition": {
+              "$source": "t.gek820lkmn31",
+              "paragraph": 8,
+              "start": 311,
+              "length": 26
+            }
+          }
+        ],
+        "tools": [
+          {
+            "name": "TurboWarp",
+            "available": true,
+            "access": "installed",
+            "instructions": {
+              "$source": "t.0",
+              "paragraph": 11,
+              "start": 0,
+              "length": 255
+            }
+          }
+        ],
+        "sections": [
+          {
+            "id": "prior_learning_hook",
+            "status": "applicable",
+            "title": "Part context",
+            "text": {
+              "$source": "t.0",
+              "paragraph": 1,
+              "start": 0,
+              "length": 449
+            },
+            "steps": []
+          },
+          {
+            "id": "warm_up",
+            "status": "applicable",
+            "title": "Warm-Up",
+            "text": {
+              "$source": "t.gek820lkmn31",
+              "paragraph": 7,
+              "start": 48,
+              "length": 79
+            },
+            "steps": []
+          },
+          {
+            "id": "group_learn",
+            "status": "not_applicable",
+            "reason": "Captain F4a2 and approved Part Overview place the complete source loop comparison in preparation for Perform, not a second Group Learn workload."
+          },
+          {
+            "id": "group_practice",
+            "status": "applicable",
+            "title": "Loop comparison and teacher preparation",
+            "text": {
+              "$source": "t.gek820lkmn31",
+              "paragraph": 8,
+              "start": 20,
+              "length": 502
+            },
+            "steps": []
+          },
+          {
+            "id": "perform",
+            "status": "applicable",
+            "title": "Independent repeated-fall project",
+            "text": {
+              "$source": "t.gek820lkmn31",
+              "paragraph": 16,
+              "start": 27,
+              "length": 87
+            },
+            "steps": [
+              {
+                "$source": "t.gek820lkmn31",
+                "paragraph": 13,
+                "start": 31,
+                "length": 127
+              },
+              {
+                "$source": "t.gek820lkmn31",
+                "paragraph": 13,
+                "start": 159,
+                "length": 100
+              }
+            ]
+          },
+          {
+            "id": "assessment_runway",
+            "status": "not_applicable",
+            "reason": "This approved Daily lesson is not the Part Major assessment."
+          },
+          {
+            "id": "exemplar",
+            "status": "not_applicable",
+            "reason": "No separate professional exemplar is declared in this native day tab; preserve its supplied code teaching without inventing a new example."
+          },
+          {
+            "id": "temperature",
+            "status": "applicable",
+            "title": "TEKS Temperature Check",
+            "text": {
+              "$source": "t.gek820lkmn31",
+              "paragraph": 15,
+              "start": 24,
+              "length": 109
+            },
+            "steps": []
+          },
+          {
+            "id": "studio",
+            "status": "applicable",
+            "title": "Creative Studio",
+            "text": {
+              "$source": "t.gek820lkmn31",
+              "paragraph": 14,
+              "start": 0,
+              "length": 106
+            },
+            "steps": []
+          },
+          {
+            "id": "hand_in",
+            "status": "applicable",
+            "title": "Daily evidence and same-project hand-in",
+            "text": {
+              "$source": "t.gek820lkmn31",
+              "paragraph": 12,
+              "start": 14,
+              "length": 317
+            },
+            "steps": []
+          },
+          {
+            "id": "next_day_bridge",
+            "status": "applicable",
+            "title": "Next day preparation",
+            "text": {
+              "$source": "t.gek820lkmn31",
+              "paragraph": 17,
+              "start": 22,
+              "length": 105
+            },
+            "steps": []
+          }
+        ],
+        "activities": [
+          {
+            "id": "teacher-prediction-before-project",
+            "sectionId": "group_practice",
+            "instructions": {
+              "$source": "t.gek820lkmn31",
+              "paragraph": 9,
+              "start": 16,
+              "length": 215
+            },
+            "outcome": {
+              "$source": "t.gek820lkmn31",
+              "paragraph": 1,
+              "start": 17,
+              "length": 110
+            }
+          }
+        ],
+        "evidence": {
+          "graded": {
+            "status": "applicable",
+            "items": [
+              {
+                "fullKey": "305020330061",
+                "category": "DAILY",
+                "title": "Mastery Question 1",
+                "prompt": {
+                  "$source": "t.gek820lkmn31",
+                  "paragraph": 10,
+                  "start": 56,
+                  "length": 151
+                },
+                "parts": [
+                  {
+                    "id": "response",
+                    "prompt": "Explain the complete scenario and include the requested test or reason.",
+                    "answerType": "short_text",
+                    "options": [],
+                    "acceptedAnswers": [
+                      {
+                        "$source": "t.gek820lkmn31",
+                        "paragraph": 11,
+                        "start": 122,
+                        "length": 79
+                      }
+                    ],
+                    "scoringCriteria": [
+                      {
+                        "$source": "t.gek820lkmn31",
+                        "paragraph": 11,
+                        "start": 122,
+                        "length": 79
+                      }
+                    ],
+                    "independentlyScored": true,
+                    "stimulusIds": [],
+                    "sentence": "",
+                    "blanks": 0,
+                    "help": {
+                      "$source": "t.gek820lkmn31",
+                      "paragraph": 12,
+                      "start": 14,
+                      "length": 143
+                    }
+                  }
+                ],
+                "rubric": {
+                  "text": {
+                    "$source": "t.gek820lkmn31",
+                    "paragraph": 11,
+                    "start": 24,
+                    "length": 354
+                  },
+                  "bands": [
+                    {
+                      "name": "below 50",
+                      "minimum": 0,
+                      "maximum": 49,
+                      "criteria": [
+                        {
+                          "$source": "t.gek820lkmn31",
+                          "paragraph": 11,
+                          "start": 277,
+                          "length": 35
+                        }
+                      ]
+                    },
+                    {
+                      "name": "50–69",
+                      "minimum": 50,
+                      "maximum": 69,
+                      "criteria": [
+                        {
+                          "$source": "t.gek820lkmn31",
+                          "paragraph": 11,
+                          "start": 209,
+                          "length": 57
+                        }
+                      ]
+                    },
+                    {
+                      "name": "70–89",
+                      "minimum": 70,
+                      "maximum": 89,
+                      "criteria": [
+                        {
+                          "$source": "t.gek820lkmn31",
+                          "paragraph": 11,
+                          "start": 122,
+                          "length": 79
+                        }
+                      ]
+                    },
+                    {
+                      "name": "90–100",
+                      "minimum": 90,
+                      "maximum": 100,
+                      "criteria": [
+                        {
+                          "$source": "t.gek820lkmn31",
+                          "paragraph": 11,
+                          "start": 47,
+                          "length": 67
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "pinnedSource": {
+                  "reference": "https://docs.google.com/document/d/1uT88cp1mVW7D8HFj6EL51_nlvlRc531uiGZcKcHEI48/edit?tab=t.gek820lkmn31",
+                  "revision": "AHj4eMTLQSGxDstLPtQoTtlK01NkYbOSVO4FwDxHKLdHeR8_rDWDK_diEM6U3XOklqWH1cjvb42c1tNbTPi_I4choZpO04KNnKGQvJO8pxQ"
+                },
+                "submissionUrl": "https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=305020330061"
+              }
+            ]
+          },
+          "xtra": {
+            "warmUp": {
+              "status": "applicable",
+              "fullKey": "305020309998",
+              "prompt": "Your answer to the Warm-Up question",
+              "submissionUrl": "https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=305020309998"
+            },
+            "temperature": {
+              "status": "applicable",
+              "fullKey": "305020329999",
+              "prompt": "Learning Guide feedback — required",
+              "submissionUrl": "https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=305020329999"
+            },
+            "studio": {
+              "status": "applicable",
+              "fullKey": "305020320000",
+              "prompt": "What did you try, change, discover or learn? Describe work from any suggested idea or your own extension of today’s project. A meaningful attempt or discovery counts; you do not need three finished activities.",
+              "submissionUrl": "https://docs.google.com/forms/d/e/1FAIpQLSd0OVYW0cuObc1FCSQy55eSm6UNFcPTX_R9QROBtXrEF84fXw/viewform?usp=pp_url&entry.1954781253=305020320000"
+            }
+          }
+        },
+        "pacing": [
+          {
+            "id": "Warm-Up",
+            "sectionId": "warm_up",
+            "minutes": 4
+          },
+          {
+            "id": {
+              "$source": "t.gek820lkmn31",
+              "paragraph": 6,
+              "start": 40,
+              "length": 34
+            },
+            "sectionId": "group_practice",
+            "minutes": 13
+          },
+          {
+            "id": {
+              "$source": "t.gek820lkmn31",
+              "paragraph": 6,
+              "start": 82,
+              "length": 25
+            },
+            "sectionId": "group_practice",
+            "minutes": 7
+          },
+          {
+            "id": {
+              "$source": "t.gek820lkmn31",
+              "paragraph": 6,
+              "start": 115,
+              "length": 26
+            },
+            "sectionId": "hand_in",
+            "minutes": 6
+          },
+          {
+            "id": {
+              "$source": "t.gek820lkmn31",
+              "paragraph": 6,
+              "start": 150,
+              "length": 18
+            },
+            "sectionId": "perform",
+            "minutes": 15
+          },
+          {
+            "id": {
+              "$source": "t.gek820lkmn31",
+              "paragraph": 6,
+              "start": 176,
+              "length": 43
+            },
+            "sectionId": "studio",
+            "minutes": 5
+          }
+        ],
+        "media": {
+          "status": "applicable",
+          "items": [
+            {
+              "id": "target0",
+              "kind": "image",
+              "purpose": "target",
+              "sourceReference": "GitHub baseline Tech/3050201.html imagePools.target",
+              "mimeType": "image/webp",
+              "alt": "Pixel holding a learning target",
+              "rightsApproved": true,
+              "attribution": "Existing approved RTF artwork; copied unchanged from baseline.",
+              "offlineEmbedded": true,
+              "dataUri": {
+                "$asset": "assets/learning-target/pixel-archery-target.webp",
+                "sha256": "43858ca3a95971dfaa25c2135e9dda07b6776521746632909153aa690476ca5f",
+                "mimeType": "image/webp"
+              }
+            },
+            {
+              "id": "comic0",
+              "kind": "image",
+              "purpose": "comic",
+              "sourceReference": "GitHub baseline Tech/3050201.html imagePools.comics",
+              "mimeType": "image/webp",
+              "alt": "Pixel, Onion.exe and Percival in the approved pet-supervision office comic",
+              "rightsApproved": true,
+              "attribution": "Existing approved RTF artwork; copied unchanged from baseline.",
+              "offlineEmbedded": true,
+              "dataUri": {
+                "$asset": "assets/rtf-comics/comic-pet-supervision-6e963345cbe3.webp",
+                "sha256": "6e963345cbe3d977909a3cef27510da9127ef10966e5b45a434c66ec7a4d3172",
+                "mimeType": "image/webp"
+              }
+            }
+          ]
+        },
+        "presentation": {
+          "notes": {
+            "status": "applicable",
+            "items": [
+              "Tank: Test the smallest working idea first.",
+              "Forge: Select the sprite before adding its blocks.",
+              "Joey: Clear shapes make behavior easy to see.",
+              "Percival.12: Record what happened, not what was expected."
+            ]
+          },
+          "studioIdeas": {
+            "status": "applicable",
+            "items": [
+              {
+                "title": "Idea 1",
+                "instructions": {
+                  "$source": "t.gek820lkmn31",
+                  "paragraph": 14,
+                  "start": 108,
+                  "length": 31
+                }
+              },
+              {
+                "title": "Idea 2",
+                "instructions": {
+                  "$source": "t.gek820lkmn31",
+                  "paragraph": 14,
+                  "start": 141,
+                  "length": 35
+                }
+              },
+              {
+                "title": "Idea 3",
+                "instructions": {
+                  "$source": "t.gek820lkmn31",
+                  "paragraph": 14,
+                  "start": 178,
+                  "length": 64
+                }
+              }
+            ]
+          },
+          "instructionLayout": {
+            "kind": "mapped_instruction",
+            "skits": [
+              {
+                "title": "Official Dress Code",
+                "lines": [
+                  {
+                    "speaker": "Tank",
+                    "text": "Hi, I'm Tank."
+                  },
+                  {
+                    "speaker": "Joey",
+                    "text": "We know, Tank."
+                  },
+                  {
+                    "speaker": "Tank",
+                    "text": "It's on my shirt."
+                  }
+                ]
+              }
+            ],
+            "comicScrollHint": "Swipe or use arrow keys to read all four comic panels.",
+            "comicImageMinWidth": 560
+          }
+        }
+      },
+      "instructionPlacements": {
+        "learn": {
+          "paragraph": "The falling script belongs to FallingObject, not Player. Exact teacher recipe: when green flag clicked → forever {go to x:(pick random −210 to 210) y:170; repeat until (y position < −175) {change y by −5; wait 0.03 seconds}}. Forever restarts the drop; repeat until ends an individual fall; random x varies each start. Keep its sprite a plain circle. Compare one loop that repeats the entire game and another loop that controls one falling trip. Change the speed cautiously and test from a known reset.",
+          "sectionId": "group_practice",
+          "field": "text"
+        },
+        "practice": {
+          "paragraph": "Teacher predicts output for fixed x versus pick random, demonstrates sign of negative y, then changes only one parameter. Class identifies loop nesting and why a sprite script must be attached to the correct object.",
+          "sectionId": "group_practice",
+          "field": "activity.instructions"
+        },
+        "perform": {
+          "paragraph": "Use the exact supplied FallingObject recipe, test at least five drops, verify the player still responds, and save SAME project. Keep a simple scoreboard note listing observed spawn x changes, fall direction and restart behavior.",
+          "sectionId": "perform",
+          "field": "steps"
+        }
+      },
+      "pacing": [
+        {
+          "sourceLabel": "Warm-Up",
+          "minutes": 4,
+          "mappedSectionId": "warm_up",
+          "workMinutes": 3,
+          "transitionMinutes": 0,
+          "submissionMinutes": 1
+        },
+        {
+          "sourceLabel": "Group Learn with live teacher demo",
+          "minutes": 13,
+          "mappedSectionId": "group_practice",
+          "workMinutes": 12,
+          "transitionMinutes": 1,
+          "submissionMinutes": 0
+        },
+        {
+          "sourceLabel": "Group Practice/prediction",
+          "minutes": 7,
+          "mappedSectionId": "group_practice",
+          "workMinutes": 6,
+          "transitionMinutes": 1,
+          "submissionMinutes": 0
+        },
+        {
+          "sourceLabel": "independent DAILY evidence",
+          "minutes": 6,
+          "mappedSectionId": "hand_in",
+          "workMinutes": 5,
+          "transitionMinutes": 0,
+          "submissionMinutes": 1
+        },
+        {
+          "sourceLabel": "project build/test",
+          "minutes": 15,
+          "mappedSectionId": "perform",
+          "workMinutes": 13,
+          "transitionMinutes": 2,
+          "submissionMinutes": 0
+        },
+        {
+          "sourceLabel": "save/TEKS Temperature/Studio as appropriate",
+          "minutes": 5,
+          "mappedSectionId": "studio",
+          "workMinutes": 3,
+          "transitionMinutes": 0,
+          "submissionMinutes": 2
+        }
+      ]
+    }
+  }
+}

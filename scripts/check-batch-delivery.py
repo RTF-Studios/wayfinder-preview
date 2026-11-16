@@ -36,7 +36,7 @@ def configuration(doc, require_json=True):
     matches = [text for text in scripts if 'const WAYFINDER_CONFIG=' in text]
     check(len(matches) == 1, 'Expected exactly one shared engine/configuration')
     script = matches[0]
-    match = re.search(r'const WAYFINDER_CONFIG=(.*?);', script)
+    match = re.search(r'const WAYFINDER_CONFIG=([^\n]*);', script)
     check(match, 'Missing shared configuration')
     cfg = json.loads(re.sub(r'window\.__WF_MEDIA\["[^"]+"\]', 'null', match[1])) if require_json else {}
     return cfg, script[:match.start(1)] + '{}' + script[match.end(1):]
@@ -72,6 +72,24 @@ def master_checks(data, entry):
     return dict(hashes, auditStatus='FAIL', currentMasterMatch=False, classification='UNRECOGNIZED_TEMPLATE_CHANGE',
                 defects=['Engine/CSS differ from current master and no exact, provenance-bound historical baseline matches'])
 
+def mapped_record(entry):
+    """Re-extract approved roles from native source, never caller role labels."""
+    envelope = entry.get('sourceEnvelope')
+    if envelope is None:
+        return None
+    code = "const C=require('./scripts/wayfinder-content-contract.cjs'),x=JSON.parse(require('fs').readFileSync(0,'utf8'));process.stdout.write(JSON.stringify(C.extractLesson(x.source,x.dayid)))"
+    run = subprocess.run(['node', '-e', code], cwd=ROOT,
+                         input=json.dumps({'source': envelope, 'dayid': entry['identity']['dayid']}),
+                         text=True, capture_output=True)
+    check(run.returncode == 0, 'Invalid mapped native source: ' + run.stderr[-500:])
+    record = json.loads(run.stdout)
+    check(record['sourceText'] == entry['source']['text'], 'Mapped raw native source differs')
+    for key in ['documentId', 'revision', 'tabId']:
+        check(record['provenance'][key] == entry['source'][key], 'Mapped source provenance differs: ' + key)
+    check(record['payload']['identity'] == entry['identity'] and record['payload']['mode'] == entry['mode'], 'Mapped identity/mode differs')
+    check(record['payload']['presentation'].get('instructionLayout'), 'Unsupported mapped presentation')
+    return record
+
 def packaging_checks(data, entry):
     """Inventory all style/script blocks, inline styling and event handlers.
 
@@ -80,7 +98,9 @@ def packaging_checks(data, entry):
     """
     doc = BeautifulSoup(data.decode('utf-8'), 'html.parser')
     did = entry['identity']['dayid']
-    profile = baseline_profiles()['packaging'].get(did)
+    record = mapped_record(entry)
+    profiles = baseline_profiles()['packaging']
+    profile = profiles.get('mapped:' + did) if record else profiles.get(did)
     check(profile, 'No inspected packaging profile for selected guide; review required')
     styles = [{'index': n, 'sha256': sha((tag.string or '').encode())} for n, tag in enumerate(doc.find_all('style'))]
     scripts = []
@@ -128,6 +148,51 @@ def section_checks(data, entry):
     if doc.find(id='creativeLabs') is None:
         defects.append('Missing required section: creativeLabs')
     learn, practice, perform = [present(aliases[key]) for key in ['learn', 'practice', 'perform']]
+    mapped = mapped_record(entry)
+    if mapped:
+        payload = mapped['payload']
+        by_id = {s['id']: s for s in payload['sections']}
+        names = {'group_learn': learn, 'group_practice': practice, 'perform': perform}
+        surfaces = []
+        for identifier, tag in names.items():
+            source = by_id[identifier]
+            if source['status'] == 'not_applicable':
+                if tag is not None:
+                    defects.append('Inapplicable mapped section rendered: ' + identifier)
+                continue
+            if tag is None:
+                defects.append('Missing mapped section: ' + identifier)
+                continue
+            visible = BeautifulSoup(str(tag), 'html.parser')
+            for hidden in visible.select('[hidden], script, style, template'):
+                hidden.decompose()
+            text = normalize(visible.get_text(' ', strip=True))
+            surfaces.append(text)
+            expected = [source['text'], *source['steps']]
+            expected += [a['instructions'] for a in payload['activities'] if a['sectionId'] == identifier]
+            expected += [a['outcome'] for a in payload['activities'] if a['sectionId'] == identifier]
+            for passage in expected:
+                if text.count(normalize(passage)) != 1:
+                    defects.append('Mapped passage omitted/duplicated: ' + identifier)
+        # Enforce all original approved instruction passages exactly once across
+        # mapped surfaces; reject duplication into another section too.
+        for prefix in ['GROUP LEARN / HOOK: ', 'GROUP PRACTICE: ', 'PERFORM / PROJECT DEVELOPMENT: ']:
+            passage = re.search('^' + re.escape(prefix) + '(.+)$', raw, re.M)
+            if passage and sum(text.count(normalize(passage[1])) for text in surfaces) != 1:
+                defects.append('Original instruction omitted/duplicated across roles: ' + prefix)
+        for identifier in ['group_practice', 'perform']:
+            if by_id[identifier]['status'] == 'applicable':
+                tag = names[identifier]
+                expected = len(by_id[identifier]['steps']) + sum(a['sectionId'] == identifier for a in payload['activities'])
+                if tag is None or len(tag.select('details.perform-step')) != expected:
+                    defects.append('Mapped novice instruction disclosure count differs: ' + identifier)
+        ordered = [tag.get('id') for tag in doc.select('section[id]')]
+        required_order = [('groupLearn' if 'groupLearn' in ordered else 'group_learn'), 'groupPractice', 'masteryOne'] if mode == 'LEARN' else ['groupPractice', 'masteryOne', 'perform']
+        if any(name not in ordered for name in required_order) or [ordered.index(name) for name in required_order if name in ordered] != sorted(ordered.index(name) for name in required_order if name in ordered):
+            defects.append('Mapped preparation/evidence/project order differs')
+        return {'auditStatus': 'FAIL' if defects else 'PASS', 'defects': defects, 'needsReview': [],
+                'mode': mode, 'sections': ordered,
+                'scope': 'Validated current native mapped roles and literal passage fidelity; no curriculum waiver'}
     source_learn = re.search(r'^GROUP LEARN / HOOK: (.+)$', raw, re.M)
     source_practice = re.search(r'^GROUP PRACTICE: (.+)$', raw, re.M)
     source_perform = re.search(r'^PERFORM / PROJECT DEVELOPMENT: (.+)$', raw, re.M)
@@ -213,7 +278,10 @@ def content_checks(data, entry):
     prompt_tag = doc.select_one('[data-slot="mastery-q1"]')
     check(prompt_tag and normalize(prompt_tag.get_text(' ', strip=True)) == normalize(prompt), 'Visible question differs from native prompt')
     expected = {did + '29999', did + '20000', did + '09998', key}
-    urls = list(cfg['destinations'].values())
+    destinations = dict(cfg['destinations'])
+    if destinations.get('q2') == '' and doc.find(id='masteryTwo') is None:
+        del destinations['q2']  # unchanged regular shell's explicitly unused second checkpoint
+    urls = list(destinations.values())
     check(set(urls) == {FORM + k for k in expected} and len(urls) == len(expected), 'Missing/duplicate/incorrect Form destination')
     check(doc.select_one('[data-slot="q1-help"]'), 'Missing question help')
     check(len(doc.select('[data-assembler="one"] textarea')) == 1, 'Native single-response field differs')
