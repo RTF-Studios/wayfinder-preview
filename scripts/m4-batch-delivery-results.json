@@ -239,5 +239,25 @@
     ".github/workflows/wayfinder-qa.yml",
     "scripts/m4-batch-delivery-results.json"
   ],
-  "hostedDetectionTests": "PENDING remote commit and CI readback; authenticated pilot results above are local connector-readback audit"
+  "hostedDetectionTests": {
+    "status": "PASS",
+    "tests": 17,
+    "run": 43779701543,
+    "url": "https://github.com/RTF-Studios/wayfinder-preview/actions/runs/43779701543",
+    "implementationCommit": "c022e62344f3738da7bb1f80d62707fd3fea15ae",
+    "job": 133013871150,
+    "F1job": 133013871510,
+    "M1job": 133013937541,
+    "M2job": 133014006569,
+    "workflowConclusion": "success",
+    "scope": "Detection tests with temporary mock Drive files; actual authenticated pilot is the separate byte readback above"
+  },
+  "remoteReadback": {
+    "allSixChangedFilesExact": true,
+    "changedPathsOnlyQAAndEvidence": true,
+    "deletedTrackedFiles": 0,
+    "allProductionBlobsUnchanged": true,
+    "finalControlStationCellsExact": true,
+    "finalDriveMetadataAndLibraryCellsExact": true
+  }
 }
