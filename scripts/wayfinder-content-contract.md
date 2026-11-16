@@ -204,7 +204,7 @@ resolves source-span pointers from the current native Day/Part Overview;
 contract, not a new curriculum registry. Runtime imports no audit fixture.
 Changed, missing or duplicate native text, wrong document/summary/overview,
 isolated-fixture input and changed asset bytes fail closed. Unmapped legacy
-sources still fail. Native blank paragraphs remain in original source provenance;
+sources still fail. Native blank paragraphs and final textRun newlines remain in original source provenance;
 projection pointers count nonempty paragraphs only. Current snapshot callers
 must actually fetch the native document; an offline validator cannot prove that
 an asserted revision is the latest remote revision.
@@ -214,7 +214,7 @@ forbids active Perform in Learn and active Group Learn in Perform. M2 still
 requires an explicit fresh source/payload-bound assistant review. The snapshot
 in `fixtures/f4a3-production` records the actual connector-read native text and
 review for reproducible isolated testing, not an alternate editable source or
-permission to replace deployed lessons. It preserves the native separator that
+permission to replace deployed lessons. It preserves native separators/final newlines that
 F4a2's paragraph-only fixture omitted; source hash changes therefore are explicit.
 
 The exclusive `presentation.instructionLayout` supports these validated modes

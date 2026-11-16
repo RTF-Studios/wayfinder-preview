@@ -9,6 +9,7 @@ function test(name,fn){fn();rows.push({name,status:'PASS'})}
 const identities={};for(const id of ['3050202','3050203']){
  const identitySources=e.entries[id].identitySources;identities[id]=identitySources;
  const r=C.extractLesson(source,id);test(id+' raw native extraction + M1/M2',()=>{assert.equal(r.sourceText,source.tabs.find(t=>t.id===r.provenance.tabId).text);C.validateRecord(r,source);assert.equal(M2.preflight(r,source.curriculumReviews[id]).status,'PASS')});
+ test(id+' direct native body ingestion retains every newline',()=>{const bodySource=clone(source);bodySource.tabs=bodySource.tabs.map(t=>({id:t.id,body:{content:[{paragraph:{elements:[{textRun:{content:t.text}}]}}]}}));assert.deepEqual(C.extractLesson(bodySource,id),r);});
  const html=C.buildRecord(master,r,source,identitySources);fs.writeFileSync(path.join(out,'Tech',id+'.html'),html);
  test(id+' strict offline + hidden key + current master',()=>{assert.deepEqual(require('./check-offline-html.cjs').inspect(Buffer.from(html)),[]);assert.deepEqual(require('../.github/guide-identity-qa.cjs').validate('Tech/'+id+'.html',html),[]);assert.equal(html.match(/<style>([\s\S]*?)<\/style>/)[1],master.match(/<style>([\s\S]*?)<\/style>/)[1]);});
  // Normal JS entry, same source/tab; no typed block or audit-fixture loader.
