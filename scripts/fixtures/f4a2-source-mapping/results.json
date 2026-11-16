@@ -1,0 +1,243 @@
+{
+  "status": "PASS",
+  "scope": "F4a2 isolated approved source mapping; not live-native source migration, HTML fidelity, production readiness or student release",
+  "tests": 29,
+  "checks": [
+    {
+      "name": "3050202 is isolated; original native source preserved",
+      "status": "PASS"
+    },
+    {
+      "name": "3050202 F1 independent identity comparison",
+      "status": "PASS"
+    },
+    {
+      "name": "3050202 strict M1 extraction and provenance validation",
+      "status": "PASS"
+    },
+    {
+      "name": "3050202 unchanged M2 exact-source review",
+      "status": "PASS"
+    },
+    {
+      "name": "3050202 four handoffs inside the approved50minutes",
+      "status": "PASS"
+    },
+    {
+      "name": "3050202 source vocabulary definitions are not invented",
+      "status": "PASS"
+    },
+    {
+      "name": "3050203 is isolated; original native source preserved",
+      "status": "PASS"
+    },
+    {
+      "name": "3050203 F1 independent identity comparison",
+      "status": "PASS"
+    },
+    {
+      "name": "3050203 strict M1 extraction and provenance validation",
+      "status": "PASS"
+    },
+    {
+      "name": "3050203 unchanged M2 exact-source review",
+      "status": "PASS"
+    },
+    {
+      "name": "3050203 four handoffs inside the approved50minutes",
+      "status": "PASS"
+    },
+    {
+      "name": "3050203 source vocabulary definitions are not invented",
+      "status": "PASS"
+    },
+    {
+      "name": "Learn has one connected guided activity; no separate Perform workload",
+      "status": "PASS"
+    },
+    {
+      "name": "Perform preserves preparation and independent five-drop project",
+      "status": "PASS"
+    },
+    {
+      "name": "M1 still rejects active Perform in Learn",
+      "status": "PASS"
+    },
+    {
+      "name": "M1 still rejects active Group Learn in Perform",
+      "status": "PASS"
+    },
+    {
+      "name": "missing native Practice cannot pass preservation",
+      "status": "PASS"
+    },
+    {
+      "name": "duplicate guided build cannot pass preservation",
+      "status": "PASS"
+    },
+    {
+      "name": "omitting five-drop observation cannot pass preservation",
+      "status": "PASS"
+    },
+    {
+      "name": "original raw source cannot be silently edited",
+      "status": "PASS"
+    },
+    {
+      "name": "M2 still rejects missing review",
+      "status": "PASS"
+    },
+    {
+      "name": "M2 still rejects stale source review",
+      "status": "PASS"
+    },
+    {
+      "name": "M2 still rejects changed frozen rubric",
+      "status": "PASS"
+    },
+    {
+      "name": "M2 still rejects extra workload beyond source slot",
+      "status": "PASS"
+    },
+    {
+      "name": "M2 still rejects unbudgeted handoffs",
+      "status": "PASS"
+    },
+    {
+      "name": "M2 still rejects Perform as a teaching anchor",
+      "status": "PASS"
+    },
+    {
+      "name": "M2 rejects unresolved findings rather than approving around them",
+      "status": "PASS"
+    },
+    {
+      "name": "optional historical presentation layout remains STARTER-only; no bypass",
+      "status": "PASS"
+    },
+    {
+      "name": "all protected production, master, schema, builder and audit bytes unchanged",
+      "status": "PASS"
+    }
+  ],
+  "guides": [
+    {
+      "dayid": "3050202",
+      "mode": "LEARN",
+      "M1": "PASS",
+      "M2": "PASS",
+      "F1": "PASS",
+      "originalNativeTextSha256": "8c7ad43528ae16749fa1e0ae5eec77abc408b57df299a1f2991c78120427342f",
+      "mappedSourceTextSha256": "6404729e65beb2e8e1b80ea6ccb09764a3bb214efab3b8194bfdcdef6982417f",
+      "payloadSha256": "b71916613c763e254a10d9a0563963b0968feffaf8a348a5da385421e01bf505",
+      "originalParagraphs": 26,
+      "question": {
+        "fullKey": "305020230060",
+        "responseFields": 1,
+        "answerType": "short_text",
+        "promptAndRubric": "verbatim"
+      },
+      "instructionOccurrences": "Every original Learn/Practice/Perform passage exactly once in mapped instruction surfaces",
+      "pacing": {
+        "sourceSlots": [
+          4,
+          13,
+          7,
+          6,
+          15,
+          5
+        ],
+        "workMinutes": 42,
+        "transitionMinutes": 4,
+        "submissionMinutes": 4,
+        "totalMinutes": 50,
+        "handoffs": 4
+      },
+      "liveNativeSourceConverted": false
+    },
+    {
+      "dayid": "3050203",
+      "mode": "PERFORM",
+      "M1": "PASS",
+      "M2": "PASS",
+      "F1": "PASS",
+      "originalNativeTextSha256": "13e1c7a61cfad83a346ffc237fb0e4c29cc492022b131164ff7e9aae41562fd6",
+      "mappedSourceTextSha256": "ded89ba623c2d1c242514cf03a4a89a0257fd30ee481f3e932b5ecea2e2a2d78",
+      "payloadSha256": "acf20e7cdd5c76727b1ac209a9c54ba4df4071bc0b91292433f18bfa83924408",
+      "originalParagraphs": 26,
+      "question": {
+        "fullKey": "305020330061",
+        "responseFields": 1,
+        "answerType": "short_text",
+        "promptAndRubric": "verbatim"
+      },
+      "instructionOccurrences": "Every original Learn/Practice/Perform passage exactly once in mapped instruction surfaces",
+      "pacing": {
+        "sourceSlots": [
+          4,
+          13,
+          7,
+          6,
+          15,
+          5
+        ],
+        "workMinutes": 42,
+        "transitionMinutes": 4,
+        "submissionMinutes": 4,
+        "totalMinutes": 50,
+        "handoffs": 4
+      },
+      "liveNativeSourceConverted": false
+    }
+  ],
+  "protectedSha256": {
+    "Tech/3050201.html": "7471096fba1388814b6330f6ac4baca5b57f7ce72601aeb3846816caf4679b41",
+    "Tech/3050202.html": "3bfaaf1222ce5d4fe157eb6a8a69ccb15b37d762697ea184ee99aa5f5cd3c405",
+    "Tech/3050203.html": "524e5bd6ae05f691fffb9cd67958f0c4128fe060af21e00d8748102bea3ada09",
+    "templates/wayfinder-master.html": "9b0ce775bca5d73b71e9b3968db6b697665389e86c28fb412c3f1756a857ae93",
+    "scripts/wayfinder-identity.cjs": "e16d546a9471af3e96aec05f39b4a53a2dae1a7ccdb498f2890fd1b326d1c920",
+    "scripts/wayfinder-content-contract.cjs": "752f09c75bc9f90944b5d7db9600a7667b9ed0023a47ed299e49a983a9bdafb1",
+    "scripts/schema/wayfinder-lesson.schema.json": "dcb662cf3b7ecaecae75cd2159ca945c2788165fc5982161b6e961685a403511",
+    "scripts/wayfinder-curriculum-quality.cjs": "6aeb256eadd33353290b116ed6be78b50c6413605de5b2d2387a30e0237b093c",
+    "scripts/wayfinder-record-renderer.cjs": "fcf49224873fd66593794eb496d531dd5f49331a70e44c1fc622a1d3f6458708",
+    "scripts/wayfinder-presentation.cjs": "6af884e2a4d47879c8c3715bfc0ba81be9eca75afb896212272345094d6fc62d",
+    "scripts/wayfinder-outline-builder.js": "73b0a1122ba684f0170a94c0ff34a1e7cc4668fd126e40a7f7f9f151d850c26e",
+    "scripts/build-tech-u5-prototype.py": "e6658973500d392f57fd7c413bef9b0daa84a19015f0cadf75da258cbbb33837",
+    "scripts/build-tech-u5-final-parts.py": "dae8c159f9e77dae9f13763501d3b989ad8d674fbcbbc25b738ce6f13211c36f",
+    "scripts/build-tech-u5-part1-day5.py": "0e71b571a8e16db02e160f97b79d4bf7b6cbbb32bdc312c501cafc2de8cca6fc",
+    "scripts/build-tech-u5-part1-day6.py": "b396bab21ab3d86fa4260fdbf73b4ab84ae601693742a6e164a3e895523059ca",
+    "scripts/check-batch-delivery.py": "92083ad50344b726f5d1b1c2f4cd9248f48ca7565f6ff7d08c9cd2e4f537deca"
+  },
+  "productionGuideWrites": 0,
+  "HTMLConstructed": 0,
+  "coreRuleChanges": 0,
+  "studentRelease": false,
+  "untested": [
+    "Classroom timing/tool execution",
+    "Rendered Learn/Perform presentation fidelity",
+    "Real browser permissions and Collector receipts",
+    "Fresh live-native typed-source intake"
+  ],
+  "requiredF4a3": [
+    "Authoritative source intake: approved typed fields are present only in isolated fixtures; do not deploy from them or claim native Docs were converted.",
+    "Preserve media/layout/resources/accessibility through representative Learn/Perform render verification under separate GO; current optional detailed presentation.layout is STARTER-only.",
+    "Audit should consume approved mapped section roles, not re-infer obsolete roles from retained original free-form headings/pacing labels.",
+    "Any live native revision/hash change requires a fresh M2 binding/review; fixture PASS is not a reusable waiver."
+  ],
+  "instructionSchemaIncompatibilities": [],
+  "presentationLimit": "Reusing optional rich presentation.layout for either mapped mode is rejected: M1 presentation.layout: this explicit roadmap layout requires applicable regular STARTER sections. Core instruction mapping needs no rule change.",
+  "existingRegressions": {
+    "f1": {
+      "status": "PASS",
+      "tests": 69
+    },
+    "m1": {
+      "status": "PASS",
+      "tests": 145
+    },
+    "m2": {
+      "status": "PASS",
+      "tests": 70
+    }
+  }
+}

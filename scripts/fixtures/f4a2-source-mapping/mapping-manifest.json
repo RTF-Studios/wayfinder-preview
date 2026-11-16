@@ -1,0 +1,508 @@
+{
+  "authorization": "Captain GO F4a2 source mapping only; isolated fixtures, not authoritative outline updates or HTML release",
+  "overview": {
+    "documentId": "1uT88cp1mVW7D8HFj6EL51_nlvlRc531uiGZcKcHEI48",
+    "revision": "AHj4eMTLQSGxDstLPtQoTtlK01NkYbOSVO4FwDxHKLdHeR8_rDWDK_diEM6U3XOklqWH1cjvb42c1tNbTPi_I4choZpO04KNnKGQvJO8pxQ",
+    "tabId": "t.0",
+    "paragraphs": [
+      "TECH UNIT 5 — PART 2: PROTOTYPE (production phase 1 of 3) — canonical DayID family 30502",
+      "Unit-level deliverable: ONE personally designed Falling Objects Game in TurboWarp, progressively built through three production phases (Parts 2–4). This Part is only the ENGINE: common shapes, common game loop, intentionally uniform supported code, no decorative or story artwork until Part 3 (Story & Art). Prior 3050101 game-history lesson has actual receipts and is FROZEN; unused 3050102–05 remain historical/draft, not assigned as prerequisite.",
+      "Learning/TEKS: Primary §126.18(c)(3)(B–C) design/process/industry and §126.18(c)(4)(B–C) trends/transfer, with §126.18(c)(4)(A) already introduced in 3050101. Supporting §126.18(c)(1)(A–F) flow/iteration/debugging and §126.18(c)(2)(A) variables; DO NOT claim TurboWarp satisfies text-based nested loops in §126.18(c)(2)(B).",
+      "Day 1 STARTER: editor navigation, draw Player square and FallingObject circle; daily Q305020130059.",
+      "Day 2 LEARN: identical left/right player controls, event and forever loop; daily Q305020230060.",
+      "Day 3 PERFORM: circle falls repeatedly with reset and randomized x; daily Q305020330061.",
+      "Day 4 PERFORM: collision/lives once per fall with visible counters; daily Q305020430062.",
+      "Day 5 PERFORM: score a successful dodge, test and revise fair difficulty; daily Q305020530063.",
+      "Day 6 ASSESSMENT + PRIOR DAILY RECOVERY: a compact cumulative four-section one-MAJOR exam, approximately half a class, and remaining time to recover older Daily evidence; keys 305020639991–305020639994.",
+      "Day 7 PART MILESTONE + MAJOR/DAILY RECOVERY: finish/save one stable playable prototype made of plain shapes; use feedback on Day 6 sections and prior Daily work; no new mastery ID.",
+      "Assessable DAILY prompts/rubrics are written in their day tabs and must be pinned verbatim in JISD Collector Question Bank; assessment section prompts/rubrics must be pinned in Collector Assessment Sections. Major = equal-weight mean of 4 section scores, one Skyward assignment. Recovery updates SAME assignment only after better verified evidence, never effort alone. Feedback must be posted before Major recovery or that opportunity moves.",
+      "Supported student files: one saved TurboWarp project, no external art, no account/sign-in claims. Validated teacher code recipes are required in final HTML (do not treat this curriculum outline as working code). All previous grades and receipts preserved.",
+      "Operating gates: never release until complete template-based offline HTML, source/Collector parity, real copy-before-Form and accessible/visual/browser QA, GitHub/JISD byte-identical, Captain SHOW/RELEASE authorized. SOURCE OUTLINE ONLY; HTML NOT DONE.",
+      "Mode reconciliation — approved source repair 2026-11-12: Preserve the Captain-approved same-game daily tasks and dominant mode. Prototype Day 2's player controls are isolated teacher-guided new-tool practice within LEARN, not an additional independent project. On PERFORM days, place brief retrieval and the exact supported recipe in the work runway; do not add a second general Group Learn workload. Source teaching and tested code instructions remain available beside the required work. The approved Part-specific progression governs this build; no DayID, pinned question/rubric or milestone is changed."
+    ]
+  },
+  "mappings": {
+    "3050202": {
+      "fixture": "3050202.source.json",
+      "nativeTextSha256": "8c7ad43528ae16749fa1e0ae5eec77abc408b57df299a1f2991c78120427342f",
+      "instructionPlacements": {
+        "learn": {
+          "paragraph": "An EVENT starts a script; a FOREVER loop repeats checks; CHANGE X changes horizontal position. The teacher projects and models this exact Player script: when green flag clicked → go to x:0 y:−125 → forever {if key [right arrow] pressed? then change x by 8; if key [left arrow] pressed? then change x by −8; if x position > 215 then set x to 215; if x position < −215 then set x to −215}. Students observe how each block is located in Events, Motion, Control, Sensing and Operators. A restart must reset the same position each time.",
+          "sectionId": "group_learn",
+          "field": "text"
+        },
+        "practice": {
+          "paragraph": "Teacher drags one block at a time while class predicts outcome: green flag resets position; right key increases x; left decreases x; boundaries prevent disappearing. Students arrange a paper block-flow sketch before implementing.",
+          "sectionId": "group_practice",
+          "field": "text"
+        },
+        "perform": {
+          "paragraph": "Select Player only. Build the displayed reset-and-forever keyboard control. Test right, left, both stage edges, and stopping/restarting. Leave FallingObject untouched. Save the SAME project; do not duplicate it.",
+          "sectionId": "group_practice",
+          "field": "activity.instructions"
+        }
+      },
+      "connectedActivity": "connected-player-controls",
+      "originalParagraphs": [
+        "DAY 2 | DAYID 3050202 | LEARN | Make the Player Move",
+        "LEARNING TARGET: I can connect events, loops and position changes because repeatable controls make interactive objects predictable.",
+        "Priority TEKS — In Our Words",
+        "§126.18(c)(3)(B): Plan, choose digital tools, build a prototype, and improve it through tests and revisions.",
+        "§126.18(c)(4)(C): Use what you already know to learn an unfamiliar technology.",
+        "Supporting TEKS: §126.18(c)(1)(D): Work together on a flowchart showing a problem, solutions and a development timeline. §126.18(c)(1)(F): Explain why repeating code or steps can make an algorithm useful.",
+        "50-MINUTE RHYTHM: 4 min Warm-Up; 13 min Group Learn with live teacher demo; 7 min Group Practice/prediction; 6 min independent DAILY evidence; 15 min project build/test; 5 min save/TEKS Temperature/Studio as appropriate. Shrink activities before rushing or making assumptions about previous class completion.",
+        "WARM-UP (participation; full key 305020209998): Which arrow key should move the square toward the right side of the screen, and how would you check?",
+        "GROUP LEARN / HOOK: An EVENT starts a script; a FOREVER loop repeats checks; CHANGE X changes horizontal position. The teacher projects and models this exact Player script: when green flag clicked → go to x:0 y:−125 → forever {if key [right arrow] pressed? then change x by 8; if key [left arrow] pressed? then change x by −8; if x position > 215 then set x to 215; if x position < −215 then set x to −215}. Students observe how each block is located in Events, Motion, Control, Sensing and Operators. A restart must reset the same position each time.",
+        "GROUP PRACTICE: Teacher drags one block at a time while class predicts outcome: green flag resets position; right key increases x; left decreases x; boundaries prevent disappearing. Students arrange a paper block-flow sketch before implementing.",
+        "DAILY MASTERY STUDENT QUESTION — FULL KEY 305020230060: The player is at x=0 and must move right when a key is held. Name the relevant event/loop and x-change behavior, then describe how you would test that the green flag resets the player.",
+        "PINNED HOLISTIC RUBRIC: Holistic 0–100: 90–100 accurate, specific and independently justified with a feasible test; 70–89 Names event and repeating input/motion steps and proposes a valid reset test; 50–69 partially correct, missing important detail or validation; below 50 insufficient/contradictory evidence. Missing/unsubmitted is a separate nonnumeric state under RTS-02.",
+        "INDEPENDENCE: The question is answerable from TODAY'S teaching and examples without requiring the actual game to work or reference to an unfinished artifact. At most ONE short typed answer field; accessible optional selections may support it. Submit through the shared capture-first two-button Form workflow; no fabricated receipt.",
+        "PERFORM / PROJECT DEVELOPMENT: Select Player only. Build the displayed reset-and-forever keyboard control. Test right, left, both stage edges, and stopping/restarting. Leave FallingObject untouched. Save the SAME project; do not duplicate it.",
+        "CREATIVE STUDIO (one required participation zone, separate Xtra; student's choice using same taught tools): Try a slower value and explain the effect; compare two keyboard speeds; invent a player-friendly controls hint.",
+        "TEKS TEMPERATURE CHECK: thumbs for today's skill plus optional specific confusion. Separate Xtra, not part of DAILY mastery or Major.",
+        "END-OF-DAY SAVED EVIDENCE: Square moves right and left, stays visible and resets on restart.",
+        "NEXT DAY PREPARATION: Keep original file; do not start a second game or replace placeholder sprites until Part 3 (Story & Art).",
+        "Teacher Reference / Evidence Alignment",
+        "Official source: Texas Education Agency, 19 TAC Chapter 126, Subchapter B, §126.18(c), August 2024 PDF, page 5. https://tea.texas.gov/laws-and-rules/sboe-rules-tac/sboe-tac-currently-effect/ch126b.pdf . Verified 2026-11-12. Evergreen target: TECH-U05-P01. Unit planning: Personal TEKS Roadmap, Unit Roadmap TECH Unit 5 row 6; dates remain teacher-only.",
+        "§126.18(c)(3)(B) official wording: “discuss and implement a design process that includes planning and selecting digital tools to develop and refine a prototype or model through trial and error.”",
+        "§126.18(c)(4)(C) official wording: “transfer current knowledge to the learning of newly encountered technologies.”",
+        "§126.18(c)(1)(D) official wording: “design a plan collaboratively using flowcharts to document a problem, possible solutions, and an expected timeline for the development of a coded solution.”",
+        "§126.18(c)(1)(F) official wording: “analyze the benefits of using iteration (code and sequence repetition) in algorithms.”",
+        "Evidence alignment: DAILY 305020230060: The player is at x=0 and must move right when a key is held. Name the relevant event/loop and x-change behavior, then describe how you would test that the green flag resets the player. The pinned rubric defines the limited reasoning evidence elicited here; an answer is not proof that the game ran.",
+        "Project evidence: The approved Practice and Perform steps exercise tool selection, trial, test and revision (3B), and transfer from known controls/design ideas to TurboWarp (4C). Verify actual performance before treating it as demonstrated. Where listed, 3C industry process and 4B global trends are contextual/supporting exposure unless a source task explicitly asks for that explanation. Flowchart planning (1A/1D), generalization (1C), debugging analysis (1E), iteration benefits (1F), and variable/data-type explanations (2A) remain partial support unless all stated clauses are actually elicited or observed. Do not infer full standard mastery from using a tool, copying a recipe, drawing art or participating. No claim to text-based nested-loop standard (2B)."
+      ],
+      "pacing": [
+        {
+          "sourceLabel": "Warm-Up",
+          "minutes": 4,
+          "mappedSectionId": "warm_up",
+          "workMinutes": 3,
+          "transitionMinutes": 0,
+          "submissionMinutes": 1
+        },
+        {
+          "sourceLabel": "Group Learn with live teacher demo",
+          "minutes": 13,
+          "mappedSectionId": "group_learn",
+          "workMinutes": 12,
+          "transitionMinutes": 1,
+          "submissionMinutes": 0
+        },
+        {
+          "sourceLabel": "Group Practice/prediction",
+          "minutes": 7,
+          "mappedSectionId": "group_practice",
+          "workMinutes": 6,
+          "transitionMinutes": 1,
+          "submissionMinutes": 0
+        },
+        {
+          "sourceLabel": "independent DAILY evidence",
+          "minutes": 6,
+          "mappedSectionId": "hand_in",
+          "workMinutes": 5,
+          "transitionMinutes": 0,
+          "submissionMinutes": 1
+        },
+        {
+          "sourceLabel": "project build/test",
+          "minutes": 15,
+          "mappedSectionId": "group_practice",
+          "workMinutes": 13,
+          "transitionMinutes": 2,
+          "submissionMinutes": 0
+        },
+        {
+          "sourceLabel": "save/TEKS Temperature/Studio as appropriate",
+          "minutes": 5,
+          "mappedSectionId": "studio",
+          "workMinutes": 3,
+          "transitionMinutes": 0,
+          "submissionMinutes": 2
+        }
+      ],
+      "pacingBasis": "Retain original six allocations4/13/7/6/15/5. Transition/handoff allowances are internal planning estimates within those slots, not extra minutes or observed classroom timing. Day2 has one connected teacher-guided implementation; Day3 retains13+7 minutes as preparation before15-minute independent work.",
+      "coverage": [
+        {
+          "paragraphIndex": 0,
+          "sha256": "fa7a3485ef3b59a1014bb855b60b73ee83cd46f88fa8e99de1b981b55bcb57d8",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 1,
+          "sha256": "e8149bf7377aab4b6fbc898fdd5b91c6aa9ae8b08ee11e9bc0a7f21c8acb4f6a",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 2,
+          "sha256": "eed76e96c1ab1d71a74e5a1079226d6eaa0d3054b871b017b6e3a1eb1f4f4126",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 3,
+          "sha256": "27d5fa63b77de1ae18164b713942dc734b5d1ea533e48d279ff664ad5fa4e110",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 4,
+          "sha256": "3479336392597634c205dade8b08d01dace3b7240301440e7c99e6e8f560bebc",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 5,
+          "sha256": "34e4c8a671d182d81642f345ad1f25bd2af66575191f57b3cbeaf19d238388cc",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 6,
+          "sha256": "b712646a7358c10e293ef244bcdb7782ace9e0d07ba1fa19d3d5a74c171629b9",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 7,
+          "sha256": "d5c7d3983f6d6cdc85eb81f7856b5aaa5cbce2377ae963aef993df51e50974cc",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 8,
+          "sha256": "ad2c4073547f9c782b5c85916389b0a499c28c2856aa6202f06bee6ac3b2eda0",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 9,
+          "sha256": "a2ad13e1f00a9353dc19491e113fd2b86affc46cad060e4ad2f2d7fe61de8643",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 10,
+          "sha256": "bd955d948d196e29956da65cd904bcd2a08cee5cb8f71655f3c96d61dee5ea4d",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 11,
+          "sha256": "452e88c33ad3e659b3bb7c2c7e61543e806ea81b147d570a8109b8d84e8887a6",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 12,
+          "sha256": "432b641744635cc5b788ac0fdf23aca8d2dbc536e9fe93ec09fb45bb96f90315",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 13,
+          "sha256": "25711f1660cfc373bdd2809fdd526490c113f9495c74f4fefc1f576f9b694343",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 14,
+          "sha256": "872a2a7224b0bd42a7ae78f3a870a9531398b92a35698ddd3d7c2e20b0540cec",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 15,
+          "sha256": "a34ebd398f03550647c9fdae0fc3937b36885ab71d84c584c671042a416079c0",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 16,
+          "sha256": "09e2396c1e13b669d783b1d90d3c7624d0974196c3cab557e48980e0e88ec050",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 17,
+          "sha256": "4f7c1b7eb6c1fa9cd1463bd5d9a8e3f14cfc5a3aee6eb3706c4a7cf4ec8380ee",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 18,
+          "sha256": "fe37ba1d1b007f8804ebdd739fe22352550245ae7faaf04f595efd5043f5c4cb",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 19,
+          "sha256": "7e9afb3a5621f53a2ff6926a7ac870ed356891a0562e6c70af1ea8f50684a973",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 20,
+          "sha256": "8068e4a26f65cae65de3b25ce8024404d3b16e6fa68ce24e1e9960ccbf186bfe",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 21,
+          "sha256": "7885153942cded1efb98370bb4aa3f2f1e701353eb0fa36edf432e2888c35bb2",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 22,
+          "sha256": "23e770e62818838b5f1b225bd6d731f9774e306d1323a52ec7cd6a33584f5661",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 23,
+          "sha256": "5323e4caac7e825ab7724429550f3bc7be5f12c1a80eeb21a864b768684e20fa",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 24,
+          "sha256": "5293f8924e263d4a4e7eb599c0d51f6260b86bdbd9006782e7d1be9986de3e6f",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 25,
+          "sha256": "1875041701bc5ed8461f5e3cfef673501c9d651c7f87d545e619327e57048100",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        }
+      ],
+      "sharedPresentationBasis": "Existing approved3050201 fixture supplies the unchanged shared target/comic media, four RTF notes and common Xtra response frames only. No lesson instruction/question is inferred from old HTML.",
+      "limits": [
+        "No HTML constructed or rendered",
+        "Actual school tool/browser/Collector execution UNTESTED",
+        "Native optional specific confusion passage retained verbatim; current shared required-feedback response frame kept separate",
+        "Historical teacher reference paragraphs remain verbatim in original snapshot; not new student tasks",
+        "No claim that native Docs already contain these appended typed fields"
+      ]
+    },
+    "3050203": {
+      "fixture": "3050203.source.json",
+      "nativeTextSha256": "13e1c7a61cfad83a346ffc237fb0e4c29cc492022b131164ff7e9aae41562fd6",
+      "instructionPlacements": {
+        "learn": {
+          "paragraph": "The falling script belongs to FallingObject, not Player. Exact teacher recipe: when green flag clicked → forever {go to x:(pick random −210 to 210) y:170; repeat until (y position < −175) {change y by −5; wait 0.03 seconds}}. Forever restarts the drop; repeat until ends an individual fall; random x varies each start. Keep its sprite a plain circle. Compare one loop that repeats the entire game and another loop that controls one falling trip. Change the speed cautiously and test from a known reset.",
+          "sectionId": "group_practice",
+          "field": "text"
+        },
+        "practice": {
+          "paragraph": "Teacher predicts output for fixed x versus pick random, demonstrates sign of negative y, then changes only one parameter. Class identifies loop nesting and why a sprite script must be attached to the correct object.",
+          "sectionId": "group_practice",
+          "field": "activity.instructions"
+        },
+        "perform": {
+          "paragraph": "Use the exact supplied FallingObject recipe, test at least five drops, verify the player still responds, and save SAME project. Keep a simple scoreboard note listing observed spawn x changes, fall direction and restart behavior.",
+          "sectionId": "perform",
+          "field": "steps"
+        }
+      },
+      "connectedActivity": "teacher-prediction-before-project",
+      "originalParagraphs": [
+        "DAY 3 | DAYID 3050203 | PERFORM | Make the Circle Fall Forever",
+        "LEARNING TARGET: I can use repetition and random positioning because a game needs repeatable behavior with changing challenges.",
+        "Priority TEKS — In Our Words",
+        "§126.18(c)(3)(B): Plan, choose digital tools, build a prototype, and improve it through tests and revisions.",
+        "§126.18(c)(4)(C): Use what you already know to learn an unfamiliar technology.",
+        "Supporting TEKS: §126.18(c)(1)(F): Explain why repeating code or steps can make an algorithm useful. §126.18(c)(2)(A): Change and rename variables, and describe the kinds of data they store.",
+        "50-MINUTE RHYTHM: 4 min Warm-Up; 13 min Group Learn with live teacher demo; 7 min Group Practice/prediction; 6 min independent DAILY evidence; 15 min project build/test; 5 min save/TEKS Temperature/Studio as appropriate. Shrink activities before rushing or making assumptions about previous class completion.",
+        "WARM-UP (participation; full key 305020309998): If y decreases as a circle falls, what happens after it passes the bottom edge?",
+        "GROUP LEARN / HOOK: The falling script belongs to FallingObject, not Player. Exact teacher recipe: when green flag clicked → forever {go to x:(pick random −210 to 210) y:170; repeat until (y position < −175) {change y by −5; wait 0.03 seconds}}. Forever restarts the drop; repeat until ends an individual fall; random x varies each start. Keep its sprite a plain circle. Compare one loop that repeats the entire game and another loop that controls one falling trip. Change the speed cautiously and test from a known reset.",
+        "GROUP PRACTICE: Teacher predicts output for fixed x versus pick random, demonstrates sign of negative y, then changes only one parameter. Class identifies loop nesting and why a sprite script must be attached to the correct object.",
+        "DAILY MASTERY STUDENT QUESTION — FULL KEY 305020330061: A circle falls correctly once and then stops. Explain what a forever loop and a reset near the top accomplish, and how random x changes the next round.",
+        "PINNED HOLISTIC RUBRIC: Holistic 0–100: 90–100 accurate, specific and independently justified with a feasible test; 70–89 Correctly explains repeated falling, top reset and controlled random starting x; 50–69 partially correct, missing important detail or validation; below 50 insufficient/contradictory evidence. Missing/unsubmitted is a separate nonnumeric state under RTS-02.",
+        "INDEPENDENCE: The question is answerable from TODAY'S teaching and examples without requiring the actual game to work or reference to an unfinished artifact. At most ONE short typed answer field; accessible optional selections may support it. Submit through the shared capture-first two-button Form workflow; no fabricated receipt.",
+        "PERFORM / PROJECT DEVELOPMENT: Use the exact supplied FallingObject recipe, test at least five drops, verify the player still responds, and save SAME project. Keep a simple scoreboard note listing observed spawn x changes, fall direction and restart behavior.",
+        "CREATIVE STUDIO (one required participation zone, separate Xtra; student's choice using same taught tools): Compare two safe falling speeds; test fixed versus random starting x; sketch an optional second falling-object type without coding it.",
+        "TEKS TEMPERATURE CHECK: thumbs for today's skill plus optional specific confusion. Separate Xtra, not part of DAILY mastery or Major.",
+        "END-OF-DAY SAVED EVIDENCE: Player moves independently while the circle repeatedly falls from changing x positions.",
+        "NEXT DAY PREPARATION: Keep original file; do not start a second game or replace placeholder sprites until Part 3 (Story & Art).",
+        "Teacher Reference / Evidence Alignment",
+        "Official source: Texas Education Agency, 19 TAC Chapter 126, Subchapter B, §126.18(c), August 2024 PDF, page 5. https://tea.texas.gov/laws-and-rules/sboe-rules-tac/sboe-tac-currently-effect/ch126b.pdf . Verified 2026-11-12. Evergreen target: TECH-U05-P01. Unit planning: Personal TEKS Roadmap, Unit Roadmap TECH Unit 5 row 6; dates remain teacher-only.",
+        "§126.18(c)(3)(B) official wording: “discuss and implement a design process that includes planning and selecting digital tools to develop and refine a prototype or model through trial and error.”",
+        "§126.18(c)(4)(C) official wording: “transfer current knowledge to the learning of newly encountered technologies.”",
+        "§126.18(c)(1)(F) official wording: “analyze the benefits of using iteration (code and sequence repetition) in algorithms.”",
+        "§126.18(c)(2)(A) official wording: “manipulate and rename variables and describe different data types.”",
+        "Evidence alignment: DAILY 305020330061: A circle falls correctly once and then stops. Explain what a forever loop and a reset near the top accomplish, and how random x changes the next round. The pinned rubric defines the limited reasoning evidence elicited here; an answer is not proof that the game ran.",
+        "Project evidence: The approved Practice and Perform steps exercise tool selection, trial, test and revision (3B), and transfer from known controls/design ideas to TurboWarp (4C). Verify actual performance before treating it as demonstrated. Where listed, 3C industry process and 4B global trends are contextual/supporting exposure unless a source task explicitly asks for that explanation. Flowchart planning (1A/1D), generalization (1C), debugging analysis (1E), iteration benefits (1F), and variable/data-type explanations (2A) remain partial support unless all stated clauses are actually elicited or observed. Do not infer full standard mastery from using a tool, copying a recipe, drawing art or participating. No claim to text-based nested-loop standard (2B)."
+      ],
+      "pacing": [
+        {
+          "sourceLabel": "Warm-Up",
+          "minutes": 4,
+          "mappedSectionId": "warm_up",
+          "workMinutes": 3,
+          "transitionMinutes": 0,
+          "submissionMinutes": 1
+        },
+        {
+          "sourceLabel": "Group Learn with live teacher demo",
+          "minutes": 13,
+          "mappedSectionId": "group_practice",
+          "workMinutes": 12,
+          "transitionMinutes": 1,
+          "submissionMinutes": 0
+        },
+        {
+          "sourceLabel": "Group Practice/prediction",
+          "minutes": 7,
+          "mappedSectionId": "group_practice",
+          "workMinutes": 6,
+          "transitionMinutes": 1,
+          "submissionMinutes": 0
+        },
+        {
+          "sourceLabel": "independent DAILY evidence",
+          "minutes": 6,
+          "mappedSectionId": "hand_in",
+          "workMinutes": 5,
+          "transitionMinutes": 0,
+          "submissionMinutes": 1
+        },
+        {
+          "sourceLabel": "project build/test",
+          "minutes": 15,
+          "mappedSectionId": "perform",
+          "workMinutes": 13,
+          "transitionMinutes": 2,
+          "submissionMinutes": 0
+        },
+        {
+          "sourceLabel": "save/TEKS Temperature/Studio as appropriate",
+          "minutes": 5,
+          "mappedSectionId": "studio",
+          "workMinutes": 3,
+          "transitionMinutes": 0,
+          "submissionMinutes": 2
+        }
+      ],
+      "pacingBasis": "Retain original six allocations4/13/7/6/15/5. Transition/handoff allowances are internal planning estimates within those slots, not extra minutes or observed classroom timing. Day2 has one connected teacher-guided implementation; Day3 retains13+7 minutes as preparation before15-minute independent work.",
+      "coverage": [
+        {
+          "paragraphIndex": 0,
+          "sha256": "1775109ae3c03c71e61809711bb72e777f8f891feca0cc77e9be4e77b530a629",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 1,
+          "sha256": "bebf086e9ee5cfa1802c7d8dabca6c88f6f11ecc389343c2316ca154670ed784",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 2,
+          "sha256": "eed76e96c1ab1d71a74e5a1079226d6eaa0d3054b871b017b6e3a1eb1f4f4126",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 3,
+          "sha256": "27d5fa63b77de1ae18164b713942dc734b5d1ea533e48d279ff664ad5fa4e110",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 4,
+          "sha256": "3479336392597634c205dade8b08d01dace3b7240301440e7c99e6e8f560bebc",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 5,
+          "sha256": "53dce38fedd46b5bc2e3677b98a0dbaf5e2e60cee0081b366eccd0c9838f79b3",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 6,
+          "sha256": "b712646a7358c10e293ef244bcdb7782ace9e0d07ba1fa19d3d5a74c171629b9",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 7,
+          "sha256": "2c6661275dea0eb1ad660713433d0f0fdc3259a38c54e11bce5d98a29ec9bc2c",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 8,
+          "sha256": "b8c2e52989ce3f442fbb1eb0bcf15a0d3bc7924e20578e569e60fb56d1e637c3",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 9,
+          "sha256": "97df2e34c30e111411eb97aa030e7afa7827c3f074a3a306fb5d76b3b7fd4f6a",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 10,
+          "sha256": "482dadff1b0679ce51a8d7c7abf58a21978d19c5e3f0961ea2ee9a4b416f025a",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 11,
+          "sha256": "4093bb6938d206c540d5064152e6cef0c6f1f39e441590cc315bab3198ea2c85",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 12,
+          "sha256": "432b641744635cc5b788ac0fdf23aca8d2dbc536e9fe93ec09fb45bb96f90315",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 13,
+          "sha256": "996f8d433a95693d781f9744dfe94ce55598dcea61d372ed3c7234876f2ccd9e",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 14,
+          "sha256": "50b4a2c01012e0ec7702a87e60cd6691b3a6a6badbc9a8e278a313ea6f495258",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 15,
+          "sha256": "a34ebd398f03550647c9fdae0fc3937b36885ab71d84c584c671042a416079c0",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 16,
+          "sha256": "e6fd96bcac044013deb54c9cf9b4cd13e2e50d34981bff543aed8c8a15d64319",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 17,
+          "sha256": "4f7c1b7eb6c1fa9cd1463bd5d9a8e3f14cfc5a3aee6eb3706c4a7cf4ec8380ee",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 18,
+          "sha256": "fe37ba1d1b007f8804ebdd739fe22352550245ae7faaf04f595efd5043f5c4cb",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 19,
+          "sha256": "7e9afb3a5621f53a2ff6926a7ac870ed356891a0562e6c70af1ea8f50684a973",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 20,
+          "sha256": "8068e4a26f65cae65de3b25ce8024404d3b16e6fa68ce24e1e9960ccbf186bfe",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 21,
+          "sha256": "7885153942cded1efb98370bb4aa3f2f1e701353eb0fa36edf432e2888c35bb2",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 22,
+          "sha256": "5323e4caac7e825ab7724429550f3bc7be5f12c1a80eeb21a864b768684e20fa",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 23,
+          "sha256": "b2a7c4900d5636142c07eba3eeaf5c638f63aa82ed1e500bcc33bd99437821ec",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 24,
+          "sha256": "b1b9a4b624cf9e130fb98163dafb5aac91c42618c34f5c83a47c151d3fad237d",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        },
+        {
+          "paragraphIndex": 25,
+          "sha256": "1875041701bc5ed8461f5e3cfef673501c9d651c7f87d545e619327e57048100",
+          "retention": "Exact original snapshot above; typed instructional role mapped without rewriting the native Doc."
+        }
+      ],
+      "sharedPresentationBasis": "Existing approved3050201 fixture supplies the unchanged shared target/comic media, four RTF notes and common Xtra response frames only. No lesson instruction/question is inferred from old HTML.",
+      "limits": [
+        "No HTML constructed or rendered",
+        "Actual school tool/browser/Collector execution UNTESTED",
+        "Native optional specific confusion passage retained verbatim; current shared required-feedback response frame kept separate",
+        "Historical teacher reference paragraphs remain verbatim in original snapshot; not new student tasks",
+        "No claim that native Docs already contain these appended typed fields"
+      ]
+    }
+  }
+}
