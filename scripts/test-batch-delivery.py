@@ -2,6 +2,8 @@
 """M4 detection tests. All altered HTML, mappings and fake Drive copies are temporary."""
 import importlib.util
 import json
+import subprocess
+from functools import lru_cache
 import tempfile
 import unittest
 from pathlib import Path
@@ -11,6 +13,13 @@ A = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(A)
 IDS = ['Tech/3050202', 'Tech/3050203']
 FIXTURE = A.ROOT / 'scripts/fixtures/m4-delivery/evidence.json'
+# These are legacy detection tests, not tests of whatever is currently deployed.
+# F4a4 replaces the two course files; preserve all original legacy assertions.
+LEGACY_COMMIT = 'e8b722811d640a36da5152a6a8efa6837fcf169f'
+@lru_cache(maxsize=2)
+def legacy_bytes(did):
+    return subprocess.check_output(['git', 'show', LEGACY_COMMIT + ':Tech/' + did + '.html'], cwd=A.ROOT)
+
 
 class DeliveryDetection(unittest.TestCase):
     def setUp(self):
@@ -21,8 +30,11 @@ class DeliveryDetection(unittest.TestCase):
         self.drive.mkdir()
         (self.root / 'Tech').mkdir(parents=True)
         self.evidence = json.loads(FIXTURE.read_text())
+        self.legacy_root = Path(self.temp.name) / 'legacy'
+        (self.legacy_root / 'Tech').mkdir(parents=True)
         for did in ['3050202', '3050203']:
-            original = (A.ROOT / 'Tech' / (did + '.html')).read_bytes()
+            original = legacy_bytes(did)
+            (self.legacy_root / 'Tech' / (did + '.html')).write_bytes(original)
             # Synthetic coherent source/section positive controls ONLY in temp copies.
             # Keep the historical engine and exact inspected packaging unchanged.
             doc = A.BeautifulSoup(original, 'html.parser')
@@ -246,7 +258,7 @@ class DeliveryDetection(unittest.TestCase):
         self.failure(self.run_audit(), gate='content')
 
     def test_actual_pilot_is_not_promoted_to_pass(self):
-        report = A.audit(IDS, json.loads(FIXTURE.read_text()), A.ROOT, self.drive)
+        report = A.audit(IDS, json.loads(FIXTURE.read_text()), self.legacy_root, self.drive)
         learn, perform = report['results']
         self.assertEqual(learn['checks']['sections']['status'], 'UNTESTED')
         self.assertEqual(perform['checks']['sections']['status'], 'FAIL')
@@ -279,7 +291,7 @@ class DeliveryDetection(unittest.TestCase):
     def test_historical_profile_does_not_extend_to_other_days(self):
         entry = json.loads(FIXTURE.read_text())['entries']['3050203']
         entry['identity']['dayid'] = '3050303'
-        data = (A.ROOT / 'Tech/3050203.html').read_bytes()
+        data = legacy_bytes('3050203')
         self.assertEqual(A.master_checks(data, entry)['auditStatus'], 'FAIL')
 
 if __name__ == '__main__':
