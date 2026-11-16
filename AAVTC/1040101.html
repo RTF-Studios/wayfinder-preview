@@ -5,7 +5,7 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="light" name="color-scheme"/>
 <title>RTF Learning Guide</title>
-<link rel="icon" type="image/svg+xml" href="https://rtf-studios.github.io/wayfinder-preview/assets/shared/rtf-compass-favicon.svg">
+<link rel="icon" type="image/svg+xml" data-wf-media="m5d83a93cdeac5dd32932">
 <!-- BUILD GATE 2026-11-08: Follow current WF-01/WF-02. Select a cognitive-fit response buffet (radio/MC, True/False+WHY, dropdown, checkboxes, fill-blanks, written reasoning); do not force three textboxes or two mastery questions. Provide verified professional-world examples and legible truthful diagrams. Learning Target must be grammatical 'I can [verb + skill] because [reason]' (no 'I can can'). Compact TEKS Temperature Check has always-visible primary TEKS, NO ART, required confidence and required nonblank feedback, no student-facing optional labels. Clipboard copy must not request permission; show selectable answer and direct Form link on failure. Test all controls, Form receipt and desktop/mobile before publication. Master remains content-empty and without live keys. -->
 <style>
 :root{--navy:#142063;--purple:#58358b;--purple-dark:#392468;--gold:#e8b647;--ink:#242943;--blue-light:#e5f1ff;--blue-line:#88b5e5;--purple-light:#ede4f9;--paper:#f9fbff;--sage:#e3f1ed;--radius:17px;--shadow:0 10px 32px rgba(20,32,99,.12)}
@@ -115,6 +115,12 @@ textarea::placeholder,input::placeholder{color:#68604f;opacity:1}
 <!-- MASTER INSPECTION: At this canonical template path only, show every Submit control and Creative Studio for visual review. These visible controls have no href and do not send data. Course lesson paths retain initially hidden, successful-copy-only Submit and the four-check Lab gate. -->
 <!-- HANDOFF 2026-11-04: Captain GO for paper writing fields, muted-gold Copy, bright jeweled-gold Submit with hover/press feedback; compact confidence+required-feedback Temperature Check; dark scaffold hints; fixed master init querySelector/forEach error. Verify source readback, master startup, visible inspection actions, lesson hidden/copy/edit behavior and responsive visual rendering. WF-02 owns final lesson QA; no existing lessons or Show flags changed. -->
 <!-- CREATIVE STUDIO HANDOFF 2026-11-04: One required assessed zone; three suggested ideas, relevant self-directed extension, exact on-task boundary, one studioEvidence field. Existing internal labs destination / DayID+20000 retained. Shared nonblank Copy/Submit, failure/edit/relock reset and repeated updates required. WF-01 defines purpose and pacing; WF-02 implementation; RTS-02 assessment. No existing lessons, receipts or Show flags changed. -->
+<!-- wf-offline-media-v2 -->
+<script>window.__WF_MEDIA={"m5d83a93cdeac5dd32932":"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDY0IDY0IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IlJURiBXYXlmaW5kZXIgY29tcGFzcyI+CjxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgcng9IjEyIiBmaWxsPSIjMzYwZDUwIi8+CjxjaXJjbGUgY3g9IjMyIiBjeT0iMzIiIHI9IjI0LjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmY2MyOSIgc3Ryb2tlLXdpZHRoPSI1LjUiLz4KPHBhdGggZD0iTTMyIDEyIEw0Ni44IDQ4LjIgTDMyIDQwLjQgTDE3LjIgNDguMiBaIiBmaWxsPSIjZmZjYzI5Ii8+Cjwvc3ZnPg=="};
+Object.keys(window.__WF_MEDIA).forEach(function(k){document.documentElement.style.setProperty('--wf-'+k,'url("'+window.__WF_MEDIA[k]+'")')});
+function wfHydrateMedia(){document.querySelectorAll('[data-wf-media]').forEach(function(el){var v=window.__WF_MEDIA[el.dataset.wfMedia];if(v)el.setAttribute(el.tagName==='LINK'||el.tagName==='A'?'href':'src',v)})}
+document.addEventListener('DOMContentLoaded',wfHydrateMedia);
+</script>
 </head>
 <body id="top">
 <header><div class="mast"><div class="eyebrow">RTF Wayfinder · <span data-slot="course-meta">AAVTC · Unit 4 · Part 1 · Day 1</span></div><p class="lesson-mode" data-slot="lesson-mode" aria-label="Today’s lesson focus">Day 1 · LEARN Focused</p><h1 data-slot="lesson-title">Vector Art: The Art That Can Grow</h1><p class="subtitle" data-slot="lesson-deck">Create, refine and critique an original editable vector mascot.</p></div></header>
@@ -154,7 +160,7 @@ textarea::placeholder,input::placeholder{color:#68604f;opacity:1}
 <template id="wf-fill-blank"><div data-answer-part data-type="fill-blank" data-sentence="[Actual sentence with {blank} in each required position]"><label>[Meaningful incomplete statement]</label><input type="text" data-blank aria-label="Missing term or phrase"/></div></template>
 <template id="wf-open-response"><div data-answer-part data-type="open-response"><label>[Question-specific prompt]</label><textarea data-open-response placeholder="Explain your thinking in your own words."></textarea></div></template>
 </div></main>
-<script src="../assets/shared/artwork-rotation.js"></script>
+<script>window.WF_ART={rotate:function(slot,kind,provided){if(!slot)return;var pool=(provided||[]).filter(function(x){return x&&x.src});if(!pool.length){slot.hidden=true;return}var start=Math.floor(Math.random()*pool.length),n=0;function next(){if(n>=pool.length){slot.hidden=true;return}var item=pool[(start+n++)%pool.length],im=new Image();im.alt=item.alt||'';im.onload=function(){slot.replaceChildren(im);slot.hidden=false};im.onerror=next;im.src=item.src}next()}};</script>
 <script>
 'use strict';
 /* Master configuration is intentionally blank. Populate it only during an approved lesson build.

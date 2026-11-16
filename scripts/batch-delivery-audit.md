@@ -1,5 +1,37 @@
 # Explicit batch delivery audit
 
+## F5 final delivery acceptance
+
+The existing static audit's limited PASS is not final delivery acceptance. After
+validation, update the existing mapped JISD ID, download the actual delivered bytes
+again through the authenticated connector, compare SHA-256, then test downloaded
+offline controls and required integrations. Save attributed, exact-hash evidence in
+the existing `scripts/f5-emergency-results.json` `f5FinalRepair.deliveryAcceptance`
+records and append the outcome to the existing F5 Dispatch journal.
+
+```sh
+python scripts/check-batch-delivery.py --acceptance \
+  --evidence scripts/f5-emergency-results.json \
+  --drive-root /absolute/path/to/fresh-authenticated-course-downloads \
+  Tech/3050102.html
+```
+
+The download root contains `Tech/`, `CS/`, and `AAVTC/`. This gate rechecks actual
+bytes and the existing offline validator. It requires validation, synchronization,
+authenticated readback, preservation, offline-controls, clipboard and Collector
+evidence for the same SHA-256 and existing Drive ID. Missing, failed, UNTESTED or
+stale evidence yields HOLD and nonzero exit. A source change invalidates the prior
+acceptance automatically by hash comparison, even when file size is unchanged.
+Use real downloaded-file testing or explicitly attributed representative regression
+reuse allowed by the current SOP; a hosted page or syntax check alone is insufficient.
+
+The validator does not authenticate handwritten manifests, synchronize files, obtain
+school credentials, or grant release. It deliberately preserves the earlier static
+audit interface and source-contract tests. Automatic authenticated synchronization,
+CI enforcement of this final gate, and any deployment/branch-policy change are not
+implemented by this narrow extension; those require the separately scoped integration
+decision recorded in F5 Dispatch. No fake test records are production evidence.
+
 Captain GO M4 F4.1–F4.4 authorized the audit and two-guide pilot; F4a1 subsequently
 authorized audit accuracy repair only. F4a2–F4a4 corrections remain outside scope.
 This command reads existing files. It never rebuilds, synchronizes, repairs, publishes,

@@ -409,14 +409,68 @@ def main():
     parser.add_argument('--evidence', type=Path, required=True)
     parser.add_argument('--drive-root', type=Path, required=True)
     parser.add_argument('--root', type=Path, default=ROOT)
+    parser.add_argument('--acceptance', action='store_true', help='Require exact-revision final-delivery evidence, including downloaded-file controls; missing or stale evidence is HOLD')
     parser.add_argument('dayids', nargs='+', help='Explicit DayIDs; never inferred from evidence or changed files')
     args = parser.parse_args()
     try:
-        report = audit(args.dayids, json.loads(args.evidence.read_text()), args.root, args.drive_root)
+        evidence = json.loads(args.evidence.read_text())
+        report = delivery_acceptance(args.dayids, evidence, args.root, args.drive_root) if args.acceptance else audit(args.dayids, evidence, args.root, args.drive_root)
     except Exception as error:
         report = {'status': 'FAIL', 'finding': str(error)}
     print(json.dumps(report, indent=2))
     return 0 if report['status'] == 'PASS' else 1
+
+def delivery_acceptance(selections, evidence, root=ROOT, drive_root=None):
+    """Final acceptance, separate from the legacy static audit's limited PASS.
+
+    This checks actual downloaded bytes plus exact-revision, attributed test records.
+    It cannot authenticate caller assertions or replace fresh connector readbacks.
+    It never synchronizes, submits, changes visibility or grants student readiness.
+    """
+    check(selections, 'Explicit selected guide paths required')
+    entries = evidence.get('f5FinalRepair', {}).get('deliveryAcceptance', {})
+    results, seen = [], set()
+    for selection in selections:
+        row = {'path': selection, 'status': 'HOLD', 'findings': []}
+        results.append(row)
+        try:
+            match = re.fullmatch(r'(Tech|CS|AAVTC)/(\d{5}|\d{7})(?:\.html)?', selection)
+            check(match, 'Explicit course/DayID selection required')
+            path = match[1] + '/' + match[2] + '.html'
+            check(path not in seen, 'Duplicate selection'); seen.add(path)
+            data = (Path(root) / path).read_bytes()
+            digest = sha(data); row.update(path=path, sha256=digest)
+            entry = entries.get(path, {})
+            check(entry.get('driveId'), 'Missing existing Drive ID evidence')
+            check(drive_root, 'Fresh authenticated downloaded bytes required')
+            delivered = (Path(drive_root) / path).read_bytes()
+            check(data == delivered, 'Downloaded bytes differ from canonical source')
+            row['byteParity'] = 'PASS'
+            # Re-run the existing checker; a saved packaging PASS is not sufficient.
+            code = "const f=require('fs'),c=require('./scripts/check-offline-html.cjs');process.stdout.write(JSON.stringify(c.inspect(f.readFileSync(process.argv[1]))))"
+            run = subprocess.run(['node', '-e', code, str((Path(root) / path).resolve())], cwd=ROOT, capture_output=True, text=True)
+            check(run.returncode == 0, 'Offline checker failed to execute')
+            issues = json.loads(run.stdout); check(not issues, 'Offline packaging: ' + '; '.join(issues))
+            row['offlinePackaging'] = 'PASS'
+            for name in ['validation', 'synchronization', 'readback', 'preservation', 'offlineControls', 'clipboard', 'collector']:
+                gate = entry.get(name, {})
+                if gate.get('status') != 'PASS':
+                    row['findings'].append(name + ': ' + gate.get('status', 'MISSING'))
+                elif gate.get('sha256') != digest:
+                    row['findings'].append(name + ': STALE source hash')
+                elif not gate.get('evidence'):
+                    row['findings'].append(name + ': missing evidence attribution')
+                if name in ['synchronization', 'readback'] and gate.get('driveId') != entry['driveId']:
+                    row['findings'].append(name + ': wrong existing Drive ID')
+            readback = entry.get('readback', {})
+            if not readback.get('downloadedAt') or not readback.get('modifiedTime'):
+                row['findings'].append('Missing delivery download/version timestamps')
+            if not row['findings']: row['status'] = 'PASS'
+        except Exception as error:
+            row['findings'].append(str(error))
+    return {'status': 'PASS' if results and all(r['status'] == 'PASS' for r in results) else 'HOLD',
+            'scope': 'Exact-revision delivery acceptance; not student release. Evidence must come from authenticated current reads and actual tests.',
+            'results': results, 'productionWrites': 0, 'studentRelease': False}
 
 if __name__ == '__main__':
     sys.exit(main())
