@@ -6,7 +6,7 @@ const source=JSON.parse(fs.readFileSync(path.join(dir,'source-copy.json'))),iden
 // Attach reviewed audit metadata to the transient snapshot only; native source stays intact.
 source.curriculumReviews={'3050201':require('./fixtures/m2-review-fixtures.cjs').pilotReview(C.extractLesson(source,'3050201'))};
 const sha=x=>crypto.createHash('sha256').update(x).digest('hex');
-const original=fs.readFileSync(path.join(root,'Tech/3050201.html')),master=fs.readFileSync(path.join(root,'templates/wayfinder-master.html'));
+const original=fs.readFileSync(path.join(base,'original.html.txt')),master=fs.readFileSync(path.join(root,'templates/wayfinder-master.html'));
 assert.equal(sha(original),'7471096fba1388814b6330f6ac4baca5b57f7ce72601aeb3846816caf4679b41');assert.deepEqual(original,fs.readFileSync(path.join(base,'original.html.txt')));
 const record=C.extractLesson(source,'3050201'),q=record.payload.evidence.graded.items[0];
 assert.equal(q.fullKey,'305020130059');assert.equal(q.parts.length,1);assert.equal(q.parts[0].answerType,'short_text');
