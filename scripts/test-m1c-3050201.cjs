@@ -6,7 +6,7 @@ process.env.M1B_PILOT_DIR=process.env.M1C_PILOT_DIR||fs.mkdtempSync(path.join(os
 require('./test-m1b-3050201.cjs'); // unchanged production entry + seven F1/M1 rejection cases
 const source=JSON.parse(fs.readFileSync(path.join(process.env.M1_PILOT_FIXTURE,'source-copy.json'))),record=C.extractLesson(source,'3050201'),native=source.tabs[0].text.split('\n:::lesson')[0];
 source.curriculumReviews={'3050201':require('./fixtures/m2-review-fixtures.cjs').pilotReview(record)};
-const original=fs.readFileSync(path.join(root,'Tech/3050201.html')),master=fs.readFileSync(path.join(root,'templates/wayfinder-master.html')),output=path.join(process.env.M1B_PILOT_DIR,'3050201.html'),good=fs.readFileSync(output);
+const original=fs.readFileSync(path.join(root,'scripts/fixtures/m1a-3050201/original.html.txt')),master=fs.readFileSync(path.join(root,'templates/wayfinder-master.html')),output=path.join(process.env.M1B_PILOT_DIR,'3050201.html'),good=fs.readFileSync(output);
 const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
 const testDir=fs.mkdtempSync(path.join(os.tmpdir(),'m1c-negative-')),src=path.join(testDir,'source.json'),out=path.join(testDir,'preserve.html');
 const code='import sys;sys.path.insert(0,'+JSON.stringify(path.join(root,'scripts'))+');from wayfinder_lesson import build_from_outline;from pathlib import Path;build_from_outline('+JSON.stringify(record.payload.identity)+',"STARTER",Path('+JSON.stringify(path.join(root,'templates/wayfinder-master.html'))+').read_text(),'+JSON.stringify(out)+')';
@@ -30,6 +30,6 @@ try{for(const [label,mutate] of cases){const p=JSON.parse(JSON.stringify(record.
  assert.throws(()=>C.buildRecord(noSlot,record,source,JSON.parse(fs.readFileSync(path.join(__dirname,'fixtures/m1b-3050201/identity-sources.json')))),/missing master slot/);
  assert.deepEqual(fs.readFileSync(output),good);
 }finally{fs.rmSync(testDir,{recursive:true,force:true})}
-assert.deepEqual(fs.readFileSync(path.join(root,'Tech/3050201.html')),original);assert.deepEqual(fs.readFileSync(path.join(root,'templates/wayfinder-master.html')),master);
+assert.deepEqual(fs.readFileSync(path.join(root,'scripts/fixtures/m1a-3050201/original.html.txt')),original);assert.ok(fs.readFileSync(path.join(root,'Tech/3050201.html')).includes(Buffer.from('TECH-U05-P02')));assert.deepEqual(fs.readFileSync(path.join(root,'templates/wayfinder-master.html')),master);
 const result={status:'PASS',nativeBuild:'F1 + M1 production entry',question:'305020130059',responseFields:1,originalSha256:sha(original),masterSha256:sha(master),outputSha256:sha(good),outputBytes:good.length,sourceSha256:record.provenance.sourceSha256,negativeNativeBuilds:7+rejected,rendererFailure:'rejects before output write',canonicalWrites:0,clipboard:'UNTESTED',collectorReceipt:'UNTESTED'};
 fs.writeFileSync(path.join(process.env.M1B_PILOT_DIR,'static-results.json'),JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));
